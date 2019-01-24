@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Anthony Santoro/Scenes/Options Menu.unity
+    guid: a3125d10b50dcb346944b3e623308201
+  - enabled: 1
+    path: Assets/Mitchell/Scenes/Ford_Test.unity
+    guid: c5466fb332d5b5841a83aae117eeb77b
   m_configObjects: {}
