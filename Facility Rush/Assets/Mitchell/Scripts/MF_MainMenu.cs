@@ -12,9 +12,10 @@ public class MF_MainMenu : MonoBehaviour
         PreviousScene = SceneManager.GetActiveScene().name;
     }
 
-    void OnClickBegin()
+    public void OnClickBegin()
     {
         PreviousScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("Grade Selection");
     }
 
     public void OnClickOptions()
