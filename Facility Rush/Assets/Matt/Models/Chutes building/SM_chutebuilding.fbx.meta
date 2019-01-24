@@ -1,46 +1,41 @@
 fileFormatVersion: 2
-guid: 4a54233e85865d64ba974be99575716f
+guid: 587e0926a74eb43409292bb848b7e9c7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Chute_pCube5
-    100002: Chute_pCylinder5
-    100004: Chute_pCylinder9
-    100006: Chute_SM_Smokestack
-    100008: Chute_SM_Smokestack1
-    100010: //RootNode
-    100012: SM_Smokestack2_Chute
-    400000: Chute_pCube5
-    400002: Chute_pCylinder5
-    400004: Chute_pCylinder9
-    400006: Chute_SM_Smokestack
-    400008: Chute_SM_Smokestack1
-    400010: //RootNode
-    400012: SM_Smokestack2_Chute
-    2100000: Chute_pCube5Mat
-    2100002: Chute_pCylinder5Mat
-    2100004: Chute_pCylinder9Mat
-    2100006: Chute_SM_SmokestackMat
-    2100008: Chute_SM_Smokestack1Mat
-    2100010: SM_Smokestack2_ChuteMat
-    2300000: Chute_pCube5
-    2300002: Chute_pCylinder5
-    2300004: Chute_pCylinder9
-    2300006: Chute_SM_Smokestack
-    2300008: Chute_SM_Smokestack1
-    2300010: SM_Smokestack2_Chute
-    3300000: Chute_pCube5
-    3300002: Chute_pCylinder5
-    3300004: Chute_pCylinder9
-    3300006: Chute_SM_Smokestack
-    3300008: Chute_SM_Smokestack1
-    3300010: SM_Smokestack2_Chute
-    4300000: Chute_pCube5
-    4300002: Chute_pCylinder5
-    4300004: Chute_pCylinder9
-    4300006: Chute_SM_Smokestack
-    4300008: Chute_SM_Smokestack1
-    4300010: SM_Smokestack2_Chute
+    100000: pCube5
+    100002: pCylinder5
+    100004: pCylinder9
+    100006: //RootNode
+    100008: SM_Smokestack
+    100010: SM_Smokestack1
+    100012: SM_Smokestack2
+    400000: pCube5
+    400002: pCylinder5
+    400004: pCylinder9
+    400006: //RootNode
+    400008: SM_Smokestack
+    400010: SM_Smokestack1
+    400012: SM_Smokestack2
+    2100000: lambert5
+    2300000: pCube5
+    2300002: pCylinder5
+    2300004: pCylinder9
+    2300006: SM_Smokestack
+    2300008: SM_Smokestack1
+    2300010: SM_Smokestack2
+    3300000: pCube5
+    3300002: pCylinder5
+    3300004: pCylinder9
+    3300006: SM_Smokestack
+    3300008: SM_Smokestack1
+    3300010: SM_Smokestack2
+    4300000: pCylinder9
+    4300002: SM_Smokestack
+    4300004: pCylinder5
+    4300006: pCube5
+    4300008: SM_Smokestack1
+    4300010: SM_Smokestack2
   externalObjects: {}
   materials:
     importMaterials: 1
