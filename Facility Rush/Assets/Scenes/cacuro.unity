@@ -162,7 +162,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Score: '
 --- !u!222 &13962809
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3718,8 +3718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: {fileID: 1270400210}
-  inventoryText: {fileID: 13962808}
-  answerText: {fileID: 911652806}
+  kakuroGameManager: {fileID: 1799809511}
 --- !u!1 &1799809511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,7 +3759,7 @@ MonoBehaviour:
   - {fileID: 0}
   sumOne: {fileID: 926855584}
   sumTwo: {fileID: 1865790707}
-  grade: 0
+  grade: 2
 --- !u!114 &1799809513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3772,6 +3771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cb3662dd258d74c86ece80bd34b1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gradeLevel: 2
   boardGenerator: {fileID: 1799809511}
   gameBoard: {fileID: 0}
   gameOver: 0
@@ -3783,6 +3783,31 @@ MonoBehaviour:
   - {fileID: 622261451}
   - {fileID: 1212842806}
   - {fileID: 1064434133}
+  feedback: {fileID: 911652806}
+  numberSlots:
+  - {fileID: 381887416}
+  - {fileID: 1160771093}
+  - {fileID: 923590886}
+  - {fileID: 532894407}
+  - {fileID: 1008334209}
+  - {fileID: 15481943}
+  - {fileID: 1913490452}
+  - {fileID: 903487642}
+  - {fileID: 96062284}
+  answerPanels:
+  - {fileID: 1503318918}
+  - {fileID: 1163242283}
+  - {fileID: 1968851718}
+  - {fileID: 622261452}
+  - {fileID: 1212842807}
+  - {fileID: 1064434134}
+  - {fileID: 1206058956}
+  - {fileID: 696813356}
+  - {fileID: 2101432765}
+  positionOne: {fileID: 0}
+  positionTwo: {fileID: 0}
+  score: 0
+  scoreText: {fileID: 13962808}
 --- !u!4 &1799809514
 Transform:
   m_ObjectHideFlags: 0
