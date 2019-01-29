@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mitchell/Scenes/Ford_Test.unity
     guid: c5466fb332d5b5841a83aae117eeb77b
+  - enabled: 1
+    path: Assets/Scenes/Grade selection.unity
+    guid: 8e1f91db75806ba4bb2b3d0002fe0f9b
+  - enabled: 1
+    path: Assets/Anthony Santoro/Scenes/Level Select.unity
+    guid: 1ee47aed98ffe7a43bf8b3b5428cf6f5
+  - enabled: 1
+    path: Assets/Scenes/Assembly Line.unity
+    guid: f47c573a41c461f4b82c68a95429d59c
+  - enabled: 1
+    path: Assets/Scenes/cacuro.unity
+    guid: 2f34bf008bbd0a8478d1416a4a868035
   m_configObjects: {}

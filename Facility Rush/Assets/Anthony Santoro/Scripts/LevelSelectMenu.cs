@@ -26,4 +26,14 @@ public class LevelSelectMenu : MonoBehaviour
     {
         optionsCanvas.SetActive(false);
     }
+
+    public void OnClickCaCuro()
+    {
+        SceneManager.LoadScene("cacuro");
+    }
+
+    public void OnClickAssemblyLine()
+    {
+        SceneManager.LoadScene("Assembly Line");
+    }
 }

@@ -129,13 +129,14 @@ public class assemblyManager : MonoBehaviour
            // print("wholeEquation[i] is " + wholeEquation[i]);
             if(wholeEquation[i].Equals('+')|| wholeEquation[i].Equals('-')|| wholeEquation[i].Equals('*')|| wholeEquation[i].Equals('/'))
             {
-                firstPart = ExpressionEvaluator.Evaluate<int>(numericalValue);
+                ExpressionEvaluator.Evaluate<int>(numericalValue,out firstPart);
+
                 //operatorSign = ""+wholeEquation[i];
                 numericalValue = "";
             }
             else if(wholeEquation[i].Equals('='))
             {
-                secondPart = ExpressionEvaluator.Evaluate<int>(numericalValue);
+                ExpressionEvaluator.Evaluate<int>(numericalValue, out secondPart);
                 numericalValue = "";
             }
             else
@@ -144,7 +145,7 @@ public class assemblyManager : MonoBehaviour
                 //print("Right now numerical value is: " + numericalValue);
             }
         }
-        answer = ExpressionEvaluator.Evaluate<int>(numericalValue);
+        ExpressionEvaluator.Evaluate<int>(numericalValue, out answer);
         positionInPipeOne = Random.Range(0, 3);
         positionInPipeThree= Random.Range(0, 3);
         pipeOne[positionInPipeOne].text = firstPart + "";
@@ -254,7 +255,10 @@ public class assemblyManager : MonoBehaviour
     {
         string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
         feedbackText.gameObject.SetActive(true);
-        if(ExpressionEvaluator.Evaluate<int>(playerEquation)==answer)
+        int temp;
+        ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
+        
+        if(temp==answer)
         {
             print("Correct");
             score += 100;
