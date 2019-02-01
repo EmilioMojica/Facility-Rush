@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Kakuro : MonoBehaviour {
-   public Text[] indices=new Text[9];
+   //public Text[] indices=new Text[9];
     public Text sumOne;
     public Text sumTwo;
     private int firstSum;
@@ -63,10 +63,10 @@ public class Kakuro : MonoBehaviour {
 
         sumTwo.text= (kakuroBoardSecondThroughFifth[3] + kakuroBoardSecondThroughFifth[4] + kakuroBoardSecondThroughFifth[5]) + "";
 
-        for (int i = 0; i < 9; i++)
-        {
-            indices[i].text= kakuroBoardSecondThroughFifth[i]+"";
-        }
+        //for (int i = 0; i < 9; i++)
+       // {
+          //  indices[i].text= kakuroBoardSecondThroughFifth[i]+"";
+        //}
 
 
     }
@@ -86,10 +86,10 @@ public class Kakuro : MonoBehaviour {
         firstSum = kakuroBoardKindergartenThroughFirst[0] + kakuroBoardKindergartenThroughFirst[1];
         secondSum = kakuroBoardKindergartenThroughFirst[2] + kakuroBoardKindergartenThroughFirst[3];
 
-        indices[0].text = kakuroBoardKindergartenThroughFirst[0]+"";
-        indices[1].text = kakuroBoardKindergartenThroughFirst[1] + "";
-        indices[3].text = kakuroBoardKindergartenThroughFirst[2] + "";
-        indices[4].text = kakuroBoardKindergartenThroughFirst[3] + "";
+        //indices[0].text = kakuroBoardKindergartenThroughFirst[0]+"";
+       // indices[1].text = kakuroBoardKindergartenThroughFirst[1] + "";
+        //indices[3].text = kakuroBoardKindergartenThroughFirst[2] + "";
+        //indices[4].text = kakuroBoardKindergartenThroughFirst[3] + "";
 
         sumOne.text = firstSum + "";
         sumTwo.text = secondSum + "";

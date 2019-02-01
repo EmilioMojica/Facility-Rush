@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour, IHasCHanged
     // Use this for initialization
     //https://www.youtube.com/watch?v=c47QYgsJrWc
     [SerializeField] private Transform slots;
+    [SerializeField] private Transform slotsTwoByTwo;
    // [SerializeField] private Text inventoryText;
     //[SerializeField] private Text answerText;
     private float totalNumber;
@@ -18,25 +19,43 @@ public class Inventory : MonoBehaviour, IHasCHanged
     public GameObject kakuroGameManager;
     private kakuroGameManger manager;
     //private float[] allNumbers = new float[9];
+    private int panelNumberToFillBoard;
+    private Transform slotsToCheck;
 
     void Start()
     {
        manager = kakuroGameManager.GetComponent<kakuroGameManger>();
+        //panelNumberToFillBoard = 4;
+        //panelNumberToFillBoard = manager.getTotalNumberedPanels();
+        print("Called from start panelNumberToFillBoard is "+ panelNumberToFillBoard);
+        print("At start of inventory panelNumberToFilled is "+ panelNumberToFillBoard);
+        int gradeLevel = PlayerPrefs.GetInt("grade");
+      if(gradeLevel==0 || gradeLevel==1)
+        {
+            slotsToCheck = slotsTwoByTwo;
+            panelNumberToFillBoard = 4;
+        }
+        else
+        {
+            slotsToCheck = slots;
+            panelNumberToFillBoard = 9;
+        }
         HasChanged();
     }
 
 
     public void HasChanged()        // method used to update string function containing numbers in row and other things
     {
+        //print("Hello");
         //Debug.Log("new Item!!!!");
         //throw new System.NotImplementedException();
         System.Text.StringBuilder builder = new System.Text.StringBuilder(); // initializtion of string builder 
         builder.Append(" - ");                                               // appending seperator
         float number = 0;                                                    // number used to represent sum as it is added
         int boxCount = 0;
-        foreach (Transform sloTransform in slots)
+        foreach (Transform sloTransform in slotsToCheck)
         {
-            
+            //print("Hello");
             GameObject item = sloTransform.GetComponent<Slot>().item;
             if (item)
             {
@@ -61,8 +80,9 @@ public class Inventory : MonoBehaviour, IHasCHanged
 
         manager.updateSum();
        // print("The number of boxes for this is: "+ boxCount);
-        if(boxCount==9)
+        if(boxCount==panelNumberToFillBoard)
         {
+            print("Box count is "+ boxCount+" while panelNumbertoFillBoard is "+ panelNumberToFillBoard);
             manager.checkBoard();
         }
         //allNumbers[i] = 
