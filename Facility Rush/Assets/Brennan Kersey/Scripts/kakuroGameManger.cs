@@ -9,16 +9,16 @@ using UnityEngine.UI;
 
 public class kakuroGameManger : MonoBehaviour
 {
-    private int gradeLevel;
-    public GameObject boardGenerator;
-    public GameObject gameBoard;
-    public bool gameOver;
+    private int gradeLevel;                     // variable for determining grade level of player
+    public GameObject boardGenerator;           // variable for game object that contains the board generation scipt
+    public GameObject gameBoard;                // empty variable
+    public bool gameOver;                       // variable for game over state
 
-    public GameObject[] firstRowThreeByThree;
-    public GameObject[] secondRowThreeByThree;
+    public GameObject[] firstRowThreeByThree; // array for checking first row sum for 3x3
+    public GameObject[] secondRowThreeByThree;// array for checking second row sum for 3x3
 
-    public GameObject[] firstRowTwoByTwo;
-    public GameObject[] secondRowTwoByTwo;
+    public GameObject[] firstRowTwoByTwo;     // array for checking first row sum for 2x2
+    public GameObject[] secondRowTwoByTwo;    // array for checking second row sum for 2x2
 
     private int currentSum1;
     private int currentSum2;
@@ -48,9 +48,9 @@ public class kakuroGameManger : MonoBehaviour
     [SerializeField] private GameObject UILayoutThreeByThree;
     [SerializeField] private GameObject UILayoutTwoByTwo;
 
-    private int x;
-    private int numberCorrectSoFar;
-    private int numberCorrectTotal;
+    private int x;                      // limit for how many need to be correct to get time bonus
+    private int numberCorrectSoFar;     // how many problems the player has correct so far
+    private int numberCorrectTotal;     // how many problems the player has gotten correct over all
 
     public GameObject timer;
 
@@ -100,7 +100,7 @@ public class kakuroGameManger : MonoBehaviour
     {
         //trial = numberSlots[0];
     }
-    public void setOriginalPositions()
+    public void setOriginalPositions() // resets the original postions of all the numbers for the board.
     {
         //print("Yay");
         if (gradeLevel == 0 || gradeLevel == 1)
@@ -125,7 +125,7 @@ public class kakuroGameManger : MonoBehaviour
 
    
 
-	public void makeNewBoard()
+	public void makeNewBoard() // generates the board
     {
         if (gradeLevel == 0 || gradeLevel == 1)
         {
@@ -152,7 +152,7 @@ public class kakuroGameManger : MonoBehaviour
 		
 	}
 
-    public void checkBoard()
+    public void checkBoard() // checks for correct answer for the board
     {
         if (gameOver != false)
         {
@@ -181,13 +181,13 @@ public class kakuroGameManger : MonoBehaviour
         }
     }
 
-    public void initiateGameOver()
+    public void initiateGameOver() // initiates game over state
     {
         gameOver = true;
         feedback.text = "GameOver";
     }
 
-    public void updateSum()
+    public void updateSum() // updates the sum for the first and second row while player inserts numbers in slots
     {
         currentSum1 = 0;
         currentSum2 = 0;

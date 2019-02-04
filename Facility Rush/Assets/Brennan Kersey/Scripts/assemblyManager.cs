@@ -108,17 +108,17 @@ public class assemblyManager : MonoBehaviour
                 additionPanel.SetActive(true);
                 subtractionPanel.SetActive(true);
                 multiplicationPanel.SetActive(true);
-                divisionPanel.SetActive(true);
+                //divisionPanel.SetActive(true);
                 break;
             case 4:
-                additionPanel.SetActive(true);
-                subtractionPanel.SetActive(true);
+                //additionPanel.SetActive(true);
+                //subtractionPanel.SetActive(true);
                 multiplicationPanel.SetActive(true);
                 divisionPanel.SetActive(true);
                 break;
             case 5:
-                additionPanel.SetActive(true);
-                subtractionPanel.SetActive(true);
+                //additionPanel.SetActive(true);
+                //subtractionPanel.SetActive(true);
                 multiplicationPanel.SetActive(true);
                 divisionPanel.SetActive(true);
                 break;
