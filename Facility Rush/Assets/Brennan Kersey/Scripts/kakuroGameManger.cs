@@ -51,7 +51,7 @@ public class kakuroGameManger : MonoBehaviour
     private int x;                      // limit for how many need to be correct to get time bonus
     private int numberCorrectSoFar;     // how many problems the player has correct so far
     private int numberCorrectTotal;     // how many problems the player has gotten correct over all
-
+    private int numberOfProblemsAttempted; // a variable representing the total number of problems the player has attempted to do.
     public GameObject timer;
 
     
@@ -69,6 +69,8 @@ public class kakuroGameManger : MonoBehaviour
         gameOver = false;
         x = 0;
         numberCorrectSoFar = 0;
+        numberCorrectTotal = 0;
+        numberOfProblemsAttempted = 0;
         gradeLevel = PlayerPrefs.GetInt("grade");
         feedback.text = "";
         score = 0;
@@ -166,6 +168,7 @@ public class kakuroGameManger : MonoBehaviour
                 scoreText.text = "Score: " + score;
                 numberCorrectSoFar++;
                 numberCorrectTotal++;
+                numberOfProblemsAttempted++;
                 if (numberCorrectSoFar == (x + 3))
                 {
                     timer.GetComponent<timer>().addTime();
@@ -177,6 +180,7 @@ public class kakuroGameManger : MonoBehaviour
             else
             {
                 feedback.text = "Incorrect Try again";
+                numberOfProblemsAttempted++;
             }
         }
     }
