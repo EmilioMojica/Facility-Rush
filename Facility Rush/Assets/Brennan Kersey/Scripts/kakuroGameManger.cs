@@ -54,6 +54,7 @@ public class kakuroGameManger : MonoBehaviour
     private int numberOfProblemsAttempted; // a variable representing the total number of problems the player has attempted to do.
     public GameObject timer;
 
+
     
 
     public int getTotalNumberedPanels()
@@ -182,6 +183,23 @@ public class kakuroGameManger : MonoBehaviour
                 feedback.text = "Incorrect Try again";
                 numberOfProblemsAttempted++;
             }
+        }
+    }
+
+    public void Happiness() //logic for calculating the happiness level based on correct answers/attempted questions
+    {
+        float happiness;
+        float maxHappiness = 0.15f;
+
+        if (numberOfProblemsAttempted >= 5)
+        {
+            happiness = ((numberCorrectTotal / numberOfProblemsAttempted) * maxHappiness) * 100;
+            happiness = Mathf.Round(happiness * 100f) / 100f; //testing this to see if it rounds properly
+        }
+
+        else if (numberOfProblemsAttempted <5 && numberOfProblemsAttempted >=1)
+        {
+            happiness = (((numberCorrectTotal / numberOfProblemsAttempted) / 5) * maxHappiness) * 100;
         }
     }
 
