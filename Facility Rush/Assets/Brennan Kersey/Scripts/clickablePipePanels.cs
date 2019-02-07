@@ -21,28 +21,28 @@ public class clickablePipePanels : MonoBehaviour
         {
             print("Chute 1 has a value of " + panelValue);
             manager.GetComponent<assemblyManager>().setChuteOneChoice(panelValue);
-            StartCoroutine(spawnObjectANimation(pipeAnimators[0],toySpawnPoint[0],sampleToys[0]));
+            //StartCoroutine(spawnObjectANimation(pipeAnimators[0],toySpawnPoint[0],sampleToys[0]));
             assembler.showChoice1.text = "" + panelValue;
         }
         else if (objectName.Contains("Chute 2"))
         {
             print("Chute b2 has a value of " + panelValue);
             manager.GetComponent<assemblyManager>().setChuteTwoChoice(panelValue);
-            StartCoroutine(spawnObjectANimation(pipeAnimators[1], toySpawnPoint[1], sampleToys[1]));
+           //StartCoroutine(spawnObjectANimation(pipeAnimators[1], toySpawnPoint[1], sampleToys[1]));
             assembler.showChoice2.text = "" + panelValue;
         }
         else if (objectName.Contains("Chute 3"))
         {
             print("Chute 3 has a value of " + panelValue);
             manager.GetComponent<assemblyManager>().setChuteThreeChoice(panelValue);
-            StartCoroutine(spawnObjectANimation(pipeAnimators[2], toySpawnPoint[2], sampleToys[2]));
+           //StartCoroutine(spawnObjectANimation(pipeAnimators[2], toySpawnPoint[2], sampleToys[2]));
             assembler.showChoice3.text = "" + panelValue;
         }
     }
     IEnumerator spawnObjectANimation(Animator anime, Transform spawnPoint, GameObject toyPart)
     {
         anime.SetBool("choiceMade", true);
-        yield return new WaitForSecondsRealtime(1.3f);
+        yield return new WaitForSecondsRealtime(1);
         Instantiate(toyPart, spawnPoint.position, spawnPoint.rotation);
         anime.SetBool("toySpawned", true);
         anime.SetBool("choiceMade", false);

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DegradationManager : MonoBehaviour
 {
-    [SerializeField] int aAttempted;
-    [SerializeField] int aCorrect;
+    public int aAttempted;
+    public int aCorrect;
 
     public float aFill;
     public float maxFill = 15f;
@@ -24,47 +24,44 @@ public class DegradationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (KartCuro == true)
+        
+
+
+    }
+
+    public void cartkuroCalculation()
+    {
+        if (aAttempted < 5)
         {
-            if(aAttempted < 5)
-            {
-                aFill = (aCorrect / aAttempted) / 5;
-            }
-            else
-            {
-                aFill = aCorrect / aAttempted;
-            }
+            aFill = (aCorrect / aAttempted) / 5;
         }
-
-        if(assLine == true)
+        else
         {
-            if (aAttempted < 10)
-            {
-                aFill = (aCorrect / aAttempted) / 10;
-            }
-            else
-            {
-                aFill = aCorrect / aAttempted;
-            }
+            aFill = aCorrect / aAttempted;
         }
+    }
 
-        if (Chutes)
+    public void assemblyCalulate()
+    {
+        if (aAttempted < 10)
         {
-            if (aAttempted < 10)
-            {
-                aFill = (aCorrect / aAttempted) / 10;
-            }
-            else
-            {
-                aFill = aCorrect / aAttempted;
-            }
+            aFill = (aCorrect / aAttempted) / 10;
         }
-
-        if (pipGyro)
+        else
         {
-
+            aFill = aCorrect / aAttempted;
         }
+    }
 
-
+    public void chuteCalculate()
+    {
+        if (aAttempted < 10)
+        {
+            aFill = (aCorrect / aAttempted) / 10;
+        }
+        else
+        {
+            aFill = aCorrect / aAttempted;
+        }
     }
 }

@@ -55,7 +55,8 @@ public class kakuroGameManger : MonoBehaviour
     public GameObject timer;
 
 
-    
+    [SerializeField]private GameObject degradationBuddy;
+    private DegradationManager dylan;
 
     public int getTotalNumberedPanels()
     {
@@ -67,6 +68,7 @@ public class kakuroGameManger : MonoBehaviour
 
     void Start ()
     {
+        dylan = degradationBuddy.GetComponent<DegradationManager>();
         gameOver = false;
         x = 0;
         numberCorrectSoFar = 0;
@@ -189,11 +191,11 @@ public class kakuroGameManger : MonoBehaviour
     public void Happiness() //logic for calculating the happiness level based on correct answers/attempted questions
     {
         float happiness;
-        float maxHappiness = 0.15f;
+        float maxHappiness = .15f;
 
         if (numberOfProblemsAttempted >= 5)
         {
-            happiness = ((numberCorrectTotal / numberOfProblemsAttempted) * maxHappiness) * 100;
+            happiness = ((numberCorrectTotal / numberOfProblemsAttempted) * maxHappiness);
             happiness = Mathf.Round(happiness * 100f) / 100f; //testing this to see if it rounds properly
         }
 
@@ -201,12 +203,14 @@ public class kakuroGameManger : MonoBehaviour
         {
             happiness = (((numberCorrectTotal / numberOfProblemsAttempted) / 5) * maxHappiness) * 100;
         }
+        //PlayerPrefs.SetFloat("")
     }
 
     public void initiateGameOver() // initiates game over state
     {
         gameOver = true;
         feedback.text = "GameOver";
+        //dylan.cartkuroCalculation();
     }
 
     public void updateSum() // updates the sum for the first and second row while player inserts numbers in slots

@@ -32,6 +32,7 @@ public class timer : MonoBehaviour
             if(timerString.Equals("00:00"))
             {
                 manager.GetComponent<kakuroGameManger>().initiateGameOver();
+                //gameTimerText.text = "00:00";
             }
             gameTimerText.text = timerString;
         }

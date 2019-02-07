@@ -179,4 +179,9 @@ public class saveStateOfGame : MonoBehaviour
 
     }
 
+    public void updateBar(Image imageToModify, float modificationAmount)
+    {
+        imageToModify.fillAmount += modificationAmount;
+    }
+
 }

@@ -2677,6 +2677,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746249794}
   m_CullTransparentMesh: 0
+--- !u!1 &765657755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 765657757}
+  - component: {fileID: 765657756}
+  m_Layer: 0
+  m_Name: Degradation buddy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &765657756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765657755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5648df3911022c44db325a04d49486f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aAttempted: 0
+  aCorrect: 0
+  aFill: 0
+  maxFill: 15
+--- !u!4 &765657757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765657755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 169.43086, y: 380.54147, z: -403.42917}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &776396061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,6 +2754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTimer: 5
+  maxTime: 0
   gameTimerText: {fileID: 649430257}
   manager: {fileID: 1799809511}
 --- !u!4 &776396063
@@ -6230,6 +6278,7 @@ MonoBehaviour:
   UILayoutThreeByThree: {fileID: 1798462456}
   UILayoutTwoByTwo: {fileID: 323572412}
   timer: {fileID: 776396061}
+  degradationBuddy: {fileID: 765657755}
 --- !u!4 &1799809514
 Transform:
   m_ObjectHideFlags: 0

@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Vector3 = UnityEngine.Vector3;
 
 /*
 * Script Goals: Manage Assembly Line minigame- Entails calling for an equation to be generated based on grade level, displaying each part of the equation to be generated in the three 
@@ -54,8 +56,81 @@ public class assemblyManager : MonoBehaviour
     public int numberCorrect;
     public int numberCorrectSoFar;
 
+    [SerializeField]private bool isToySpawned;
+    private GameObject theToy;
+
     public GameObject timer;
     // Use this for initialization
+    [SerializeField] private Animator [] assemblyLineAnimator;
+    [SerializeField] private GameObject[] toyParts;
+    [SerializeField] private GameObject[] sampleToys;
+    [SerializeField] private Animator[] pipeAnimators;
+    [SerializeField] private Transform[] toySpawnPoint;
+
+    [SerializeField] private Animator toyAnimator;
+
+    [SerializeField] private GameObject toyHolder;
+
+    [SerializeField] private GameObject correctToy;
+    [SerializeField] private GameObject incorrectToy;
+
+    [SerializeField]private GameObject createdToy;
+
+    IEnumerator Animation(Animator anime, Transform spawnPoint, GameObject toyPart,GameObject partToInstantiate)
+    {
+        anime.SetBool("choiceMade", true);
+        yield return new WaitForSecondsRealtime(1);
+        if (isToySpawned==false)
+        {
+            print("I'm about to instantiate");
+            theToy=Instantiate(toyPart, spawnPoint.position, spawnPoint.rotation);
+            theToy.transform.parent = toyHolder.transform;
+            //toyAnimator = theToy.GetComponent<Animator>();
+            toyParts[0] = theToy.transform.GetChild(0).gameObject;
+            toyParts[0].SetActive(true);
+            toyParts[1]= theToy.transform.GetChild(1).gameObject;
+            toyParts[1].SetActive(false);
+            toyParts[2]= theToy.transform.GetChild(2).gameObject;
+            toyParts[2].SetActive(false);
+
+            print("this the child of the toy instantiated: " + theToy.transform.GetChild(0).gameObject.name);
+            isToySpawned = true;
+        }
+        if(partToInstantiate!=null)
+        {
+            print("I'M REAL");
+            partToInstantiate.SetActive(true);
+        }
+        anime.SetBool("toySpawned", true);
+        anime.SetBool("choiceMade", false);
+        yield return new WaitForSecondsRealtime(1);
+        anime.SetBool("toySpawned", false);
+        anime.SetBool("isFinish", true);
+        yield return new WaitForSecondsRealtime(1);
+        anime.SetBool("isFinish", false);
+    }
+
+    IEnumerator spawnObjectAnimation(Transform spawnPoint)
+    {
+        print("spawnig intitialized");
+        StartCoroutine(Animation(pipeAnimators[0], spawnPoint,sampleToys[0],toyParts[0]));
+        yield return new WaitForSecondsRealtime(2);
+        toyAnimator.SetInteger("position", 1);
+        yield return new WaitForSecondsRealtime(1);
+        StartCoroutine(Animation(pipeAnimators[1], spawnPoint, sampleToys[0],toyParts[1]));
+        yield return new WaitForSecondsRealtime(2);
+        toyAnimator.SetInteger("position", 2);
+        yield return new WaitForSecondsRealtime(1);
+        StartCoroutine(Animation(pipeAnimators[2], spawnPoint, sampleToys[0],toyParts[2]));
+        yield return new WaitForSecondsRealtime(2);
+        toyAnimator.SetInteger("position", 3);
+        yield return new WaitForSeconds(1);
+        toyAnimator.SetInteger("position", 4);
+        Destroy(theToy);
+        yield return new WaitForSeconds(1);
+        toyAnimator.SetInteger("position", 0);
+        yield return null;
+    }
 
     public void setChuteOneChoice(string choice)
     {
@@ -73,6 +148,7 @@ public class assemblyManager : MonoBehaviour
     }
     void Start ()
     {
+        isToySpawned = false;
         numberAttempted=0;
         numberCorrect=0;
         numberCorrectSoFar=0;
@@ -264,6 +340,7 @@ public class assemblyManager : MonoBehaviour
         if (temp==answer)
         {
             print("Correct");
+            StartCoroutine(spawnObjectAnimation(toySpawnPoint[0]));
             score += 100;
             PlayerPrefs.SetInt("recentAssemblyHighScore", score);
             scoreText.text = "Score: " + score;
@@ -276,6 +353,8 @@ public class assemblyManager : MonoBehaviour
                 timer.GetComponent<assemblyTimer>().addTime();
                 numberCorrectSoFar = 0;
             }
+            
+            isToySpawned = false;
         }
         else
         {
