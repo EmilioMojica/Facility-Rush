@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Brennan Kersey/Scenes/cacuro.unity
     guid: 2f34bf008bbd0a8478d1416a4a868035
+  - enabled: 1
+    path: Assets/Lin/Scenes/Chutes.unity
+    guid: e84daad494bc8e4498bcb6fd00a6d34a
   m_configObjects: {}

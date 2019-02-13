@@ -36,4 +36,10 @@ public class LevelSelectMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Assembly Line");
     }
+
+    public void OnClickChutes()
+    {
+        Debug.Log("button clicked");
+        SceneManager.LoadScene("Chutes");
+    }
 }
