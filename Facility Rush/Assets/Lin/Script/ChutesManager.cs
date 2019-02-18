@@ -27,7 +27,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     public Text scoreValue;
     private List<float> tempAnswers = new List<float>();
 
-    private List<string> operators = new List<string>();
+    private string[] operators = new string[] { "+", "-", "*", "/" };   // an array to hold the possible operators used by the equation
     [SerializeField] private Transform slots;
     //[SerializeField] private Animation gobackAnimation;
     public GameObject playscene;
@@ -47,14 +47,24 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     public Animator tubeFour;
 
     private int wrongNumber;
+
+    int startingNumber;  // randomly generated number for beginning of equation generation for addition and subtraction, unless it is mutiplication or division
+    int secondNumber;   //  a randomly generated number raging from 1 to 100
+    int firstNumber;    //  a randomly generated number ranging from 1 to 100
+    string equationOperator; // a string character that represents the operator in the equation
+
+    private int[] factorsOf100 = new int[] { 1, 2, 4, 5, 10, 25, 50, 100 };
+    private int[] MultipleOfTwo = new int[] { 1, 2, 5, 10 };
+    private int[] MultipleOfTwoBig = new int[] { 10, 30, 50, 100 };
+    private int[] factorsOf144 = new int[] { 1, 2, 3, 4, 6, 8, 9, 12, 16, 18, 24, 36, 48, 72, 144 };
+    private int[] factorsOf1441 = new int[] { 1, 2, 3, 4, 6};
+    private int[] factorsOf1442 = new int[] {12, 18, 24, 36, 48, 72, 144 };
+    private int[] factorsOf900 = new int[] { 1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 25, 30, 36, 45, 50, 60, 75, 90, 100, 150, 180, 225, 300, 450, 900 };
+
     // Use this for initialization
     void Start ()
     {
         answersGoUP.SetBool("NumberBack", true);
-        operators.Add("+");
-        operators.Add("-");
-        operators.Add("×");
-        operators.Add("÷");
         playscene.SetActive(true);
         failscene.SetActive(false);
         timeSlider.value = 1;
@@ -272,33 +282,33 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         int currentLimit = 0;
         if (currentLevel == 0)
         {
-            operationID = Random.Range(1, 2);
+            operationID = 1;
             currentLimit = 6;
         }                          //Here I added a condition that limits operaion range for first level 
         else if (currentLevel == 1)
         {
-            operationID = Random.Range(1, 3);
+            operationID = 2;
             currentLimit = 11;
         }
         else if (currentLevel == 2)
         {
             //operationID = 3;
-            operationID = Random.Range(1, 3);
+            operationID = 3;
             currentLimit = 51;
         }
         else if (currentLevel == 3)
         {
-            operationID = Random.Range(1, 4);
+            operationID = 4;
             currentLimit = 51;
         }
         else if(currentLevel == 4)                                      //If we are at 1st level then we use only + or -
         {
-            operationID = Random.Range(1, 5);           //Otherwise we use all operaions
+            operationID = 5;           //Otherwise we use all operaions
             currentLimit = 51;
         }
         else
         {
-            operationID = Random.Range(1, 6);
+            operationID = 6;
             currentLimit = 100;
         }
 
@@ -314,106 +324,290 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
         //Then according to operation ID and "Left" integer we generate "Right" ineteger and answers
         //Here is logic for each operation
+        int operatorDecider; // = (int)Random.Range(0, 2);  // random number generation to decide operator/ Type of problem
+        string quation;
         switch (operationID)
         {
             case 1:                                     //Operation +
-                right = Random.Range(1, currentLimit);  //Generating random "Right" integer in range
-                operationText = "+";                     //Operation string assignment
-                result = left + right;                  //Calculating the result of expression
-                if (result > 100)
+                operatorDecider = 0;  // random number generation to decide operator/ Type of problem
+                quation = "";
+                startingNumber = (int)Random.Range(1, 11);
+                firstNumber = (int)Random.Range(1, startingNumber);
+                secondNumber = startingNumber - firstNumber;
+                switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
                 {
-                    //left = Random.Range((currentLevel - 1) * 5, 51);
-                    left = Random.Range(currentLevel* 5, 51);
-                    right = Random.Range(1, 51);
-                    result = left + right;
-                }
-                tempAnswers.Add(result);                //Insert correct answer in answers list
-                                                        //Here (and in each case) is logic part that generates three fake answers (should not be as true answer). All 4 results go to tempAnswers list
-                if ((left - right) >= 0)
-                {
-                    tempAnswers.Add(left - right);
-                }
-                else
-                {
-                    if (right - left != result)
-                        tempAnswers.Add(right - left);
-                    else
-                        tempAnswers.Add(result * 2);
-                }
-                tempAnswers.Add(!tempAnswers.Contains(result + 1) ? result + 1 : result + 2);
-                tempAnswers.Add(result - 1);
-                // tempEauation.Add(new String{});
+                    case 0:
+                        equationOperator = operators[0];
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
 
 
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left + right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+                }
                 break;
             case 2:                                     //Operation -
-                right = Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                operationText = "-";                     //Operation string assignment
-                result = left - right;                  //Calculating the result of expression	
 
-                tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                tempAnswers.Add(result + 1);
-                tempAnswers.Add(result - 1);
-                tempAnswers.Add(left + right);
+                operatorDecider = (int)Random.Range(0, 2);  // random number generation to decide operator/ Type of problem
+                quation = "";
+                startingNumber = (int)Random.Range(1, 21);
+                firstNumber = (int)Random.Range(1, startingNumber);
+                secondNumber = startingNumber - firstNumber;
+                switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
+                {
+                    case 0:
+                        equationOperator = operators[0];
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left + right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+
+                    case 1:
+                        equationOperator = operators[1];
+                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left - right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left + right);
+                        break;
+
+                    default:
+                        break;
+                }
                 break;
             case 3:                                     //Operation ×
-                left = Random.Range(1, 10);
-                right = Random.Range(1, 10);
-                //right = Random.Range(1, 3 + (currentLevel - 1) * 2);//Generating random "Right" integer in range. We limit this integer with special logic so the result won't be too big.
-                operationText = "×";                     //Operation string assignment
-                result = left * right;                  //Calculating the result of expression
-                /*
-                if (result > 99)
+ 
+                operatorDecider = (int)Random.Range(1, 3);  // random number generation to decide operator/ Type of problem
+                quation = "";
+                startingNumber = factorsOf100[(int)Random.Range(0, 8)];
+                firstNumber = (int)Random.Range(0, 10);
+                secondNumber = startingNumber - firstNumber;
+                switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
                 {
-                    Debug.Log("Over number");
-                    left = Random.Range(1, 10);
-                    result = left * right;
+
+                    case 1:
+                        equationOperator = operators[1];
+                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left - right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left + right);
+                        break;
+
+                    case 2:
+                        equationOperator = operators[2];
+
+                        secondNumber = startingNumber * firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left * right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+
+                    default:
+                        break;
                 }
-                */
-                tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                tempAnswers.Add(result + right);
-                tempAnswers.Add(result - 1);
-                tempAnswers.Add(result + 1);
                 break;
             case 4:                                     //Operation ÷
                 /*                                        //Here we generate left and right inegers with special logic so that result will be always whole number (not float)
                 left = Random.Range(1, 3 + (currentLevel - 1) * 2);
                 right = Random.Range(1, 3 + (currentLevel - 1) * 2);
                 */
-                left = Random.Range(1, 13);
-                right = Random.Range(1, 13);
-                float tempSum = left * right;
-                left = tempSum;
-                operationText = "÷";
-                result = left / right;                  //Calculating the result of expression
+                operatorDecider = (int)Random.Range(1, 4);  // random number generation to decide operator/ Type of problem
+                quation = "";
+                startingNumber = factorsOf100[(int)Random.Range(0, 8)];
+                firstNumber = (int)Random.Range(0, 10);
+                secondNumber = startingNumber - firstNumber;
+                switch (operatorDecider
+                ) // based on result of operatorDecider generates either addition or subtraction problem
+                {
+                    case 1:
+                        equationOperator = operators[0];
+                        secondNumber = startingNumber + firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
 
-                tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                if ((left - right) != result)
-                    tempAnswers.Add(left - right);
-                else
-                    tempAnswers.Add(left + right);
-                tempAnswers.Add(result + 1);
-                if (left * right != result)
-                    tempAnswers.Add(left * right);
-                else
-                    tempAnswers.Add(result * 5);
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left + right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+                    case 2:
+                        equationOperator = operators[1];
+                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left - right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left + right);
+                        break;
+
+                    case 3:
+                        equationOperator = operators[2];
+
+                        startingNumber = (int) Random.Range(1, 10);
+                        firstNumber = (int)Random.Range(1, 13);
+                        secondNumber = startingNumber * firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator; //Operation string assignment
+                        result = left * right; //Calculating the result of expression	
+
+                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+
+                    default:
+                        break;
+                }
                 break;
             case 5:                                     //Operation ×
-                right = Random.Range(1, 13);
-                //right = Random.Range(1, 3 + (currentLevel - 1) * 2);//Generating random "Right" integer in range. We limit this integer with special logic so the result won't be too big.
-                operationText = "×";                     //Operation string assignment
-                result = left * right;                  //Calculating the result of expression
-                if (result > 144)
+                //right = Random.Range(1, 13);
+                operatorDecider = (int)Random.Range(2, 4);  // random number generation to decide operator/ Type of problem
+                quation = "";
+                
+                switch (operatorDecider
+                ) // based on result of operatorDecider generates either addition or subtraction problem
                 {
-                    Debug.Log("Over number");
-                    left = Random.Range(1, 13);
-                    result = left * right;
-                }
+                    case 2:
+                        equationOperator = operators[2];
 
-                tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                tempAnswers.Add(result + right);
-                tempAnswers.Add(result - 1);
-                tempAnswers.Add(result + 1);
+                        startingNumber = factorsOf100[(int)Random.Range(0, factorsOf100.Length)]; ;
+                        firstNumber = (int)Random.Range(1, 13);
+                        secondNumber = startingNumber * firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator; //Operation string assignment
+                        result = left * right; //Calculating the result of expression	
+
+                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+
+                    case 3:
+                        equationOperator = operators[3];
+                        startingNumber = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)]; ;
+                        firstNumber = MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                        secondNumber = firstNumber / startingNumber;
+
+                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        result = right / left; //Calculating the result of expression
+                        operationText = equationOperator; //Operation string assignment                            
+                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 6:                                     //Operation ×
+                //right = Random.Range(1, 13);
+                operatorDecider = (int)Random.Range(2, 4);  // random number generation to decide operator/ Type of problem
+                quation = "";
+
+                switch (operatorDecider
+                ) // based on result of operatorDecider generates either addition or subtraction problem
+                {
+                    case 2:
+                        equationOperator = operators[2];
+
+                        startingNumber = factorsOf900[(int)Random.Range(0, factorsOf900.Length)]; ;
+                        firstNumber = (int)Random.Range(1, 13);
+                        secondNumber = startingNumber * firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator; //Operation string assignment
+                        result = left * right; //Calculating the result of expression	
+
+                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+
+                    case 3:
+                        equationOperator = operators[3];
+                        startingNumber = factorsOf1441[(int)Random.Range(0, factorsOf1441.Length)]; ;
+                        firstNumber = factorsOf1442[(int)Random.Range(0, factorsOf1442.Length)];
+                        secondNumber = firstNumber / startingNumber;
+
+                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        result = right / left; //Calculating the result of expression
+                        operationText = equationOperator; //Operation string assignment                            
+                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(left - right);
+                        break;
+                    default:
+                        break;
+                }
                 break;
         }
 
@@ -423,7 +617,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         //generate different equation
         //expression1.text = left1.ToString() + operationTxt + right1.ToString();
         rightID = Random.Range(0, 4);
-        equations[rightID].text = left.ToString() + operationText + right.ToString();
+        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
         equations[rightID].fontSize = GetFontSize(equations[trueID].text);
         int x = 0;
         foreach (Text equation in equations)
@@ -432,23 +626,23 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             {                           //Skip the element that is already filled with correct answer
                 int rand = Random.Range(0, 4);
                 float answer = 0;
-                string op = operators[rand];
+                string op = equationOperator;
                 float left1 = left + Random.Range(x + 1, x + 2);
                 float right1 = right + Random.Range(x + 1, x + 2);
                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
-                switch (rand)
+                switch (equationOperator)
                 {
-                    case 0:
+                    case "+":
                         answer = left1 + right1;
                         break;
-                    case 1:
+                    case "-":
                         answer = left1 - right1;
                         break;
-                    case 2:
+                    case "*":
                         answer = left1 * right1;
                         break;
-                    case 3:
-                        answer = left1 / right1;
+                    case "/":
+                        answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                         break;
 
                 }
@@ -460,7 +654,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         Debug.Log("Same!!!!");
                         left1 = left1+Random.Range(0,25);
                         right1 = right+Random.Range(0,25);
-                        op = "+";
+                        op = equationOperator;
                     }
                 }
                 /*
