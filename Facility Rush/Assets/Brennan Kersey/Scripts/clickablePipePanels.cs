@@ -21,6 +21,16 @@ public class clickablePipePanels : MonoBehaviour
         {
             print("Chute 1 has a value of " + panelValue);
             manager.GetComponent<assemblyManager>().setChuteOneChoice(panelValue);
+            if(objectName.Contains("choice 1"))
+            {
+                assembler.componentChoice(0);
+            }
+
+            if (objectName.Contains("choice 2"))
+            {
+                assembler.componentChoice(1);
+            }
+
             //StartCoroutine(spawnObjectANimation(pipeAnimators[0],toySpawnPoint[0],sampleToys[0]));
             assembler.showChoice1.text = "" + panelValue;
         }
@@ -28,29 +38,43 @@ public class clickablePipePanels : MonoBehaviour
         {
             print("Chute b2 has a value of " + panelValue);
             manager.GetComponent<assemblyManager>().setChuteTwoChoice(panelValue);
-           //StartCoroutine(spawnObjectANimation(pipeAnimators[1], toySpawnPoint[1], sampleToys[1]));
+            //StartCoroutine(spawnObjectANimation(pipeAnimators[1], toySpawnPoint[1], sampleToys[1]));
+            if (objectName.Contains("choice 1"))
+            {
+                assembler.componentChoice(2);
+            }
+
+            if (objectName.Contains("choice 2"))
+            {
+                assembler.componentChoice(3);
+            }
+
+            if (objectName.Contains("choice 3"))
+            {
+                assembler.componentChoice(4);
+            }
+
+            if (objectName.Contains("choice 4"))
+            {
+                assembler.componentChoice(5);
+            }
             assembler.showChoice2.text = "" + panelValue;
         }
         else if (objectName.Contains("Chute 3"))
         {
             print("Chute 3 has a value of " + panelValue);
             manager.GetComponent<assemblyManager>().setChuteThreeChoice(panelValue);
-           //StartCoroutine(spawnObjectANimation(pipeAnimators[2], toySpawnPoint[2], sampleToys[2]));
+            //StartCoroutine(spawnObjectANimation(pipeAnimators[2], toySpawnPoint[2], sampleToys[2]));
+            if (objectName.Contains("choice 1"))
+            {
+                assembler.componentChoice(6);
+            }
+
+            if (objectName.Contains("choice 2"))
+            {
+                assembler.componentChoice(7);
+            }
             assembler.showChoice3.text = "" + panelValue;
         }
-    }
-    IEnumerator spawnObjectANimation(Animator anime, Transform spawnPoint, GameObject toyPart)
-    {
-        anime.SetBool("choiceMade", true);
-        yield return new WaitForSecondsRealtime(1);
-        Instantiate(toyPart, spawnPoint.position, spawnPoint.rotation);
-        anime.SetBool("toySpawned", true);
-        anime.SetBool("choiceMade", false);
-        yield return new WaitForSecondsRealtime(1);
-        anime.SetBool("toySpawned", false);
-        anime.SetBool("isFinish", true);
-        yield return new WaitForSecondsRealtime(1);
-        anime.SetBool("isFinish", false);
-       
     }
 }

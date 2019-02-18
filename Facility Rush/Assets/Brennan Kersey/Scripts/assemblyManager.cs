@@ -33,6 +33,7 @@ public class assemblyManager : MonoBehaviour
 
     private int firstPart;
     private int secondPart;
+    private string operatorSign;
     private int answer;
 
     public Text showChoice1;
@@ -41,6 +42,7 @@ public class assemblyManager : MonoBehaviour
 
     public Text solution;
     private int positionInPipeOne;
+    private int positionInPipeTwo;
     private int positionInPipeThree;
 
     //int[] badPipeNumbers;
@@ -57,12 +59,13 @@ public class assemblyManager : MonoBehaviour
     public int numberCorrectSoFar;
 
     [SerializeField]private bool isToySpawned;
-    private GameObject theToy;
+    [SerializeField]private GameObject theToy;
 
     public GameObject timer;
     // Use this for initialization
     [SerializeField] private Animator [] assemblyLineAnimator;
-    [SerializeField] private GameObject[] toyParts;
+    [SerializeField] private GameObject[] toyPartsForAnimator;
+    [SerializeField] private GameObject[] toyPartChoices;
     [SerializeField] private GameObject[] sampleToys;
     [SerializeField] private Animator[] pipeAnimators;
     [SerializeField] private Transform[] toySpawnPoint;
@@ -76,6 +79,16 @@ public class assemblyManager : MonoBehaviour
 
     [SerializeField]private GameObject createdToy;
 
+    [SerializeField] private GameObject[] toyPartsInPipeOne;
+    [SerializeField] private GameObject[] toyPartsInPipeTwo;
+    [SerializeField] private GameObject[] toyPartsInPipeThree;
+
+   [SerializeField] GameObject bottom;
+   [SerializeField] GameObject middle;
+   [SerializeField] GameObject top;
+
+    bool isAnimating;
+
     IEnumerator Animation(Animator anime, Transform spawnPoint, GameObject toyPart,GameObject partToInstantiate)
     {
         anime.SetBool("choiceMade", true);
@@ -86,15 +99,16 @@ public class assemblyManager : MonoBehaviour
             theToy=Instantiate(toyPart, spawnPoint.position, spawnPoint.rotation);
             theToy.transform.parent = toyHolder.transform;
             //toyAnimator = theToy.GetComponent<Animator>();
-            toyParts[0] = theToy.transform.GetChild(0).gameObject;
-            toyParts[0].SetActive(true);
-            toyParts[1]= theToy.transform.GetChild(1).gameObject;
-            toyParts[1].SetActive(false);
-            toyParts[2]= theToy.transform.GetChild(2).gameObject;
-            toyParts[2].SetActive(false);
+            toyPartsForAnimator[0] = theToy.transform.GetChild(0).gameObject;
+            toyPartsForAnimator[0].SetActive(true);
+            toyPartsForAnimator[1]= theToy.transform.GetChild(1).gameObject;
+            toyPartsForAnimator[1].SetActive(false);
+            toyPartsForAnimator[2]= theToy.transform.GetChild(2).gameObject;
+            toyPartsForAnimator[2].SetActive(false);
 
             print("this the child of the toy instantiated: " + theToy.transform.GetChild(0).gameObject.name);
             isToySpawned = true;
+            
         }
         if(partToInstantiate!=null)
         {
@@ -110,18 +124,19 @@ public class assemblyManager : MonoBehaviour
         anime.SetBool("isFinish", false);
     }
 
-    IEnumerator spawnObjectAnimation(Transform spawnPoint)
+    IEnumerator spawnObjectAnimation(Transform spawnPoint,GameObject toyToSpawn)
     {
+        isAnimating = true;
         print("spawnig intitialized");
-        StartCoroutine(Animation(pipeAnimators[0], spawnPoint,sampleToys[0],toyParts[0]));
+        StartCoroutine(Animation(pipeAnimators[0], spawnPoint,toyToSpawn, toyPartsForAnimator[0]));
         yield return new WaitForSecondsRealtime(2);
         toyAnimator.SetInteger("position", 1);
         yield return new WaitForSecondsRealtime(1);
-        StartCoroutine(Animation(pipeAnimators[1], spawnPoint, sampleToys[0],toyParts[1]));
+        StartCoroutine(Animation(pipeAnimators[1], spawnPoint, toyToSpawn, toyPartsForAnimator[1]));
         yield return new WaitForSecondsRealtime(2);
         toyAnimator.SetInteger("position", 2);
         yield return new WaitForSecondsRealtime(1);
-        StartCoroutine(Animation(pipeAnimators[2], spawnPoint, sampleToys[0],toyParts[2]));
+        StartCoroutine(Animation(pipeAnimators[2], spawnPoint, toyToSpawn, toyPartsForAnimator[2]));
         yield return new WaitForSecondsRealtime(2);
         toyAnimator.SetInteger("position", 3);
         yield return new WaitForSeconds(1);
@@ -129,7 +144,12 @@ public class assemblyManager : MonoBehaviour
         Destroy(theToy);
         yield return new WaitForSeconds(1);
         toyAnimator.SetInteger("position", 0);
-        yield return null;
+        yield return new WaitForSecondsRealtime(1);
+        //if()
+        //nextEquation();
+        deleteToyParts();
+        isAnimating = false;
+        //nextEquation();
     }
 
     public void setChuteOneChoice(string choice)
@@ -146,12 +166,97 @@ public class assemblyManager : MonoBehaviour
     {
         chuteThreeChoice = choice;
     }
+
+    public void componentChoice(int choiceIdentifier)
+    {
+      switch(choiceIdentifier)
+        {
+            case 0:
+                //if(bottom!=null)
+                //{
+                //    Destroy(bottom);
+                //}
+                bottom = toyPartsInPipeOne[0];
+                //bottom  = Instantiate(toyPartsInPipeOne[0].transform.gameObject, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
+                break;
+            case 1:
+                //if (bottom != null)
+                //{
+                //    Destroy(bottom);
+                //}
+                bottom = toyPartsInPipeOne[1];
+                //bottom = Instantiate(toyPartsInPipeOne[1].transform.gameObject, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
+                break;
+            case 2:
+                //if (middle != null)
+                //{
+                //    Destroy(bottom);
+                //}
+                middle = toyPartsInPipeTwo[0];
+                //middle = Instantiate(toyPartsInPipeTwo[0].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+                break;
+            case 3:
+                //if (middle != null)
+                //{
+                //    Destroy(bottom);
+                //}
+                middle = toyPartsInPipeTwo[1];
+                //middle = Instantiate(toyPartsInPipeTwo[1].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+                break;
+            case 4:
+                //if (middle != null)
+                //{
+                //    Destroy(bottom);
+                //}
+                middle = toyPartsInPipeTwo[2];
+                //middle = Instantiate(toyPartsInPipeTwo[2].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+                break;
+            case 5:
+                //if (middle != null)
+                //{
+                //    Destroy(bottom);
+                //}
+                middle = toyPartsInPipeTwo[3];
+                //middle = Instantiate(toyPartsInPipeTwo[3].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+                break;
+            case 6:
+                //if (top != null)
+                //{
+                //    Destroy(bottom);
+                //}
+                top = toyPartsInPipeThree[0];
+                //top = Instantiate(toyPartsInPipeThree[0].transform.gameObject, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
+                break;
+            case 7:
+                //if (top != null)
+                //{
+                //    Destroy(bottom);
+                //}
+                top = toyPartsInPipeThree[1];
+                //top = Instantiate(toyPartsInPipeThree[1].transform.gameObject, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
+                break;
+
+        }
+    }
     void Start ()
     {
+        toyPartsInPipeOne = new GameObject[2];
+        toyPartsInPipeThree = new GameObject[2];
+        toyPartsInPipeTwo = new GameObject[4];
+        isAnimating = false;
         isToySpawned = false;
         numberAttempted=0;
         numberCorrect=0;
         numberCorrectSoFar=0;
+        //sampleToys[0].transform.GetChild(0).transform.parent = createdToy.transform;
+        //sampleToys[1].transform.GetChild(1).transform.parent = createdToy.transform;
+        //sampleToys[0].transform.GetChild(2).transform.parent = createdToy.transform;
+       // bottom=Instantiate(sampleToys[0].transform.GetChild(0).gameObject, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
+       // middle= Instantiate(sampleToys[1].transform.GetChild(1).gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+        //top= Instantiate(sampleToys[0].transform.GetChild(2).gameObject, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
+       // bottom.transform.parent = createdToy.transform;
+       // middle.transform.parent = createdToy.transform;
+       // top.transform.parent = createdToy.transform;
         gameOver = false;
         feedbackText.gameObject.SetActive(false);
         score = 0;
@@ -164,6 +269,7 @@ public class assemblyManager : MonoBehaviour
         initiateProperMiddlePanel();
         //badPipeNumbers = new int[2];
         nextEquation();
+
     }
     public void initiateProperMiddlePanel()
     {
@@ -202,12 +308,55 @@ public class assemblyManager : MonoBehaviour
     }
     public void nextEquation()
     {
+        int indexOfCorrectToy = Random.Range(0, sampleToys.Length);
+        int indexOfIncorrectToy = Random.Range(0, sampleToys.Length);
+            while(indexOfCorrectToy==indexOfIncorrectToy)
+            {
+            indexOfIncorrectToy = Random.Range(0, sampleToys.Length);
+            }
+        correctToy = sampleToys[indexOfCorrectToy];
+        incorrectToy = sampleToys[indexOfIncorrectToy];
         string equation=equationGenerator.GetComponent<generateEquations>().generateEquation(gradelevel);
         print(equation);
 
         //print(ExpressionEvaluator.Evaluate<int>("4"));
         breakdownEquation(equation);
         solution.text = answer + "";
+    }
+    public void determinePositionInPipe2()
+    {
+        switch(operatorSign)
+        {
+            case "+":
+                positionInPipeTwo = 0;
+                print("the position for 2 is: " + positionInPipeTwo);
+                break;
+            case "-":
+                positionInPipeTwo = 1;
+                print("the position for 2 is: " + positionInPipeTwo);
+                break;
+            case "*":
+                positionInPipeTwo = 2;
+                print("the position for 2 is: "+ positionInPipeTwo);
+                break;
+            case "/":
+                positionInPipeTwo = 3;
+                print("the position for 2 is: " + positionInPipeTwo);
+                break;
+
+            default:
+                print("Pipe 2 Poisition has not been established");
+                break;
+        }
+
+        for(int i=0;i<toyPartsInPipeTwo.Length;i++)
+        {
+            if(i!=positionInPipeTwo)
+            {
+                toyPartsInPipeTwo[i] = incorrectToy.transform.GetChild(1).gameObject;
+            }
+        }
+        toyPartsInPipeTwo[positionInPipeTwo] = correctToy.transform.GetChild(1).gameObject;
     }
     public void breakdownEquation(string wholeEquation)
     {
@@ -217,6 +366,7 @@ public class assemblyManager : MonoBehaviour
            // print("wholeEquation[i] is " + wholeEquation[i]);
             if(wholeEquation[i].Equals('+')|| wholeEquation[i].Equals('-')|| wholeEquation[i].Equals('*')|| wholeEquation[i].Equals('/'))
             {
+                operatorSign = wholeEquation[i]+"";
                 ExpressionEvaluator.Evaluate<int>(numericalValue,out firstPart);
                 //operatorSign = ""+wholeEquation[i];
                 numericalValue = "";
@@ -235,16 +385,17 @@ public class assemblyManager : MonoBehaviour
         ExpressionEvaluator.Evaluate<int>(numericalValue,out answer);
         positionInPipeOne = Random.Range(0, 2);
         positionInPipeThree= Random.Range(0, 2);
+        determinePositionInPipe2();
         pipeOne[positionInPipeOne].text = firstPart + "";
+        toyPartsInPipeOne[positionInPipeOne] = correctToy.transform.GetChild(0).gameObject;
         pipeThree[positionInPipeThree].text = secondPart + "";
-
+        toyPartsInPipeThree[positionInPipeThree] = correctToy.transform.GetChild(2).gameObject;
         solution.text = answer + "";
-
-        setNumberinPipe(firstPart, pipeOne,positionInPipeOne);
-        setNumberinPipe(secondPart, pipeThree,positionInPipeThree);
+        setNumberinPipe(firstPart, pipeOne,positionInPipeOne,toyPartsInPipeOne);
+        setNumberinPipe(secondPart, pipeThree,positionInPipeThree,toyPartsInPipeThree);
     }
-
-    public void setNumberinPipe(int numberInPipe,Text [] pipe,int positionInPipe)
+    
+    public void setNumberinPipe(int numberInPipe,Text [] pipe,int positionInPipe, GameObject[] arrayForToyPartSelection)
     {
        // int k = 0;
         determineRandomNumbers(gradelevel, numberInPipe);
@@ -253,6 +404,7 @@ public class assemblyManager : MonoBehaviour
             if(i!=positionInPipe)
             {
                 pipe[i].text=badPipeNumber+"";
+                arrayForToyPartSelection[i] = incorrectToy.transform.GetChild(i).gameObject;
                 //k++;
             }
             
@@ -330,42 +482,72 @@ public class assemblyManager : MonoBehaviour
         gameOver = true;
         feedbackText.text = "GameOver";
     }
+    public void createToy()
+    {
+        GameObject createdBottom=Instantiate(bottom, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
+        createdBottom.transform.parent = createdToy.transform;
+        GameObject createdMiddle=Instantiate(middle, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+        createdMiddle.transform.parent = createdToy.transform;
+        GameObject createdTop=Instantiate(top, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
+        createdTop.transform.parent = createdToy.transform;
+        createdToy.transform.GetChild(5).SetAsFirstSibling();
+        createdToy.transform.GetChild(5).SetAsFirstSibling();
+        createdToy.transform.GetChild(5).SetAsFirstSibling();
 
+    }
+    public void deleteToyParts()
+    {
+        Destroy(createdToy.transform.GetChild(0).gameObject);
+        Destroy(createdToy.transform.GetChild(1).gameObject);
+        Destroy(createdToy.transform.GetChild(2).gameObject);
+    }
     public void checkequation()
     {
-        string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
-        feedbackText.gameObject.SetActive(true);
-        int temp;
-        ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
-        if (temp==answer)
+        //createToy();
+        if (isAnimating==false)
         {
-            print("Correct");
-            StartCoroutine(spawnObjectAnimation(toySpawnPoint[0]));
-            score += 100;
-            PlayerPrefs.SetInt("recentAssemblyHighScore", score);
-            scoreText.text = "Score: " + score;
-            feedbackText.text = "Correct";
-            numberCorrect++;
-            numberCorrectSoFar++;
-            numberAttempted++;
-            if(numberCorrectSoFar==3)
+            createToy();
+            string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
+            feedbackText.gameObject.SetActive(true);
+            int temp;
+            ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
+            if (temp == answer && isAnimating == false)
             {
-                timer.GetComponent<assemblyTimer>().addTime();
-                numberCorrectSoFar = 0;
+                print("Correct");
+                StartCoroutine(spawnObjectAnimation(toySpawnPoint[0],createdToy));
+                score += 100;
+                PlayerPrefs.SetInt("recentAssemblyHighScore", score);
+                scoreText.text = "Score: " + score;
+                feedbackText.text = "Correct";
+                numberCorrect++;
+                numberCorrectSoFar++;
+                numberAttempted++;
+                if (numberCorrectSoFar == 3)
+                {
+                    timer.GetComponent<assemblyTimer>().addTime();
+                    numberCorrectSoFar = 0;
+                }
+
+                isToySpawned = false;
+                nextEquation();
+            }
+            else
+            {
+                print("Incorrect");
+                feedbackText.text = "Incorrect";
+                StartCoroutine(spawnObjectAnimation(toySpawnPoint[0], createdToy));
+                numberAttempted++;
+                nextEquation();
+
+                isToySpawned = false;
+                nextEquation();
             }
             
-            isToySpawned = false;
+            showChoice1.text = "";
+            showChoice2.text = "";
+            showChoice3.text = "";
+            //nextEquation();
         }
-        else
-        {
-            print("Incorrect");
-            feedbackText.text = "Incorrect";
-            numberAttempted++;
-        }
-        showChoice1.text = "";
-        showChoice2.text = "";
-        showChoice3.text = "";
-        nextEquation();
     }
 
     

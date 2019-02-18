@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class kakuroGameManger : MonoBehaviour
 {
-    private int gradeLevel;                     // variable for determining grade level of player
+    public int gradeLevel;                     // variable for determining grade level of player
     public GameObject boardGenerator;           // variable for game object that contains the board generation scipt
     public GameObject gameBoard;                // empty variable
     public bool gameOver;                       // variable for game over state
@@ -55,6 +55,10 @@ public class kakuroGameManger : MonoBehaviour
     public GameObject timer;
 
 
+    public float gameTimer;
+    public float maxTime;
+    public Text gameTimerText;
+
     [SerializeField]private GameObject degradationBuddy;
     private DegradationManager dylan;
 
@@ -74,7 +78,7 @@ public class kakuroGameManger : MonoBehaviour
         numberCorrectSoFar = 0;
         numberCorrectTotal = 0;
         numberOfProblemsAttempted = 0;
-        gradeLevel = PlayerPrefs.GetInt("grade");
+        //gradeLevel = PlayerPrefs.GetInt("grade");
         feedback.text = "";
         score = 0;
         scoreText.text = "Score: " + score;
@@ -151,15 +155,44 @@ public class kakuroGameManger : MonoBehaviour
             //print("Second sum to find is " + sumTwoAnswer);
         }
     }
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+        if (gameOver == false)
+        {
+            gameTimer -= Time.deltaTime;
+
+
+
+            int seconds = (int)(gameTimer % 60);
+            int minutes = (int)(gameTimer / 60) % 60;
+            int hours = (int)(gameTimer / 3600) % 24;
+
+            string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+            if (timerString.Equals("00:00"))
+            {
+                initiateGameOver();
+                //gameTimerText.text = "00:00";
+            }
+            gameTimerText.text = timerString;
+        }
+    }
+
+    public void addTime()
+    {
+        if (gameTimer + 15f > maxTime)
+        {
+            gameTimer = maxTime;
+        }
+        else
+        {
+            gameTimer += 15f;
+        }
+    }
 
     public void checkBoard() // checks for correct answer for the board
     {
-        if (gameOver != false)
+        if (gameOver != true)
         {
             if (currentSum1 == sumOneAnswer && currentSum2 == sumTwoAnswer)
             {
@@ -174,7 +207,7 @@ public class kakuroGameManger : MonoBehaviour
                 numberOfProblemsAttempted++;
                 if (numberCorrectSoFar == (x + 3))
                 {
-                    timer.GetComponent<timer>().addTime();
+                    addTime();
                     x++;
                     numberCorrectSoFar = 0;
                 }

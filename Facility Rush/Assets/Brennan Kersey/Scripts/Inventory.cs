@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour, IHasCHanged
 {
-
+    public int gradeLevel;
     // Use this for initialization
     //https://www.youtube.com/watch?v=c47QYgsJrWc
     [SerializeField] private Transform slots;
@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour, IHasCHanged
         //panelNumberToFillBoard = manager.getTotalNumberedPanels();
         print("Called from start panelNumberToFillBoard is "+ panelNumberToFillBoard);
         print("At start of inventory panelNumberToFilled is "+ panelNumberToFillBoard);
-        int gradeLevel = PlayerPrefs.GetInt("grade");
+        //int gradeLevel = PlayerPrefs.GetInt("grade");
       if(gradeLevel==0 || gradeLevel==1)
         {
             slotsToCheck = slotsTwoByTwo;
