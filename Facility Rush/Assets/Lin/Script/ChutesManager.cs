@@ -57,8 +57,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     private int[] MultipleOfTwo = new int[] { 1, 2, 5, 10 };
     private int[] MultipleOfTwoBig = new int[] { 10, 30, 50, 100 };
     private int[] factorsOf144 = new int[] { 1, 2, 3, 4, 6, 8, 9, 12, 16, 18, 24, 36, 48, 72, 144 };
-    private int[] factorsOf1441 = new int[] { 1, 2, 3, 4, 6};
-    private int[] factorsOf1442 = new int[] {12, 18, 24, 36, 48, 72, 144 };
+    private int[] factorsOf1441 = new int[] { 1, 2, 3, 4, 6, 12};
+    private int[] factorsOf1442 = new int[] {12, 24, 36, 48, 72, 144 };
     private int[] factorsOf900 = new int[] { 1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 25, 30, 36, 45, 50, 60, 75, 90, 100, 150, 180, 225, 300, 450, 900 };
 
     // Use this for initialization
@@ -603,7 +603,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + right);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 1);
                         break;
                     default:
                         break;
