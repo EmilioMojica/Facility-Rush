@@ -367,13 +367,15 @@ public class assemblyManager : MonoBehaviour
             if(wholeEquation[i].Equals('+')|| wholeEquation[i].Equals('-')|| wholeEquation[i].Equals('*')|| wholeEquation[i].Equals('/'))
             {
                 operatorSign = wholeEquation[i]+"";
-                ExpressionEvaluator.Evaluate<int>(numericalValue,out firstPart);
+                //ExpressionEvaluator.Evaluate<int>(numericalValue,out firstPart);
+                firstPart = int.Parse(numericalValue);
                 //operatorSign = ""+wholeEquation[i];
                 numericalValue = "";
             }
             else if(wholeEquation[i].Equals('='))
             {
                 ExpressionEvaluator.Evaluate<int>(numericalValue,out secondPart);
+                secondPart = int.Parse(numericalValue);
                 numericalValue = "";
             }
             else
@@ -382,7 +384,8 @@ public class assemblyManager : MonoBehaviour
                 //print("Right now numerical value is: " + numericalValue);
             }
         }
-        ExpressionEvaluator.Evaluate<int>(numericalValue,out answer);
+        //ExpressionEvaluator.Evaluate<int>(numericalValue,out answer);
+        answer = int.Parse(numericalValue);
         positionInPipeOne = Random.Range(0, 2);
         positionInPipeThree= Random.Range(0, 2);
         determinePositionInPipe2();
@@ -501,6 +504,54 @@ public class assemblyManager : MonoBehaviour
         Destroy(createdToy.transform.GetChild(1).gameObject);
         Destroy(createdToy.transform.GetChild(2).gameObject);
     }
+    public int evaluateEquation(string equation)
+    {
+        print("This is equation at evaluateEquation: " + equation);
+        string numericalValue = "";
+        string operatorSign = "";
+        int firstOperand = 0;
+        int secondOperand = 0;
+        int answer = 0; ;
+        for (int i = 0; i < equation.Length; i++)
+        {
+            if (equation[i].Equals('+') || equation[i].Equals('-') || equation[i].Equals('*') || equation[i].Equals('/'))
+            {
+                operatorSign = equation[i] + "";
+                firstOperand = int.Parse(numericalValue);
+                //operatorSign = ""+wholeEquation[i];
+                numericalValue = "";
+            }
+            else if (i == equation.Length - 1)
+            {
+                numericalValue += equation[i];
+                secondOperand = int.Parse(numericalValue);
+                print("This is second operand at evaluateEquation: " + secondOperand);
+                numericalValue = "";
+            }
+            else
+            {
+                numericalValue += equation[i];
+                //print("Right now numerical value is: " + numericalValue);
+            }
+        }
+
+        switch (operatorSign)
+        {
+            case "+":
+                answer = firstOperand + secondOperand;
+                break;
+            case "-":
+                answer = firstOperand - secondOperand;
+                break;
+            case "*":
+                answer = firstOperand * secondOperand;
+                break;
+            case "/":
+                answer = firstOperand / secondOperand;
+                break;
+        }
+        return answer;
+    }
     public void checkequation()
     {
         //createToy();
@@ -510,7 +561,8 @@ public class assemblyManager : MonoBehaviour
             string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
             feedbackText.gameObject.SetActive(true);
             int temp;
-            ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
+            //ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
+            temp = evaluateEquation(playerEquation);
             if (temp == answer && isAnimating == false)
             {
                 print("Correct");
