@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectMenu : MonoBehaviour
 {
-    [SerializeField] GameObject optionsCanvas;
+    [SerializeField] GameObject optionsPanel;
 
     void Start()
     {
-        optionsCanvas.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
     public void OnClickBack()
@@ -19,12 +19,12 @@ public class LevelSelectMenu : MonoBehaviour
 
     public void OnClickOptions()
     {
-        optionsCanvas.SetActive(true);
+        optionsPanel.SetActive(true);
     }
 
     public void OnClickBackOptions()
     {
-        optionsCanvas.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
     public void OnClickCaCuro()

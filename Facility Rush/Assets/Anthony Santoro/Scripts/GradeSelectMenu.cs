@@ -5,32 +5,56 @@ using UnityEngine.SceneManagement;
 
 public class GradeSelectMenu : MonoBehaviour
 {
+    private Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     public void OnClickKindergarten()
     {
-        SceneManager.LoadScene("Level Select");
+        anim.SetTrigger("SceneTransition");
+        //SceneManager.LoadScene("Level Select");
+        Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick1stGrade()
     {
-        SceneManager.LoadScene("Level Select");
+        anim.SetTrigger("SceneTransition");
+        //SceneManager.LoadScene("Level Select");
+        Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick2ndGrade()
     {
-        SceneManager.LoadScene("Level Select");
+        anim.SetTrigger("SceneTransition");
+        //SceneManager.LoadScene("Level Select");
+        Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick3rdGrade()
     {
-        SceneManager.LoadScene("Level Select");
+        anim.SetTrigger("SceneTransition");
+        //SceneManager.LoadScene("Level Select");
+        Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick4thGrade()
     {
-        SceneManager.LoadScene("Level Select");
+        anim.SetTrigger("SceneTransition");
+        //SceneManager.LoadScene("Level Select");
+        Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick5thGrade()
     {
-        SceneManager.LoadScene("Level Select");
+        anim.SetTrigger("SceneTransition");
+        //SceneManager.LoadScene("Level Select");
+        Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClickBack()
     {
         SceneManager.LoadScene("Ford_Test");
+    }
+
+    public void TransitionToLevelSelect()
+    {
+        SceneManager.LoadScene("Level Select");
     }
 }
