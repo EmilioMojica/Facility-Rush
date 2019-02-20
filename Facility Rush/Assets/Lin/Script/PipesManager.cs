@@ -8,17 +8,22 @@ public class PipesManager : MonoBehaviour
 {
     [SerializeField]private Text problemNumber;
     public Text scoreText;
-    private int Score;
+    public int Score;
+   // private bool answerInBank;
     public Text textOne;
     public Text textTwo;
     public Text textThree;
     public Text textFour;
 
-    public Text[] equations;
+    public Text[] equationsOnTheGameBoard;
     public Text[] spheres;
 
+    public List <string>equationsToCheckForSimilarities = new List <string>();
+    public List<int> equationsAnswersToCheckForSimilarities = new List<int>();
+
+    [SerializeField] private GameObject[] answerSlots = new GameObject[4];
+    [SerializeField] private GameObject[] questionSlots = new GameObject[4];
     public int[] answerBankForSphereAnswersToBeRemoved = new int[3];
-    public string[] sphereNumber= new string[3];
 
     List <int> KindergartenAnswerList= new List<int>() {0,1,2,3,4,5,6,7,8,9,10};
     List<int> FirstGradeAnswerList = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
@@ -41,22 +46,27 @@ public class PipesManager : MonoBehaviour
     public float maxTime;
     public Text gameTimerText;
 
-    private int currentProblem;
+    public int currentProblem;
 
     [SerializeField] private GameObject equationGeneration; 
-    private int showList;
     // Start is called before the first frame update
     public int gradelevel;
 
     private int problemGenerated;
     private int answer;
 
-
-    public void setAppropriateListForGradeLevels2through5()
+    private int locationOfWhatToReturn=-1;
+    public void setAppropriateListForGradeLevelsKthrough5()
     {
         //print("The list has been made");
         switch(gradelevel)
         {
+            case 0:
+                ListModifiedDuringLevel = KindergartenAnswerList;
+                break;
+            case 1:
+                ListModifiedDuringLevel = FirstGradeAnswerList;
+                break;
             case 2:
                 for(int i=0;i<100;i++)
                 {
@@ -127,27 +137,14 @@ public class PipesManager : MonoBehaviour
 
     void Start()
     {
-        if(gradelevel>1)
-        {
-            setAppropriateListForGradeLevels2through5();
-        }
-        Score = 0;
-        scoreText.text = "Score: 0";
+        // print("String equivalence test: " + "9+1".Equals("9+1") );
+        print((int)1.95f);
+        setAppropriateListForGradeLevelsKthrough5();
+        
+        scoreText.text = "Score: 10000";
         currentProblem = 0;
-        //string number = "45";
-        //int n = int.Parse(number);
-        //print("Testing my parser: "+n);
-        showList = 0;
-        //for (int i = 0; i < 10; i++)
-        //{
-        //    listOne.Add(Random.Range(0, 10));
-        //    listTwo.Add(Random.Range(0, 10));
-        //    listThree.Add(Random.Range(0, 10));
-        //    listFour.Add(Random.Range(0, 10));
-        //}
         generateProblems();
         printStuff();
-        ShowText();
         generateProblemOnBoard();
     }
     public void printStuff()
@@ -163,25 +160,23 @@ public class PipesManager : MonoBehaviour
         print(arrayOfCorrectProblems);
     }
 
+    
     void Update()
     {
         if (gameOver == false)
         {
-            gameTimer -= Time.deltaTime;
-
-
-
-            int seconds = (int)(gameTimer % 60);
-            int minutes = (int)(gameTimer / 60) % 60;
-            int hours = (int)(gameTimer / 3600) % 24;
-
-            string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
-            if (timerString.Equals("00:00"))
+            gameTimer += Time.deltaTime;
+            if(gameTimer>1)
+            {
+                Score -= 10;
+                gameTimer = 0.0f;
+                scoreText.text = "Score: " + Score;
+            }
+            if(Score==0)
             {
                 initiateGameOver();
-                //gameTimerText.text = "00:00";
             }
-            gameTimerText.text = timerString;
+           // checkIfAnswered();
         }
     }
 
@@ -228,7 +223,7 @@ public class PipesManager : MonoBehaviour
             if(solvedEquation[i].Equals('='))
             {
                 finalExtraction = extractedEquation;
-                print("extracted equation is " + finalExtraction);
+               // print("extracted equation is " + finalExtraction);
                 extractedEquation = "";
             }
             else
@@ -239,38 +234,113 @@ public class PipesManager : MonoBehaviour
         return finalExtraction;
     }
 
+    public string reverseOfProblem(string equationToReverse)
+    {
+        string reversedEquation = "";
+        string stringSoFar = "";
+        int numberOnLeftSideOfOperator = 0;
+        string operatorSign = "";
+        int numberOnRightSideOfOperator = 0;
+
+        for(int i=0;i<equationToReverse.Length;i++)
+        {
+            if (equationToReverse[i].Equals('+') || equationToReverse[i].Equals('-') || equationToReverse[i].Equals('*') || equationToReverse[i].Equals('/'))
+            {
+                numberOnLeftSideOfOperator = int.Parse(stringSoFar);
+            }
+            else if(i==(equationToReverse.Length-1))
+            {
+                stringSoFar += equationToReverse[i];
+                numberOnRightSideOfOperator = int.Parse(stringSoFar);
+            }
+            else
+            {
+                stringSoFar += equationToReverse[i];
+            }
+        }
+
+
+        return reversedEquation;
+    }
     public void generateProblemOnBoard()
     {
-        print("generateProblemONBoard is called");
+        //print("generateProblemONBoard is called");
         problemNumber.text = "Problem " + (currentProblem + 1) + " out of 10";
         ListModifiedDuringLevel.Remove(correctAnswers[currentProblem]);
         int indexofCorrectSphereAnswer = (int)Random.Range(0, 4);
         int indexofCorrectEquationPlacement= (int)Random.Range(0, 4);
 
-        equations[indexofCorrectEquationPlacement].text = correctProblems[currentProblem];
+        equationsOnTheGameBoard[indexofCorrectEquationPlacement].text = correctProblems[currentProblem];
         spheres[indexofCorrectSphereAnswer].text = correctAnswers[currentProblem]+"";
 
+        // equationsToCheckForSimilarities.Add(correctProblems[currentProblem]);
+        equationsAnswersToCheckForSimilarities.Add(correctAnswers[currentProblem]);
+
         int index = 0;
-        for(int i=0;i<4;i++)
+        while (index!=3)
         {
-            if (i != indexofCorrectEquationPlacement)
+            string falseEquationBeingGenerated = equationGeneration.GetComponent<generateEquations>().generateEquation(gradelevel);
+            //print("false equation before modification at index " + i + " is " + falseEquationBeingGenerated);
+            string falseEquation = getEquation(falseEquationBeingGenerated);
+            string reversedEquation = reverseOfProblem(falseEquation);
+            int falseEquationAnswer = evaluateEquation(falseEquation);
+            if (!equationsAnswersToCheckForSimilarities.Contains(falseEquationAnswer))
             {
-                string falseEquationBeingGenerated = equationGeneration.GetComponent<generateEquations>().generateEquation(gradelevel);
-                print("false equation before modification at index " + i + " is " + falseEquationBeingGenerated);
-                string falseEquation = getEquation(falseEquationBeingGenerated);
-                print("The false equation at index " + i + " is " + falseEquation);
-                equations[i].text = falseEquation;
-                int falseEquationAnswer = evaluateEquation(falseEquationBeingGenerated);
+                printList();
+                //print("The false equation at index " + i + " is " + falseEquation);
+                //equationsOnTheGameBoard[i].text = falseEquation;
+                //int falseEquationAnswer = getEquationAnswer(falseEquationBeingGenerated);
                 ListModifiedDuringLevel.Remove(falseEquationAnswer);
                 answerBankForSphereAnswersToBeRemoved[index] = falseEquationAnswer;
+                equationsToCheckForSimilarities.Add(falseEquation);
+                equationsAnswersToCheckForSimilarities.Add(falseEquationAnswer);
+                index++;
+            }
+
+        }
+
+        print("This is index after the while loop: " + index);
+        index = 0;
+        for(int i=0;i<4;i++)
+        {
+            if(i!= indexofCorrectEquationPlacement)
+            {
+                print("This is index at i " + ":"  + index);
+                equationsOnTheGameBoard[i].text = equationsToCheckForSimilarities[index];
                 index++;
             }
         }
-
+        equationsToCheckForSimilarities.Clear();
+        equationsAnswersToCheckForSimilarities.Clear();
         removePotentialCorrectAnswers();
-        
+        generateCorrectSphereAnswers(indexofCorrectSphereAnswer);
     }
-
+    public void printList()
+    {
+        int itemNumber = 0;
+        foreach( string equation in equationsToCheckForSimilarities)
+        {
+            print("The equation at " + itemNumber + "in equationsToCheckForSimilarities is " + equation);
+            itemNumber++;
+        }
+    }
+    public int getEquationAnswer(string equation)
+    {
+        int toReturn = 0;
+        string numericalValue = "";
+        for(int i=equation.Length-1;i > 0 ; i--)
+        {
+            if(equation[i].Equals('='))
+            {
+                toReturn = int.Parse(numericalValue);
+            }
+            else
+            {
+                numericalValue += equation[i];
+            }
+        }
+        return toReturn;
+    }
     public void printCurrentList()
     {
         string items = "";
@@ -315,34 +385,9 @@ public class PipesManager : MonoBehaviour
         gameOver = true;
     }
 
-    
-    public void addTime()
-    {
-        if (gameTimer + 15f > maxTime)
-        {
-            gameTimer = maxTime;
-        }
-        else
-        {
-            gameTimer += 15f;
-        }
-    }
-
-    private void ShowText()
-    {
-        textOne.text = "1";
-        textTwo.text = "2";
-        textThree.text = "3";
-        textFour.text = "4";
-    }
-
-    public void NextNumbers()//test function
-    {
-        showList++;
-        ShowText();
-    }
     public int evaluateEquation(string equation)
     {
+        print("This is equation at evaluateEquation: " + equation);
         string numericalValue = "";
         string operatorSign = "";
         int firstOperand=0;
@@ -357,9 +402,11 @@ public class PipesManager : MonoBehaviour
                 //operatorSign = ""+wholeEquation[i];
                 numericalValue = "";
             }
-            else if (equation[i].Equals('='))
+            else if (i==equation.Length-1)
             {
+                numericalValue += equation[i];
                 secondOperand = int.Parse(numericalValue);
+                print("This is second operand at evaluateEquation: " + secondOperand);
                 numericalValue = "";
             }
             else
@@ -388,36 +435,71 @@ public class PipesManager : MonoBehaviour
     }
     public void checkEquation()
     {
-        int check = 0;
-        int number = 25;
+        int numberOfSlotsFilled = 0;
         for(int i=0;i<4;i++)
         {
-           
-            if (equations[i].transform.childCount>0)
+            if(answerSlots[i].transform.childCount>0)
             {
-                print("this is this object: " + equations[i].transform.GetChild(0).GetChild(0).gameObject.name);
-                check=evaluateEquation(equations[i].transform.GetChild(0).GetChild(0).GetComponent<Text>().text);
-                //ExpressionEvaluator.Evaluate<int>(spheres[i].transform.GetChild(0).GetComponent<Text>().text, out number);
-                number = int.Parse(spheres[i].text);
-                if (check==number)
+                numberOfSlotsFilled++;
+            }
+        }
+        if(numberOfSlotsFilled>1)
+        {
+            restoreChoices();
+        }
+        if (gameOver == false && numberOfSlotsFilled==1)
+        {
+            int check = 0;
+            int number = 25;
+            for (int i = 0; i < 4; i++)
+            {
+
+                if (answerSlots[i].transform.childCount > 0)
                 {
-                    restoreList();
-                    Score += 100;
-                    scoreText.text = "Score: " + Score;
-                    currentProblem++;
-                    if(currentProblem!=10)
+                    locationOfWhatToReturn = i;
+                    print("this is this object: " + answerSlots[i].transform.GetChild(0).GetChild(0).gameObject.name);
+                    check = evaluateEquation(answerSlots[i].transform.GetChild(0).GetChild(0).GetComponent<Text>().text);
+                    //ExpressionEvaluator.Evaluate<int>(spheres[i].transform.GetChild(0).GetComponent<Text>().text, out number);
+                    number = int.Parse(spheres[i].text);
+                    if (check == number)
                     {
-                        generateProblemOnBoard();
+                        restoreList();
+                        Score += 100;
+                        scoreText.text = "Score: " + Score;
+                        currentProblem++;
+                        restoreChoices();
+                        if (currentProblem == 10)
+                        {
+                            //generateProblemOnBoard();
+                            initiateGameOver();
+                        }
+                        else
+                        {
+                            generateProblemOnBoard();
+                        }
                     }
-                }
-                else
-                {
-                    restoreList();
+                    else
+                    {
+                        Score -= 1000;
+                        scoreText.text = "Score: " + Score; 
+                        restoreList();
+                        restoreChoices();
+                    }
                 }
             }
         }
     }
-
+    public void restoreChoices()
+    {
+        for(int i=0;i<questionSlots.Length;i++)
+        {
+            if (answerSlots[i].transform.childCount == 1)
+            {
+                // answerSlots[i].transform.GetChild(0).parent = questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform;
+                answerSlots[i].transform.GetChild(0).transform.SetParent(questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform, false);
+            }
+        }
+    }
     public void restoreList()
     {
         for(int i=0;i<spheres.Length;i++)

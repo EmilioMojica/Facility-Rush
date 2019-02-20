@@ -106,6 +106,10 @@ public class generateEquations : MonoBehaviour
                 equationOperator = operators[1];
                 startingNumber = factorsOf100[(int)Random.Range(0, 8)];
                 firstNumber = (int)Random.Range(0, 10);
+                if(startingNumber<firstNumber)
+                {
+                    startingNumber = factorsOf100[(int)Random.Range(4,factorsOf100.Length)];
+                }
                 secondNumber = startingNumber - firstNumber;
                 equation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
                 break;
@@ -138,6 +142,10 @@ public class generateEquations : MonoBehaviour
                 equationOperator = operators[1];
                 startingNumber = factorsOf100[(int)Random.Range(0, 8)];
                 firstNumber = (int)Random.Range(0, 10);
+                if (startingNumber < firstNumber)
+                {
+                    startingNumber = factorsOf100[(int)Random.Range(4, factorsOf100.Length)];
+                }
                 secondNumber = startingNumber - firstNumber;
                 equation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
                 break;
