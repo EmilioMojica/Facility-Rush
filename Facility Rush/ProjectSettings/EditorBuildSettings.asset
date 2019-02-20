@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Lin/Scenes/Chutes.unity
     guid: e84daad494bc8e4498bcb6fd00a6d34a
+  - enabled: 1
+    path: Assets/Lin/Scenes/Pipes 1.unity
+    guid: e295d340f5d0e4f41931bfd86290d3e5
   m_configObjects: {}
