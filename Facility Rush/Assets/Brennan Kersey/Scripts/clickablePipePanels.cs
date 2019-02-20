@@ -7,9 +7,9 @@ public class clickablePipePanels : MonoBehaviour
 {
     public GameObject manager;
     private assemblyManager assembler;
-    [SerializeField] private GameObject[] sampleToys;
-    [SerializeField] private Animator[] pipeAnimators;
-    [SerializeField] private Transform[] toySpawnPoint;
+   // [SerializeField] private GameObject[] sampleToys;
+   // [SerializeField] private Animator[] pipeAnimators;
+   // [SerializeField] private Transform[] toySpawnPoint;
     public void obtainPanelValue()
     {
         assembler = manager.GetComponent<assemblyManager>();

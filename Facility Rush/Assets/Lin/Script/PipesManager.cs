@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PipesManager : MonoBehaviour
 {
+    
     [SerializeField]private Text problemNumber;
     public Text scoreText;
     public int Score;
@@ -139,6 +140,7 @@ public class PipesManager : MonoBehaviour
     {
         // print("String equivalence test: " + "9+1".Equals("9+1") );
         print((int)1.95f);
+        gradelevel = PlayerPrefs.GetInt("grade");
         setAppropriateListForGradeLevelsKthrough5();
         
         scoreText.text = "Score: 10000";

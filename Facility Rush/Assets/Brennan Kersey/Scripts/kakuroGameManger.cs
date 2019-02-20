@@ -78,7 +78,7 @@ public class kakuroGameManger : MonoBehaviour
         numberCorrectSoFar = 0;
         numberCorrectTotal = 0;
         numberOfProblemsAttempted = 0;
-        //gradeLevel = PlayerPrefs.GetInt("grade");
+        gradeLevel = PlayerPrefs.GetInt("grade");
         feedback.text = "";
         score = 0;
         scoreText.text = "Score: " + score;

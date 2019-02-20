@@ -264,7 +264,7 @@ public class assemblyManager : MonoBehaviour
         showChoice1.text = "";
         showChoice2.text = "";
         showChoice3.text = "";
-        //gradelevel = PlayerPrefs.GetInt("grade");
+        gradelevel = PlayerPrefs.GetInt("grade");
         print(gradelevel);
         initiateProperMiddlePanel();
         //badPipeNumbers = new int[2];

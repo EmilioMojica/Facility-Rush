@@ -438,18 +438,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!114 &35136666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,7 +867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &149771923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -889,14 +877,14 @@ RectTransform:
   m_GameObject: {fileID: 149771922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 10, z: 1}
+  m_LocalScale: {x: 0.29999995, y: 0.29999998, z: 1}
   m_Children: []
-  m_Father: {fileID: 522887684}
+  m_Father: {fileID: 547947521}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.75, y: 0.00080872}
+  m_AnchoredPosition: {x: -0.03501165, y: 0.000066125765}
   m_SizeDelta: {x: 80.233, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &149771924
@@ -1002,7 +990,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3333334, y: 1, z: 1}
   m_Children:
-  - {fileID: 756055567}
   - {fileID: 1185340706}
   m_Father: {fileID: 471961701}
   m_RootOrder: 0
@@ -1093,18 +1080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!1 &175176364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,14 +1636,14 @@ RectTransform:
   m_GameObject: {fileID: 277758445}
   m_LocalRotation: {x: -0, y: -0, z: 0.00000020861626, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 10, z: 1}
+  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
   m_Children: []
-  m_Father: {fileID: 328212907}
+  m_Father: {fileID: 2078208695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00029755, y: -0.00019073}
+  m_AnchoredPosition: {x: -0, y: -0}
   m_SizeDelta: {x: 80, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &277758447
@@ -1967,7 +1942,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3333334, y: 1, z: 1}
   m_Children:
-  - {fileID: 277758446}
   - {fileID: 2078208695}
   m_Father: {fileID: 611003187}
   m_RootOrder: 0
@@ -2058,18 +2032,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!1 &331808996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,18 +2665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!1 &428344966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,7 +3106,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3333334, y: 1, z: 1}
   m_Children:
-  - {fileID: 933967353}
   - {fileID: 2147319347}
   m_Father: {fileID: 1597993033}
   m_RootOrder: 0
@@ -3247,18 +3196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!1 &505085804
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,7 +3294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &522887684
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3369,7 +3306,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3333334, y: 1, z: 1}
   m_Children:
-  - {fileID: 149771923}
   - {fileID: 547947521}
   m_Father: {fileID: 1613968643}
   m_RootOrder: 0
@@ -3460,18 +3396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!1 &523197034
 GameObject:
   m_ObjectHideFlags: 0
@@ -3568,7 +3492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &547947521
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3578,14 +3502,15 @@ RectTransform:
   m_GameObject: {fileID: 547947520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 33.333336, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 50.00001, y: 33.333336, z: 1}
+  m_Children:
+  - {fileID: 149771923}
   m_Father: {fileID: 522887684}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0007324219, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.0007324368, y: -0.00023396812}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547947522
@@ -4632,14 +4557,14 @@ RectTransform:
   m_GameObject: {fileID: 756055566}
   m_LocalRotation: {x: -0, y: -0, z: 0.00000020861626, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 10, z: 1}
+  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
   m_Children: []
-  m_Father: {fileID: 170703922}
+  m_Father: {fileID: 1185340706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00029755, y: 0.00080872}
+  m_AnchoredPosition: {x: -0, y: 0.000045780558}
   m_SizeDelta: {x: 80, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &756055568
@@ -5101,18 +5026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!1 &886326436
 GameObject:
   m_ObjectHideFlags: 0
@@ -5499,14 +5412,14 @@ RectTransform:
   m_GameObject: {fileID: 933967352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 10, z: 1}
+  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
   m_Children: []
-  m_Father: {fileID: 482399178}
+  m_Father: {fileID: 2147319347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0007019, y: -0.10027}
+  m_AnchoredPosition: {x: 0, y: -0.0030104816}
   m_SizeDelta: {x: 80, y: 68.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &933967354
@@ -6097,7 +6010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1185340706
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6108,9 +6021,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 33.333336, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 756055567}
   m_Father: {fileID: 170703922}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6563,18 +6477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
-  sampleToys:
-  - {fileID: 8743170909084984739, guid: f461391bcb5b5fc4580a01522f82db07, type: 3}
-  - {fileID: 3279347263671770375, guid: d699954d1f481914b8872efd794c05d6, type: 3}
-  - {fileID: 3048473903037033517, guid: 7d398d74fe389ae40b383c2f92b25f30, type: 3}
-  pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 0}
-  - {fileID: 1894663624}
-  toySpawnPoint:
-  - {fileID: 1067166631}
-  - {fileID: 150316586}
-  - {fileID: 1580538125}
 --- !u!1 &1323466509
 GameObject:
   m_ObjectHideFlags: 0
@@ -9902,7 +9804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2078208695
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9913,9 +9815,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 33.333336, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 277758446}
   m_Father: {fileID: 328212907}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10332,7 +10235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2147319347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10343,9 +10246,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 33.333336, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 933967353}
   m_Father: {fileID: 482399178}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
