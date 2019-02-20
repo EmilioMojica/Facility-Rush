@@ -374,7 +374,7 @@ public class assemblyManager : MonoBehaviour
             }
             else if(wholeEquation[i].Equals('='))
             {
-                ExpressionEvaluator.Evaluate<int>(numericalValue,out secondPart);
+                //ExpressionEvaluator.Evaluate<int>(numericalValue,out secondPart);
                 secondPart = int.Parse(numericalValue);
                 numericalValue = "";
             }
