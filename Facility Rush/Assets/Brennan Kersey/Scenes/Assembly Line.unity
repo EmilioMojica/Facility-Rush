@@ -712,12 +712,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
   m_Children: []
-  m_Father: {fileID: 523197035}
-  m_RootOrder: 9
+  m_Father: {fileID: 386850336}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99.3, y: -12.5}
+  m_AnchoredPosition: {x: -99.3, y: 22.5}
   m_SizeDelta: {x: 94.13, y: 77.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106265796
@@ -1783,7 +1783,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2420,7 +2420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &386850336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2433,6 +2433,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1553250085}
+  - {fileID: 725740588}
+  - {fileID: 1441487859}
+  - {fileID: 1249081332}
+  - {fileID: 1624792842}
+  - {fileID: 106265795}
   m_Father: {fileID: 523197035}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3484,7 +3489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &523197035
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3501,11 +3506,6 @@ RectTransform:
   - {fileID: 2065914617}
   - {fileID: 430322972}
   - {fileID: 386850336}
-  - {fileID: 725740588}
-  - {fileID: 1441487859}
-  - {fileID: 1249081332}
-  - {fileID: 1624792842}
-  - {fileID: 106265795}
   m_Father: {fileID: 1953890578}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3828,7 +3828,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4408,12 +4408,12 @@ RectTransform:
   - {fileID: 1669204144}
   - {fileID: 662863132}
   - {fileID: 1338232887}
-  m_Father: {fileID: 523197035}
-  m_RootOrder: 5
+  m_Father: {fileID: 386850336}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.659996, y: -12.5}
+  m_AnchoredPosition: {x: 16.659996, y: 22.5}
   m_SizeDelta: {x: 449.07, y: 77.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725740589
@@ -4839,7 +4839,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 787600891}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1953890579}
+        m_MethodName: Options
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &787600891
@@ -5573,7 +5584,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6332,12 +6343,12 @@ RectTransform:
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
   m_Children:
   - {fileID: 35911607}
-  m_Father: {fileID: 523197035}
-  m_RootOrder: 7
+  m_Father: {fileID: 386850336}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.659996, y: -95.7}
+  m_AnchoredPosition: {x: 16.659996, y: -60.699997}
   m_SizeDelta: {x: 217.15, y: 62.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249081333
@@ -6380,8 +6391,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickBackOptions
+      - m_Target: {fileID: 1953890579}
+        m_MethodName: OptionsBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7399,12 +7410,12 @@ RectTransform:
   - {fileID: 1969123314}
   - {fileID: 428344967}
   - {fileID: 579192224}
-  m_Father: {fileID: 523197035}
-  m_RootOrder: 6
+  m_Father: {fileID: 386850336}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.659996, y: -57.899994}
+  m_AnchoredPosition: {x: 16.659996, y: -22.899994}
   m_SizeDelta: {x: 449.08, y: 77.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1441487860
@@ -8321,12 +8332,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
   m_Children: []
-  m_Father: {fileID: 523197035}
-  m_RootOrder: 8
+  m_Father: {fileID: 386850336}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99.3, y: -57.9}
+  m_AnchoredPosition: {x: -99.3, y: -22.900002}
   m_SizeDelta: {x: 94.13, y: 77.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624792843
@@ -9253,6 +9264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 523197034}
+  optionsPanel: {fileID: 386850335}
 --- !u!1 &1969123313
 GameObject:
   m_ObjectHideFlags: 0
@@ -9597,7 +9609,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9822,7 +9834,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2065914619}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1953890579}
+        m_MethodName: Options
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2065914619
