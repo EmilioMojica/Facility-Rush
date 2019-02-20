@@ -42,4 +42,9 @@ public class LevelSelectMenu : MonoBehaviour
         Debug.Log("button clicked");
         SceneManager.LoadScene("Chutes");
     }
+
+    public void OnClickPipeGyro()
+    {
+        SceneManager.LoadScene("Pipes 1");
+    }
 }
