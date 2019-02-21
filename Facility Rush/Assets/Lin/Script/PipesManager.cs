@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class PipesManager : MonoBehaviour
 {
-    [SerializeField] private Animator pipeGyroCapsuleAnimator;
+    [SerializeField] private bool isAnimating;
+    [SerializeField] private Animator pipeGyroAnimator;
+    [SerializeField] private GameObject[] spheresBeingAnimated;
     [SerializeField] private Text problemNumber;
     public Text scoreText;
     public int Score;
@@ -139,6 +141,7 @@ public class PipesManager : MonoBehaviour
     void Start()
     {
         // print("String equivalence test: " + "9+1".Equals("9+1") );
+        isAnimating = false;
         print((int)1.95f);
         gradelevel = PlayerPrefs.GetInt("grade");
         setAppropriateListForGradeLevelsKthrough5();
@@ -449,7 +452,7 @@ public class PipesManager : MonoBehaviour
         {
             restoreChoices();
         }
-        if (gameOver == false && numberOfSlotsFilled==1)
+        if (gameOver == false && numberOfSlotsFilled==1 && isAnimating==false)
         {
             int check = 0;
             int number = 25;
@@ -469,16 +472,18 @@ public class PipesManager : MonoBehaviour
                         Score += 100;
                         scoreText.text = "Score: " + Score;
                         currentProblem++;
-                        restoreChoices();
-                        if (currentProblem == 10)
-                        {
-                            //generateProblemOnBoard();
-                            initiateGameOver();
-                        }
-                        else
-                        {
-                            generateProblemOnBoard();
-                        }
+                        //restoreChoices();
+                        print("this is i: " + i);
+                        StartCoroutine(animateSpheres(i));
+                        //if (currentProblem == 10)
+                        //{
+                        //    //generateProblemOnBoard();
+                        //    initiateGameOver();
+                        //}
+                        //else
+                        //{
+                        //    generateProblemOnBoard();
+                        //}
                     }
                     else
                     {
@@ -493,12 +498,29 @@ public class PipesManager : MonoBehaviour
     }
     IEnumerator animateSpheres(int indexOfSphere)
     {
-
-        pipeGyroCapsuleAnimator.SetInteger("indexBeingActedOn",indexOfSphere);
-        yield return new WaitForSecondsRealtime(1);
-        pipeGyroCapsuleAnimator.SetInteger("indexBeingActedOn",10);
-        yield return new WaitForSecondsRealtime(1);
-        pipeGyroCapsuleAnimator.SetInteger("indexBeingActedOn",-1);
+        isAnimating = true;
+        pipeGyroAnimator.SetInteger("indexBeingActedOn",indexOfSphere);
+        //yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(.3f);
+        pipeGyroAnimator.SetInteger("indexBeingActedOn",10);
+        spheresBeingAnimated[indexOfSphere].SetActive(false);
+        //yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(.3f);
+        pipeGyroAnimator.SetInteger("indexBeingActedOn",-1);
+        //yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(.3f);
+        spheresBeingAnimated[indexOfSphere].SetActive(true);
+        restoreChoices();
+        if (currentProblem == 10)
+        {
+            //generateProblemOnBoard();
+            initiateGameOver();
+        }
+        else
+        {
+            generateProblemOnBoard();
+        }
+        isAnimating = false;
         yield return null;
     }
     
