@@ -1412,6 +1412,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192314635}
   m_CullTransparentMesh: 0
+--- !u!1 &228596937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2916160076714750484, guid: 8f40ae17c1b62704fb9ab8f31683f0d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 87916009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &323572412
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,6 +4724,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818137347}
   m_CullTransparentMesh: 0
+--- !u!1 &879427331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3218648327109886750, guid: 08ae071cc4fd470488ccd5bb3729c17a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1724050472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &891452432
 GameObject:
   m_ObjectHideFlags: 0
@@ -9374,7 +9386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592e9ad33fed0024689b32771fd34f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gradeLevel: 0
   slots: {fileID: 1270400210}
   slotsTwoByTwo: {fileID: 589163083}
   kakuroGameManager: {fileID: 1799809511}
@@ -9481,7 +9492,7 @@ PrefabInstance:
     - target: {fileID: 3218648327109886750, guid: 08ae071cc4fd470488ccd5bb3729c17a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3218648327110123326, guid: 08ae071cc4fd470488ccd5bb3729c17a,
         type: 3}
@@ -9638,6 +9649,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cb3662dd258d74c86ece80bd34b1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  twoBytwoCartPrefab: {fileID: 879427331}
+  threeBythreeCartPrefab: {fileID: 228596937}
+  gameOverPanel: {fileID: 2026507951}
   gradeLevel: 0
   boardGenerator: {fileID: 1799809511}
   gameBoard: {fileID: 0}
@@ -9726,7 +9740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592e9ad33fed0024689b32771fd34f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gradeLevel: 0
   slots: {fileID: 1270400210}
   slotsTwoByTwo: {fileID: 589163083}
   kakuroGameManager: {fileID: 1799809511}

@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class kakuroGameManger : MonoBehaviour
 {
+    [SerializeField] private GameObject twoBytwoCartPrefab;
+    [SerializeField] private GameObject threeBythreeCartPrefab;
+    [SerializeField] private GameObject gameOverPanel;
+
     public int gradeLevel;                     // variable for determining grade level of player
     public GameObject boardGenerator;           // variable for game object that contains the board generation scipt
     public GameObject gameBoard;                // empty variable
@@ -86,10 +90,12 @@ public class kakuroGameManger : MonoBehaviour
         if(gradeLevel==0||gradeLevel==1)
         {
             UILayoutTwoByTwo.SetActive(true);
+            twoBytwoCartPrefab.SetActive(true);
         }
         else
         {
             UILayoutThreeByThree.SetActive(true);
+            threeBythreeCartPrefab.SetActive(true);
         }
         makeNewBoard();
        // if(gradeLevel== 0 || gradeLevel==1)
@@ -216,6 +222,7 @@ public class kakuroGameManger : MonoBehaviour
             else
             {
                 feedback.text = "Incorrect Try again";
+                setOriginalPositions();
                 numberOfProblemsAttempted++;
             }
         }
@@ -243,6 +250,7 @@ public class kakuroGameManger : MonoBehaviour
     {
         gameOver = true;
         feedback.text = "GameOver";
+        gameOverPanel.SetActive(true);
         //dylan.cartkuroCalculation();
     }
 

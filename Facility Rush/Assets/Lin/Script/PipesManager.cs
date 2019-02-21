@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PipesManager : MonoBehaviour
 {
-    
-    [SerializeField]private Text problemNumber;
+    [SerializeField] private Animator pipeGyroCapsuleAnimator;
+    [SerializeField] private Text problemNumber;
     public Text scoreText;
     public int Score;
    // private bool answerInBank;
@@ -491,6 +491,17 @@ public class PipesManager : MonoBehaviour
             }
         }
     }
+    IEnumerator animateSpheres(int indexOfSphere)
+    {
+
+        pipeGyroCapsuleAnimator.SetInteger("indexBeingActedOn",indexOfSphere);
+        yield return new WaitForSecondsRealtime(1);
+        pipeGyroCapsuleAnimator.SetInteger("indexBeingActedOn",10);
+        yield return new WaitForSecondsRealtime(1);
+        pipeGyroCapsuleAnimator.SetInteger("indexBeingActedOn",-1);
+        yield return null;
+    }
+    
     public void restoreChoices()
     {
         for(int i=0;i<questionSlots.Length;i++)
