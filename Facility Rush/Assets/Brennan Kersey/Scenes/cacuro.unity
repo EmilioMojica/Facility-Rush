@@ -6628,8 +6628,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClickAssemblyLine
+      - m_Target: {fileID: 1711529231}
+        m_MethodName: OnClickCaCuro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9273,6 +9273,8 @@ GameObject:
   - component: {fileID: 1711529224}
   - component: {fileID: 1711529228}
   - component: {fileID: 1711529229}
+  - component: {fileID: 1711529230}
+  - component: {fileID: 1711529231}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9403,6 +9405,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 417046990}
   optionsPanel: {fileID: 1236424324}
+--- !u!114 &1711529230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711529223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a674a2cbad65af48ab003f0067f99dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1711529231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711529223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a262a22ea54062479ed05243268ccfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionsPanel: {fileID: 50234909}
 --- !u!1 &1720253202
 GameObject:
   m_ObjectHideFlags: 0
@@ -11264,7 +11291,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1711529230}
         m_MethodName: TransitionToLevelSelect
         m_Mode: 1
         m_Arguments:

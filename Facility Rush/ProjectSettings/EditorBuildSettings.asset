@@ -11,25 +11,25 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Anthony Santoro/Scenes/Options Menu.unity
     guid: a3125d10b50dcb346944b3e623308201
-  - enabled: 0
+  - enabled: 1
     path: Assets/Mitchell/Scenes/Ford_Test.unity
     guid: c5466fb332d5b5841a83aae117eeb77b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Brennan Kersey/Scenes/Grade selection.unity
     guid: 8e1f91db75806ba4bb2b3d0002fe0f9b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Anthony Santoro/Scenes/Level Select.unity
     guid: 1ee47aed98ffe7a43bf8b3b5428cf6f5
   - enabled: 1
     path: Assets/Brennan Kersey/Scenes/Assembly Line.unity
     guid: f47c573a41c461f4b82c68a95429d59c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Brennan Kersey/Scenes/cacuro.unity
     guid: 2f34bf008bbd0a8478d1416a4a868035
-  - enabled: 0
+  - enabled: 1
     path: Assets/Lin/Scenes/Chutes.unity
     guid: e84daad494bc8e4498bcb6fd00a6d34a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Lin/Scenes/Pipes 1.unity
     guid: e295d340f5d0e4f41931bfd86290d3e5
   m_configObjects: {}
