@@ -360,7 +360,6 @@ GameObject:
   - component: {fileID: 181958180}
   - component: {fileID: 181958184}
   - component: {fileID: 181958185}
-  - component: {fileID: 181958186}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -481,25 +480,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: {fileID: 1363027007}
---- !u!95 &181958186
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181958179}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fbe4d44651166cf438e8eb453f3e9233, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &259025027
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,9 +847,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Credits\n\nExecutive Producer:\nGerard Marritt\n\nProduct Owner: \nEmilio
-    Mojica\n\nArt:\nMatthew Redfearn-Diaz\nTopanga Brumley\n\nDevelopment:\nBrennan
-    Kersey\nJonathan Hall\nLin Qi\n\nDesign:\nAnthony Santoro\n\nWriter:\nHannah Nadeau\n\nProducter:\nNicholas
-    Sharp\n"
+    Mojica\n\nArt:\nMatthew Redfearn-Diaz\nTopanga Brumley\nBrittany Maroulakos\n\nDevelopment:\nBrennan
+    Kersey\nJonathan Hall\nLin Qi\n\nDesign:\nAnthony Santoro\n\nWriter:\nHannah Nadeau\nDylan
+    Bronstein\n\nProducter:\nNicholas Sharp\n"
 --- !u!222 &532549786
 CanvasRenderer:
   m_ObjectHideFlags: 0
