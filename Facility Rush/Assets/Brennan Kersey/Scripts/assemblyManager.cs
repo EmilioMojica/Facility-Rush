@@ -101,6 +101,7 @@ public class assemblyManager : MonoBehaviour
     float toyConveyerBeltTransition3;
     float toyConveyerBeltResetPosition;
     [SerializeField] private Animator theGoldenGodAnimator;
+    [SerializeField] private assemblyTimer theTimer;
 
     IEnumerator Animation(Animator anime, Transform spawnPoint, GameObject toyPart,GameObject partToInstantiate,float pipeDownTime,float pipeUpTime)
     {
@@ -176,6 +177,9 @@ public class assemblyManager : MonoBehaviour
     IEnumerator newAnimationLoop(GameObject toyToInstantiate,Transform spawningPoint)
     {
         isAnimating = true;
+        theTimer.setIsAnimating(true);
+        theGoldenGodAnimator.SetInteger("nextTransition",0);
+        yield return new WaitForSeconds(pipe1DownTime);
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
         theToy.transform.parent = toyHolder.transform;
         //toyAnimator = theToy.GetComponent<Animator>();
@@ -185,9 +189,33 @@ public class assemblyManager : MonoBehaviour
         toyPartsForAnimator[1].SetActive(false);
         toyPartsForAnimator[2] = theToy.transform.GetChild(2).gameObject;
         toyPartsForAnimator[2].SetActive(false);
+        theGoldenGodAnimator.SetInteger("nextTransition", 1);
+        yield return new WaitForSeconds(pipe1UpTime);
+        theGoldenGodAnimator.SetInteger("nextTransition", 2);
+        yield return new WaitForSeconds(toyConveyerBeltTransition1);
+        theGoldenGodAnimator.SetInteger("nextTransition",3);
+        yield return new WaitForSeconds(pipe2DownTime);
+        toyPartsForAnimator[1].SetActive(true);
+        theGoldenGodAnimator.SetInteger("nextTransition", 4);
+        yield return new WaitForSeconds(pipe2UpTime);
+        theGoldenGodAnimator.SetInteger("nextTransition", 5);
+        yield return new WaitForSeconds(toyConveyerBeltTransition2);
+        theGoldenGodAnimator.SetInteger("nextTransition",6);
+        yield return new WaitForSeconds(pipe3DownTime);
+        toyPartsForAnimator[2].SetActive(true);
+        theGoldenGodAnimator.SetInteger("nextTransition", 7);
+        yield return new WaitForSeconds(pipe3UpTime);
+        theGoldenGodAnimator.SetInteger("nextTransition",8);
+        yield return new WaitForSeconds(toyConveyerBeltTransition3);
+        theToy.SetActive(false);
+        Destroy(theToy);
+        theGoldenGodAnimator.SetInteger("nextTransition", 9);
+        yield return new WaitForSeconds(toyConveyerBeltResetPosition);
+        theGoldenGodAnimator.SetInteger("nextTransition",-1);
+        //
         deleteToyParts();
+        theTimer.setIsAnimating(false);
         isAnimating = false;
-        yield return null;
     }
     public void setChuteOneChoice(string choice)
     {
@@ -280,17 +308,18 @@ public class assemblyManager : MonoBehaviour
         toyPartsInPipeOne = new GameObject[2];
         toyPartsInPipeThree = new GameObject[2];
         toyPartsInPipeTwo = new GameObject[4];
-        pipe1DownTime=pipeAnimators[0].runtimeAnimatorController.animationClips[0].length;
-        pipe1UpTime=pipeAnimators[0].runtimeAnimatorController.animationClips[1].length;
-        pipe2DownTime= pipeAnimators[1].runtimeAnimatorController.animationClips[0].length;
-        pipe2UpTime = pipeAnimators[1].runtimeAnimatorController.animationClips[1].length;
-        pipe3DownTime = pipeAnimators[2].runtimeAnimatorController.animationClips[0].length;
-        pipe3UpTime = pipeAnimators[2].runtimeAnimatorController.animationClips[1].length;
+        pipe1DownTime=theGoldenGodAnimator.runtimeAnimatorController.animationClips[4].length;
+        pipe1UpTime= theGoldenGodAnimator.runtimeAnimatorController.animationClips[5].length;
+        pipe2DownTime= theGoldenGodAnimator.runtimeAnimatorController.animationClips[6].length;
+        pipe2UpTime = theGoldenGodAnimator.runtimeAnimatorController.animationClips[7].length;
+        print("This is pipe 2 up time: "+ pipe2UpTime);
+        pipe3DownTime = theGoldenGodAnimator.runtimeAnimatorController.animationClips[8].length;
+        pipe3UpTime = theGoldenGodAnimator.runtimeAnimatorController.animationClips[9].length;
 
-        toyConveyerBeltTransition1= toyAnimator.runtimeAnimatorController.animationClips[0].length;
-        toyConveyerBeltTransition2 = toyAnimator.runtimeAnimatorController.animationClips[1].length;
-        toyConveyerBeltTransition3 = toyAnimator.runtimeAnimatorController.animationClips[2].length;
-        toyConveyerBeltResetPosition = toyAnimator.runtimeAnimatorController.animationClips[3].length;
+        toyConveyerBeltTransition1= theGoldenGodAnimator.runtimeAnimatorController.animationClips[0].length;
+        toyConveyerBeltTransition2 = theGoldenGodAnimator.runtimeAnimatorController.animationClips[1].length;
+        toyConveyerBeltTransition3 = theGoldenGodAnimator.runtimeAnimatorController.animationClips[2].length;
+        toyConveyerBeltResetPosition = theGoldenGodAnimator.runtimeAnimatorController.animationClips[3].length;
 
         isAnimating = false;
         isToySpawned = false;
@@ -615,7 +644,8 @@ public class assemblyManager : MonoBehaviour
             if (temp == answer && isAnimating == false)
             {
                 print("Correct");
-                StartCoroutine(spawnObjectAnimation(toySpawnPoint[0],createdToy));
+                //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0],createdToy));
+                StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
                 score += 100;
                 PlayerPrefs.SetInt("recentAssemblyHighScore", score);
                 scoreText.text = "Score: " + score;
@@ -636,7 +666,8 @@ public class assemblyManager : MonoBehaviour
             {
                 print("Incorrect");
                 feedbackText.text = "Incorrect";
-                StartCoroutine(spawnObjectAnimation(toySpawnPoint[0], createdToy));
+                //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0], createdToy));
+                StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
                 numberAttempted++;
                 nextEquation();
 

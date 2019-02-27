@@ -9,16 +9,22 @@ public class assemblyTimer : MonoBehaviour
     public float maxTime;
     public Text gameTimerText;
     public GameObject manager;
+    private bool isAnimating;
     // Start is called before the first frame update
+    public void setIsAnimating(bool currentState)
+    {
+        isAnimating = currentState;
+    }
+
     void Start()
     {
-
+        isAnimating = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (manager.GetComponent<assemblyManager>().gameOver == false)
+        if (manager.GetComponent<assemblyManager>().gameOver == false && isAnimating==false)
         {
             gameTimer -= Time.deltaTime;
 
