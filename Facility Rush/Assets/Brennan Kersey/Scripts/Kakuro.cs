@@ -7,6 +7,8 @@ public class Kakuro : MonoBehaviour {
    //public Text[] indices=new Text[9];
     public Text sumOne;
     public Text sumTwo;
+    public Text threeByThreeSumOne;
+    public Text threeByThreeSumTwo;
     private int firstSum;
     private int secondSum;
     int[] kakuroBoardKindergartenThroughFirst = new int[] { 1, 2, 3, 4 };
@@ -37,6 +39,10 @@ public class Kakuro : MonoBehaviour {
         //calculateSums();
     }
 
+    public void defineCorrectText()
+    {
+
+    }
     
 	
 	// Update is called once per frame
@@ -106,8 +112,8 @@ public class Kakuro : MonoBehaviour {
              secondSum = (int)Random.Range(6, 25);
             if (checkifPossible(firstSum, secondSum))
             {
-                sumOne.text = firstSum + "";
-                sumTwo.text = secondSum + "";
+                threeByThreeSumOne.text = firstSum + "";
+                threeByThreeSumTwo.text = secondSum + "";
                 isPossible = true;
             }
         }
