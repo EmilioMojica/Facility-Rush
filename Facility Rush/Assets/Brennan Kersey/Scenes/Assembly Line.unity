@@ -2550,7 +2550,8 @@ MonoBehaviour:
   bottom: {fileID: 0}
   middle: {fileID: 0}
   top: {fileID: 0}
-  theGoldenGodAnimator: {fileID: 0}
+  theGoldenGodAnimator: {fileID: 15638592}
+  theTimer: {fileID: 1836115882}
 --- !u!4 &400000942
 Transform:
   m_ObjectHideFlags: 0
