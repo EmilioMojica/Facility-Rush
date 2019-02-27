@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PipesManager : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class PipesManager : MonoBehaviour
     private int answer;
 
     private int locationOfWhatToReturn=-1;
+    private bool checkingAnswer;
     public void setAppropriateListForGradeLevelsKthrough5()
     {
         //print("The list has been made");
@@ -141,7 +143,13 @@ public class PipesManager : MonoBehaviour
     void Start()
     {
         // print("String equivalence test: " + "9+1".Equals("9+1") );
+
+        float animationTime=pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
+        print("The length of the animation is: "+ animationTime);
+        string clipName = pipeGyroAnimator.runtimeAnimatorController.animationClips[3].name;
+        print("The name of the animation is: " + clipName);
         isAnimating = false;
+        checkingAnswer = false;
         print((int)1.95f);
         gradelevel = PlayerPrefs.GetInt("grade");
         setAppropriateListForGradeLevelsKthrough5();
@@ -182,6 +190,11 @@ public class PipesManager : MonoBehaviour
                 initiateGameOver();
             }
            // checkIfAnswered();
+           if(checkingAnswer==false)
+            {
+                //checkingAnswer = true;
+                checkEquation();
+            }
         }
     }
 
@@ -272,11 +285,12 @@ public class PipesManager : MonoBehaviour
         //print("generateProblemONBoard is called");
         problemNumber.text = "Problem " + (currentProblem + 1) + " out of 10";
         ListModifiedDuringLevel.Remove(correctAnswers[currentProblem]);
-        int indexofCorrectSphereAnswer = (int)Random.Range(0, 4);
-        int indexofCorrectEquationPlacement= (int)Random.Range(0, 4);
+        int indexOfCorrectAnswerPlacement = (int)Random.Range(0, 4);
+        //int indexofCorrectSphereAnswer = (int)Random.Range(0, 4);
+        //int indexofCorrectEquationPlacement= (int)Random.Range(0, 4);
 
-        equationsOnTheGameBoard[indexofCorrectEquationPlacement].text = correctProblems[currentProblem];
-        spheres[indexofCorrectSphereAnswer].text = correctAnswers[currentProblem]+"";
+        equationsOnTheGameBoard[indexOfCorrectAnswerPlacement].text = correctProblems[currentProblem];
+        spheres[indexOfCorrectAnswerPlacement].text = correctAnswers[currentProblem]+"";
 
         // equationsToCheckForSimilarities.Add(correctProblems[currentProblem]);
         equationsAnswersToCheckForSimilarities.Add(correctAnswers[currentProblem]);
@@ -308,7 +322,7 @@ public class PipesManager : MonoBehaviour
         index = 0;
         for(int i=0;i<4;i++)
         {
-            if(i!= indexofCorrectEquationPlacement)
+            if(i!= indexOfCorrectAnswerPlacement)//indexofCorrectEquationPlacement)
             {
                 print("This is index at i " + ":"  + index);
                 equationsOnTheGameBoard[i].text = equationsToCheckForSimilarities[index];
@@ -318,7 +332,7 @@ public class PipesManager : MonoBehaviour
         equationsToCheckForSimilarities.Clear();
         equationsAnswersToCheckForSimilarities.Clear();
         removePotentialCorrectAnswers();
-        generateCorrectSphereAnswers(indexofCorrectSphereAnswer);
+        generateCorrectSphereAnswers(indexOfCorrectAnswerPlacement);//indexofCorrectSphereAnswer);
     }
     public void printList()
     {
@@ -448,12 +462,13 @@ public class PipesManager : MonoBehaviour
                 numberOfSlotsFilled++;
             }
         }
-        if(numberOfSlotsFilled>1)
-        {
-            restoreChoices();
-        }
+        //if(numberOfSlotsFilled>1)
+        //{
+        //    restoreChoices();
+        //}
         if (gameOver == false && numberOfSlotsFilled==1 && isAnimating==false)
         {
+            checkingAnswer = true;
             int check = 0;
             int number = 25;
             for (int i = 0; i < 4; i++)
@@ -475,15 +490,6 @@ public class PipesManager : MonoBehaviour
                         //restoreChoices();
                         print("this is i: " + i);
                         StartCoroutine(animateSpheres(i));
-                        //if (currentProblem == 10)
-                        //{
-                        //    //generateProblemOnBoard();
-                        //    initiateGameOver();
-                        //}
-                        //else
-                        //{
-                        //    generateProblemOnBoard();
-                        //}
                     }
                     else
                     {
@@ -491,29 +497,31 @@ public class PipesManager : MonoBehaviour
                         scoreText.text = "Score: " + Score; 
                         restoreList();
                         restoreChoices();
+                        checkingAnswer = false;
                     }
                 }
             }
         }
+        checkingAnswer = false;
     }
     IEnumerator animateSpheres(int indexOfSphere)
     {
         isAnimating = true;
+        float animationTime = pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
         pipeGyroAnimator.SetInteger("indexBeingActedOn",indexOfSphere);
         //yield return new WaitForSecondsRealtime(1);
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(animationTime);
         pipeGyroAnimator.SetInteger("indexBeingActedOn",10);
         spheresBeingAnimated[indexOfSphere].SetActive(false);
         //yield return new WaitForSecondsRealtime(1);
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(animationTime); //.3f
         pipeGyroAnimator.SetInteger("indexBeingActedOn",-1);
         //yield return new WaitForSecondsRealtime(1);
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(animationTime);
         spheresBeingAnimated[indexOfSphere].SetActive(true);
         restoreChoices();
         if (currentProblem == 10)
         {
-            //generateProblemOnBoard();
             initiateGameOver();
         }
         else
@@ -521,6 +529,7 @@ public class PipesManager : MonoBehaviour
             generateProblemOnBoard();
         }
         isAnimating = false;
+        checkingAnswer = false;
         yield return null;
     }
     
@@ -552,11 +561,8 @@ public class PipesManager : MonoBehaviour
 
     }
 
-    public void checkIfGameOver()
-    {
-        if(currentProblem==10)
-        {
-            initiateGameOver();
-        }
-    }
+    
+
+   
 }
+

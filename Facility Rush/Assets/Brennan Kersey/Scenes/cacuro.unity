@@ -4433,7 +4433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &776396062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4441,7 +4441,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776396061}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0a6750f27eb94f4a8f2b5f37a14d8fc, type: 3}
   m_Name: 
@@ -9738,7 +9738,7 @@ MonoBehaviour:
   UILayoutTwoByTwo: {fileID: 323572412}
   timer: {fileID: 776396061}
   gameTimer: 60
-  maxTime: 0
+  maxTime: 60
   gameTimerText: {fileID: 649430257}
   degradationBuddy: {fileID: 765657755}
 --- !u!4 &1799809514

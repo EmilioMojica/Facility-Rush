@@ -89,7 +89,19 @@ public class assemblyManager : MonoBehaviour
 
     bool isAnimating;
 
-    IEnumerator Animation(Animator anime, Transform spawnPoint, GameObject toyPart,GameObject partToInstantiate)
+    float pipe1DownTime;
+    float pipe1UpTime;
+    float pipe2DownTime;
+    float pipe2UpTime;
+    float pipe3DownTime;
+    float pipe3UpTime;
+
+    float toyConveyerBeltTransition1;
+    float toyConveyerBeltTransition2;
+    float toyConveyerBeltTransition3;
+    float toyConveyerBeltResetPosition;
+
+    IEnumerator Animation(Animator anime, Transform spawnPoint, GameObject toyPart,GameObject partToInstantiate,float pipeDownTime,float pipeUpTime)
     {
         anime.SetBool("choiceMade", true);
         yield return new WaitForSecondsRealtime(1);
@@ -117,10 +129,12 @@ public class assemblyManager : MonoBehaviour
         }
         anime.SetBool("toySpawned", true);
         anime.SetBool("choiceMade", false);
-        yield return new WaitForSecondsRealtime(1);
+        //yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(pipeDownTime);
         anime.SetBool("toySpawned", false);
         anime.SetBool("isFinish", true);
-        yield return new WaitForSecondsRealtime(1);
+        //yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(pipeUpTime);
         anime.SetBool("isFinish", false);
     }
 
@@ -128,23 +142,30 @@ public class assemblyManager : MonoBehaviour
     {
         isAnimating = true;
         print("spawnig intitialized");
-        StartCoroutine(Animation(pipeAnimators[0], spawnPoint,toyToSpawn, toyPartsForAnimator[0]));
-        yield return new WaitForSecondsRealtime(2);
+        StartCoroutine(Animation(pipeAnimators[0], spawnPoint,toyToSpawn, toyPartsForAnimator[0],pipe1DownTime,pipe1UpTime));
+        //yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSeconds(pipe1DownTime+pipe1UpTime);
         toyAnimator.SetInteger("position", 1);
-        yield return new WaitForSecondsRealtime(1);
-        StartCoroutine(Animation(pipeAnimators[1], spawnPoint, toyToSpawn, toyPartsForAnimator[1]));
-        yield return new WaitForSecondsRealtime(2);
+        //yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(toyConveyerBeltTransition1);
+        StartCoroutine(Animation(pipeAnimators[1], spawnPoint, toyToSpawn, toyPartsForAnimator[1],pipe2DownTime,pipe2UpTime));
+        //yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSeconds(pipe2DownTime+pipe2UpTime);
         toyAnimator.SetInteger("position", 2);
-        yield return new WaitForSecondsRealtime(1);
-        StartCoroutine(Animation(pipeAnimators[2], spawnPoint, toyToSpawn, toyPartsForAnimator[2]));
-        yield return new WaitForSecondsRealtime(2);
+        //yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(toyConveyerBeltTransition2);
+        StartCoroutine(Animation(pipeAnimators[2], spawnPoint, toyToSpawn, toyPartsForAnimator[2],pipe3DownTime,pipe3UpTime));
+        //yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSeconds(pipe3DownTime+pipe3UpTime);
         toyAnimator.SetInteger("position", 3);
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(toyConveyerBeltTransition3);
         toyAnimator.SetInteger("position", 4);
         Destroy(theToy);
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(toyConveyerBeltResetPosition);
         toyAnimator.SetInteger("position", 0);
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(toyConveyerBeltResetPosition);
         //if()
         //nextEquation();
         deleteToyParts();
@@ -243,6 +264,18 @@ public class assemblyManager : MonoBehaviour
         toyPartsInPipeOne = new GameObject[2];
         toyPartsInPipeThree = new GameObject[2];
         toyPartsInPipeTwo = new GameObject[4];
+        pipe1DownTime=pipeAnimators[0].runtimeAnimatorController.animationClips[0].length;
+        pipe1UpTime=pipeAnimators[0].runtimeAnimatorController.animationClips[1].length;
+        pipe2DownTime= pipeAnimators[1].runtimeAnimatorController.animationClips[0].length;
+        pipe2UpTime = pipeAnimators[1].runtimeAnimatorController.animationClips[1].length;
+        pipe3DownTime = pipeAnimators[2].runtimeAnimatorController.animationClips[0].length;
+        pipe3UpTime = pipeAnimators[2].runtimeAnimatorController.animationClips[1].length;
+
+        toyConveyerBeltTransition1= toyAnimator.runtimeAnimatorController.animationClips[0].length;
+        toyConveyerBeltTransition2 = toyAnimator.runtimeAnimatorController.animationClips[1].length;
+        toyConveyerBeltTransition3 = toyAnimator.runtimeAnimatorController.animationClips[2].length;
+        toyConveyerBeltResetPosition = toyAnimator.runtimeAnimatorController.animationClips[3].length;
+
         isAnimating = false;
         isToySpawned = false;
         numberAttempted=0;
