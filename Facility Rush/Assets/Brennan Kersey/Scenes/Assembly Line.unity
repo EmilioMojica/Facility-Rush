@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 15638589}
   - component: {fileID: 15638590}
   - component: {fileID: 15638591}
+  - component: {fileID: 15638592}
   m_Layer: 0
   m_Name: Level Layout
   m_TagString: Untagged
@@ -348,6 +349,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsPanel: {fileID: 238923396}
+--- !u!95 &15638592
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15638588}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 921117dfbef613442b5e3a53dbbdc710, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &35136661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,14 +2532,14 @@ MonoBehaviour:
   - {fileID: 1222304911452155341, guid: b9b2bfe8ee63a5f4a808433e6126a2ea, type: 3}
   - {fileID: 6908761068173797952, guid: 5967ed13ef01c904fae1fc1adb51564e, type: 3}
   pipeAnimators:
-  - {fileID: 573895087}
-  - {fileID: 1470627721}
-  - {fileID: 1894663624}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   toySpawnPoint:
   - {fileID: 1067166631}
   - {fileID: 150316586}
   - {fileID: 1580538125}
-  toyAnimator: {fileID: 1484530050}
+  toyAnimator: {fileID: 0}
   toyHolder: {fileID: 1484530048}
   correctToy: {fileID: 0}
   incorrectToy: {fileID: 0}
@@ -2530,6 +2550,7 @@ MonoBehaviour:
   bottom: {fileID: 0}
   middle: {fileID: 0}
   top: {fileID: 0}
+  theGoldenGodAnimator: {fileID: 0}
 --- !u!4 &400000942
 Transform:
   m_ObjectHideFlags: 0
@@ -3879,7 +3900,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573895086}
-  - component: {fileID: 573895087}
   m_Layer: 0
   m_Name: Assembly Pipe 1
   m_TagString: Untagged
@@ -3903,25 +3923,6 @@ Transform:
   m_Father: {fileID: 15638589}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &573895087
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573895085}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cc6bdd538d751c24aaffbc64f30e7418, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &579192223
 GameObject:
   m_ObjectHideFlags: 0
@@ -7542,7 +7543,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470627720}
-  - component: {fileID: 1470627721}
   m_Layer: 0
   m_Name: Assembly Pipe 2
   m_TagString: Untagged
@@ -7566,25 +7566,6 @@ Transform:
   m_Father: {fileID: 15638589}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1470627721
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470627719}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: add73b0c9bc102a4389efaa37bcfe495, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1483679380
 GameObject:
   m_ObjectHideFlags: 0
@@ -7673,7 +7654,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1484530049}
-  - component: {fileID: 1484530050}
   m_Layer: 0
   m_Name: Toy Animator holder
   m_TagString: Untagged
@@ -7695,25 +7675,6 @@ Transform:
   m_Father: {fileID: 15638589}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1484530050
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484530048}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e11e7f57a79f54f489d33629d20bc35d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1498789845
 GameObject:
   m_ObjectHideFlags: 0
@@ -9079,7 +9040,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1894663623}
-  - component: {fileID: 1894663624}
   m_Layer: 0
   m_Name: Assembly Pipe 3
   m_TagString: Untagged
@@ -9103,25 +9063,6 @@ Transform:
   m_Father: {fileID: 15638589}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1894663624
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894663622}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 37f30086103a107479ba689d17e12d59, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1953890574
 GameObject:
   m_ObjectHideFlags: 0

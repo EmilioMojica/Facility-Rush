@@ -100,6 +100,7 @@ public class assemblyManager : MonoBehaviour
     float toyConveyerBeltTransition2;
     float toyConveyerBeltTransition3;
     float toyConveyerBeltResetPosition;
+    [SerializeField] private Animator theGoldenGodAnimator;
 
     IEnumerator Animation(Animator anime, Transform spawnPoint, GameObject toyPart,GameObject partToInstantiate,float pipeDownTime,float pipeUpTime)
     {
@@ -172,7 +173,22 @@ public class assemblyManager : MonoBehaviour
         isAnimating = false;
         //nextEquation();
     }
-
+    IEnumerator newAnimationLoop(GameObject toyToInstantiate,Transform spawningPoint)
+    {
+        isAnimating = true;
+        theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
+        theToy.transform.parent = toyHolder.transform;
+        //toyAnimator = theToy.GetComponent<Animator>();
+        toyPartsForAnimator[0] = theToy.transform.GetChild(0).gameObject;
+        toyPartsForAnimator[0].SetActive(true);
+        toyPartsForAnimator[1] = theToy.transform.GetChild(1).gameObject;
+        toyPartsForAnimator[1].SetActive(false);
+        toyPartsForAnimator[2] = theToy.transform.GetChild(2).gameObject;
+        toyPartsForAnimator[2].SetActive(false);
+        deleteToyParts();
+        isAnimating = false;
+        yield return null;
+    }
     public void setChuteOneChoice(string choice)
     {
         chuteOneChoice = choice;
