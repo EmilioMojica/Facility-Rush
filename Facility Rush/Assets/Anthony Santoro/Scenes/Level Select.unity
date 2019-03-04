@@ -603,6 +603,57 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 111409463}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &116701024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116701026}
+  - component: {fileID: 116701025}
+  m_Layer: 0
+  m_Name: degredationManager
+  m_TagString: degredationManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &116701025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116701024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5648df3911022c44db325a04d49486f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aAttempted: 0
+  aCorrect: 0
+  aFill: 0
+  maxFill: 15
+  KartCuro: 0
+  assLine: 0
+  Chutes: 0
+  pipGyro: 0
+--- !u!4 &116701026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116701024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 128.69296, y: 323.32446, z: 344.75027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129661677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,7 +1525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.22375003, y: 0.34750003}
   m_AnchorMax: {x: 0.22375003, y: 0.34750003}
-  m_AnchoredPosition: {x: -3, y: -15}
+  m_AnchoredPosition: {x: -3.0000153, y: -15}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361483550
@@ -2527,6 +2578,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858724123}
   m_CullTransparentMesh: 0
+--- !u!1 &915951154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915951156}
+  - component: {fileID: 915951155}
+  m_Layer: 0
+  m_Name: degredationImplementor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &915951155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915951154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0369f0817dd654db3ceda23b70f081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTimer: 0
+  assemblySliderValue: {fileID: 129661679}
+  chutesSliderValue: {fileID: 1893389399}
+  kartCuroSliderValue: {fileID: 1334869104}
+  pipeGyroSliderValue: {fileID: 652816734}
+  rateOfDegradation: 0.05
+  secondsTillNextDegredation: 1
+  divisionNumber: 3
+  delayTime: 0.5
+--- !u!4 &915951156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915951154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 128.69296, y: 323.32446, z: 344.75027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &935986055
 GameObject:
   m_ObjectHideFlags: 0

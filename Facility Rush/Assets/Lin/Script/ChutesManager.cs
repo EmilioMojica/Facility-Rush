@@ -230,6 +230,15 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         answersGoUP.SetBool("NumberBack", true);
         failscene.SetActive(true);
         game = false;
+        calculateRestoration();
+    }
+    public void calculateRestoration()
+    {
+        DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
+        degredationManager.aAttempted = score+1;
+        degredationManager.aCorrect = score;
+        degredationManager.assemblyCalulate();
+        degredationManager.gameHasBeenPlayed(1);
     }
     public void gotWrong()
     {

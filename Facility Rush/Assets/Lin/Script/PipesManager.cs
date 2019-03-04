@@ -61,6 +61,8 @@ public class PipesManager : MonoBehaviour
 
     private int locationOfWhatToReturn=-1;
     private bool checkingAnswer;
+
+    private int numberCorrect;
     public void setAppropriateListForGradeLevelsKthrough5()
     {
         //print("The list has been made");
@@ -143,7 +145,7 @@ public class PipesManager : MonoBehaviour
     void Start()
     {
         // print("String equivalence test: " + "9+1".Equals("9+1") );
-
+        numberCorrect = 0;
         float animationTime=pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
         print("The length of the animation is: "+ animationTime);
         string clipName = pipeGyroAnimator.runtimeAnimatorController.animationClips[3].name;
@@ -402,6 +404,16 @@ public class PipesManager : MonoBehaviour
     public void initiateGameOver()
     {
         gameOver = true;
+        calculateRestoration();
+    }
+
+    public void calculateRestoration()
+    {
+        DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
+        degredationManager.aAttempted = 10;
+        degredationManager.aCorrect = numberCorrect;
+        degredationManager.pipeCalculate();
+        degredationManager.gameHasBeenPlayed(0);
     }
 
     public int evaluateEquation(string equation)
@@ -483,6 +495,7 @@ public class PipesManager : MonoBehaviour
                     number = int.Parse(spheres[i].text);
                     if (check == number)
                     {
+                        numberCorrect++;
                         restoreList();
                         Score += 100;
                         scoreText.text = "Score: " + Score;

@@ -103,77 +103,7 @@ public class assemblyManager : MonoBehaviour
     [SerializeField] private Animator theGoldenGodAnimator;
     [SerializeField] private assemblyTimer theTimer;
 
-    IEnumerator Animation(Animator anime, Transform spawnPoint, GameObject toyPart,GameObject partToInstantiate,float pipeDownTime,float pipeUpTime)
-    {
-        anime.SetBool("choiceMade", true);
-        yield return new WaitForSecondsRealtime(1);
-        if (isToySpawned==false)
-        {
-            print("I'm about to instantiate");
-            theToy=Instantiate(toyPart, spawnPoint.position, spawnPoint.rotation);
-            theToy.transform.parent = toyHolder.transform;
-            //toyAnimator = theToy.GetComponent<Animator>();
-            toyPartsForAnimator[0] = theToy.transform.GetChild(0).gameObject;
-            toyPartsForAnimator[0].SetActive(true);
-            toyPartsForAnimator[1]= theToy.transform.GetChild(1).gameObject;
-            toyPartsForAnimator[1].SetActive(false);
-            toyPartsForAnimator[2]= theToy.transform.GetChild(2).gameObject;
-            toyPartsForAnimator[2].SetActive(false);
-
-            print("this the child of the toy instantiated: " + theToy.transform.GetChild(0).gameObject.name);
-            isToySpawned = true;
-            
-        }
-        if(partToInstantiate!=null)
-        {
-            print("I'M REAL");
-            partToInstantiate.SetActive(true);
-        }
-        anime.SetBool("toySpawned", true);
-        anime.SetBool("choiceMade", false);
-        //yield return new WaitForSecondsRealtime(1);
-        yield return new WaitForSeconds(pipeDownTime);
-        anime.SetBool("toySpawned", false);
-        anime.SetBool("isFinish", true);
-        //yield return new WaitForSecondsRealtime(1);
-        yield return new WaitForSeconds(pipeUpTime);
-        anime.SetBool("isFinish", false);
-    }
-
-    IEnumerator spawnObjectAnimation(Transform spawnPoint,GameObject toyToSpawn)
-    {
-        isAnimating = true;
-        print("spawnig intitialized");
-        StartCoroutine(Animation(pipeAnimators[0], spawnPoint,toyToSpawn, toyPartsForAnimator[0],pipe1DownTime,pipe1UpTime));
-        //yield return new WaitForSecondsRealtime(2);
-        yield return new WaitForSeconds(pipe1DownTime+pipe1UpTime);
-        toyAnimator.SetInteger("position", 1);
-        //yield return new WaitForSecondsRealtime(1);
-        yield return new WaitForSeconds(toyConveyerBeltTransition1);
-        StartCoroutine(Animation(pipeAnimators[1], spawnPoint, toyToSpawn, toyPartsForAnimator[1],pipe2DownTime,pipe2UpTime));
-        //yield return new WaitForSecondsRealtime(2);
-        yield return new WaitForSeconds(pipe2DownTime+pipe2UpTime);
-        toyAnimator.SetInteger("position", 2);
-        //yield return new WaitForSecondsRealtime(1);
-        yield return new WaitForSeconds(toyConveyerBeltTransition2);
-        StartCoroutine(Animation(pipeAnimators[2], spawnPoint, toyToSpawn, toyPartsForAnimator[2],pipe3DownTime,pipe3UpTime));
-        //yield return new WaitForSecondsRealtime(2);
-        yield return new WaitForSeconds(pipe3DownTime+pipe3UpTime);
-        toyAnimator.SetInteger("position", 3);
-        //yield return new WaitForSeconds(1);
-        yield return new WaitForSeconds(toyConveyerBeltTransition3);
-        toyAnimator.SetInteger("position", 4);
-        Destroy(theToy);
-        //yield return new WaitForSeconds(1);
-        yield return new WaitForSeconds(toyConveyerBeltResetPosition);
-        toyAnimator.SetInteger("position", 0);
-        yield return new WaitForSecondsRealtime(toyConveyerBeltResetPosition);
-        //if()
-        //nextEquation();
-        deleteToyParts();
-        isAnimating = false;
-        //nextEquation();
-    }
+    
     IEnumerator newAnimationLoop(GameObject toyToInstantiate,Transform spawningPoint)
     {
         isAnimating = true;
@@ -237,68 +167,38 @@ public class assemblyManager : MonoBehaviour
       switch(choiceIdentifier)
         {
             case 0:
-                //if(bottom!=null)
-                //{
-                //    Destroy(bottom);
-                //}
+              
                 bottom = toyPartsInPipeOne[0];
-                //bottom  = Instantiate(toyPartsInPipeOne[0].transform.gameObject, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
+                
                 break;
             case 1:
-                //if (bottom != null)
-                //{
-                //    Destroy(bottom);
-                //}
+               
                 bottom = toyPartsInPipeOne[1];
-                //bottom = Instantiate(toyPartsInPipeOne[1].transform.gameObject, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
+               
                 break;
             case 2:
-                //if (middle != null)
-                //{
-                //    Destroy(bottom);
-                //}
+               
                 middle = toyPartsInPipeTwo[0];
-                //middle = Instantiate(toyPartsInPipeTwo[0].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+               
                 break;
             case 3:
-                //if (middle != null)
-                //{
-                //    Destroy(bottom);
-                //}
+               
                 middle = toyPartsInPipeTwo[1];
-                //middle = Instantiate(toyPartsInPipeTwo[1].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
+                
                 break;
             case 4:
-                //if (middle != null)
-                //{
-                //    Destroy(bottom);
-                //}
+               
                 middle = toyPartsInPipeTwo[2];
-                //middle = Instantiate(toyPartsInPipeTwo[2].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
                 break;
             case 5:
-                //if (middle != null)
-                //{
-                //    Destroy(bottom);
-                //}
                 middle = toyPartsInPipeTwo[3];
-                //middle = Instantiate(toyPartsInPipeTwo[3].transform.gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
                 break;
             case 6:
-                //if (top != null)
-                //{
-                //    Destroy(bottom);
-                //}
                 top = toyPartsInPipeThree[0];
-                //top = Instantiate(toyPartsInPipeThree[0].transform.gameObject, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
                 break;
             case 7:
-                //if (top != null)
-                //{
-                //    Destroy(bottom);
-                //}
+               
                 top = toyPartsInPipeThree[1];
-                //top = Instantiate(toyPartsInPipeThree[1].transform.gameObject, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
                 break;
 
         }
@@ -326,15 +226,7 @@ public class assemblyManager : MonoBehaviour
         numberAttempted=0;
         numberCorrect=0;
         numberCorrectSoFar=0;
-        //sampleToys[0].transform.GetChild(0).transform.parent = createdToy.transform;
-        //sampleToys[1].transform.GetChild(1).transform.parent = createdToy.transform;
-        //sampleToys[0].transform.GetChild(2).transform.parent = createdToy.transform;
-       // bottom=Instantiate(sampleToys[0].transform.GetChild(0).gameObject, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
-       // middle= Instantiate(sampleToys[1].transform.GetChild(1).gameObject, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
-        //top= Instantiate(sampleToys[0].transform.GetChild(2).gameObject, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
-       // bottom.transform.parent = createdToy.transform;
-       // middle.transform.parent = createdToy.transform;
-       // top.transform.parent = createdToy.transform;
+        
         gameOver = false;
         feedbackText.gameObject.SetActive(false);
         score = 0;
@@ -562,6 +454,15 @@ public class assemblyManager : MonoBehaviour
     {
         gameOver = true;
         feedbackText.text = "GameOver";
+        calculateRestoration();
+    }
+    public void calculateRestoration()
+    {
+        DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
+        degredationManager.aAttempted = numberAttempted;
+        degredationManager.aCorrect = numberCorrect;
+        degredationManager.assemblyCalulate();
+        degredationManager.gameHasBeenPlayed(1);
     }
     public void createToy()
     {

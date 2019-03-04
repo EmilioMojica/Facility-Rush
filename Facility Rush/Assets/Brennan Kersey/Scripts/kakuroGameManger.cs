@@ -228,22 +228,13 @@ public class kakuroGameManger : MonoBehaviour
         }
     }
 
-    public void Happiness() //logic for calculating the happiness level based on correct answers/attempted questions
+    public void calculateRestoration()
     {
-        float happiness;
-        float maxHappiness = .15f;
-
-        if (numberOfProblemsAttempted >= 5)
-        {
-            happiness = ((numberCorrectTotal / numberOfProblemsAttempted) * maxHappiness);
-            happiness = Mathf.Round(happiness * 100f) / 100f; //testing this to see if it rounds properly
-        }
-
-        else if (numberOfProblemsAttempted <5 && numberOfProblemsAttempted >=1)
-        {
-            happiness = (((numberCorrectTotal / numberOfProblemsAttempted) / 5) * maxHappiness) * 100;
-        }
-        //PlayerPrefs.SetFloat("")
+        DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
+        degredationManager.aAttempted = numberOfProblemsAttempted;
+        degredationManager.aCorrect = numberCorrectTotal;
+        degredationManager.assemblyCalulate();
+        degredationManager.gameHasBeenPlayed(3);
     }
 
     public void initiateGameOver() // initiates game over state
@@ -251,6 +242,7 @@ public class kakuroGameManger : MonoBehaviour
         gameOver = true;
         feedback.text = "GameOver";
         gameOverPanel.SetActive(true);
+        calculateRestoration();
         //dylan.cartkuroCalculation();
     }
 
