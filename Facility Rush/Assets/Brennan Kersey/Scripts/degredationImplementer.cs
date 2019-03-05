@@ -18,7 +18,7 @@ public class degredationImplementer : MonoBehaviour
     private bool isAddingToBar;
     private GameObject[] degredationManagerHolder = new GameObject[2];
     [SerializeField] private float delayTime;
-
+    [SerializeField] private scoreManager theScoreManger;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +77,7 @@ public class degredationImplementer : MonoBehaviour
                 kartCuroSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
+            theScoreManger.settheCurrentHighScore(2);
         }
         if (manager.assLine == true)
         {
@@ -86,6 +87,7 @@ public class degredationImplementer : MonoBehaviour
                 assemblySliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
+            theScoreManger.settheCurrentHighScore(0);
         }
         if (manager.Chutes == true)
         {
@@ -95,6 +97,7 @@ public class degredationImplementer : MonoBehaviour
                 chutesSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
+            theScoreManger.settheCurrentHighScore(1);
         }
         if (manager.pipGyro == true)
         {
@@ -104,6 +107,7 @@ public class degredationImplementer : MonoBehaviour
                 pipeGyroSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
+            theScoreManger.settheCurrentHighScore(3);
         }
         print("This is isAddingBar" + isAddingToBar);
         isAddingToBar = false;
@@ -145,18 +149,22 @@ public class degredationImplementer : MonoBehaviour
         {
             case 0:
                 assemblySliderValue.value += amountToAdd;
+                theScoreManger.settheCurrentHighScore(0);
                 break;
 
             case 1:
                 chutesSliderValue.value += amountToAdd;
+                theScoreManger.settheCurrentHighScore(1);
                 break;
 
             case 2:
                 kartCuroSliderValue.value += amountToAdd;
+                theScoreManger.settheCurrentHighScore(2);
                 break;
 
             case 3:
                 pipeGyroSliderValue.value += amountToAdd;
+                theScoreManger.settheCurrentHighScore(3);
                 break;
 
             default:
@@ -171,6 +179,7 @@ public class degredationImplementer : MonoBehaviour
         PlayerPrefs.SetFloat("currentChutesSliderValue", chutesSliderValue.value);
         PlayerPrefs.SetFloat("currentKartCuroSliderValue", kartCuroSliderValue.value);
         PlayerPrefs.SetFloat("currentPipeGyroSliderValue", pipeGyroSliderValue.value);
+        theScoreManger.saveScores();
     }
 
     public void deleteValues()

@@ -239,6 +239,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         degredationManager.aCorrect = score;
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(1);
+        degredationManager.setScoreOfRecentPlayedGame(score);
     }
     public void gotWrong()
     {

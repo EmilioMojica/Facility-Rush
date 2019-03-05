@@ -463,6 +463,7 @@ public class assemblyManager : MonoBehaviour
         degredationManager.aCorrect = numberCorrect;
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(1);
+        degredationManager.setScoreOfRecentPlayedGame(score);
     }
     public void createToy()
     {

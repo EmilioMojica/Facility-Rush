@@ -235,6 +235,7 @@ public class kakuroGameManger : MonoBehaviour
         degredationManager.aCorrect = numberCorrectTotal;
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(3);
+        degredationManager.setScoreOfRecentPlayedGame(score);
     }
 
     public void initiateGameOver() // initiates game over state

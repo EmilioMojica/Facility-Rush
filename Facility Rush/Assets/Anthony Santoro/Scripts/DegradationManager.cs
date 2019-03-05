@@ -13,6 +13,7 @@ public class DegradationManager : MonoBehaviour
     private Scene currentScene;
 
     public bool KartCuro = false, assLine = false, Chutes = false, pipGyro = false;
+    [SerializeField] private int currentlyPlayedGameScore;
 
     // Start is called before the first frame update
 
@@ -35,8 +36,18 @@ public class DegradationManager : MonoBehaviour
         }
     }
 
+    public int GetScoreOfRecentlyPlayedGame()
+    {
+        return currentlyPlayedGameScore;
+    }
+
+    public void setScoreOfRecentPlayedGame(int scoreValueToSet)
+    {
+        currentlyPlayedGameScore = scoreValueToSet;
+    }
     void Start()
     {
+        currentlyPlayedGameScore = 0;
         //Get gamemode that was played
 
         //Get the amount of questions answered in a session
@@ -101,5 +112,13 @@ public class DegradationManager : MonoBehaviour
     {
         aFill = aCorrect / aAttempted;
         print("aFill is equal to: " + aFill);
+    }
+
+    public void setAllBoolSToFalse()
+    {
+        KartCuro = false;
+        assLine = false;
+        Chutes = false; 
+        pipGyro = false;
     }
 }

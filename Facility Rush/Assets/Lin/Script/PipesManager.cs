@@ -414,6 +414,7 @@ public class PipesManager : MonoBehaviour
         degredationManager.aCorrect = numberCorrect;
         degredationManager.pipeCalculate();
         degredationManager.gameHasBeenPlayed(0);
+        degredationManager.setScoreOfRecentPlayedGame(Score);
     }
 
     public int evaluateEquation(string equation)
