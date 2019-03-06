@@ -149,22 +149,22 @@ public class degredationImplementer : MonoBehaviour
         {
             case 0:
                 assemblySliderValue.value += amountToAdd;
-                theScoreManger.settheCurrentHighScore(0);
+                //theScoreManger.settheCurrentHighScore(0);
                 break;
 
             case 1:
                 chutesSliderValue.value += amountToAdd;
-                theScoreManger.settheCurrentHighScore(1);
+                //theScoreManger.settheCurrentHighScore(1);
                 break;
 
             case 2:
                 kartCuroSliderValue.value += amountToAdd;
-                theScoreManger.settheCurrentHighScore(2);
+                //theScoreManger.settheCurrentHighScore(2);
                 break;
 
             case 3:
                 pipeGyroSliderValue.value += amountToAdd;
-                theScoreManger.settheCurrentHighScore(3);
+                //theScoreManger.settheCurrentHighScore(3);
                 break;
 
             default:

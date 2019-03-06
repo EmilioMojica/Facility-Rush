@@ -232,6 +232,15 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         game = false;
         calculateRestoration();
     }
+
+    public void checkForNewHighScore()
+    {
+        int currentHighScore = PlayerPrefs.GetInt("chutesHighScore");
+        if(score>currentHighScore)
+        {
+            PlayerPrefs.SetInt("chutesHighScore",score);
+        }
+    }
     public void calculateRestoration()
     {
         DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
@@ -239,6 +248,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         degredationManager.aCorrect = score;
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(1);
+        checkForNewHighScore();
         degredationManager.setScoreOfRecentPlayedGame(score);
     }
     public void gotWrong()
