@@ -50,15 +50,20 @@ public class scoreManager : MonoBehaviour
         else
         {
             assemblyScore = PlayerPrefs.GetInt("assemblyHighScore");
+            print("this is assembly line's current highscore"+ assemblyScore);
             kakuroScore = PlayerPrefs.GetInt("kakuroHighScore");
+            print("this is kartkuro line's current highscore" + kakuroScore);
             chutesScore = PlayerPrefs.GetInt("chutesHighScore");
+            print("this is chutes line's current highscore" + chutesScore);
             pipeGyroScore = PlayerPrefs.GetInt("pipeGyroHighScore");
+            print("this is combination's current highscore" + kakuroScore);
             combinationScore = PlayerPrefs.GetInt("combinationScore");
 
             assemblyScoreText.text = assemblyScore + "";
             kakuroScoreText.text = kakuroScore + "";
             chutesScoreText.text = chutesScore + "";
             pipeGyroScoreText.text = pipeGyroScore + "";
+            combinationScoreText.text = (assemblyScore+kakuroScore+chutesScore+pipeGyroScore) + "";
         }
     }
 
@@ -88,9 +93,11 @@ public class scoreManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("assemblyHighScore", assemblyScore);
         PlayerPrefs.SetInt("kakuroHighScore", kakuroScore);
+        print("This the current value of kakuro's high score being called from the score manager: " + kakuroScore);
         PlayerPrefs.SetInt("chutesHighScore", chutesScore);
         PlayerPrefs.SetInt("pipeGyroHighScore", pipeGyroScore);
         PlayerPrefs.SetInt("combinationScore", combinationScore);
+        PlayerPrefs.Save();
     }
     // Update is called once per frame
     void Update()

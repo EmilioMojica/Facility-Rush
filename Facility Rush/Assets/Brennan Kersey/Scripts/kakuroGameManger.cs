@@ -76,6 +76,7 @@ public class kakuroGameManger : MonoBehaviour
 
     void Start ()
     {
+        print("Current KartCuro score that is called from kartcuro manager: " + (PlayerPrefs.GetInt("kakuroHighScore")));
         dylan = degradationBuddy.GetComponent<DegradationManager>();
         gameOver = false;
         x = 0;
@@ -227,7 +228,16 @@ public class kakuroGameManger : MonoBehaviour
             }
         }
     }
-
+    public void checkForNewHighScore()
+    {
+        int currentHighScore = PlayerPrefs.GetInt("kakuroHighScore");
+       // print("This is the current kakuroHighScore: " + currentHighScore);
+        if (score > currentHighScore)
+        {
+            PlayerPrefs.SetInt("kakuroHighScore", score);
+            PlayerPrefs.Save();
+        }
+    }
     public void calculateRestoration()
     {
         DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
@@ -235,7 +245,8 @@ public class kakuroGameManger : MonoBehaviour
         degredationManager.aCorrect = numberCorrectTotal;
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(3);
-        degredationManager.setScoreOfRecentPlayedGame(score);
+        checkForNewHighScore();
+       // degredationManager.setScoreOfRecentPlayedGame(score);
     }
 
     public void initiateGameOver() // initiates game over state

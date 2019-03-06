@@ -77,7 +77,7 @@ public class degredationImplementer : MonoBehaviour
                 kartCuroSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-            theScoreManger.settheCurrentHighScore(2);
+           // theScoreManger.settheCurrentHighScore(2);
         }
         if (manager.assLine == true)
         {
@@ -87,7 +87,7 @@ public class degredationImplementer : MonoBehaviour
                 assemblySliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-            theScoreManger.settheCurrentHighScore(0);
+          //  theScoreManger.settheCurrentHighScore(0);
         }
         if (manager.Chutes == true)
         {
@@ -97,7 +97,7 @@ public class degredationImplementer : MonoBehaviour
                 chutesSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-            theScoreManger.settheCurrentHighScore(1);
+           // theScoreManger.settheCurrentHighScore(1);
         }
         if (manager.pipGyro == true)
         {
@@ -107,7 +107,7 @@ public class degredationImplementer : MonoBehaviour
                 pipeGyroSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-            theScoreManger.settheCurrentHighScore(3);
+            //theScoreManger.settheCurrentHighScore(3);
         }
         print("This is isAddingBar" + isAddingToBar);
         isAddingToBar = false;

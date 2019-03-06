@@ -822,17 +822,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 951762498}
-        m_MethodName: OnClickAssemblyLine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 116701025}
         m_MethodName: setAllBoolSToFalse
         m_Mode: 1
@@ -855,8 +844,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1652638793}
-        m_MethodName: saveScores
+      - m_Target: {fileID: 951762498}
+        m_MethodName: OnClickAssemblyLine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1602,17 +1591,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 951762498}
-        m_MethodName: OnClickCaCuro
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 116701025}
         m_MethodName: setAllBoolSToFalse
         m_Mode: 1
@@ -1635,8 +1613,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1652638793}
-        m_MethodName: saveScores
+      - m_Target: {fileID: 951762498}
+        m_MethodName: OnClickCaCuro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2367,17 +2345,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 951762498}
-        m_MethodName: OnClickChutes
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 116701025}
         m_MethodName: setAllBoolSToFalse
         m_Mode: 1
@@ -2400,8 +2367,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1652638793}
-        m_MethodName: saveScores
+      - m_Target: {fileID: 951762498}
+        m_MethodName: OnClickChutes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2874,7 +2841,7 @@ MonoBehaviour:
   secondsTillNextDegredation: 1
   divisionNumber: 3
   delayTime: 0.5
-  theScoreManger: {fileID: 1652638793}
+  theScoreManger: {fileID: 1234610896}
 --- !u!4 &915951156
 Transform:
   m_ObjectHideFlags: 0
@@ -4056,7 +4023,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1652638793}
+      - m_Target: {fileID: 1234610896}
         m_MethodName: activateOrDeactivate
         m_Mode: 3
         m_Arguments:
@@ -4186,7 +4153,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1652638793}
+      - m_Target: {fileID: 1234610896}
         m_MethodName: activateOrDeactivate
         m_Mode: 3
         m_Arguments:
@@ -5708,7 +5675,6 @@ GameObject:
   - component: {fileID: 1652638792}
   - component: {fileID: 1652638795}
   - component: {fileID: 1652638794}
-  - component: {fileID: 1652638793}
   m_Layer: 5
   m_Name: Scoreboard
   m_TagString: Untagged
@@ -5746,25 +5712,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1652638793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652638791}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b2c3df1716fa945ae98283172cf90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  assemblyScoreText: {fileID: 1820680087}
-  kakuroScoreText: {fileID: 1533421585}
-  chutesScoreText: {fileID: 1020539725}
-  pipeGyroScoreText: {fileID: 706203874}
-  combinationScoreText: {fileID: 1445668969}
-  manager: {fileID: 0}
-  scorePanel: {fileID: 1652638791}
 --- !u!114 &1652638794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5881,17 +5828,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 951762498}
-        m_MethodName: OnClickPipeGyro
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 116701025}
         m_MethodName: setAllBoolSToFalse
         m_Mode: 1
@@ -5914,8 +5850,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1652638793}
-        m_MethodName: saveScores
+      - m_Target: {fileID: 951762498}
+        m_MethodName: OnClickPipeGyro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
