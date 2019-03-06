@@ -3916,6 +3916,11 @@ PrefabInstance:
       propertyPath: scoreValue
       value: 
       objectReference: {fileID: 622271629}
+    - target: {fileID: 6138843770283777213, guid: 05e0960a8f2b3e44c9f6c05f6e2d454a,
+        type: 3}
+      propertyPath: currentLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6138843770183092544, guid: 05e0960a8f2b3e44c9f6c05f6e2d454a,
         type: 3}
       propertyPath: m_AnchorMin.y

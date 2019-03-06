@@ -369,7 +369,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
                 }
                 break;
@@ -395,7 +395,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     case 1:
@@ -411,7 +411,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left + right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     default:
@@ -423,7 +423,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 operatorDecider = (int)Random.Range(1, 3);  // random number generation to decide operator/ Type of problem
                 quation = "";
                 startingNumber = factorsOf100[(int)Random.Range(0, 8)];
-                firstNumber = (int)Random.Range(0, 10);
+                firstNumber = (int)Random.Range(0, startingNumber);
                 secondNumber = startingNumber - firstNumber;
                 switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
                 {
@@ -441,7 +441,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left + right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     case 2:
@@ -457,9 +457,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         result = left * right;                  //Calculating the result of expression	
 
                         tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     default:
@@ -474,7 +474,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 operatorDecider = (int)Random.Range(1, 4);  // random number generation to decide operator/ Type of problem
                 quation = "";
                 startingNumber = factorsOf100[(int)Random.Range(0, 8)];
-                firstNumber = (int)Random.Range(0, 10);
+                firstNumber = (int)Random.Range(0, startingNumber);
                 secondNumber = startingNumber - firstNumber;
                 switch (operatorDecider
                 ) // based on result of operatorDecider generates either addition or subtraction problem
@@ -493,7 +493,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
                     case 2:
                         equationOperator = operators[1];
@@ -508,7 +508,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left + right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     case 3:
@@ -526,9 +526,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         result = left * right; //Calculating the result of expression	
 
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     default:
@@ -558,9 +558,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         result = left * right; //Calculating the result of expression	
 
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     case 3:
@@ -574,9 +574,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         result = right / left; //Calculating the result of expression
                         operationText = equationOperator; //Operation string assignment                            
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
                     default:
                         break;
@@ -605,9 +605,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         result = left * right; //Calculating the result of expression	
 
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + right);
+                        tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
-                        tempAnswers.Add(left - right);
+                        tempAnswers.Add(result + 2);
                         break;
 
                     case 3:
@@ -616,14 +616,14 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         firstNumber = factorsOf1442[(int)Random.Range(0, factorsOf1442.Length)];
                         secondNumber = firstNumber / startingNumber;
 
-                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        result = right / left; //Calculating the result of expression
+                        left = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        right = startingNumber;
+                        result = left / right; //Calculating the result of expression
                         operationText = equationOperator; //Operation string assignment                            
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + right);
-                        tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(result + 2);
                         break;
                     default:
                         break;
@@ -662,7 +662,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         answer = left1 * right1;
                         break;
                     case "/":
-                        answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                        answer = left / right;
                         break;
 
                 }
