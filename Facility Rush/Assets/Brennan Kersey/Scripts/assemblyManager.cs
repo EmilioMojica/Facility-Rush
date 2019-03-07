@@ -87,7 +87,7 @@ public class assemblyManager : MonoBehaviour
    [SerializeField] GameObject middle;
    [SerializeField] GameObject top;
 
-    bool isAnimating;
+   public bool isAnimating;
 
     float pipe1DownTime;
     float pipe1UpTime;
@@ -146,6 +146,7 @@ public class assemblyManager : MonoBehaviour
         deleteToyParts();
         theTimer.setIsAnimating(false);
         isAnimating = false;
+        nextEquation();
     }
     public void setChuteOneChoice(string choice)
     {
@@ -230,7 +231,7 @@ public class assemblyManager : MonoBehaviour
         gameOver = false;
         feedbackText.gameObject.SetActive(false);
         score = 0;
-        scoreText.text = "Score: " + score;
+        scoreText.text = "" + score;
         showChoice1.text = "";
         showChoice2.text = "";
         showChoice3.text = "";
@@ -560,7 +561,7 @@ public class assemblyManager : MonoBehaviour
                 StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
                 score += 100;
                 PlayerPrefs.SetInt("recentAssemblyHighScore", score);
-                scoreText.text = "Score: " + score;
+                scoreText.text = "" + score;
                 feedbackText.text = "Correct";
                 numberCorrect++;
                 numberCorrectSoFar++;
@@ -572,7 +573,7 @@ public class assemblyManager : MonoBehaviour
                 }
 
                 isToySpawned = false;
-                nextEquation();
+               // nextEquation();
             }
             else
             {

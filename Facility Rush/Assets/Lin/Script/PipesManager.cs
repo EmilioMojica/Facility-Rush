@@ -144,6 +144,7 @@ public class PipesManager : MonoBehaviour
 
     void Start()
     {
+        //questionSlots[0].GetComponent<GridLayoutGroup>().enabled = false;
         // print("String equivalence test: " + "9+1".Equals("9+1") );
         numberCorrect = 0;
         float animationTime=pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
@@ -156,7 +157,7 @@ public class PipesManager : MonoBehaviour
         gradelevel = PlayerPrefs.GetInt("grade");
         setAppropriateListForGradeLevelsKthrough5();
         
-        scoreText.text = "Score: 10000";
+        scoreText.text = "10000";
         currentProblem = 0;
         generateProblems();
         printStuff();
@@ -180,19 +181,35 @@ public class PipesManager : MonoBehaviour
     {
         if (gameOver == false)
         {
-            gameTimer += Time.deltaTime;
-            if(gameTimer>1)
-            {
-                Score -= 10;
-                gameTimer = 0.0f;
-                scoreText.text = "Score: " + Score;
-            }
-            if(Score==0)
+            //gameTimer += Time.deltaTime;
+            //if(gameTimer>1)
+            //{
+            //    Score -= 10;
+            //    gameTimer = 0.0f;
+            //    scoreText.text = "" + Score;
+            //}
+            //if(Score==0)
+            //{
+            //    initiateGameOver();
+            //}
+
+            gameTimer -= Time.deltaTime;
+
+
+
+            int seconds = (int)(gameTimer % 60);
+            int minutes = (int)(gameTimer / 60) % 60;
+            int hours = (int)(gameTimer / 3600) % 24;
+
+            string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+            if (timerString.Equals("00:00"))
             {
                 initiateGameOver();
+                //gameTimerText.text = "00:00";
             }
-           // checkIfAnswered();
-           if(checkingAnswer==false)
+            gameTimerText.text = timerString;
+            // checkIfAnswered();
+            if (checkingAnswer==false)
             {
                 //checkingAnswer = true;
                 checkEquation();
@@ -507,7 +524,7 @@ public class PipesManager : MonoBehaviour
                         numberCorrect++;
                         restoreList();
                         Score += 100;
-                        scoreText.text = "Score: " + Score;
+                        scoreText.text = "" + Score;
                         currentProblem++;
                         //restoreChoices();
                         print("this is i: " + i);
@@ -516,9 +533,9 @@ public class PipesManager : MonoBehaviour
                     else
                     {
                         Score -= 1000;
-                        scoreText.text = "Score: " + Score; 
+                        scoreText.text = "" + Score; 
                         restoreList();
-                        restoreChoices();
+                        //restoreChoices();
                         checkingAnswer = false;
                     }
                 }
