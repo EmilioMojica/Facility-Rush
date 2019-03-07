@@ -2550,6 +2550,7 @@ MonoBehaviour:
   bottom: {fileID: 0}
   middle: {fileID: 0}
   top: {fileID: 0}
+  isAnimating: 0
   theGoldenGodAnimator: {fileID: 15638592}
   theTimer: {fileID: 1836115882}
 --- !u!4 &400000942
@@ -6024,7 +6025,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ef946e7c88ff844697aa2c690117885, type: 2}
+  - {fileID: 2100000, guid: 215946399df9a994eb36f97f866a38a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
