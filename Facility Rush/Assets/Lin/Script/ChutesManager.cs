@@ -57,12 +57,13 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     private int[] MultipleOfTwo = new int[] { 1, 2, 5, 10 };
     private int[] MultipleOfTwoBig = new int[] { 10, 30, 50, 100 };
     private int[] factorsOf144 = new int[] { 1, 2, 3, 4, 6, 8, 9, 12, 16, 18, 24, 36, 48, 72, 144 };
-    private int[] factorsOf1441 = new int[] { 1, 2, 3, 4, 6, 12};
-    private int[] factorsOf1442 = new int[] {12, 24, 36, 48, 72, 144 };
+    private int[] factorsOf1441 = new int[] { 1, 2, 3, 4, 6, 12 };
+    private int[] factorsOf1442 = new int[] { 12, 24, 36, 48, 72, 144 };
     private int[] factorsOf900 = new int[] { 1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 25, 30, 36, 45, 50, 60, 75, 90, 100, 150, 180, 225, 300, 450, 900 };
 
+    private bool isToMuch;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         answersGoUP.SetBool("NumberBack", true);
         playscene.SetActive(true);
@@ -70,23 +71,24 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         timeSlider.value = 1;
         game = true;
         //Debug.Log(operators[1]);
-		Generate();
+        Generate();
         //HasChanged();
         //currentLevel = 1;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	    bestScore.text = score.ToString();
-	    //timeSlider.value -= Time.deltaTime / 10;
 
-	    if (game)
-	    {
-	        timeSlider.value -= Time.deltaTime / 20;
+    // Update is called once per frame
+    void Update()
+    {
+        bestScore.text = score.ToString();
+        //timeSlider.value -= Time.deltaTime / 10;
+
+        if (game)
+        {
+            timeSlider.value -= Time.deltaTime / 20;
             if (timeSlider.value <= 0) //Run "GameOver" function if timeleft(slider value) is out
-	        {
-	            timeOut();
-	        }
+            {
+                timeOut();
+            }
 
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -94,12 +96,12 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             answersGoUP.SetBool("NumberMove", false);
             answersGoUP.SetBool("NumberBack", true);
             game = true;
-	        score = 0;
-	        scoreValue.text = score.ToString();
-	        timeSlider.value = 1;
+            score = 0;
+            scoreValue.text = score.ToString();
+            timeSlider.value = 1;
             failscene.SetActive(false);
-	        playscene.SetActive(true);
-            
+            playscene.SetActive(true);
+
         }
     }
 
@@ -116,8 +118,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     }
     public void CheckAnswer(int asnwerID)
     {               //This is on all 4 of answer buttons that send here answer ID pre-declared in Button component.
-                     //Here we get time between answers to prevent fast chaos selecting answers (otherwise we can cheat scores)
-        if (asnwerID == trueID )      //If answer ID is equal to true ID that means right answer pressed. Also we check if period is ok and we run according function.
+                    //Here we get time between answers to prevent fast chaos selecting answers (otherwise we can cheat scores)
+        if (asnwerID == trueID)      //If answer ID is equal to true ID that means right answer pressed. Also we check if period is ok and we run according function.
             gotRight();
     }
     //DragHandler dh= new DragHandler();
@@ -140,7 +142,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 break;
 
         }
-        
+
         answersGoUP.SetBool("NumberMove", true);
         //answersGoUP.SetBool("NumberBack", false);
         //StartCoroutine("WaitAndGo", 0.5f);
@@ -152,11 +154,11 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     {                               //This runs when we pressed right answer 
         //answersGoUP.SetBool("NumberBack", true);
         answersGoUP.SetBool("NumberMove", false);
-        
+
         tubeOne.SetBool("Correct1", false);
-             
+
         tubeTwo.SetBool("Correct2", false);
-  
+
         tubeThree.SetBool("Correct3", false);
 
         tubeFour.SetBool("Correct4", false);
@@ -165,7 +167,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         scoreValue.text = score.ToString();
         //bestScore.text = score.ToString();
         //GameObject.Find("GameController").GetComponent<MoveBack>().StartPoint();
-        
+
         //
         int y = trueID + 1;
         string x = y.ToString();
@@ -191,7 +193,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     public void isWrong()
     {
         //tubeOne.SetBool("Correct1", true);
-        
+
         switch (wrongNumber)
         {
             case 1:
@@ -208,9 +210,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 break;
 
         }
-        
+
         answersGoUP.SetBool("NumberMove", true);
-        
+
         answersGoUP.SetBool("NumberBack", false);
         StartCoroutine("WaitAndWrong", 0.5f);
 
@@ -225,7 +227,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         tubeThree.SetBool("Wrong3", false);
 
         tubeFour.SetBool("Wrong4", false);
-       
+
         answersGoUP.SetBool("NumberMove", false);
         answersGoUP.SetBool("NumberBack", true);
         failscene.SetActive(true);
@@ -236,15 +238,15 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     public void checkForNewHighScore()
     {
         int currentHighScore = PlayerPrefs.GetInt("chutesHighScore");
-        if(score>currentHighScore)
+        if (score > currentHighScore)
         {
-            PlayerPrefs.SetInt("chutesHighScore",score);
+            PlayerPrefs.SetInt("chutesHighScore", score);
         }
     }
     public void calculateRestoration()
     {
         DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
-        degredationManager.aAttempted = score+1;
+        degredationManager.aAttempted = score + 1;
         degredationManager.aCorrect = score;
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(1);
@@ -253,7 +255,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     }
     public void gotWrong()
     {
-        
+
         tubeOne.SetBool("Wrong1", false);
 
         tubeTwo.SetBool("Wrong2", false);
@@ -262,7 +264,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
         tubeFour.SetBool("Wrong4", false);
         //answersGoUP.SetBool("NumberBack", true);
-        
+
         answersGoUP.SetBool("NumberMove", false);
         answersGoUP.SetBool("NumberBack", true);
         Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
@@ -279,7 +281,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         }
         game = false;
         //Generate();
-        
+
     }
     IEnumerator WaitAndWrong(float waitTime)
     {
@@ -289,610 +291,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     }
 
     public void Generate()
-    {
-        
-        //Runs at "StartPlay" and after every correct answer. Generates new expression and answers
-        game = true;
-        timeSlider.value = 1;
-
-        tempAnswers.Clear();                            //Clear list filled with previous answers
-        int operationID;                                //Declaring operation ID variable
-
-        //Firstly we choose random opeation by generatig random number ("1" is "+", "2" is "-", "3" is "×", "4" is "÷")
-        int currentLimit = 0;
-        if (currentLevel == 0)
-        {
-            operationID = 1;
-            currentLimit = 6;
-        }                          //Here I added a condition that limits operaion range for first level 
-        else if (currentLevel == 1)
-        {
-            operationID = 2;
-            currentLimit = 11;
-        }
-        else if (currentLevel == 2)
-        {
-            //operationID = 3;
-            operationID = 3;
-            currentLimit = 51;
-        }
-        else if (currentLevel == 3)
-        {
-            operationID = 4;
-            currentLimit = 51;
-        }
-        else if(currentLevel == 4)                                      //If we are at 1st level then we use only + or -
-        {
-            operationID = 5;           //Otherwise we use all operaions
-            currentLimit = 51;
-        }
-        else
-        {
-            operationID = 6;
-            currentLimit = 100;
-        }
-
-        //int currentLimit = 5 + (currentLevel - 1) * 5;     //Here we declaring basic maximum limit for numbers in expression proportionally to current level (level 1 - limit 10, level 2 - 15 etc +5 each)
-        //float left = Random.Range((currentLevel - 1) * 5, currentLimit);//"Left side" integer. Generated according to current level and limit
-        float left = Random.Range(currentLevel * 5, currentLimit);
-        float right = 0;                                //Declaring "Right side" integer variable
-        string operationText = "";                       //Declaring operation symbol variable (+-×÷)
-        //string operatorText = "-";
-        float result = 0;                               //Declaring vaiable that keeps correct answer
-
-        // List<string> newtexts= new List<string>();
-
-        //Then according to operation ID and "Left" integer we generate "Right" ineteger and answers
-        //Here is logic for each operation
-        int operatorDecider; // = (int)Random.Range(0, 2);  // random number generation to decide operator/ Type of problem
-        string quation;
-        switch (operationID)
-        {
-            case 1:                                     //Operation +
-                operatorDecider = 0;  // random number generation to decide operator/ Type of problem
-                quation = "";
-                startingNumber = (int)Random.Range(1, 11);
-                firstNumber = (int)Random.Range(1, startingNumber);
-                secondNumber = startingNumber - firstNumber;
-                switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
-                {
-                    case 0:
-                        equationOperator = operators[0];
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left + right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-                }
-                break;
-            case 2:                                     //Operation -
-
-                operatorDecider = (int)Random.Range(0, 2);  // random number generation to decide operator/ Type of problem
-                quation = "";
-                startingNumber = (int)Random.Range(1, 21);
-                firstNumber = (int)Random.Range(1, startingNumber);
-                secondNumber = startingNumber - firstNumber;
-                switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
-                {
-                    case 0:
-                        equationOperator = operators[0];
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left + right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    case 1:
-                        equationOperator = operators[1];
-                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left - right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
-            case 3:                                     //Operation ×
- 
-                operatorDecider = (int)Random.Range(1, 3);  // random number generation to decide operator/ Type of problem
-                quation = "";
-                startingNumber = factorsOf100[(int)Random.Range(0, 8)];
-                firstNumber = (int)Random.Range(0, startingNumber);
-                secondNumber = startingNumber - firstNumber;
-                switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
-                {
-
-                    case 1:
-                        equationOperator = operators[1];
-                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left - right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    case 2:
-                        equationOperator = operators[2];
-
-                        secondNumber = startingNumber * firstNumber;
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left * right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
-            case 4:                                     //Operation ÷
-                /*                                        //Here we generate left and right inegers with special logic so that result will be always whole number (not float)
-                left = Random.Range(1, 3 + (currentLevel - 1) * 2);
-                right = Random.Range(1, 3 + (currentLevel - 1) * 2);
-                */
-                operatorDecider = (int)Random.Range(1, 4);  // random number generation to decide operator/ Type of problem
-                quation = "";
-                startingNumber = factorsOf100[(int)Random.Range(0, 8)];
-                firstNumber = (int)Random.Range(0, startingNumber);
-                secondNumber = startingNumber - firstNumber;
-                switch (operatorDecider
-                ) // based on result of operatorDecider generates either addition or subtraction problem
-                {
-                    case 1:
-                        equationOperator = operators[0];
-                        secondNumber = startingNumber + firstNumber;
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left + right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-                    case 2:
-                        equationOperator = operators[1];
-                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left - right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    case 3:
-                        equationOperator = operators[2];
-
-                        startingNumber = (int) Random.Range(1, 10);
-                        firstNumber = (int)Random.Range(1, 13);
-                        secondNumber = startingNumber * firstNumber;
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator; //Operation string assignment
-                        result = left * right; //Calculating the result of expression	
-
-                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
-            case 5:                                     //Operation ×
-                //right = Random.Range(1, 13);
-                operatorDecider = (int)Random.Range(2, 4);  // random number generation to decide operator/ Type of problem
-                quation = "";
-                
-                switch (operatorDecider
-                ) // based on result of operatorDecider generates either addition or subtraction problem
-                {
-                    case 2:
-                        equationOperator = operators[2];
-
-                        startingNumber = factorsOf100[(int)Random.Range(0, factorsOf100.Length)]; ;
-                        firstNumber = (int)Random.Range(1, 13);
-                        secondNumber = startingNumber * firstNumber;
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator; //Operation string assignment
-                        result = left * right; //Calculating the result of expression	
-
-                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    case 3:
-                        equationOperator = operators[3];
-                        startingNumber = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)]; ;
-                        firstNumber = MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
-                        secondNumber = firstNumber / startingNumber;
-
-                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        result = right / left; //Calculating the result of expression
-                        operationText = equationOperator; //Operation string assignment                            
-                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 6:                                     //Operation ×
-                //right = Random.Range(1, 13);
-                operatorDecider = (int)Random.Range(2, 4);  // random number generation to decide operator/ Type of problem
-                quation = "";
-
-                switch (operatorDecider
-                ) // based on result of operatorDecider generates either addition or subtraction problem
-                {
-                    case 2:
-                        equationOperator = operators[2];
-
-                        startingNumber = factorsOf900[(int)Random.Range(0, factorsOf900.Length)]; ;
-                        firstNumber = (int)Random.Range(1, 13);
-                        secondNumber = startingNumber * firstNumber;
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator; //Operation string assignment
-                        result = left * right; //Calculating the result of expression	
-
-                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-
-                    case 3:
-                        equationOperator = operators[3];
-                        startingNumber = factorsOf1441[(int)Random.Range(0, factorsOf1441.Length)]; ;
-                        firstNumber = factorsOf1442[(int)Random.Range(0, factorsOf1442.Length)];
-                        secondNumber = firstNumber / startingNumber;
-
-                        left = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        right = startingNumber;
-                        result = left / right; //Calculating the result of expression
-                        operationText = equationOperator; //Operation string assignment                            
-                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-        }
-
-
-
-        //expression.text = left.ToString() +operationTxt+ right.ToString();//Generated expression goes to UI element as text
-        //generate different equation
-        //expression1.text = left1.ToString() + operationTxt + right1.ToString();
-        rightID = Random.Range(0, 4);
-        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
-        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
-        int x = 0;
-        foreach (Text equation in equations)
-        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
-            if (x != rightID)
-            {                           //Skip the element that is already filled with correct answer
-                int rand = Random.Range(0, 4);
-                float answer = 0;
-                string op = equationOperator;
-                float left1 = left + Random.Range(x + 1, x + 2);
-                float right1 = right + Random.Range(x + 1, x + 2);
-                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
-                switch (equationOperator)
-                {
-                    case "+":
-                        answer = left1 + right1;
-                        break;
-                    case "-":
-                        answer = left1 - right1;
-                        break;
-                    case "*":
-                        answer = left1 * right1;
-                        break;
-                    case "/":
-                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
-                        answer = left / right;
-                        break;
-
-                }
-
-                for (int n = 0; n < 4; n++)
-                {
-                    if (answer == tempAnswers[n] )
-                    {
-                        Debug.Log("Same!!!!");
-                        left1 = left1+Random.Range(0,25);
-                        right1 = right+Random.Range(0,25);
-                        op = equationOperator;
-                    }
-                }
-                /*
-                if (answer == tempAnswers[0]|| answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
-                {
-                    Debug.Log("Same!!!!");
-                    left1 += left;
-                    right1 += right;
-                }*/
-                
-                equation.text = left1.ToString() + op + right1.ToString();
-                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
-                                                               //tempAnswers.RemoveAt(rand);
-            }
-            x++;
-        }
-        //Debug.Log("right place = "+ answerSlots[rightID].name);
-        //answerSlots[rightID]
-
-
-        trueID = Random.Range(0, 4);						//Generating trueID (for random position)
-        answers[trueID].text = result.ToString();       //Correct answer as string goes to answers list with generated index
-        answers[trueID].fontSize = GetFontSize(answers[trueID].text); //Setting suitable font
-        tempAnswers.RemoveAt(0);                        //Remove correct answer, it is always with index 0 coz we insert it first
-        int i = 0;                                      //Declaring counter variable
-        foreach (Text answer in answers)
-        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
-            if (i != trueID)
-            {                           //Skip the element that is already filled with correct answer
-                int rand = Random.Range(0, tempAnswers.Count);
-                answer.text = tempAnswers[rand].ToString();
-                answer.fontSize = GetFontSize(answer.text);//Setting suitable font
-                tempAnswers.RemoveAt(rand);
-            }
-            i++;
-        }
-        
-    }
-    public int GetFontSize(string answer)
-    {               //Function that gets suitable font size for given string length
-        int fontSize;
-        /*
-        switch (answer.Length)
-        {
-            case 1:
-                fontSize = 210;
-                break;
-            case 2:
-                fontSize = 200;
-                break;
-            case 3:
-                fontSize = 140;
-                break;
-            case 4:
-                fontSize = 100;
-                break;
-            default:
-                fontSize = 75;
-                break;
-        }
-        */
-        switch (answer.Length)
-        {
-            case 1:
-                fontSize = 150;
-                break;
-            case 2:
-                fontSize = 100;
-                break;
-            case 3:
-                fontSize = 70;
-                break;
-            case 4:
-                fontSize = 50;
-                break;
-            default:
-                fontSize = 35;
-                break;
-        }
-        return fontSize;
-    }
-
-    
-
-    public void HasChanged()
-    {
-        /*
-        answersGoUP.SetBool("NumberMove",true);
-        answersGoUP.SetBool("NumberBack", false);
-        StartCoroutine("WaitAndGo", 0.5f);
-        */
-        //Debug.LogError("!!!!!!!!!!!");
-        //Invoke("TestFunc", 0.3f);
-        
-        
-        Judge();
-        /*
-        Debug.Log("answer true =" + answers[trueID].text );
-        Debug.Log("put slot "+ answerSlots[rightID].name);
-        List<int> x = new List<int>();
-        int z = 1;
-        string str = string.Empty;
-        foreach (Transform slotTransform in slots)
-        {
-            GameObject item = slotTransform.GetComponent<Slot>().item;
-            if (item)
-            {
-                x.Add(z);
-                
-                str = item.name;
-            }
-            else
-            {
-                x.Add(0);
-            }
-
-            z++;
-        }
-
-        int addup = 0;
-        for (int i = 0; i<x.Count; i++)
-        {
-            //Debug.Log(x[i]);
-            addup += x[i];
-        }
-
-        if (rightID+1 == addup)
-        {
-            //Debug.Log("Slot TRUE!!!!!!");
-            if (trueID + 1 == int.Parse(str))
-            {
-
-               Debug.Log("Correct!!!!!!!!!");
-                gotRight();
-                //Generate();
-            }
-            else
-            {
-                gotWrong();
-            }
-        }
-        else
-        {
-            //Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
-            gotWrong();
-        }
-        //Debug.Log("Item name" + str);
-        */
-    }
-
-    IEnumerator WaitAndGo(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        
-        answersGoUP.SetBool("NumberMove", false);
-        Generate();
-    }
-    
-
-    public void Judge()
-    {
-        Debug.Log("answer true =" + answers[trueID].text);
-        Debug.Log("put slot " + answerSlots[rightID].name);
-        List<int> x = new List<int>();
-        int z = 1;
-        string str = string.Empty;
-        foreach (Transform slotTransform in slots)
-        {
-            GameObject item = slotTransform.GetComponent<ChutesSlot>().item;
-            if (item)
-            {
-                x.Add(z);
-
-                str = item.name;
-                //wrongNumber = int.Parse(str);
-            }
-            else
-            {
-                x.Add(0);
-            }
-
-            z++;
-        }
-
-        int addup = 0;
-        for (int i = 0; i < x.Count; i++)
-        {
-            //Debug.Log(x[i]);
-            addup += x[i];
-        }
-
-        wrongNumber = addup;
-        if (rightID + 1 == addup)
-        {
-            //Debug.Log("Slot TRUE!!!!!!");
-            if (trueID + 1 == int.Parse(str))
-            {
-
-                Debug.Log("Correct!!!!!!!!!");
-                isRight();
-                //Generate();
-            }
-            else
-            {
-                isWrong();
-            }
-        }
-        else
-        {
-            //Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
-            isWrong();
-        }
-        //Debug.Log("Item name" + str);
-        //answersGoUP.SetBool("NumberBack", true);
-    }
-
-    public void Generate2()
     {
 
         //Runs at "StartPlay" and after every correct answer. Generates new expression and answers
@@ -957,6 +355,12 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 quation = "";
                 startingNumber = (int)Random.Range(1, 11);
                 firstNumber = (int)Random.Range(1, startingNumber);
+                if (startingNumber + firstNumber >= 10)
+                {
+                    firstNumber = 10 - startingNumber;
+                    Debug.Log("too much!!!!");
+                    isToMuch = true;
+                }
                 secondNumber = startingNumber - firstNumber;
                 switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
                 {
@@ -969,11 +373,24 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         left = startingNumber;
                         operationText = equationOperator;                     //Operation string assignment
                         result = left + right;                  //Calculating the result of expression	
+                        if (isToMuch)
+                        {
+                            tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                            tempAnswers.Add(result - 1);
+                            tempAnswers.Add(result - 2);
+                            tempAnswers.Add(result - 3);
+                            isToMuch = false;
+                        }
+                        else
+                        {
 
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
+                            tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                            tempAnswers.Add(result + 1);
+                            tempAnswers.Add(result - 1);
+                            tempAnswers.Add(result + 2);
+                        }
+                        GenerateQuestion(left, right, operationID, operatorDecider);
+
                         break;
                 }
                 break;
@@ -983,6 +400,12 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 quation = "";
                 startingNumber = (int)Random.Range(1, 21);
                 firstNumber = (int)Random.Range(1, startingNumber);
+                if (startingNumber + firstNumber >= 20)
+                {
+                    firstNumber = 20 - startingNumber;
+                    Debug.Log("too much!!!!");
+                    isToMuch = true;
+                }
                 secondNumber = startingNumber - firstNumber;
                 switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
                 {
@@ -996,10 +419,23 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         operationText = equationOperator;                     //Operation string assignment
                         result = left + right;                  //Calculating the result of expression	
 
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
+                        if (isToMuch)
+                        {
+                            tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                            tempAnswers.Add(result - 1);
+                            tempAnswers.Add(result - 2);
+                            tempAnswers.Add(result - 3);
+                            isToMuch = false;
+                        }
+                        else
+                        {
+
+                            tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                            tempAnswers.Add(result + 1);
+                            tempAnswers.Add(result - 1);
+                            tempAnswers.Add(result + 2);
+                        }
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
 
                     case 1:
@@ -1016,6 +452,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
 
                     default:
@@ -1024,17 +461,40 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 break;
             case 3:                                     //Operation ×
 
-                operatorDecider = (int)Random.Range(1, 3);  // random number generation to decide operator/ Type of problem
+                operatorDecider = (int)Random.Range(0, 2);  // random number generation to decide operator/ Type of problem
                 quation = "";
                 startingNumber = factorsOf100[(int)Random.Range(0, 8)];
-                firstNumber = (int)Random.Range(0, startingNumber);
+                firstNumber = (int)Random.Range(0, 10);
                 secondNumber = startingNumber - firstNumber;
                 switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
                 {
 
+                    case 0:
+                        equationOperator = operators[0];
+                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left + right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
+                        break;
+
                     case 1:
                         equationOperator = operators[1];
-                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
+                        while (startingNumber - firstNumber < 0)
+                        {
+                            firstNumber = (int)Random.Range(0, 10);
+                            Debug.Log("change a number");
+                        }
+                        secondNumber = startingNumber * firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
 
 
                         right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
@@ -1046,24 +506,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
-                        break;
-
-                    case 2:
-                        equationOperator = operators[2];
-
-                        secondNumber = startingNumber * firstNumber;
-                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
-
-
-                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        left = startingNumber;
-                        operationText = equationOperator;                     //Operation string assignment
-                        result = left * right;                  //Calculating the result of expression	
-
-                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
-                        tempAnswers.Add(result + 1);
-                        tempAnswers.Add(result - 1);
-                        tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
 
                     default:
@@ -1075,7 +518,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 left = Random.Range(1, 3 + (currentLevel - 1) * 2);
                 right = Random.Range(1, 3 + (currentLevel - 1) * 2);
                 */
-                operatorDecider = (int)Random.Range(1, 4);  // random number generation to decide operator/ Type of problem
+                operatorDecider = (int)Random.Range(0, 3);  // random number generation to decide operator/ Type of problem
                 quation = "";
                 startingNumber = factorsOf100[(int)Random.Range(0, 8)];
                 firstNumber = (int)Random.Range(0, startingNumber);
@@ -1083,7 +526,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 switch (operatorDecider
                 ) // based on result of operatorDecider generates either addition or subtraction problem
                 {
-                    case 1:
+                    case 0:
                         equationOperator = operators[0];
                         secondNumber = startingNumber + firstNumber;
                         quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
@@ -1098,9 +541,15 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
-                    case 2:
+                    case 1:
                         equationOperator = operators[1];
+                        while (startingNumber - firstNumber < 0)
+                        {
+                            firstNumber = (int)Random.Range(0, 10);
+                            Debug.Log("change a number");
+                        }
                         quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
 
 
@@ -1113,9 +562,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
 
-                    case 3:
+                    case 2:
                         equationOperator = operators[2];
 
                         startingNumber = (int)Random.Range(1, 10);
@@ -1133,6 +583,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
 
                     default:
@@ -1141,16 +592,58 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 break;
             case 5:                                     //Operation ×
                 //right = Random.Range(1, 13);
-                operatorDecider = (int)Random.Range(2, 4);  // random number generation to decide operator/ Type of problem
+                operatorDecider = (int)Random.Range(0, 4);  // random number generation to decide operator/ Type of problem
                 quation = "";
 
                 switch (operatorDecider
                 ) // based on result of operatorDecider generates either addition or subtraction problem
                 {
+                    case 0:
+                        equationOperator = operators[0];
+                        startingNumber = factorsOf100[(int)Random.Range(0, 8)];
+                        firstNumber = (int)Random.Range(0, startingNumber);
+                        secondNumber = startingNumber + firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left + right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
+                        break;
+                    case 1:
+                        equationOperator = operators[1];
+                        startingNumber = factorsOf100[(int)Random.Range(0, 8)];
+                        firstNumber = (int)Random.Range(0, startingNumber);
+                        while (startingNumber - firstNumber < 0)
+                        {
+                            firstNumber = (int)Random.Range(0, 10);
+                            Debug.Log("change a number");
+                        }
+                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left - right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
+                        break;
                     case 2:
                         equationOperator = operators[2];
 
-                        startingNumber = factorsOf100[(int)Random.Range(0, factorsOf100.Length)]; ;
+                        startingNumber = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
                         firstNumber = (int)Random.Range(1, 13);
                         secondNumber = startingNumber * firstNumber;
                         quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
@@ -1165,22 +658,24 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
 
                     case 3:
                         equationOperator = operators[3];
-                        startingNumber = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)]; ;
-                        firstNumber = MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                        startingNumber = MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                        firstNumber = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)];
                         secondNumber = firstNumber / startingNumber;
 
                         right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
                         left = startingNumber;
-                        result = right / left; //Calculating the result of expression
+                        result = left / right; //Calculating the result of expression
                         operationText = equationOperator; //Operation string assignment                            
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
                     default:
                         break;
@@ -1188,16 +683,56 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 break;
             case 6:                                     //Operation ×
                 //right = Random.Range(1, 13);
-                operatorDecider = (int)Random.Range(2, 4);  // random number generation to decide operator/ Type of problem
+                operatorDecider = (int)Random.Range(0, 5);  // random number generation to decide operator/ Type of problem
                 quation = "";
-
-                switch (operatorDecider
-                ) // based on result of operatorDecider generates either addition or subtraction problem
+                switch (operatorDecider) // based on result of operatorDecider generates either addition or subtraction problem
                 {
+                    case 0:
+                        equationOperator = operators[0];
+                        startingNumber = factorsOf100[(int)Random.Range(0, 8)];
+                        firstNumber = (int)Random.Range(0, startingNumber);
+                        secondNumber = startingNumber + firstNumber;
+                        quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left + right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
+                        break;
+                    case 1:
+                        equationOperator = operators[1];
+                        startingNumber = factorsOf100[(int)Random.Range(0, 8)];
+                        firstNumber = (int)Random.Range(0, startingNumber);
+                        while (startingNumber - firstNumber < 0)
+                        {
+                            firstNumber = (int)Random.Range(0, 10);
+                            Debug.Log("change a number");
+                        }
+                        quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
+
+
+                        right = firstNumber;//Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator;                     //Operation string assignment
+                        result = left - right;                  //Calculating the result of expression	
+
+                        tempAnswers.Add(result);                //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
+                        break;
                     case 2:
                         equationOperator = operators[2];
 
-                        startingNumber = factorsOf900[(int)Random.Range(0, factorsOf900.Length)]; ;
+                        startingNumber = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
                         firstNumber = (int)Random.Range(1, 13);
                         secondNumber = startingNumber * firstNumber;
                         quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
@@ -1212,22 +747,54 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
-
                     case 3:
                         equationOperator = operators[3];
-                        startingNumber = factorsOf1441[(int)Random.Range(0, factorsOf1441.Length)]; ;
-                        firstNumber = factorsOf1442[(int)Random.Range(0, factorsOf1442.Length)];
+                        float wholeNumber;
+                        startingNumber = factorsOf900[(int)Random.Range(0, factorsOf900.Length)];
+                        firstNumber = (int)Random.Range(1, 13);
+                        //float startN;
+                        //float secondN;
+
+                        wholeNumber = (float)startingNumber / (float)firstNumber;
+                        while (wholeNumber % 1 != 0)
+                        {
+                            Debug.Log("not whole number");
+                            firstNumber = (int)Random.Range(1, 13);
+                            wholeNumber = (float)startingNumber / (float)firstNumber;
+                        }
+                        //secondNumber = startingNumber * firstNumber;
+                        //quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
+
+
+                        right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        left = startingNumber;
+                        operationText = equationOperator; //Operation string assignment
+                        result = left / right; //Calculating the result of expression	
+
+                        tempAnswers.Add(result); //Insert correct and three fake answers in answers list
+                        tempAnswers.Add(result + 1);
+                        tempAnswers.Add(result - 1);
+                        tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
+                        break;
+
+                    case 4:
+                        equationOperator = operators[3];
+                        startingNumber = factorsOf1442[(int)Random.Range(0, factorsOf1442.Length)];
+                        firstNumber = factorsOf1441[(int)Random.Range(0, factorsOf1441.Length)];
                         secondNumber = firstNumber / startingNumber;
 
-                        left = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
-                        right = startingNumber;
+                        left = startingNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
+                        right = firstNumber;
                         result = left / right; //Calculating the result of expression
                         operationText = equationOperator; //Operation string assignment                            
                         tempAnswers.Add(result); //Insert correct and three fake answers in answers list
                         tempAnswers.Add(result + 1);
                         tempAnswers.Add(result - 1);
                         tempAnswers.Add(result + 2);
+                        GenerateQuestion(left, right, operationID, operatorDecider);
                         break;
                     default:
                         break;
@@ -1235,69 +802,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 break;
         }
 
-
-
-        //expression.text = left.ToString() +operationTxt+ right.ToString();//Generated expression goes to UI element as text
-        //generate different equation
-        //expression1.text = left1.ToString() + operationTxt + right1.ToString();
-        rightID = Random.Range(0, 4);
-        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
-        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
-        int x = 0;
-        foreach (Text equation in equations)
-        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
-            if (x != rightID)
-            {                           //Skip the element that is already filled with correct answer
-                int rand = Random.Range(0, 4);
-                float answer = 0;
-                string op = equationOperator;
-                float left1 = left + Random.Range(x + 1, x + 2);
-                float right1 = right + Random.Range(x + 1, x + 2);
-                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
-                switch (equationOperator)
-                {
-                    case "+":
-                        answer = left1 + right1;
-                        break;
-                    case "-":
-                        answer = left1 - right1;
-                        break;
-                    case "*":
-                        answer = left1 * right1;
-                        break;
-                    case "/":
-                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
-                        answer = left / right;
-                        break;
-
-                }
-
-                for (int n = 0; n < 4; n++)
-                {
-                    if (answer == tempAnswers[n])
-                    {
-                        Debug.Log("Same!!!!");
-                        left1 = left1 + Random.Range(0, 25);
-                        right1 = right + Random.Range(0, 25);
-                        op = equationOperator;
-                    }
-                }
-                /*
-                if (answer == tempAnswers[0]|| answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
-                {
-                    Debug.Log("Same!!!!");
-                    left1 += left;
-                    right1 += right;
-                }*/
-
-                equation.text = left1.ToString() + op + right1.ToString();
-                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
-                                                               //tempAnswers.RemoveAt(rand);
-            }
-            x++;
-        }
-        //Debug.Log("right place = "+ answerSlots[rightID].name);
-        //answerSlots[rightID]
 
 
         trueID = Random.Range(0, 4);						//Generating trueID (for random position)
@@ -1319,15 +823,1046 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
     }
 
+    public void GenerateQuestion(float left, float right, int operationId, int operatorDecider)
+    {
+        switch (operationId)
+        {
+            case 1:
+                rightID = Random.Range(0, 4);
+                equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                int a0 = 0;
+                foreach (Text equation in equations)
+                {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                    if (a0 != rightID)
+                    {                           //Skip the element that is already filled with correct answer
+                        int rand = Random.Range(0, 4);
+                        float answer = 0;
+                        string op = equationOperator;
+                        //float left1 = left + Random.Range(x + 1, x + 2);
+                        //float right1 = right + Random.Range(x + 1, x + 2);
+                        float left1 = Random.RandomRange(0, 6);
+                        float right1 = Random.RandomRange(0, 6);
+                        //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                        switch (equationOperator)
+                        {
+                            case "+":
+                                answer = left1 + right1;
+                                break;
+                            case "-":
+                                answer = left1 - right1;
+                                break;
+                            case "*":
+                                answer = left1 * right1;
+                                break;
+                            case "/":
+                                //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                answer = left / right;
+                                break;
+
+                        }
+                        while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                        {
+                            left1 = Random.RandomRange(0, 6);
+                            right1 = Random.RandomRange(0, 6);
+                            op = equationOperator;
+                            answer = left1 + right1;
+                            Debug.Log("regenerate");
+                        }
+                        equation.text = left1.ToString() + op + right1.ToString();
+                        equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                       //tempAnswers.RemoveAt(rand);
+                    }
+                    a0++;
+                }
+                break;
+            case 2:
+                switch (operatorDecider)
+                {
+                    case 0:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a1 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a1 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = Random.RandomRange(0, 11);
+                                float right1 = Random.RandomRange(0, 11);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = Random.RandomRange(0, 11);
+                                    right1 = Random.RandomRange(0, 11);
+                                    op = equationOperator;
+                                    answer = left1 + right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a1++;
+                        }
+                        break;
+                    case 1:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a2 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a2 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = Random.RandomRange(0, 21);
+                                float right1 = Random.RandomRange(0, 21);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = Random.RandomRange(0, 21);
+                                    right1 = Random.RandomRange(0, 21);
+                                    op = equationOperator;
+                                    answer = left1 - right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a2++;
+                        }
+                        break;
+                }
+                break;
+            case 3:
+                switch (operatorDecider)
+                {
+                    case 0:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a1 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a1 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 + right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a1++;
+                        }
+                        break;
+                    case 1:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a2 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a2 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 - right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a2++;
+                        }
+                        break;
+                }
+                break;
+            case 4:
+                switch (operatorDecider)
+                {
+                    case 0:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a1 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a1 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 + right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a1++;
+                        }
+                        break;
+                    case 1:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a2 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a2 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 - right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a2++;
+                        }
+                        break;
+                    case 2:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a3 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a3 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                float left1 = Random.RandomRange(0, 10);
+                                float right1 = Random.RandomRange(0, 13);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = Random.RandomRange(0, 10);
+                                    right1 = Random.RandomRange(0, 13);
+                                    op = equationOperator;
+                                    answer = left1 * right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a3++;
+                        }
+                        break;
+                }
+                break;
+            case 5:
+                switch (operatorDecider)
+                {
+                    case 0:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a1 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a1 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 + right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a1++;
+                        }
+                        break;
+                    case 1:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a2 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a2 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 - right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a2++;
+                        }
+                        break;
+                    case 2:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a3 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a3 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                float left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
+                                float right1 = Random.RandomRange(0, 13);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
+                                    right1 = Random.RandomRange(0, 13);
+                                    op = equationOperator;
+                                    answer = left1 * right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a3++;
+                        }
+                        break;
+                    case 3:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a4 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a4 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                float right1 = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)];
+                                float left1 = MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    right1 = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)];
+                                    left1 = MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                    op = equationOperator;
+                                    answer = left1 / right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a4++;
+                        }
+                        break;
+                }
+
+                break;
+            case 6:
+                switch (operatorDecider)
+                {
+                    case 0:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a1 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a1 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 + right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a1++;
+                        }
+                        break;
+                    case 1:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a2 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a2 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                //float left1 = left + Random.Range(x + 1, x + 2);
+                                //float right1 = right + Random.Range(x + 1, x + 2);
+                                float left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                float right1 = Random.RandomRange(0, 10);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, 8)];
+                                    right1 = Random.RandomRange(0, 10);
+                                    op = equationOperator;
+                                    answer = left1 - right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a2++;
+                        }
+                        break;
+                    case 2:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a3 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a3 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                float left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
+                                float right1 = Random.RandomRange(0, 13);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
+                                    right1 = Random.RandomRange(0, 13);
+                                    op = equationOperator;
+                                    answer = left1 * right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a3++;
+                        }
+                        break;
+                    case 3:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a4 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a4 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                float right1 = factorsOf900[(int)Random.Range(0, factorsOf900.Length)];
+                                float left1 = Random.RandomRange(0, 13);
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    right1 = factorsOf900[(int)Random.Range(0, factorsOf900.Length)];
+                                    left1 = Random.RandomRange(0, 13);
+                                    op = equationOperator;
+                                    answer = left1 / right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a4++;
+                        }
+                        break;
+                    case 4:
+                        rightID = Random.Range(0, 4);
+                        equations[rightID].text = left.ToString() + equationOperator + right.ToString();
+                        equations[rightID].fontSize = GetFontSize(equations[trueID].text);
+                        int a5 = 0;
+                        foreach (Text equation in equations)
+                        {               //Here we go through answers list and insert fake answers that are randomly picked from tempAnswers
+                            if (a5 != rightID)
+                            {                           //Skip the element that is already filled with correct answer
+                                int rand = Random.Range(0, 4);
+                                float answer = 0;
+                                string op = equationOperator;
+                                float right1 = factorsOf1442[(int)Random.Range(0, factorsOf1442.Length)];
+                                float left1 = factorsOf1441[(int)Random.Range(0, factorsOf1441.Length)];
+                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+                                switch (equationOperator)
+                                {
+                                    case "+":
+                                        answer = left1 + right1;
+                                        break;
+                                    case "-":
+                                        answer = left1 - right1;
+                                        break;
+                                    case "*":
+                                        answer = left1 * right1;
+                                        break;
+                                    case "/":
+                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
+                                        answer = left / right;
+                                        break;
+
+                                }
+                                while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
+                                {
+                                    right1 = factorsOf1442[(int)Random.Range(0, factorsOf1442.Length)];
+                                    left1 = factorsOf1441[(int)Random.Range(0, factorsOf1441.Length)];
+                                    op = equationOperator;
+                                    answer = left1 / right1;
+                                    Debug.Log("regenerate");
+                                }
+                                equation.text = left1.ToString() + op + right1.ToString();
+                                equation.fontSize = GetFontSize(equation.text);//Setting suitable font
+                                                                               //tempAnswers.RemoveAt(rand);
+                            }
+                            a5++;
+                        }
+                        break;
+                }
+                break;
+        }
+
+
+    }
+    public int GetFontSize(string answer)
+    {               //Function that gets suitable font size for given string length
+        int fontSize;
+        /*
+        switch (answer.Length)
+        {
+            case 1:
+                fontSize = 210;
+                break;
+            case 2:
+                fontSize = 200;
+                break;
+            case 3:
+                fontSize = 140;
+                break;
+            case 4:
+                fontSize = 100;
+                break;
+            default:
+                fontSize = 75;
+                break;
+        }
+        */
+        switch (answer.Length)
+        {
+            case 1:
+                fontSize = 150;
+                break;
+            case 2:
+                fontSize = 100;
+                break;
+            case 3:
+                fontSize = 70;
+                break;
+            case 4:
+                fontSize = 50;
+                break;
+            default:
+                fontSize = 35;
+                break;
+        }
+        return fontSize;
+    }
+
+
+
+    public void HasChanged()
+    {
+        /*
+        answersGoUP.SetBool("NumberMove",true);
+        answersGoUP.SetBool("NumberBack", false);
+        StartCoroutine("WaitAndGo", 0.5f);
+        */
+        //Debug.LogError("!!!!!!!!!!!");
+        //Invoke("TestFunc", 0.3f);
+
+
+        Judge();
+        /*
+        Debug.Log("answer true =" + answers[trueID].text );
+        Debug.Log("put slot "+ answerSlots[rightID].name);
+        List<int> x = new List<int>();
+        int z = 1;
+        string str = string.Empty;
+        foreach (Transform slotTransform in slots)
+        {
+            GameObject item = slotTransform.GetComponent<Slot>().item;
+            if (item)
+            {
+                x.Add(z);
+                
+                str = item.name;
+            }
+            else
+            {
+                x.Add(0);
+            }
+
+            z++;
+        }
+
+        int addup = 0;
+        for (int i = 0; i<x.Count; i++)
+        {
+            //Debug.Log(x[i]);
+            addup += x[i];
+        }
+
+        if (rightID+1 == addup)
+        {
+            //Debug.Log("Slot TRUE!!!!!!");
+            if (trueID + 1 == int.Parse(str))
+            {
+
+               Debug.Log("Correct!!!!!!!!!");
+                gotRight();
+                //Generate();
+            }
+            else
+            {
+                gotWrong();
+            }
+        }
+        else
+        {
+            //Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
+            gotWrong();
+        }
+        //Debug.Log("Item name" + str);
+        */
+    }
+
+    IEnumerator WaitAndGo(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        answersGoUP.SetBool("NumberMove", false);
+        Generate();
+    }
+
+
+    public void Judge()
+    {
+        //Debug.Log("answer true =" + answers[trueID].text);
+        //Debug.Log("put slot " + answerSlots[rightID].name);
+        List<int> x = new List<int>();
+        int z = 1;
+        string str = string.Empty;
+        foreach (Transform slotTransform in slots)
+        {
+            GameObject item = slotTransform.GetComponent<ChutesSlot>().item;
+            if (item)
+            {
+                x.Add(z);
+
+                str = item.name;
+                //wrongNumber = int.Parse(str);
+            }
+            else
+            {
+                x.Add(0);
+            }
+
+            z++;
+        }
+
+        int addup = 0;
+        for (int i = 0; i < x.Count; i++)
+        {
+            //Debug.Log(x[i]);
+            addup += x[i];
+        }
+
+        wrongNumber = addup;
+        if (rightID + 1 == addup)
+        {
+            //Debug.Log("Slot TRUE!!!!!!");
+            if (trueID + 1 == int.Parse(str))
+            {
+
+                Debug.Log("Correct!!!!!!!!!");
+                isRight();
+                //Generate();
+            }
+            else
+            {
+                isWrong();
+            }
+        }
+        else
+        {
+            //Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
+            isWrong();
+        }
+        //Debug.Log("Item name" + str);
+        //answersGoUP.SetBool("NumberBack", true);
+    }
+
 }
-
-
 
 namespace UnityEngine.EventSystems
 {
     public interface IHasChanged : IEventSystemHandler
     {
         void HasChanged();
-    }    
+    }
 
 }
