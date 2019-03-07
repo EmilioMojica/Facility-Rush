@@ -212,7 +212,7 @@ public class assemblyManager : MonoBehaviour
         pipe1UpTime= theGoldenGodAnimator.runtimeAnimatorController.animationClips[5].length;
         pipe2DownTime= theGoldenGodAnimator.runtimeAnimatorController.animationClips[6].length;
         pipe2UpTime = theGoldenGodAnimator.runtimeAnimatorController.animationClips[7].length;
-        print("This is pipe 2 up time: "+ pipe2UpTime);
+       // print("This is pipe 2 up time: "+ pipe2UpTime);
         pipe3DownTime = theGoldenGodAnimator.runtimeAnimatorController.animationClips[8].length;
         pipe3UpTime = theGoldenGodAnimator.runtimeAnimatorController.animationClips[9].length;
 
@@ -287,7 +287,7 @@ public class assemblyManager : MonoBehaviour
         correctToy = sampleToys[indexOfCorrectToy];
         incorrectToy = sampleToys[indexOfIncorrectToy];
         string equation=equationGenerator.GetComponent<generateEquations>().generateEquation(gradelevel);
-        print(equation);
+       // print(equation);
 
         //print(ExpressionEvaluator.Evaluate<int>("4"));
         breakdownEquation(equation);
@@ -299,23 +299,23 @@ public class assemblyManager : MonoBehaviour
         {
             case "+":
                 positionInPipeTwo = 0;
-                print("the position for 2 is: " + positionInPipeTwo);
+               // print("the position for 2 is: " + positionInPipeTwo);
                 break;
             case "-":
                 positionInPipeTwo = 1;
-                print("the position for 2 is: " + positionInPipeTwo);
+               // print("the position for 2 is: " + positionInPipeTwo);
                 break;
             case "*":
                 positionInPipeTwo = 2;
-                print("the position for 2 is: "+ positionInPipeTwo);
+               // print("the position for 2 is: "+ positionInPipeTwo);
                 break;
             case "/":
                 positionInPipeTwo = 3;
-                print("the position for 2 is: " + positionInPipeTwo);
+               // print("the position for 2 is: " + positionInPipeTwo);
                 break;
 
             default:
-                print("Pipe 2 Poisition has not been established");
+               // print("Pipe 2 Poisition has not been established");
                 break;
         }
 
@@ -435,7 +435,7 @@ public class assemblyManager : MonoBehaviour
                 badPipeNumber= firstGenerated;
                 break;
             default:
-                print("nope");
+               // print("nope");
                 break;
         }
         
@@ -456,6 +456,15 @@ public class assemblyManager : MonoBehaviour
         feedbackText.text = "GameOver";
         calculateRestoration();
     }
+    public void checkForNewHighScore()
+    {
+        int currentHighScore = PlayerPrefs.GetInt("assemblyHighScore");
+        if (score > currentHighScore)
+        {
+            PlayerPrefs.SetInt("assemblyHighScore", score);
+            PlayerPrefs.Save();
+        }
+    }
     public void calculateRestoration()
     {
         DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
@@ -463,7 +472,8 @@ public class assemblyManager : MonoBehaviour
         degredationManager.aCorrect = numberCorrect;
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(1);
-        degredationManager.setScoreOfRecentPlayedGame(score);
+        checkForNewHighScore();
+        //degredationManager.setScoreOfRecentPlayedGame(score);
     }
     public void createToy()
     {
@@ -486,7 +496,7 @@ public class assemblyManager : MonoBehaviour
     }
     public int evaluateEquation(string equation)
     {
-        print("This is equation at evaluateEquation: " + equation);
+       // print("This is equation at evaluateEquation: " + equation);
         string numericalValue = "";
         string operatorSign = "";
         int firstOperand = 0;
@@ -505,7 +515,7 @@ public class assemblyManager : MonoBehaviour
             {
                 numericalValue += equation[i];
                 secondOperand = int.Parse(numericalValue);
-                print("This is second operand at evaluateEquation: " + secondOperand);
+               // print("This is second operand at evaluateEquation: " + secondOperand);
                 numericalValue = "";
             }
             else
@@ -566,7 +576,7 @@ public class assemblyManager : MonoBehaviour
             }
             else
             {
-                print("Incorrect");
+               // print("Incorrect");
                 feedbackText.text = "Incorrect";
                 //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0], createdToy));
                 StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));

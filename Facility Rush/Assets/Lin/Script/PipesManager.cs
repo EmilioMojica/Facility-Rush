@@ -414,9 +414,17 @@ public class PipesManager : MonoBehaviour
         degredationManager.aCorrect = numberCorrect;
         degredationManager.pipeCalculate();
         degredationManager.gameHasBeenPlayed(0);
-        degredationManager.setScoreOfRecentPlayedGame(Score);
+        checkForNewHighScore();
+        //degredationManager.setScoreOfRecentPlayedGame(Score);
     }
-
+    public void checkForNewHighScore()
+    {
+        int currentHighScore = PlayerPrefs.GetInt("pipeGyroHighScore");
+        if (Score > currentHighScore)
+        {
+            PlayerPrefs.SetInt("pipeGyroHighScore", Score);
+        }
+    }
     public int evaluateEquation(string equation)
     {
         print("This is equation at evaluateEquation: " + equation);
