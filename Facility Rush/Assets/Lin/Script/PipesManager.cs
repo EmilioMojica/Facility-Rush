@@ -9,6 +9,7 @@ public class PipesManager : MonoBehaviour
 {
     [SerializeField] private bool isAnimating;
     [SerializeField] private Animator pipeGyroAnimator;
+    [SerializeField] private Animator pipeMovementAnimator;
     [SerializeField] private GameObject[] spheresBeingAnimated;
     [SerializeField] private Text problemNumber;
     public Text scoreText;
@@ -63,6 +64,7 @@ public class PipesManager : MonoBehaviour
     private bool checkingAnswer;
 
     private int numberCorrect;
+    private float delayTime;
     public void setAppropriateListForGradeLevelsKthrough5()
     {
         //print("The list has been made");
@@ -147,6 +149,7 @@ public class PipesManager : MonoBehaviour
         //questionSlots[0].GetComponent<GridLayoutGroup>().enabled = false;
         // print("String equivalence test: " + "9+1".Equals("9+1") );
         numberCorrect = 0;
+        delayTime= pipeMovementAnimator.runtimeAnimatorController.animationClips[0].length;
         float animationTime=pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
         print("The length of the animation is: "+ animationTime);
         string clipName = pipeGyroAnimator.runtimeAnimatorController.animationClips[3].name;
@@ -213,6 +216,7 @@ public class PipesManager : MonoBehaviour
             {
                 //checkingAnswer = true;
                 checkEquation();
+                //checkingAnswer = false;
             }
         }
     }
@@ -532,16 +536,149 @@ public class PipesManager : MonoBehaviour
                     }
                     else
                     {
+                        //StartCoroutine(animatePipeFall(i));
                         Score -= 1000;
                         scoreText.text = "" + Score; 
                         restoreList();
-                        //restoreChoices();
-                        checkingAnswer = false;
+                        restoreChoices();
+                        //checkingAnswer = false;
                     }
                 }
             }
         }
         checkingAnswer = false;
+    }
+    IEnumerator animatePipeFall(int indexOfPipeSection)
+    {
+        print("Animation beginning");
+        int indexOfPipeToBeAnimated = 5 + pipeToBeAnimated();
+        print("Value of indexOfPipe: "+ indexOfPipeToBeAnimated);
+        switch(indexOfPipeSection)
+        {
+            case 0:
+                pipeMovementAnimator.SetInteger("pipeAction", 0);
+                switch(indexOfPipeToBeAnimated)
+                {
+                    case 5:
+                        pipeMovementAnimator.SetInteger("pipeAction", 5);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 6:
+                        pipeMovementAnimator.SetInteger("pipeAction", 6);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 7:
+                        pipeMovementAnimator.SetInteger("pipeAction", 7);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 8:
+                        pipeMovementAnimator.SetInteger("pipeAction", 8);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                }
+                break;
+            case 1:
+                pipeMovementAnimator.SetInteger("pipeAction", 1);
+                switch (indexOfPipeToBeAnimated)
+                {
+                    case 5:
+                        pipeMovementAnimator.SetInteger("pipeAction", 5);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 6:
+                        pipeMovementAnimator.SetInteger("pipeAction", 6);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 7:
+                        pipeMovementAnimator.SetInteger("pipeAction", 7);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 8:
+                        pipeMovementAnimator.SetInteger("pipeAction", 8);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                }
+                break;
+            case 2:
+                pipeMovementAnimator.SetInteger("pipeAction", 2);
+                switch (indexOfPipeToBeAnimated)
+                {
+                    case 5:
+                        pipeMovementAnimator.SetInteger("pipeAction", 5);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 6:
+                        pipeMovementAnimator.SetInteger("pipeAction", 6);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 7:
+                        pipeMovementAnimator.SetInteger("pipeAction", 7);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 8:
+                        pipeMovementAnimator.SetInteger("pipeAction", 8);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                }
+                break;
+            case 3:
+                pipeMovementAnimator.SetInteger("pipeAction", 3);
+                switch (indexOfPipeToBeAnimated)
+                {
+                    case 5:
+                        pipeMovementAnimator.SetInteger("pipeAction", 5);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 6:
+                        pipeMovementAnimator.SetInteger("pipeAction", 6);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 7:
+                        pipeMovementAnimator.SetInteger("pipeAction", 7);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                    case 8:
+                        pipeMovementAnimator.SetInteger("pipeAction", 8);
+                        pipeMovementAnimator.SetInteger("pipeAction", -2);
+                        yield return new WaitForSeconds(delayTime);
+                        break;
+                }
+                break;
+            default:
+                print("That's a zoinks from me dog");
+                break;
+        }
+        pipeMovementAnimator.SetInteger("pipeAction", -1);
+        yield return null;
+    }
+    public int pipeToBeAnimated()
+    {
+        int toReturn = -20;
+        for (int i = 0; i < answerSlots.Length; i++)
+        {
+            if (answerSlots[i].transform.childCount == 1)
+            {
+                // answerSlots[i].transform.GetChild(0).parent = questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform;
+                //answerSlots[i].transform.GetChild(0).transform.SetParent(questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform, false);
+                toReturn = int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name);
+            }
+        }
+        return toReturn;
     }
     IEnumerator animateSpheres(int indexOfSphere)
     {
