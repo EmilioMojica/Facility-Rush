@@ -86,7 +86,7 @@ public class kakuroGameManger : MonoBehaviour
         gradeLevel = PlayerPrefs.GetInt("grade");
         feedback.text = "";
         score = 0;
-        scoreText.text = "Score: " + score;
+        scoreText.text = "" + score;
         sumGenerator = boardGenerator.GetComponent<Kakuro>();
         if(gradeLevel==0||gradeLevel==1)
         {
@@ -208,7 +208,7 @@ public class kakuroGameManger : MonoBehaviour
                 setOriginalPositions();
                 score += 100;
                 PlayerPrefs.SetInt("recentKakuroHighScore", score);
-                scoreText.text = "Score: " + score;
+                scoreText.text = "" + score;
                 numberCorrectSoFar++;
                 numberCorrectTotal++;
                 numberOfProblemsAttempted++;
