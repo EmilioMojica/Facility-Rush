@@ -1842,7 +1842,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             {
 
                 Debug.Log("Correct!!!!!!!!!");
-                Invoke("isRight", 0.8f);
+                Invoke("isRight", 0.3f);
                 AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
                 AudioManager.instance.soundAudioSource2.Play();
             }
