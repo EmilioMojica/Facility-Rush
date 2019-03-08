@@ -126,10 +126,14 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     //MoveBack mb = new MoveBack();
     public void isRight()
     {
+        //AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
+        //AudioManager.instance.soundAudioSource2.Play();
+
         switch (rightID)
         {
             case 0:
                 tubeOne.SetBool("Correct1", true);
+                
                 break;
             case 1:
                 tubeTwo.SetBool("Correct2", true);
@@ -1834,23 +1838,30 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         wrongNumber = addup;
         if (rightID + 1 == addup)
         {
-            //Debug.Log("Slot TRUE!!!!!!");
             if (trueID + 1 == int.Parse(str))
             {
 
                 Debug.Log("Correct!!!!!!!!!");
-                isRight();
-                //Generate();
+                Invoke("isRight", 0.8f);
+                AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
+                AudioManager.instance.soundAudioSource2.Play();
             }
             else
             {
-                isWrong();
+                //isWrong();
+
+                Invoke("isWrong", 0.3f);
+                AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
+                AudioManager.instance.soundAudioSource2.Play();
             }
         }
         else
         {
-            //Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
-            isWrong();
+            //isWrong();
+
+            Invoke("isWrong", 0.3f);
+            AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
+            AudioManager.instance.soundAudioSource2.Play();
         }
         //Debug.Log("Item name" + str);
         //answersGoUP.SetBool("NumberBack", true);

@@ -26,23 +26,25 @@ public class ChutesDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         startPosition = transform.position;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[0];
+        //AudioManager.instance.soundAudioSource.PlayOneShot(AudioManager.instance.soundAudioSource.clip);
+        AudioManager.instance.soundAudioSource.Play();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-
         transform.position = Input.mousePosition;
-  
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
         itemBeingDragged = null;
      
         transform.position = startPosition;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[1];
+        AudioManager.instance.soundAudioSource.Play();
     }
 
 
@@ -55,6 +57,5 @@ public class ChutesDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         
     }
 
-  
 }
 

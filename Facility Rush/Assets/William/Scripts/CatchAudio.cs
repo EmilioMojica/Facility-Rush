@@ -19,8 +19,8 @@ public class CatchAudio : MonoBehaviour
     public void ChangeMusic(AudioClip clip)
     {
 
-        AudioManager.instance.audioSource.clip = clip;
-        AudioManager.instance.audioSource.Play();
+        AudioManager.instance.musicAudioSource.clip = clip;
+        AudioManager.instance.musicAudioSource.Play();
         Debug.Log("Uses static way");
     }
 }
