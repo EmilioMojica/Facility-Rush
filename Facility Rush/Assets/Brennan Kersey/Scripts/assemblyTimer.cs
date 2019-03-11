@@ -53,6 +53,5 @@ public class assemblyTimer : MonoBehaviour
         {
             gameTimer += 15f;
         }
-        
     }
 }

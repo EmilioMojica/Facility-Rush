@@ -845,8 +845,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         string op = equationOperator;
                         //float left1 = left + Random.Range(x + 1, x + 2);
                         //float right1 = right + Random.Range(x + 1, x + 2);
-                        float left1 = Random.RandomRange(0, 6);
-                        float right1 = Random.RandomRange(0, 6);
+                        float left1 = Random.Range(0, 6);
+                        float right1 = Random.Range(0, 6);
                         //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                         switch (equationOperator)
                         {
@@ -867,8 +867,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         }
                         while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                         {
-                            left1 = Random.RandomRange(0, 6);
-                            right1 = Random.RandomRange(0, 6);
+                            left1 = Random.Range(0, 6);
+                            right1 = Random.Range(0, 6);
                             op = equationOperator;
                             answer = left1 + right1;
                             Debug.Log("regenerate");
@@ -897,8 +897,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 string op = equationOperator;
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
-                                float left1 = Random.RandomRange(0, 11);
-                                float right1 = Random.RandomRange(0, 11);
+                                float left1 = Random.Range(0, 11);
+                                float right1 = Random.Range(0, 11);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -919,8 +919,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 }
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
-                                    left1 = Random.RandomRange(0, 11);
-                                    right1 = Random.RandomRange(0, 11);
+                                    left1 = Random.Range(0, 11);
+                                    right1 = Random.Range(0, 11);
                                     op = equationOperator;
                                     answer = left1 + right1;
                                     Debug.Log("regenerate");
@@ -946,8 +946,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 string op = equationOperator;
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
-                                float left1 = Random.RandomRange(0, 21);
-                                float right1 = Random.RandomRange(0, 21);
+                                float left1 = Random.Range(0, 21);
+                                float right1 = Random.Range(0, 21);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -968,8 +968,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 }
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
-                                    left1 = Random.RandomRange(0, 21);
-                                    right1 = Random.RandomRange(0, 21);
+                                    left1 = Random.Range(0, 21);
+                                    right1 = Random.Range(0, 21);
                                     op = equationOperator;
                                     answer = left1 - right1;
                                     Debug.Log("regenerate");
@@ -1001,7 +1001,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1023,7 +1023,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 + right1;
                                     Debug.Log("regenerate");
@@ -1050,7 +1050,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1072,7 +1072,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 - right1;
                                     Debug.Log("regenerate");
@@ -1104,7 +1104,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1126,7 +1126,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 + right1;
                                     Debug.Log("regenerate");
@@ -1153,7 +1153,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1175,7 +1175,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 - right1;
                                     Debug.Log("regenerate");
@@ -1199,8 +1199,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                float left1 = Random.RandomRange(0, 10);
-                                float right1 = Random.RandomRange(0, 13);
+                                float left1 = Random.Range(0, 10);
+                                float right1 = Random.Range(0, 13);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1221,8 +1221,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 }
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
-                                    left1 = Random.RandomRange(0, 10);
-                                    right1 = Random.RandomRange(0, 13);
+                                    left1 = Random.Range(0, 10);
+                                    right1 = Random.Range(0, 13);
                                     op = equationOperator;
                                     answer = left1 * right1;
                                     Debug.Log("regenerate");
@@ -1254,7 +1254,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1276,7 +1276,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 + right1;
                                     Debug.Log("regenerate");
@@ -1303,7 +1303,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1325,7 +1325,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 - right1;
                                     Debug.Log("regenerate");
@@ -1350,7 +1350,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 float answer = 0;
                                 string op = equationOperator;
                                 float left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
-                                float right1 = Random.RandomRange(0, 13);
+                                float right1 = Random.Range(0, 13);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1372,7 +1372,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
-                                    right1 = Random.RandomRange(0, 13);
+                                    right1 = Random.Range(0, 13);
                                     op = equationOperator;
                                     answer = left1 * right1;
                                     Debug.Log("regenerate");
@@ -1452,7 +1452,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1474,7 +1474,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 + right1;
                                     Debug.Log("regenerate");
@@ -1501,7 +1501,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 //float left1 = left + Random.Range(x + 1, x + 2);
                                 //float right1 = right + Random.Range(x + 1, x + 2);
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                float right1 = Random.RandomRange(0, 10);
+                                float right1 = Random.Range(0, 10);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1523,7 +1523,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, 8)];
-                                    right1 = Random.RandomRange(0, 10);
+                                    right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 - right1;
                                     Debug.Log("regenerate");
@@ -1548,7 +1548,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 float answer = 0;
                                 string op = equationOperator;
                                 float left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
-                                float right1 = Random.RandomRange(0, 13);
+                                float right1 = Random.Range(0, 13);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1570,7 +1570,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
-                                    right1 = Random.RandomRange(0, 13);
+                                    right1 = Random.Range(0, 13);
                                     op = equationOperator;
                                     answer = left1 * right1;
                                     Debug.Log("regenerate");
@@ -1595,7 +1595,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 float answer = 0;
                                 string op = equationOperator;
                                 float right1 = factorsOf900[(int)Random.Range(0, factorsOf900.Length)];
-                                float left1 = Random.RandomRange(0, 13);
+                                float left1 = Random.Range(0, 13);
                                 //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
                                 switch (equationOperator)
                                 {
@@ -1617,7 +1617,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 while (answer == tempAnswers[0] || answer == tempAnswers[1] || answer == tempAnswers[2] || answer == tempAnswers[3])
                                 {
                                     right1 = factorsOf900[(int)Random.Range(0, factorsOf900.Length)];
-                                    left1 = Random.RandomRange(0, 13);
+                                    left1 = Random.Range(0, 13);
                                     op = equationOperator;
                                     answer = left1 / right1;
                                     Debug.Log("regenerate");
@@ -1683,7 +1683,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
     }
     public int GetFontSize(string answer)
-    {               //Function that gets suitable font size for given string length
+    {   //Function that gets suitable font size for given string length
         int fontSize;
         /*
         switch (answer.Length)
@@ -1805,8 +1805,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
     public void Judge()
     {
-        //Debug.Log("answer true =" + answers[trueID].text);
-        //Debug.Log("put slot " + answerSlots[rightID].name);
         List<int> x = new List<int>();
         int z = 1;
         string str = string.Empty;
@@ -1831,7 +1829,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         int addup = 0;
         for (int i = 0; i < x.Count; i++)
         {
-            //Debug.Log(x[i]);
             addup += x[i];
         }
 
@@ -1840,9 +1837,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         {
             if (trueID + 1 == int.Parse(str))
             {
-
-                Debug.Log("Correct!!!!!!!!!");
-                Invoke("isRight", 0.3f);
+                Invoke("isRight", 0.4f);
                 AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
                 AudioManager.instance.soundAudioSource2.Play();
             }
@@ -1850,7 +1845,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             {
                 //isWrong();
 
-                Invoke("isWrong", 0.3f);
+                Invoke("isWrong", 0.4f);
                 AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
                 AudioManager.instance.soundAudioSource2.Play();
             }
@@ -1863,10 +1858,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
             AudioManager.instance.soundAudioSource2.Play();
         }
-        //Debug.Log("Item name" + str);
-        //answersGoUP.SetBool("NumberBack", true);
     }
-
 }
 
 namespace UnityEngine.EventSystems
@@ -1875,5 +1867,4 @@ namespace UnityEngine.EventSystems
     {
         void HasChanged();
     }
-
 }

@@ -27,7 +27,6 @@ public class ChutesDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         GetComponent<CanvasGroup>().blocksRaycasts = false;
 
         AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[0];
-        //AudioManager.instance.soundAudioSource.PlayOneShot(AudioManager.instance.soundAudioSource.clip);
         AudioManager.instance.soundAudioSource.Play();
     }
 
@@ -50,12 +49,9 @@ public class ChutesDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void MoveBack()
     {
-      
         transform.SetParent(startParent);
         transform.position = positionone;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-        
     }
-
 }
 
