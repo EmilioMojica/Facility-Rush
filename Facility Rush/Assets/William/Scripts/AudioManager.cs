@@ -11,9 +11,14 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicAudioSource;  //負責處理music的audioSource
     public AudioSource soundAudioSource;  //負責處理SF的audioSource
     public AudioSource soundAudioSource2; //負責處理其他SF的audioSource
+    public AudioSource soundAudioSource3; //負責處理其他SF的audioSource
 
     public AudioClip[] musicClip;
     public AudioClip[] soundClip;
+
+    [Range (5, 10)]
+    public float steamNoise;
+    public float time;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +38,19 @@ public class AudioManager : MonoBehaviour
         soundAudioSource = audioArray[1]; //從這個陣列取得第二個audioSource
         soundAudioSource2 = audioArray[2];
 
+        //new
+        soundAudioSource3 = audioArray[3];
+
         musicAudioSource.clip = musicClip[0];
         musicAudioSource.Play();
 
         soundAudioSource.clip = soundClip[0]; //box pick up SFX
 
         soundAudioSource2.clip = soundClip[2]; //box slide SFX
+
+        //new
+        soundAudioSource3.clip = soundClip[6]; //box slide SFX
+        steamNoise = 5f;
 
 
         DontDestroyOnLoad(gameObject);
@@ -47,7 +59,14 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
+        if (time > steamNoise)
+        {
+            soundAudioSource3.Play();
+            Debug.Log("steamNoise is now: " + steamNoise);
+            time = 0;
+            steamNoise = Random.Range(5, 10);
+        }
     }
 
 }

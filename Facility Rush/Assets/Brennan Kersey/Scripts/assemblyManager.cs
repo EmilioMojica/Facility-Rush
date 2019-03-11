@@ -110,6 +110,9 @@ public class assemblyManager : MonoBehaviour
         theTimer.setIsAnimating(true);
         theGoldenGodAnimator.SetInteger("nextTransition",0);
         yield return new WaitForSeconds(pipe1DownTime);
+        //new
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[3];
+        AudioManager.instance.soundAudioSource.Play();
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
         Transform spotOnBelt = toyHolder.transform;
         theToy.transform.parent = toyHolder.transform;
@@ -123,10 +126,16 @@ public class assemblyManager : MonoBehaviour
         toyPartsForAnimator[2].SetActive(false);
         theGoldenGodAnimator.SetInteger("nextTransition", 1);
         yield return new WaitForSeconds(pipe1UpTime);
+        //new
+        AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[5];
+        AudioManager.instance.soundAudioSource2.Play();
         theGoldenGodAnimator.SetInteger("nextTransition", 2);
         yield return new WaitForSeconds(toyConveyerBeltTransition1);
         theGoldenGodAnimator.SetInteger("nextTransition",3);
         yield return new WaitForSeconds(pipe2DownTime);
+        //new
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[4];
+        AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[1].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 4);
         yield return new WaitForSeconds(pipe2UpTime);
@@ -134,6 +143,9 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(toyConveyerBeltTransition2);
         theGoldenGodAnimator.SetInteger("nextTransition",6);
         yield return new WaitForSeconds(pipe3DownTime);
+        //new
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[3];
+        AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[2].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 7);
         yield return new WaitForSeconds(pipe3UpTime);
@@ -144,6 +156,7 @@ public class assemblyManager : MonoBehaviour
         theGoldenGodAnimator.SetInteger("nextTransition", 9);
         yield return new WaitForSeconds(toyConveyerBeltResetPosition);
         theGoldenGodAnimator.SetInteger("nextTransition",-1);
+        AudioManager.instance.soundAudioSource2.Stop();
         //
         deleteToyParts();
         theTimer.setIsAnimating(false);
