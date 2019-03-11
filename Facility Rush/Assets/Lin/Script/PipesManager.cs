@@ -355,7 +355,38 @@ public class PipesManager : MonoBehaviour
         equationsToCheckForSimilarities.Clear();
         equationsAnswersToCheckForSimilarities.Clear();
         removePotentialCorrectAnswers();
-        generateCorrectSphereAnswers(indexOfCorrectAnswerPlacement);//indexofCorrectSphereAnswer);
+        generateCorrectSphereAnswers(indexOfCorrectAnswerPlacement);
+        //indexofCorrectSphereAnswer);
+        fixVerticalText(equationsOnTheGameBoard[2].text, 2);
+        fixVerticalText(equationsOnTheGameBoard[3].text, 3);
+
+    }
+    public void fixVerticalText(string equationToBreakdown,int indexOfEquation)
+    {
+        string numberOnLeftSideOfOperator = "";
+        string operatorOfEquation = "";
+        string numberOnRightSideOfOperator = "";
+        string stringSoFar = "";
+        for (int i = 0; i < equationToBreakdown.Length; i++)
+        {
+            if (equationToBreakdown[i].Equals('+') || equationToBreakdown[i].Equals('-') || equationToBreakdown[i].Equals('*') || equationToBreakdown[i].Equals('/'))
+            {
+                numberOnLeftSideOfOperator = stringSoFar;
+                operatorOfEquation=equationToBreakdown[i]+"";
+                stringSoFar = "";
+            }
+            else if (i == (equationToBreakdown.Length - 1))
+            {
+                stringSoFar += equationToBreakdown[i];
+                numberOnRightSideOfOperator = stringSoFar;
+            }
+            else
+            {
+                stringSoFar += equationToBreakdown[i];
+            }
+
+            equationsOnTheGameBoard[indexOfEquation].text = numberOnLeftSideOfOperator + "\n" + operatorOfEquation + "\n" + numberOnRightSideOfOperator;
+        }
     }
     public void printList()
     {
@@ -716,7 +747,13 @@ public class PipesManager : MonoBehaviour
             if (answerSlots[i].transform.childCount == 1)
             {
                 // answerSlots[i].transform.GetChild(0).parent = questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform;
+                if (i == 2 || i == 3)
+                {
+                    print("This is the object being reset: " + answerSlots[i].transform.GetChild(0).gameObject);
+                    answerSlots[i].transform.GetChild(0).transform.localScale = new Vector3(1f, 1f, 1f);
+                }
                 answerSlots[i].transform.GetChild(0).transform.SetParent(questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform, false);
+                
             }
         }
     }
