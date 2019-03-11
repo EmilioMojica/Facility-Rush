@@ -111,13 +111,15 @@ public class assemblyManager : MonoBehaviour
         theGoldenGodAnimator.SetInteger("nextTransition",0);
         yield return new WaitForSeconds(pipe1DownTime);
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
+        Transform spotOnBelt = toyHolder.transform;
         theToy.transform.parent = toyHolder.transform;
+        theToy.transform.position = spotOnBelt.transform.position;
         //toyAnimator = theToy.GetComponent<Animator>();
-        toyPartsForAnimator[0] = theToy.transform.GetChild(0).gameObject;
+        toyPartsForAnimator[0] = theToy.transform.GetChild(0).transform.GetChild(0).gameObject;
         toyPartsForAnimator[0].SetActive(true);
-        toyPartsForAnimator[1] = theToy.transform.GetChild(1).gameObject;
+        toyPartsForAnimator[1] = theToy.transform.GetChild(0).transform.GetChild(1).gameObject;
         toyPartsForAnimator[1].SetActive(false);
-        toyPartsForAnimator[2] = theToy.transform.GetChild(2).gameObject;
+        toyPartsForAnimator[2] = theToy.transform.GetChild(0).transform.GetChild(2).gameObject;
         toyPartsForAnimator[2].SetActive(false);
         theGoldenGodAnimator.SetInteger("nextTransition", 1);
         yield return new WaitForSeconds(pipe1UpTime);
@@ -206,6 +208,10 @@ public class assemblyManager : MonoBehaviour
     }
     void Start ()
     {
+       // GameObject trial=Instantiate(sampleToys[0], createdToy.transform.position, createdToy.transform.rotation);
+       // GameObject changedPart = trial.transform.GetChild(1).gameObject;
+        //changedPart = sampleToys[1].transform.GetChild(1).gameObject;
+        //trial.transform.parent = createdToy.transform;
         toyPartsInPipeOne = new GameObject[2];
         toyPartsInPipeThree = new GameObject[2];
         toyPartsInPipeTwo = new GameObject[4];
@@ -478,22 +484,30 @@ public class assemblyManager : MonoBehaviour
     }
     public void createToy()
     {
+        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
         GameObject createdBottom=Instantiate(bottom, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
-        createdBottom.transform.parent = createdToy.transform;
+        createdBottom.transform.parent = createdToy.transform.GetChild(0).transform;
+        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+        createdBottom.transform.position = correctToy.transform.GetChild(0).transform.position;
         GameObject createdMiddle=Instantiate(middle, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
-        createdMiddle.transform.parent = createdToy.transform;
+        createdMiddle.transform.parent = createdToy.transform.GetChild(0).transform;
+        createdMiddle.transform.position= correctToy.transform.GetChild(1).transform.position;
+        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
         GameObject createdTop=Instantiate(top, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
-        createdTop.transform.parent = createdToy.transform;
-        createdToy.transform.GetChild(5).SetAsFirstSibling();
-        createdToy.transform.GetChild(5).SetAsFirstSibling();
-        createdToy.transform.GetChild(5).SetAsFirstSibling();
+        createdTop.transform.parent = createdToy.transform.GetChild(0).transform;
+        createdTop.transform.position= correctToy.transform.GetChild(2).transform.position;
+        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+       // createdToy.transform.GetChild(5).SetAsFirstSibling();
+        //createdToy.transform.GetChild(5).SetAsFirstSibling();
+       // createdToy.transform.GetChild(5).SetAsFirstSibling();
 
     }
     public void deleteToyParts()
     {
-        Destroy(createdToy.transform.GetChild(0).gameObject);
-        Destroy(createdToy.transform.GetChild(1).gameObject);
-        Destroy(createdToy.transform.GetChild(2).gameObject);
+        Destroy(createdToy.transform.GetChild(0).transform.GetChild(0).gameObject);
+        Destroy(createdToy.transform.GetChild(0).transform.GetChild(1).gameObject);
+        Destroy(createdToy.transform.GetChild(0).transform.GetChild(2).gameObject);
     }
     public int evaluateEquation(string equation)
     {

@@ -10105,8 +10105,8 @@ MonoBehaviour:
   UILayoutThreeByThree: {fileID: 1798462456}
   UILayoutTwoByTwo: {fileID: 323572412}
   timer: {fileID: 776396061}
-  gameTimer: 60
-  maxTime: 60
+  gameTimer: 180
+  maxTime: 180
   gameTimerText: {fileID: 514658662}
   degradationBuddy: {fileID: 765657755}
 --- !u!4 &1799809514
