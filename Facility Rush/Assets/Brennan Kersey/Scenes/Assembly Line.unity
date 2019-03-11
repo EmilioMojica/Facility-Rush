@@ -2530,7 +2530,13 @@ MonoBehaviour:
   toyPartChoices: []
   sampleToys:
   - {fileID: 1061635149650734546, guid: 3c9c245dacb041649b467fda717ad0d0, type: 3}
+  - {fileID: 1825276877378918443, guid: 4d4c0ba70a05c434290256e89429c034, type: 3}
+  - {fileID: 3623451168654598154, guid: 521e655ca4ff16d4a9b5aedb2cf25623, type: 3}
   - {fileID: 1867254754104879608, guid: 36417cf41a674574f9c05c89398fe7b1, type: 3}
+  - {fileID: 3391818596355828010, guid: 23af8e2490bafbe4c8508fd4d3e81118, type: 3}
+  - {fileID: 126450967236946642, guid: ec98921a38bc6f84d9cca115a18cd340, type: 3}
+  - {fileID: 12762923007207927, guid: a9eb88bf31949454f84c1c807a08c2d8, type: 3}
+  - {fileID: 2761475554064391418, guid: fc8540c451ca4d048a6afe0256a16308, type: 3}
   pipeAnimators:
   - {fileID: 0}
   - {fileID: 0}
