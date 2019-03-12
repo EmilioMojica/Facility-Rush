@@ -49,7 +49,7 @@ public class scoreManager : MonoBehaviour
         }
         else
         {
-            assemblyScore = PlayerPrefs.GetInt("assemblyHighScore");
+            assemblyScore = PlayerPrefs.GetInt("assemblyHighScore"); // what reads the score from the file
             print("this is assembly line's current highscore"+ assemblyScore);
             kakuroScore = PlayerPrefs.GetInt("kakuroHighScore");
             print("this is kartkuro line's current highscore" + kakuroScore);

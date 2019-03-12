@@ -137,7 +137,7 @@ public class PipesManager : MonoBehaviour
                     items += (number+", ");
                 }
                 FifthGradeAnswerList.Sort();
-                print("List: " + items);
+                //print("List: " + items);
                 ListModifiedDuringLevel = FifthGradeAnswerList;
                 break;
                 
@@ -151,9 +151,9 @@ public class PipesManager : MonoBehaviour
         numberCorrect = 0;
         delayTime= pipeMovementAnimator.runtimeAnimatorController.animationClips[0].length;
         float animationTime=pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
-        print("The length of the animation is: "+ animationTime);
+       // print("The length of the animation is: "+ animationTime);
         string clipName = pipeGyroAnimator.runtimeAnimatorController.animationClips[3].name;
-        print("The name of the animation is: " + clipName);
+       // print("The name of the animation is: " + clipName);
         isAnimating = false;
         checkingAnswer = false;
         print((int)1.95f);
@@ -341,13 +341,13 @@ public class PipesManager : MonoBehaviour
 
         }
 
-        print("This is index after the while loop: " + index);
+        //print("This is index after the while loop: " + index);
         index = 0;
         for(int i=0;i<4;i++)
         {
             if(i!= indexOfCorrectAnswerPlacement)//indexofCorrectEquationPlacement)
             {
-                print("This is index at i " + ":"  + index);
+                //print("This is index at i " + ":"  + index);
                 equationsOnTheGameBoard[i].text = equationsToCheckForSimilarities[index];
                 index++;
             }
@@ -393,7 +393,7 @@ public class PipesManager : MonoBehaviour
         int itemNumber = 0;
         foreach( string equation in equationsToCheckForSimilarities)
         {
-            print("The equation at " + itemNumber + "in equationsToCheckForSimilarities is " + equation);
+           // print("The equation at " + itemNumber + "in equationsToCheckForSimilarities is " + equation);
             itemNumber++;
         }
     }
@@ -422,7 +422,7 @@ public class PipesManager : MonoBehaviour
             items += (number + ", ");
         }
         FifthGradeAnswerList.Sort();
-        print("List: " + items);
+        //print("List: " + items);
     }
 
     public void removePotentialCorrectAnswers()
@@ -479,7 +479,7 @@ public class PipesManager : MonoBehaviour
     }
     public int evaluateEquation(string equation)
     {
-        print("This is equation at evaluateEquation: " + equation);
+       // print("This is equation at evaluateEquation: " + equation);
         string numericalValue = "";
         string operatorSign = "";
         int firstOperand=0;
@@ -498,7 +498,7 @@ public class PipesManager : MonoBehaviour
             {
                 numericalValue += equation[i];
                 secondOperand = int.Parse(numericalValue);
-                print("This is second operand at evaluateEquation: " + secondOperand);
+               // print("This is second operand at evaluateEquation: " + secondOperand);
                 numericalValue = "";
             }
             else
@@ -550,7 +550,7 @@ public class PipesManager : MonoBehaviour
                 if (answerSlots[i].transform.childCount > 0)
                 {
                     locationOfWhatToReturn = i;
-                    print("this is this object: " + answerSlots[i].transform.GetChild(0).GetChild(0).gameObject.name);
+                    //print("this is this object: " + answerSlots[i].transform.GetChild(0).GetChild(0).gameObject.name);
                     check = evaluateEquation(answerSlots[i].transform.GetChild(0).GetChild(0).GetComponent<Text>().text);
                     //ExpressionEvaluator.Evaluate<int>(spheres[i].transform.GetChild(0).GetComponent<Text>().text, out number);
                     number = int.Parse(spheres[i].text);
@@ -567,11 +567,12 @@ public class PipesManager : MonoBehaviour
                     }
                     else
                     {
-                        //StartCoroutine(animatePipeFall(i));
+                        currentProblem++;
+                        StartCoroutine(animateSphereWiggles(i));
                         Score -= 1000;
                         scoreText.text = "" + Score; 
                         restoreList();
-                        restoreChoices();
+                        //restoreChoices();
                         //checkingAnswer = false;
                     }
                 }
@@ -579,137 +580,27 @@ public class PipesManager : MonoBehaviour
         }
         checkingAnswer = false;
     }
-    IEnumerator animatePipeFall(int indexOfPipeSection)
+    
+    IEnumerator animateSphereWiggles(int indexOfSphereToAnimate)
     {
-        print("Animation beginning");
-        int indexOfPipeToBeAnimated = 5 + pipeToBeAnimated();
-        print("Value of indexOfPipe: "+ indexOfPipeToBeAnimated);
-        switch(indexOfPipeSection)
+        isAnimating = true;
+        print("This is index of sphere wriggle: "+ (indexOfSphereToAnimate + 4));
+        float animationTime = pipeGyroAnimator.runtimeAnimatorController.animationClips[8].length;
+        pipeGyroAnimator.SetInteger("indexBeingActedOn",indexOfSphereToAnimate+4);
+        yield return new WaitForSeconds(animationTime);
+        pipeGyroAnimator.SetInteger("indexBeingActedOn", -1);
+        restoreChoices();
+        if (currentProblem == 10)
         {
-            case 0:
-                pipeMovementAnimator.SetInteger("pipeAction", 0);
-                switch(indexOfPipeToBeAnimated)
-                {
-                    case 5:
-                        pipeMovementAnimator.SetInteger("pipeAction", 5);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 6:
-                        pipeMovementAnimator.SetInteger("pipeAction", 6);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 7:
-                        pipeMovementAnimator.SetInteger("pipeAction", 7);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 8:
-                        pipeMovementAnimator.SetInteger("pipeAction", 8);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                }
-                break;
-            case 1:
-                pipeMovementAnimator.SetInteger("pipeAction", 1);
-                switch (indexOfPipeToBeAnimated)
-                {
-                    case 5:
-                        pipeMovementAnimator.SetInteger("pipeAction", 5);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 6:
-                        pipeMovementAnimator.SetInteger("pipeAction", 6);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 7:
-                        pipeMovementAnimator.SetInteger("pipeAction", 7);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 8:
-                        pipeMovementAnimator.SetInteger("pipeAction", 8);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                }
-                break;
-            case 2:
-                pipeMovementAnimator.SetInteger("pipeAction", 2);
-                switch (indexOfPipeToBeAnimated)
-                {
-                    case 5:
-                        pipeMovementAnimator.SetInteger("pipeAction", 5);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 6:
-                        pipeMovementAnimator.SetInteger("pipeAction", 6);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 7:
-                        pipeMovementAnimator.SetInteger("pipeAction", 7);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 8:
-                        pipeMovementAnimator.SetInteger("pipeAction", 8);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                }
-                break;
-            case 3:
-                pipeMovementAnimator.SetInteger("pipeAction", 3);
-                switch (indexOfPipeToBeAnimated)
-                {
-                    case 5:
-                        pipeMovementAnimator.SetInteger("pipeAction", 5);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 6:
-                        pipeMovementAnimator.SetInteger("pipeAction", 6);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 7:
-                        pipeMovementAnimator.SetInteger("pipeAction", 7);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                    case 8:
-                        pipeMovementAnimator.SetInteger("pipeAction", 8);
-                        pipeMovementAnimator.SetInteger("pipeAction", -2);
-                        yield return new WaitForSeconds(delayTime);
-                        break;
-                }
-                break;
-            default:
-                print("That's a zoinks from me dog");
-                break;
+            initiateGameOver();
         }
-        pipeMovementAnimator.SetInteger("pipeAction", -1);
+        else
+        {
+            generateProblemOnBoard();
+        }
+        isAnimating = false;
+        checkingAnswer = false;
         yield return null;
-    }
-    public int pipeToBeAnimated()
-    {
-        int toReturn = -20;
-        for (int i = 0; i < answerSlots.Length; i++)
-        {
-            if (answerSlots[i].transform.childCount == 1)
-            {
-                // answerSlots[i].transform.GetChild(0).parent = questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform;
-                //answerSlots[i].transform.GetChild(0).transform.SetParent(questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform, false);
-                toReturn = int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name);
-            }
-        }
-        return toReturn;
     }
     IEnumerator animateSpheres(int indexOfSphere)
     {
@@ -749,7 +640,7 @@ public class PipesManager : MonoBehaviour
                 // answerSlots[i].transform.GetChild(0).parent = questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform;
                 if (i == 2 || i == 3)
                 {
-                    print("This is the object being reset: " + answerSlots[i].transform.GetChild(0).gameObject);
+                   // print("This is the object being reset: " + answerSlots[i].transform.GetChild(0).gameObject);
                     answerSlots[i].transform.GetChild(0).transform.localScale = new Vector3(1f, 1f, 1f);
                 }
                 answerSlots[i].transform.GetChild(0).transform.SetParent(questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform, false);
