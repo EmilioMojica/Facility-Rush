@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] musicClip;
     public AudioClip[] soundClip;
 
-    [Range (5, 10)]
+    [Range (60, 180)]
     public float steamNoise;
     public float time;
 
@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
 
         //new
         soundAudioSource3.clip = soundClip[6]; //box slide SFX
-        steamNoise = 5f;
+        steamNoise = 60f;
 
 
         DontDestroyOnLoad(gameObject);
@@ -65,7 +65,7 @@ public class AudioManager : MonoBehaviour
             soundAudioSource3.Play();
             Debug.Log("steamNoise is now: " + steamNoise);
             time = 0;
-            steamNoise = Random.Range(5, 10);
+            steamNoise = Random.Range(60, 180);
         }
     }
 

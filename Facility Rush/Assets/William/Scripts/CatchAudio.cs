@@ -7,9 +7,22 @@ using UnityEngine;
    this function just put this script on that gameObject and hold it in OnClick()  */
 public class CatchAudio : MonoBehaviour
 {
-    public void ChangeMusic(AudioClip clip)
+    public void ChangeMusic(AudioClip MusiceClip)
     {
-        AudioManager.instance.musicAudioSource.clip = clip;
+        AudioManager.instance.musicAudioSource.clip = MusiceClip;
         AudioManager.instance.musicAudioSource.Play();
+    }
+
+    public void ActivateHumNoise(AudioClip SFXclip)
+    {
+        AudioManager.instance.soundAudioSource2.clip = SFXclip;
+        AudioManager.instance.soundAudioSource2.loop = true;
+        AudioManager.instance.soundAudioSource2.Play();
+    }
+
+    public void StopHumNoise(AudioClip SFXclip)
+    {
+        AudioManager.instance.soundAudioSource2.loop = false;
+        AudioManager.instance.soundAudioSource2.Stop();
     }
 }
