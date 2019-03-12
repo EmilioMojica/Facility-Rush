@@ -456,6 +456,7 @@ public class PipesManager : MonoBehaviour
     public void initiateGameOver()
     {
         gameOver = true;
+        gameTimerText.text = "00:00";
         calculateRestoration();
     }
 
