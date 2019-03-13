@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 /*
  * Scripts Goals: Generation of correct board based on level selection, perform end of level when game is finished, keep track of player score, and pass data back to general manager
+   Authors: Brennan Kersey
  */
 
 public class kakuroGameManger : MonoBehaviour
@@ -24,18 +25,18 @@ public class kakuroGameManger : MonoBehaviour
     public GameObject[] firstRowTwoByTwo;     // array for checking first row sum for 2x2
     public GameObject[] secondRowTwoByTwo;    // array for checking second row sum for 2x2
 
-    private int currentSum1;
-    private int currentSum2;
+    private int currentSum1;                // variable that represents the player's current sum of the numbers of the first row in the game
+    private int currentSum2;                // variable that represent the player's current sum of the numbers of the second row in the game
 
-    private int sumOneAnswer;
-    private int sumTwoAnswer;
+    private int sumOneAnswer;               // a variable representing the summed answer that the player must achieve for the first row
+    private int sumTwoAnswer;               // a variable representing the summed answer that the player must achieve for the second row
 
-    private Kakuro sumGenerator;
-    public Text feedback;
+    private Kakuro sumGenerator;            // a variable representing the sum generator for creating the sums for the game board
+    public Text feedback;                   // a text box representing feedback for the player(Correct or Incorrect)
 
-    public RectTransform [] numberSlots;
+    public RectTransform [] numberSlots;    // An array of transforms that represents the 3x3 slots with the numbers that the players will drag
 
-    public RectTransform[] answerPanels;
+    public RectTransform[] answerPanels;    // An array of transforms that represents the 3x3 panels that the player that the player will drag the answers into 
 
     public RectTransform[] numberSlotsTwoByTwo;
     public RectTransform[] answerPanelsTwoByTwo;

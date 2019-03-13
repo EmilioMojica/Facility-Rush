@@ -65,7 +65,9 @@ public class PipesManager : MonoBehaviour
 
     private int numberCorrect;
     private float delayTime;
-    public void setAppropriateListForGradeLevelsKthrough5()
+
+    private int[] whichGradeLevelIsThisProblem;
+    public void setAppropriateListForGradeLevelsKthrough5(int gradeForSettingList)
     {
         //print("The list has been made");
         switch(gradelevel)
@@ -146,6 +148,8 @@ public class PipesManager : MonoBehaviour
 
     void Start()
     {
+        gameTimer = 180f;
+        whichGradeLevelIsThisProblem = new int[10];
         //questionSlots[0].GetComponent<GridLayoutGroup>().enabled = false;
         // print("String equivalence test: " + "9+1".Equals("9+1") );
         numberCorrect = 0;
@@ -158,7 +162,7 @@ public class PipesManager : MonoBehaviour
         checkingAnswer = false;
         print((int)1.95f);
         gradelevel = PlayerPrefs.GetInt("grade");
-        setAppropriateListForGradeLevelsKthrough5();
+        //setAppropriateListForGradeLevelsKthrough5();
         
         scoreText.text = "10000";
         currentProblem = 0;
@@ -225,13 +229,120 @@ public class PipesManager : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            string equation = equationGeneration.GetComponent<generateEquations>().generateEquation(gradelevel);
+            int gradeProblemBasedOnProbability = calculateChanceOfGradeProblem();
+            whichGradeLevelIsThisProblem[i] = gradeProblemBasedOnProbability;
+            //string equation = equationGeneration.GetComponent<generateEquations>().generateEquation(gradelevel);
+            string equation = equationGeneration.GetComponent<generateEquations>().generateEquation(gradeProblemBasedOnProbability);
             equationBreakdown(equation,i);
         }
 
     }
 
-    
+    public int calculateChanceOfGradeProblem()
+    {
+        int gradeNumberToReturn = -5;
+        int decidingVariable = Random.Range(1, 11);
+        switch (gradelevel)
+        {
+            case 0:
+
+                gradeNumberToReturn = 0;
+                break;
+
+            case 1:
+                if (decidingVariable <= 3)
+                {
+                    gradeNumberToReturn = 0;
+                }
+                else
+                {
+                    gradeNumberToReturn = 1;
+                }
+                break;
+            case 2:
+                if (decidingVariable < 3)
+                {
+                    gradeNumberToReturn = 0;
+                }
+                else if (decidingVariable >= 3 && decidingVariable < 5)
+                {
+                    gradeNumberToReturn = 1;
+                }
+                else
+                {
+                    gradeNumberToReturn = 2;
+                }
+                break;
+            case 3:
+                if (decidingVariable == 1)
+                {
+                    gradeNumberToReturn = 0;
+                }
+                else if (decidingVariable == 2 || decidingVariable == 3)
+                {
+                    gradeNumberToReturn = 1;
+                }
+                else if (decidingVariable == 4 || decidingVariable == 5)
+                {
+                    gradeNumberToReturn = 2;
+                }
+                else
+                {
+                    gradeNumberToReturn = 3;
+                }
+                break;
+            case 4:
+                if (decidingVariable == 1)
+                {
+                    gradeNumberToReturn = 0;
+                }
+                else if (decidingVariable == 2)
+                {
+                    gradeNumberToReturn = 1;
+                }
+                else if (decidingVariable == 3)
+                {
+                    gradeNumberToReturn = 2;
+                }
+                else if (decidingVariable == 4 || decidingVariable == 5)
+                {
+                    gradeNumberToReturn = 3;
+                }
+                else
+                {
+                    gradeNumberToReturn = 4;
+                }
+                break;
+            case 5:
+                if (decidingVariable == 1)
+                {
+                    gradeNumberToReturn = 0;
+                }
+                else if (decidingVariable == 2)
+                {
+                    gradeNumberToReturn = 1;
+                }
+                else if (decidingVariable == 3)
+                {
+                    gradeNumberToReturn = 2;
+                }
+                else if (decidingVariable == 4)
+                {
+                    gradeNumberToReturn = 3;
+                }
+                else if (decidingVariable == 5)
+                {
+                    gradeNumberToReturn = 4;
+                }
+                else
+                {
+                    gradeNumberToReturn = 5;
+                }
+                break;
+        }
+        return gradeNumberToReturn;
+    }
+
     public void equationBreakdown(string wholeEquation, int index)
     {
         string numericalValue = "";
@@ -305,6 +416,7 @@ public class PipesManager : MonoBehaviour
     }
     public void generateProblemOnBoard()
     {
+        setAppropriateListForGradeLevelsKthrough5(whichGradeLevelIsThisProblem[currentProblem]);
         //print("generateProblemONBoard is called");
         problemNumber.text = "Problem " + (currentProblem + 1) + " out of 10";
         ListModifiedDuringLevel.Remove(correctAnswers[currentProblem]);
