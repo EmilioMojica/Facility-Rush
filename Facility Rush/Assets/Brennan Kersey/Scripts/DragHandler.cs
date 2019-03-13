@@ -18,27 +18,23 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[0];
+        AudioManager.instance.soundAudioSource.Play();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
         transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
         itemBeingDragged = null;
-        //Debug.Log("start parent" + startParent);
-        /*if (transform.parent != startParent)
-        {
-            //Debug.Log("start parent"+ startParent);
-            transform.position = startPosition;
-        }
-        */
         transform.position = startPosition;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-      
+
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[1];
+        AudioManager.instance.soundAudioSource.Play();
     }
 }
