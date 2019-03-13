@@ -6,6 +6,8 @@ TagManager:
   tags:
   - degredation implementation
   - degredationManager
+  - musicSlider
+  - soundSlider
   layers:
   - Default
   - TransparentFX

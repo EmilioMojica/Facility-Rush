@@ -53,6 +53,7 @@ MonoBehaviour:
   musicAudioSource: {fileID: 0}
   soundAudioSource: {fileID: 0}
   soundAudioSource2: {fileID: 0}
+  soundAudioSource3: {fileID: 0}
   musicClip:
   - {fileID: 8300000, guid: bcc155598d26a5f4bb7d4b515e5426d0, type: 3}
   - {fileID: 8300000, guid: 5d37b96dbd16f274ba673e5543703656, type: 3}
@@ -65,6 +66,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8260a92fb43d5ee45851fb6e3fc8d432, type: 3}
   - {fileID: 8300000, guid: cdc8969fb1a4c4c479de78ee7d000c04, type: 3}
   - {fileID: 8300000, guid: e4b6f04a727835941b71967485b7e943, type: 3}
+  steamNoise: 0
+  time: 0
 --- !u!82 &1202100481939201509
 AudioSource:
   m_ObjectHideFlags: 0

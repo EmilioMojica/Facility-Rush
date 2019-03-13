@@ -6,30 +6,35 @@ using UnityEngine.UI;
 public class ChangeVolume : MonoBehaviour
 {
     [SerializeField] private Slider musicSlider;
-    [SerializeField] private float music;
+    [SerializeField] private float volumeValue;
 
     [SerializeField] private Slider soundSlider;
     [SerializeField] private float sound;
 
     [SerializeField] private AudioSource audioSource;
+
+
+    private void Awake()
+    {
+        //musicSlider = GameObject.FindGameObjectWithTag("musicSlider").GetComponent<Slider>(); //無法找到 因為一開始是deactivate的
+        //soundSlider = GameObject.FindGameObjectWithTag("soundSlider").GetComponent<Slider>();
+
+        musicSlider = GameObject.FindObjectOfType<SliderHolder>().sliers[0];
+        soundSlider = GameObject.FindObjectOfType<SliderHolder>().sliers[1];
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         musicSlider.value = PlayerPrefs.GetFloat("music");
-        audioSource.volume = musicSlider.value;
+        AudioManager.instance.musicAudioSource.volume = musicSlider.value;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ValueChange()   // Called in the inspector of slider built-in OnValueChange
     {
-        
+        AudioManager.instance.musicAudioSource.volume = musicSlider.value;
+        volumeValue = AudioManager.instance.musicAudioSource.volume;
+        PlayerPrefs.SetFloat("music", volumeValue);
     }
 
-    public void valueChange()  // Called in the inspector of slider built-in OnValueChange
-    {
-        audioSource.volume = musicSlider.value;
-        music = audioSource.volume;
-        PlayerPrefs.SetFloat("music", music);
-    }
 }
