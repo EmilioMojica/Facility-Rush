@@ -7,16 +7,17 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioSource[] audioArray;
-    public AudioSource musicAudioSource;  //負責處理music的audioSource
-    public AudioSource soundAudioSource;  //負責處理SF的audioSource
-    public AudioSource soundAudioSource2; //負責處理其他SF的audioSource
-    public AudioSource soundAudioSource3; //負責處理其他SF的audioSource
+    public AudioSource[] audioArray;      //把所有audio source都放進去 不然用GetComponent<>()去找只會一直找到第一個AudioSource
+
+    public AudioSource musicAudioSource;  //負責處理 music的audioSource
+    public AudioSource soundAudioSource;  //負責處理 box pick up /drop down /drill /gear noise SF的audioSource
+    public AudioSource soundAudioSource2; //負責處理 box slide SF的audioSource
+    public AudioSource soundAudioSource3; //負責處理 steam noise SF的audioSource
 
     public AudioClip[] musicClip;
     public AudioClip[] soundClip;
 
-    [Range (60, 180)]
+    [Range (5, 180)]
     public float steamNoise;
     public float time;
 
@@ -38,10 +39,6 @@ public class AudioManager : MonoBehaviour
         soundAudioSource = audioArray[1]; //從這個陣列取得第二個audioSource
         soundAudioSource2 = audioArray[2];
         soundAudioSource3 = audioArray[3];
-
-        //new
-        Debug.Log("Play an audio in Awake");
-
     }
 
     private void Start()
@@ -49,14 +46,13 @@ public class AudioManager : MonoBehaviour
         musicAudioSource.clip = musicClip[0];
         musicAudioSource.Play();
 
-        soundAudioSource.clip = soundClip[0]; //box pick up SFX
-        soundAudioSource2.clip = soundClip[2]; //box slide SFX
-        soundAudioSource3.clip = soundClip[6]; //steam noise SFX
+        soundAudioSource.clip = soundClip[0];  //Set box pick up /drop down /drill /gear noise SFX to the audio source
+        soundAudioSource2.clip = soundClip[2]; //Set box slide SFX
+        soundAudioSource3.clip = soundClip[6]; //Set steam noise SFX
+
         steamNoise = 60f;
 
-
         DontDestroyOnLoad(gameObject);
-        Debug.Log("Play an audio in Start");
     }
 
     // Update is called once per frame

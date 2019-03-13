@@ -30,11 +30,18 @@ public class ChangeVolume : MonoBehaviour
 
     }
 
-    public void ValueChange()   // Called in the inspector of slider built-in OnValueChange
+    public void ChangeMusicVolume()   // Called in the inspector of slider built-in OnValueChange
     {
         AudioManager.instance.musicAudioSource.volume = musicSlider.value;  //改變slider的音量大小會真正影響到audio source的音量大小
         musicValue = AudioManager.instance.musicAudioSource.volume;         
-        PlayerPrefs.SetFloat("music", musicValue);                          //並把這個改變的值存進PlayerPrefs以供日後讀檔需要
+        PlayerPrefs.SetFloat("music", musicValue);                          //並把這個改變的值存進Player"Prefs以供日後讀檔需要
+    }
+
+    public void ChangeSoundVolume()
+    {
+        AudioManager.instance.soundAudioSource.volume = soundSlider.value;
+        soundValue = AudioManager.instance.soundAudioSource.volume;
+        PlayerPrefs.SetFloat("sound", soundValue);
     }
 
 }

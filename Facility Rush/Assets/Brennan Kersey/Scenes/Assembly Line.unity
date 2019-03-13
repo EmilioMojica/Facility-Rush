@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a262a22ea54062479ed05243268ccfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionsPanel: {fileID: 0}
+  optionsPanel: {fileID: 386850335}
 --- !u!95 &15638592
 Animator:
   serializedVersion: 3
@@ -2294,7 +2294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &386850336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2712,7 +2712,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 523197038}
+      - m_Target: {fileID: 1550203931}
         m_MethodName: ChangeMusic
         m_Mode: 2
         m_Arguments:
@@ -2724,7 +2724,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 523197038}
+      - m_Target: {fileID: 1550203931}
         m_MethodName: StopHumNoise
         m_Mode: 2
         m_Arguments:
@@ -3426,7 +3426,6 @@ GameObject:
   - component: {fileID: 523197035}
   - component: {fileID: 523197037}
   - component: {fileID: 523197036}
-  - component: {fileID: 523197038}
   m_Layer: 5
   m_Name: Pause Panel
   m_TagString: Untagged
@@ -3496,18 +3495,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523197034}
   m_CullTransparentMesh: 0
---- !u!114 &523197038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523197034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464a0acbe4266d24eb4e6934e15f6024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &547947520
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,7 +4389,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1550203930}
-        m_MethodName: ValueChange
+        m_MethodName: ChangeMusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7390,7 +7377,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1550203930}
+        m_MethodName: ChangeSoundVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1448471755
@@ -8012,7 +8010,8 @@ PrefabInstance:
       propertyPath: sliders.Array.data[1]
       value: 
       objectReference: {fileID: 1441487860}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2470343353220260248, guid: a512932254b75d74689fd8cb7c429016, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a512932254b75d74689fd8cb7c429016, type: 3}
 --- !u!114 &1550203930 stripped
 MonoBehaviour:
@@ -8024,6 +8023,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdf5e2d2101c24b4c95b8a75e804f331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1550203931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3733771919275895879, guid: a512932254b75d74689fd8cb7c429016,
+    type: 3}
+  m_PrefabInstance: {fileID: 1550203929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464a0acbe4266d24eb4e6934e15f6024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1553250084
