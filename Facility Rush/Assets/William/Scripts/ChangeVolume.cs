@@ -6,35 +6,35 @@ using UnityEngine.UI;
 public class ChangeVolume : MonoBehaviour
 {
     [SerializeField] private Slider musicSlider;
-    [SerializeField] private float volumeValue;
+    [SerializeField] private float musicValue;  // stores the volume value which it's corresponding audio source has
 
     [SerializeField] private Slider soundSlider;
-    [SerializeField] private float sound;
+    [SerializeField] private float soundValue;  // stores the volume value which it's corresponding audio source has
 
     [SerializeField] private AudioSource audioSource;
 
 
     private void Awake()
     {
-        //musicSlider = GameObject.FindGameObjectWithTag("musicSlider").GetComponent<Slider>(); //無法找到 因為一開始是deactivate的
-        //soundSlider = GameObject.FindGameObjectWithTag("soundSlider").GetComponent<Slider>();
-
-        musicSlider = GameObject.FindObjectOfType<SliderHolder>().sliers[0];
-        soundSlider = GameObject.FindObjectOfType<SliderHolder>().sliers[1];
+        musicSlider = GameObject.FindObjectOfType<SliderHolder>().sliders[0];  //取得slider的控制權
+        soundSlider = GameObject.FindObjectOfType<SliderHolder>().sliders[1];
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Start()  //目標: 讓每個場景中的slider根據PlayerPrefs的值去自動調整
     {
         musicSlider.value = PlayerPrefs.GetFloat("music");
-        AudioManager.instance.musicAudioSource.volume = musicSlider.value;
+        //TODO: soundSlider 
+        //AudioManager.instance.musicAudioSource.volume = musicSlider.value;  //根據slider的位置來更改真正的audio source聲音
+        //TODO: soundSlider 
+
     }
 
     public void ValueChange()   // Called in the inspector of slider built-in OnValueChange
     {
-        AudioManager.instance.musicAudioSource.volume = musicSlider.value;
-        volumeValue = AudioManager.instance.musicAudioSource.volume;
-        PlayerPrefs.SetFloat("music", volumeValue);
+        AudioManager.instance.musicAudioSource.volume = musicSlider.value;  //改變slider的音量大小會真正影響到audio source的音量大小
+        musicValue = AudioManager.instance.musicAudioSource.volume;         
+        PlayerPrefs.SetFloat("music", musicValue);                          //並把這個改變的值存進PlayerPrefs以供日後讀檔需要
     }
 
 }

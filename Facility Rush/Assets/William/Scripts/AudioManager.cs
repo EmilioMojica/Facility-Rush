@@ -32,41 +32,43 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        audioArray = GetComponents<AudioSource>();  //把身上三個audioSource都裝在這個陣列裡面
+        audioArray = GetComponents<AudioSource>();  //把身上四個audioSource都裝在這個陣列裡面
 
         musicAudioSource = audioArray[0]; //再從這個陣列去取得第一個audioSource
         soundAudioSource = audioArray[1]; //從這個陣列取得第二個audioSource
         soundAudioSource2 = audioArray[2];
-
-        //new
         soundAudioSource3 = audioArray[3];
 
+        //new
+        Debug.Log("Play an audio in Awake");
+
+    }
+
+    private void Start()
+    {
         musicAudioSource.clip = musicClip[0];
         musicAudioSource.Play();
 
         soundAudioSource.clip = soundClip[0]; //box pick up SFX
-
         soundAudioSource2.clip = soundClip[2]; //box slide SFX
-
-        //new
-        soundAudioSource3.clip = soundClip[6]; //box slide SFX
+        soundAudioSource3.clip = soundClip[6]; //steam noise SFX
         steamNoise = 60f;
 
 
         DontDestroyOnLoad(gameObject);
+        Debug.Log("Play an audio in Start");
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
+
         if (time > steamNoise)
         {
             soundAudioSource3.Play();
-            Debug.Log("steamNoise is now: " + steamNoise);
             time = 0;
             steamNoise = Random.Range(60, 180);
         }
     }
-
 }
