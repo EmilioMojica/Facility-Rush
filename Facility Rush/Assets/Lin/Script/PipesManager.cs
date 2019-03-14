@@ -700,6 +700,9 @@ public class PipesManager : MonoBehaviour
         print("This is index of sphere wriggle: "+ (indexOfSphereToAnimate + 4));
         float animationTime = pipeGyroAnimator.runtimeAnimatorController.animationClips[8].length;
         pipeGyroAnimator.SetInteger("indexBeingActedOn",indexOfSphereToAnimate+4);
+        //Audio Stuff
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[8];  //choose vacuum wrong SFX
+        AudioManager.instance.soundAudioSource.Play();
         yield return new WaitForSeconds(animationTime);
         pipeGyroAnimator.SetInteger("indexBeingActedOn", -1);
         restoreChoices();
@@ -720,13 +723,12 @@ public class PipesManager : MonoBehaviour
         isAnimating = true;
         float animationTime = pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
         pipeGyroAnimator.SetInteger("indexBeingActedOn",indexOfSphere);
-        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[7];  //choose between drill or gear SFX
+        //Audio Stuff
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[7];  //choose vacuum correct SFX
         AudioManager.instance.soundAudioSource.Play();
         //yield return new WaitForSecondsRealtime(1);
         yield return new WaitForSeconds(animationTime);
         pipeGyroAnimator.SetInteger("indexBeingActedOn",10);
-        //Audio Stuff
-        
         spheresBeingAnimated[indexOfSphere].SetActive(false);
         //yield return new WaitForSecondsRealtime(1);
         yield return new WaitForSeconds(animationTime); //.3f
