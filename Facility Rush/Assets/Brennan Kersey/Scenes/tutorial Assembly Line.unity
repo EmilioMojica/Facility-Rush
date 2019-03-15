@@ -455,7 +455,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 35136661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b05d01cf2929e439ab0764b255b412, type: 3}
+  m_Script: {fileID: 11500000, guid: d5056267aea3d5f48ace0ab1266b21f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
@@ -2475,7 +2475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400000942}
-  - component: {fileID: 400000941}
+  - component: {fileID: 400000943}
   m_Layer: 0
   m_Name: assemblyManager
   m_TagString: Untagged
@@ -2483,7 +2483,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &400000941
+--- !u!4 &400000942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400000940}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 0.825, y: 1, z: 0.225}
+  m_Children: []
+  m_Father: {fileID: 15638589}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400000943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2492,10 +2506,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 400000940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0700bf7f1bcf764693cde879ea098dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c01ddf1024a1b3409a83c447fcfc03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gradelevel: 5
+  maxTime: 60
+  gameTimerText: {fileID: 360324435}
+  gameTimer: 60
+  gradelevel: 0
   additionPanel: {fileID: 1613968642}
   subtractionPanel: {fileID: 471961700}
   multiplicationPanel: {fileID: 1597993032}
@@ -2522,30 +2539,17 @@ MonoBehaviour:
   isToySpawned: 0
   theToy: {fileID: 0}
   timer: {fileID: 1836115880}
-  assemblyLineAnimator: []
   toyPartsForAnimator:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  toyPartChoices: []
   sampleToys:
-  - {fileID: 1061635149650734546, guid: 3c9c245dacb041649b467fda717ad0d0, type: 3}
-  - {fileID: 1825276877378918443, guid: 4d4c0ba70a05c434290256e89429c034, type: 3}
-  - {fileID: 3623451168654598154, guid: 521e655ca4ff16d4a9b5aedb2cf25623, type: 3}
   - {fileID: 1867254754104879608, guid: 36417cf41a674574f9c05c89398fe7b1, type: 3}
-  - {fileID: 3391818596355828010, guid: 23af8e2490bafbe4c8508fd4d3e81118, type: 3}
   - {fileID: 126450967236946642, guid: ec98921a38bc6f84d9cca115a18cd340, type: 3}
-  - {fileID: 12762923007207927, guid: a9eb88bf31949454f84c1c807a08c2d8, type: 3}
-  - {fileID: 2761475554064391418, guid: fc8540c451ca4d048a6afe0256a16308, type: 3}
-  pipeAnimators:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   toySpawnPoint:
   - {fileID: 1067166631}
   - {fileID: 150316586}
   - {fileID: 1580538125}
-  toyAnimator: {fileID: 0}
   toyHolder: {fileID: 1484530048}
   correctToy: {fileID: 0}
   incorrectToy: {fileID: 0}
@@ -2559,20 +2563,6 @@ MonoBehaviour:
   isAnimating: 0
   theGoldenGodAnimator: {fileID: 15638592}
   theTimer: {fileID: 1836115882}
---- !u!4 &400000942
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400000940}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1}
-  m_LocalScale: {x: 0.825, y: 1, z: 0.225}
-  m_Children: []
-  m_Father: {fileID: 15638589}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &428280597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,8 +2574,8 @@ GameObject:
   - component: {fileID: 428280598}
   - component: {fileID: 428280600}
   - component: {fileID: 428280599}
-  - component: {fileID: 428280602}
   - component: {fileID: 428280601}
+  - component: {fileID: 428280602}
   m_Layer: 5
   m_Name: Chute 1 choice 2 Image
   m_TagString: Untagged
@@ -2691,7 +2681,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 428280597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b05d01cf2929e439ab0764b255b412, type: 3}
+  m_Script: {fileID: 11500000, guid: d5056267aea3d5f48ace0ab1266b21f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
@@ -3414,8 +3404,8 @@ GameObject:
   - component: {fileID: 522887684}
   - component: {fileID: 522887686}
   - component: {fileID: 522887685}
-  - component: {fileID: 522887688}
   - component: {fileID: 522887687}
+  - component: {fileID: 522887688}
   m_Layer: 5
   m_Name: Chute 2 choice 1 Image
   m_TagString: Untagged
@@ -3520,7 +3510,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 522887683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b05d01cf2929e439ab0764b255b412, type: 3}
+  m_Script: {fileID: 11500000, guid: d5056267aea3d5f48ace0ab1266b21f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
@@ -5037,8 +5027,8 @@ GameObject:
   - component: {fileID: 832263181}
   - component: {fileID: 832263183}
   - component: {fileID: 832263182}
-  - component: {fileID: 832263185}
   - component: {fileID: 832263184}
+  - component: {fileID: 832263185}
   m_Layer: 5
   m_Name: Chute 3 choice 1 Image
   m_TagString: Untagged
@@ -5144,7 +5134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 832263180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b05d01cf2929e439ab0764b255b412, type: 3}
+  m_Script: {fileID: 11500000, guid: d5056267aea3d5f48ace0ab1266b21f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
@@ -6572,8 +6562,8 @@ GameObject:
   - component: {fileID: 1302185512}
   - component: {fileID: 1302185514}
   - component: {fileID: 1302185513}
-  - component: {fileID: 1302185516}
   - component: {fileID: 1302185515}
+  - component: {fileID: 1302185516}
   m_Layer: 5
   m_Name: Chute 3 choice 2 Image
   m_TagString: Untagged
@@ -6679,7 +6669,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1302185511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b05d01cf2929e439ab0764b255b412, type: 3}
+  m_Script: {fileID: 11500000, guid: d5056267aea3d5f48ace0ab1266b21f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 400000940}
@@ -7279,7 +7269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 400000941}
+      - m_Target: {fileID: 400000943}
         m_MethodName: checkequation
         m_Mode: 1
         m_Arguments:
@@ -8313,7 +8303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1613968643
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9110,7 +9100,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836115880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39b5235268b41014081b1c43d1744d3f, type: 3}
   m_Name: 
@@ -10168,7 +10158,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 400000941}
+      - m_Target: {fileID: 0}
         m_MethodName: initiateGameOver
         m_Mode: 1
         m_Arguments:

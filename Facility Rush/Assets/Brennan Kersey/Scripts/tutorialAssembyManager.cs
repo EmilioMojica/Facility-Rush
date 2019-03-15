@@ -8,6 +8,9 @@ using Vector3 = UnityEngine.Vector3;
 
 public class tutorialAssembyManager : MonoBehaviour
 {
+    [SerializeField] private float maxTime;
+    [SerializeField] private Text gameTimerText;
+    [SerializeField] private float gameTimer;
     public int gradelevel;                  // 
 
     public GameObject additionPanel;
@@ -59,14 +62,14 @@ public class tutorialAssembyManager : MonoBehaviour
 
     public GameObject timer;
     // Use this for initialization
-    [SerializeField] private Animator[] assemblyLineAnimator;
+   // [SerializeField] private Animator[] assemblyLineAnimator;
     [SerializeField] private GameObject[] toyPartsForAnimator;
-    [SerializeField] private GameObject[] toyPartChoices;
+    //[SerializeField] private GameObject[] toyPartChoices;
     [SerializeField] private GameObject[] sampleToys;
-    [SerializeField] private Animator[] pipeAnimators;
+    //[SerializeField] private Animator[] pipeAnimators;
     [SerializeField] private Transform[] toySpawnPoint;
 
-    [SerializeField] private Animator toyAnimator;
+   // [SerializeField] private Animator toyAnimator;
 
     [SerializeField] private GameObject toyHolder;
 
@@ -108,8 +111,8 @@ public class tutorialAssembyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe1DownTime);
         //Activate Audio
         int index = Random.Range(3, 5);
-        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        AudioManager.instance.soundAudioSource.Play();
+        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        //AudioManager.instance.soundAudioSource.Play();
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
         Transform spotOnBelt = toyHolder.transform;
         theToy.transform.parent = toyHolder.transform;
@@ -129,8 +132,8 @@ public class tutorialAssembyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe2DownTime);
         //Activate Audio
         index = Random.Range(3, 5);
-        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        AudioManager.instance.soundAudioSource.Play();
+        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+       // AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[1].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 4);
         yield return new WaitForSeconds(pipe2UpTime);
@@ -140,8 +143,8 @@ public class tutorialAssembyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe3DownTime);
         //Activate Audio
         index = Random.Range(3, 5);
-        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        AudioManager.instance.soundAudioSource.Play();
+       // AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+       // AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[2].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 7);
         yield return new WaitForSeconds(pipe3UpTime);
@@ -175,6 +178,7 @@ public class tutorialAssembyManager : MonoBehaviour
 
     public void componentChoice(int choiceIdentifier)
     {
+        print("The component choice is being called.");
         switch (choiceIdentifier)
         {
             case 0:
@@ -249,163 +253,22 @@ public class tutorialAssembyManager : MonoBehaviour
         showChoice1.text = "";
         showChoice2.text = "";
         showChoice3.text = "";
-        gradelevel = PlayerPrefs.GetInt("grade");
-        print(gradelevel);
-        initiateProperMiddlePanel();
+       // gradelevel = PlayerPrefs.GetInt("grade");
+       // print(gradelevel);
+       // initiateProperMiddlePanel();
         //badPipeNumbers = new int[2];
         nextEquation();
 
     }
-    public void initiateProperMiddlePanel()
-    {
-        switch (gradelevel)
-        {
-            case 0:
-                additionPanel.SetActive(true);
-                break;
-            case 1:
-                additionPanel.SetActive(true);
-                subtractionPanel.SetActive(true);
-                break;
-            case 2:
-                additionPanel.SetActive(true);
-                subtractionPanel.SetActive(true);
-                break;
-            case 3:
-                additionPanel.SetActive(true);
-                subtractionPanel.SetActive(true);
-                multiplicationPanel.SetActive(true);
-                //divisionPanel.SetActive(true);
-                break;
-            case 4:
-                additionPanel.SetActive(true);
-                subtractionPanel.SetActive(true);
-                multiplicationPanel.SetActive(true);
-                divisionPanel.SetActive(true);
-                break;
-            case 5:
-                additionPanel.SetActive(true);
-                subtractionPanel.SetActive(true);
-                multiplicationPanel.SetActive(true);
-                divisionPanel.SetActive(true);
-                break;
-        }
-    }
-    public int calculateChanceOfGradeProblem()
-    {
-        int gradeNumberToReturn = -5;
-        int decidingVariable = Random.Range(1, 11);
-        switch (gradelevel)
-        {
-            case 0:
-
-                gradeNumberToReturn = 0;
-                break;
-
-            case 1:
-                if (decidingVariable <= 3)
-                {
-                    gradeNumberToReturn = 0;
-                }
-                else
-                {
-                    gradeNumberToReturn = 1;
-                }
-                break;
-            case 2:
-                if (decidingVariable < 3)
-                {
-                    gradeNumberToReturn = 0;
-                }
-                else if (decidingVariable >= 3 && decidingVariable < 5)
-                {
-                    gradeNumberToReturn = 1;
-                }
-                else
-                {
-                    gradeNumberToReturn = 2;
-                }
-                break;
-            case 3:
-                if (decidingVariable == 1)
-                {
-                    gradeNumberToReturn = 0;
-                }
-                else if (decidingVariable == 2 || decidingVariable == 3)
-                {
-                    gradeNumberToReturn = 1;
-                }
-                else if (decidingVariable == 4 || decidingVariable == 5)
-                {
-                    gradeNumberToReturn = 2;
-                }
-                else
-                {
-                    gradeNumberToReturn = 3;
-                }
-                break;
-            case 4:
-                if (decidingVariable == 1)
-                {
-                    gradeNumberToReturn = 0;
-                }
-                else if (decidingVariable == 2)
-                {
-                    gradeNumberToReturn = 1;
-                }
-                else if (decidingVariable == 3)
-                {
-                    gradeNumberToReturn = 2;
-                }
-                else if (decidingVariable == 4 || decidingVariable == 5)
-                {
-                    gradeNumberToReturn = 3;
-                }
-                else
-                {
-                    gradeNumberToReturn = 4;
-                }
-                break;
-            case 5:
-                if (decidingVariable == 1)
-                {
-                    gradeNumberToReturn = 0;
-                }
-                else if (decidingVariable == 2)
-                {
-                    gradeNumberToReturn = 1;
-                }
-                else if (decidingVariable == 3)
-                {
-                    gradeNumberToReturn = 2;
-                }
-                else if (decidingVariable == 4)
-                {
-                    gradeNumberToReturn = 3;
-                }
-                else if (decidingVariable == 5)
-                {
-                    gradeNumberToReturn = 4;
-                }
-                else
-                {
-                    gradeNumberToReturn = 5;
-                }
-                break;
-        }
-        return gradeNumberToReturn;
-    }
+   
+   
     public void nextEquation()
     {
-        int indexOfCorrectToy = Random.Range(0, sampleToys.Length);
-        int indexOfIncorrectToy = Random.Range(0, sampleToys.Length);
-        while (indexOfCorrectToy == indexOfIncorrectToy)
-        {
-            indexOfIncorrectToy = Random.Range(0, sampleToys.Length);
-        }
+        int indexOfCorrectToy = 0;
+        int indexOfIncorrectToy = 1;
         correctToy = sampleToys[indexOfCorrectToy];
         incorrectToy = sampleToys[indexOfIncorrectToy];
-        string equation = equationGenerator.GetComponent<generateEquations>().generateEquation(gradelevel);
+        string equation = "4+6=10";
         // print(equation);
 
         //print(ExpressionEvaluator.Evaluate<int>("4"));
@@ -475,8 +338,8 @@ public class tutorialAssembyManager : MonoBehaviour
         }
         //ExpressionEvaluator.Evaluate<int>(numericalValue,out answer);
         answer = int.Parse(numericalValue);
-        positionInPipeOne = Random.Range(0, 2);
-        positionInPipeThree = Random.Range(0, 2);
+        positionInPipeOne = 0;
+        positionInPipeThree = 1;
         determinePositionInPipe2();
         pipeOne[positionInPipeOne].text = firstPart + "";
         toyPartsInPipeOne[positionInPipeOne] = correctToy.transform.GetChild(0).gameObject;
@@ -507,93 +370,55 @@ public class tutorialAssembyManager : MonoBehaviour
     {
         int firstGenerated = 0;
         //int secondGenerated=0;
-        switch (gradeLevel)
+        do
         {
-            case 0:
-                do
-                {
-                    firstGenerated = Random.Range(1, 11);
-
-                } while (firstGenerated == doNotEqual);
-                badPipeNumber = firstGenerated;
-                break;
-            case 1:
-                do
-                {
-                    firstGenerated = Random.Range(1, 21);
-
-                } while (firstGenerated == doNotEqual);
-                badPipeNumber = firstGenerated;
-                break;
-            case 2:
-                do
-                {
-                    firstGenerated = Random.Range(1, 101);
-                } while (firstGenerated == doNotEqual);
-                badPipeNumber = firstGenerated;
-                break;
-            case 3:
-                do
-                {
-                    firstGenerated = Random.Range(1, 101);
-                } while (firstGenerated == doNotEqual);
-                badPipeNumber = firstGenerated;
-                break;
-            case 4:
-                do
-                {
-                    firstGenerated = Random.Range(1, 101);
-                } while (firstGenerated == doNotEqual);
-                badPipeNumber = firstGenerated;
-                break;
-            case 5:
-                do
-                {
-                    firstGenerated = Random.Range(1, 101);
-                } while (firstGenerated == doNotEqual);
-                badPipeNumber = firstGenerated;
-                break;
-            default:
-                // print("nope");
-                break;
-        }
-
+            firstGenerated = Random.Range(1, 11);
+        } while (firstGenerated == doNotEqual);
+        badPipeNumber = firstGenerated;
     }
     // Update is called once per frame
     void Update()
     {
+        if (gameOver == false && isAnimating == false)
+        {
+            gameTimer -= Time.deltaTime;
+
+
+
+            int seconds = (int)(gameTimer % 60);
+            int minutes = (int)(gameTimer / 60) % 60;
+            int hours = (int)(gameTimer / 3600) % 24;
+
+            string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+            if (timerString.Equals("00:00"))
+            {
+                initiateGameOver();
+            }
+            gameTimerText.text = timerString;
+        }
         if (gameOver == true)
         {
             checkEquationButton.SetActive(false);
             GameOverPanel.SetActive(true);
         }
     }
-
+    public void addTime()
+    {
+        if (gameTimer + 15f > maxTime)
+        {
+            gameTimer = maxTime;
+        }
+        else
+        {
+            gameTimer += 15f;
+        }
+    }
     public void initiateGameOver()
     {
         gameOver = true;
         feedbackText.text = "GameOver";
-        calculateRestoration();
     }
-    public void checkForNewHighScore()
-    {
-        int currentHighScore = PlayerPrefs.GetInt("assemblyHighScore");
-        if (score > currentHighScore)
-        {
-            PlayerPrefs.SetInt("assemblyHighScore", score);
-            PlayerPrefs.Save();
-        }
-    }
-    public void calculateRestoration()
-    {
-        DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
-        degredationManager.aAttempted = numberAttempted;
-        degredationManager.aCorrect = numberCorrect;
-        degredationManager.assemblyCalulate();
-        degredationManager.gameHasBeenPlayed(1);
-        checkForNewHighScore();
-        //degredationManager.setScoreOfRecentPlayedGame(score);
-    }
+
     public void createToy()
     {
         createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
