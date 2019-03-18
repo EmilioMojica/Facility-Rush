@@ -20,7 +20,7 @@ public class MF_MainMenu : MonoBehaviour
     {
         PreviousScene = SceneManager.GetActiveScene().name;
         anim.SetTrigger("MainMenuSceneTransition");
-        Invoke("TransitionToGradeSelection", 1);
+        //Invoke("TransitionToGradeSelection", 1);
     }
 
     public void OnClickOptions()

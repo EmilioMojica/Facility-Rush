@@ -26,25 +26,4 @@ public class LevelSelectMenu : MonoBehaviour
     {
         optionsPanel.SetActive(false);
     }
-
-    public void OnClickCaCuro()
-    {
-        SceneManager.LoadScene("cacuro");
-    }
-
-    public void OnClickAssemblyLine()
-    {
-        SceneManager.LoadScene("Assembly Line");
-    }
-
-    public void OnClickChutes()
-    {
-        Debug.Log("button clicked");
-        SceneManager.LoadScene("Chutes");
-    }
-
-    public void OnClickPipeGyro()
-    {
-        SceneManager.LoadScene("Pipes 1");
-    }
 }

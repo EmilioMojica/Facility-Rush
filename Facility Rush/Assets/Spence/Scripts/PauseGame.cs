@@ -7,17 +7,14 @@ public class PauseGame : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject optionsPanel;
+
+    private LevelChanger lvl;
     
     // Start is called before the first frame update
     void Start()
     {
         optionsPanel.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        lvl = FindObjectOfType<LevelChanger>();
     }
 
     public void Pause()
@@ -35,7 +32,7 @@ public class PauseGame : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level Select");
+        lvl.FadeToLevel(2);
     }
 
     public void Options()
