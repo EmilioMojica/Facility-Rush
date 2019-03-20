@@ -14,43 +14,56 @@ public class GradeSelectMenu : MonoBehaviour
 
     public void OnClickKindergarten()
     {
-        anim.SetTrigger("SceneTransition");
+        //anim.ResetTrigger("MainMenuSceneTransition");
+        anim.SetTrigger("GradeSelectSceneTransition");
         //SceneManager.LoadScene("Level Select");
-        Invoke("TransitionToLevelSelect", 1);
+        //Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick1stGrade()
     {
-        anim.SetTrigger("SceneTransition");
+        //anim.ResetTrigger("MainMenuSceneTransition");
+        anim.SetTrigger("GradeSelectSceneTransition");
         //SceneManager.LoadScene("Level Select");
-        Invoke("TransitionToLevelSelect", 1);
+        //Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick2ndGrade()
     {
-        anim.SetTrigger("SceneTransition");
+        //anim.ResetTrigger("MainMenuSceneTransition");
+        anim.SetTrigger("GradeSelectSceneTransition");
         //SceneManager.LoadScene("Level Select");
-        Invoke("TransitionToLevelSelect", 1);
+        //Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick3rdGrade()
     {
-        anim.SetTrigger("SceneTransition");
+        //anim.ResetTrigger("MainMenuSceneTransition");
+        anim.SetTrigger("GradeSelectSceneTransition");
         //SceneManager.LoadScene("Level Select");
-        Invoke("TransitionToLevelSelect", 1);
+        //Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick4thGrade()
     {
-        anim.SetTrigger("SceneTransition");
+        //anim.ResetTrigger("MainMenuSceneTransition");
+        anim.SetTrigger("GradeSelectSceneTransition");
         //SceneManager.LoadScene("Level Select");
-        Invoke("TransitionToLevelSelect", 1);
+        //Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClick5thGrade()
     {
-        anim.SetTrigger("SceneTransition");
+        //anim.ResetTrigger("MainMenuSceneTransition");
+        anim.SetTrigger("GradeSelectSceneTransition");
         //SceneManager.LoadScene("Level Select");
-        Invoke("TransitionToLevelSelect", 1);
+        //Invoke("TransitionToLevelSelect", 1);
     }
     public void OnClickBack()
     {
-        SceneManager.LoadScene("Ford_Test");
+        //anim.ResetTrigger("MainMenuSceneTransition");
+        anim.SetTrigger("BackToMainMenuSceneTransition");
+        //SceneManager.LoadScene("Ford_Test");
+    }
+
+    public void OnBackToGradeSelect()
+    {
+        anim.SetTrigger("BackToGradeSelectSceneTransition");
     }
 
     public void TransitionToLevelSelect()

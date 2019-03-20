@@ -8,12 +8,26 @@ public class MF_MainMenu : MonoBehaviour
 {
     private Animator anim;
     public static string PreviousScene = "";
-    public GameObject OptionsPanel;
+    public GameObject options;
+    private PauseGame Pause;
+    private PauseBool pb;
+
     void Start()
     {
-        OptionsPanel.SetActive(false);
         anim = GetComponent<Animator>();
         PreviousScene = SceneManager.GetActiveScene().name;
+        Pause = FindObjectOfType<PauseGame>();
+        pb = FindObjectOfType<PauseBool>();
+
+        if (pb.backToMenu)
+        {
+            anim.Play("UI Test Animation 2 Idle");
+        }
+    }
+
+    public void TurnOnOptions()
+    {
+        options.SetActive(true);
     }
 
     public void OnClickBegin()
@@ -25,31 +39,53 @@ public class MF_MainMenu : MonoBehaviour
 
     public void OnClickOptions()
     {
-        PreviousScene = SceneManager.GetActiveScene().name;
+        anim.SetTrigger("OpenOptions");
+        //PreviousScene = SceneManager.GetActiveScene().name;
         //anim.SetTrigger("MainMenuSceneTransition");
         //Invoke("TransitionToOptions", 1);
-        if(OptionsPanel.activeSelf == true)
-        {
-            return;
-        }
-        else if(OptionsPanel.activeSelf == false)
-        {
-            OptionsPanel.SetActive(true);
-        }
+        //if(OptionsPanel.activeSelf == true)
+        //{
+        //    return;
+        //}
+        //else if(OptionsPanel.activeSelf == false)
+        //{
+        //    OptionsPanel.SetActive(true);
+        //}
     }
 
     public void OnClickExitOptions()
     {
-        OptionsPanel.SetActive(false);
+        anim.SetTrigger("CloseOptions");
+        //OptionsPanel.SetActive(false);
     }
 
-    public void TransitionToGradeSelection()
+    public void IGOnClickOptions()
     {
-        SceneManager.LoadScene("Grade Selection");
+        anim.SetTrigger("IGOpenOptions");
     }
 
-    public void TransitionToOptions()
+    public void IGOnClickExitOptions()
     {
-        SceneManager.LoadScene("Options Menu");
+        anim.SetTrigger("IGCloseOptions");
     }
+
+    public void ScoreBoardOpen()
+    {
+        anim.SetTrigger("ScoreOpen");
+    }
+
+    public void ScoreBoardClose()
+    {
+        anim.SetTrigger("ScoreClose");
+    }
+
+    //public void TransitionToGradeSelection()
+    //{
+    //    SceneManager.LoadScene("Grade Selection");
+    //}
+
+    //public void TransitionToOptions()
+    //{
+    //    SceneManager.LoadScene("Options Menu");
+    //}
 }
