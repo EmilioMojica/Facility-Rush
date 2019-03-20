@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class tutorialKartcuroManager : MonoBehaviour
 {
-    [SerializeField] private GameObject twoBytwoCartPrefab;
-    [SerializeField] private GameObject threeBythreeCartPrefab;
-    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject twoBytwoCartPrefab;         // Game Object variable that represents green cart prefab for the 2x2 game board
+    [SerializeField] private GameObject threeBythreeCartPrefab;     // Game Object variable that represents green cart prefab for the 3x3 game board
+    [SerializeField] private GameObject gameOverPanel;              // Game Object variable that represents the Game Over Panel. 
 
     public int gradeLevel;                     // variable for determining grade level of player
     public GameObject boardGenerator;           // variable for game object that contains the board generation scipt
@@ -33,31 +33,31 @@ public class tutorialKartcuroManager : MonoBehaviour
 
     public RectTransform[] answerPanels;    // An array of transforms that represents the 3x3 panels that the player that the player will drag the answers into 
 
-    public RectTransform[] numberSlotsTwoByTwo;
-    public RectTransform[] answerPanelsTwoByTwo;
+    public RectTransform[] numberSlotsTwoByTwo; // An array of transforms for the boxes that will be dragged for the 2x2 GameBoard
+    public RectTransform[] answerPanelsTwoByTwo; // An array of transforms for the spaces where the boxes will be dragged
 
-    public RectTransform positionOne;
-    public RectTransform positionTwo;
-    public int score;
+    // public RectTransform positionOne;
+    // public RectTransform positionTwo;
 
-    public Text scoreText;
-    public int totalNumberedPanels;
+    [SerializeField] private Text firstRowSum;  // A text variable for the first row that the player must drag the boxes to sum to
+    [SerializeField] private Text secondRowSum; // A text variable for the second row that the player must drag the boxes to sum to
+    public int score;                           // A integer variable used to keep track of the player's score
+
+    public Text scoreText;                      // A text variable used to indicate the score on screen
+    public int totalNumberedPanels;             // An integer that represents the total number of answer panels that a answer grid inside of the Cart gameobject, this is used for answer checking
 
     //public GameObject inventoryHolder;
 
-    [SerializeField] private GameObject UILayoutThreeByThree;
-    [SerializeField] private GameObject UILayoutTwoByTwo;
+    [SerializeField] private GameObject UILayoutThreeByThree; // A variable representing the Gameobject for the 3x3 Game board that can be initiated on start
+    [SerializeField] private GameObject UILayoutTwoByTwo;     // A variable representing the Gameobject for the 2x2 Game bOard that can be initiated on start 
 
-    private int x;                      // limit for how many need to be correct to get time bonus
-    private int numberCorrectSoFar;     // how many problems the player has correct so far
-    private int numberCorrectTotal;     // how many problems the player has gotten correct over all
-    private int numberOfProblemsAttempted; // a variable representing the total number of problems the player has attempted to do.
+    
     //public GameObject timer;
 
 
-    public float gameTimer;
-    public float maxTime;
-    public Text gameTimerText;
+    //public float gameTimer;
+    //public float maxTime;
+    //public Text gameTimerText;
 
    // [SerializeField] private GameObject degradationBuddy;
    // private DegradationManager dylan;
@@ -72,13 +72,8 @@ public class tutorialKartcuroManager : MonoBehaviour
 
     void Start()
     {
-        print("Current KartCuro score that is called from kartcuro manager: " + (PlayerPrefs.GetInt("kakuroHighScore")));
         gameOver = false;
-        x = 0;
-        numberCorrectSoFar = 0;
-        numberCorrectTotal = 0;
-        numberOfProblemsAttempted = 0;
-        gradeLevel = PlayerPrefs.GetInt("grade");
+        gradeLevel = 0;
         feedback.text = "";
         score = 0;
         scoreText.text = "" + score;
@@ -94,18 +89,6 @@ public class tutorialKartcuroManager : MonoBehaviour
             threeBythreeCartPrefab.SetActive(true);
         }
         makeNewBoard();
-        // if(gradeLevel== 0 || gradeLevel==1)
-        //{
-        //sumGenerator.generateBoardKindergartenThroughFirst();
-        //sumOneAnswer = sumGenerator.getFirstSum();
-        //sumTwoAnswer = sumGenerator.getSecondSum();
-        //}
-        //else
-        //{
-        //sumGenerator.calculateSumsSecondThroughFifth();
-        //sumOneAnswer = sumGenerator.getFirstSum();
-        //sumTwoAnswer = sumGenerator.getSecondSum();
-        //}
     }
     public void setOriginal()
     {
@@ -140,11 +123,11 @@ public class tutorialKartcuroManager : MonoBehaviour
     {
         if (gradeLevel == 0 || gradeLevel == 1)
         {
-
-            //print("Total Numbered Panels in makeBoard() is "+ totalNumberedPanels);
-            sumGenerator.generateBoardKindergartenThroughFirst();
             sumOneAnswer = 4;
             sumTwoAnswer = 6;
+
+            firstRowSum.text = sumOneAnswer.ToString();
+            secondRowSum.text = sumTwoAnswer.ToString();
         }
         else
         {
@@ -152,44 +135,12 @@ public class tutorialKartcuroManager : MonoBehaviour
             sumGenerator.calculateSumsSecondThroughFifth();
             sumOneAnswer = 24;
             sumTwoAnswer = 15;
-
-            //print("First sum to find is " + sumOneAnswer);
-            //print("Second sum to find is " + sumTwoAnswer);
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if (gameOver == false)
-        {
-            gameTimer -= Time.deltaTime;
-
-
-
-            int seconds = (int)(gameTimer % 60);
-            int minutes = (int)(gameTimer / 60) % 60;
-            int hours = (int)(gameTimer / 3600) % 24;
-
-            string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
-            if (timerString.Equals("00:00"))
-            {
-                initiateGameOver();
-                //gameTimerText.text = "00:00";
-            }
-            gameTimerText.text = timerString;
-        }
-    }
-
-    public void addTime()
-    {
-        if (gameTimer + 15f > maxTime)
-        {
-            gameTimer = maxTime;
-        }
-        else
-        {
-            gameTimer += 15f;
-        }
+     
     }
 
     public void checkBoard() // checks for correct answer for the board
@@ -203,54 +154,31 @@ public class tutorialKartcuroManager : MonoBehaviour
                 setOriginalPositions();
                 score += 100;
                 PlayerPrefs.SetInt("recentKakuroHighScore", score);
-                scoreText.text = "" + score;
-                numberCorrectSoFar++;
-                numberCorrectTotal++;
-                numberOfProblemsAttempted++;
-                if (numberCorrectSoFar == (x + 3))
-                {
-                    addTime();
-                    x++;
-                    numberCorrectSoFar = 0;
-                }
+                scoreText.text = "" + score;              
             }
 
             else
             {
                 feedback.text = "Incorrect Try again";
                 setOriginalPositions();
-                numberOfProblemsAttempted++;
             }
         }
     }
     public void checkForNewHighScore()
     {
         int currentHighScore = PlayerPrefs.GetInt("kakuroHighScore");
-        // print("This is the current kakuroHighScore: " + currentHighScore);
         if (score > currentHighScore)
         {
             PlayerPrefs.SetInt("kakuroHighScore", score);
             PlayerPrefs.Save();
         }
     }
-    //public void calculateRestoration()
-    //{
-    //    DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
-    //    degredationManager.aAttempted = numberOfProblemsAttempted;
-    //    degredationManager.aCorrect = numberCorrectTotal;
-    //    degredationManager.assemblyCalulate();
-    //    degredationManager.gameHasBeenPlayed(3);
-    //    checkForNewHighScore();
-    //    // degredationManager.setScoreOfRecentPlayedGame(score);
-    //}
 
     public void initiateGameOver() // initiates game over state
     {
         gameOver = true;
         feedback.text = "GameOver";
         gameOverPanel.SetActive(true);
-       // calculateRestoration();
-        //dylan.cartkuroCalculation();
     }
 
     public void updateSum() // updates the sum for the first and second row while player inserts numbers in slots
@@ -263,7 +191,6 @@ public class tutorialKartcuroManager : MonoBehaviour
             {
                 if (firstRowThreeByThree[i].transform.childCount > 0)
                 {
-                    //print("The name of the child in "+firstRow[i].gameObject.name+ " is " +firstRow[i].transform.GetChild(0).gameObject.name);
                     currentSum1 += int.Parse(firstRowThreeByThree[i].transform.GetChild(0).gameObject.name);
                 }
 
@@ -279,7 +206,6 @@ public class tutorialKartcuroManager : MonoBehaviour
             {
                 if (firstRowTwoByTwo[i].transform.childCount > 0)
                 {
-                    //print("The name of the child in "+firstRow[i].gameObject.name+ " is " +firstRow[i].transform.GetChild(0).gameObject.name);
                     currentSum1 += int.Parse(firstRowTwoByTwo[i].transform.GetChild(0).gameObject.name);
                 }
 

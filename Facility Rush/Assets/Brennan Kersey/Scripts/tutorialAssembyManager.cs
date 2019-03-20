@@ -8,14 +8,14 @@ using Vector3 = UnityEngine.Vector3;
 
 public class tutorialAssembyManager : MonoBehaviour
 {
-    [SerializeField] private float maxTime;
-    [SerializeField] private Text gameTimerText;
-    [SerializeField] private float gameTimer;
-    public int gradelevel;                  // 
+    [SerializeField] private float maxTime;         // float variable representing the maximum amount of time a player can have
+    [SerializeField] private Text gameTimerText;    // Text variable representing the game timer in the UI
+    [SerializeField] private float gameTimer;       // float variable representing the amount of time the player has left on the clock
+    public int gradelevel;                          // integer representing the grade level that the player selected
 
-    public GameObject additionPanel;
-    public GameObject subtractionPanel;
-    public GameObject multiplicationPanel;
+    public GameObject additionPanel;                // GameObject representing the addition panel that players can select to indicate the addition panel
+    public GameObject subtractionPanel;             // Game Object representing the subtraction panel that the player can select to indicate the subtraction panel
+    public GameObject multiplicationPanel;          // GameObject representing the multiplication panel that the player can select to indicate the multiplication panel
     public GameObject divisionPanel;
 
     public GameObject checkEquationButton;
@@ -368,50 +368,12 @@ public class tutorialAssembyManager : MonoBehaviour
 
     public void determineRandomNumbers(int gradeLevel, int doNotEqual)
     {
-        int firstGenerated = 0;
-        //int secondGenerated=0;
-        do
-        {
-            firstGenerated = Random.Range(1, 11);
-        } while (firstGenerated == doNotEqual);
-        badPipeNumber = firstGenerated;
+        badPipeNumber = 3;
     }
     // Update is called once per frame
     void Update()
     {
-        if (gameOver == false && isAnimating == false)
-        {
-            gameTimer -= Time.deltaTime;
-
-
-
-            int seconds = (int)(gameTimer % 60);
-            int minutes = (int)(gameTimer / 60) % 60;
-            int hours = (int)(gameTimer / 3600) % 24;
-
-            string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
-            if (timerString.Equals("00:00"))
-            {
-                initiateGameOver();
-            }
-            gameTimerText.text = timerString;
-        }
-        if (gameOver == true)
-        {
-            checkEquationButton.SetActive(false);
-            GameOverPanel.SetActive(true);
-        }
-    }
-    public void addTime()
-    {
-        if (gameTimer + 15f > maxTime)
-        {
-            gameTimer = maxTime;
-        }
-        else
-        {
-            gameTimer += 15f;
-        }
+       
     }
     public void initiateGameOver()
     {
