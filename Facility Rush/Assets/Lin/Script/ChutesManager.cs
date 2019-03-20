@@ -1730,68 +1730,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
     public void HasChanged()
     {
-        /*
-        answersGoUP.SetBool("NumberMove",true);
-        answersGoUP.SetBool("NumberBack", false);
-        StartCoroutine("WaitAndGo", 0.5f);
-        */
-        //Debug.LogError("!!!!!!!!!!!");
-        //Invoke("TestFunc", 0.3f);
-
-
         Judge();
-        /*
-        Debug.Log("answer true =" + answers[trueID].text );
-        Debug.Log("put slot "+ answerSlots[rightID].name);
-        List<int> x = new List<int>();
-        int z = 1;
-        string str = string.Empty;
-        foreach (Transform slotTransform in slots)
-        {
-            GameObject item = slotTransform.GetComponent<Slot>().item;
-            if (item)
-            {
-                x.Add(z);
-                
-                str = item.name;
-            }
-            else
-            {
-                x.Add(0);
-            }
-
-            z++;
-        }
-
-        int addup = 0;
-        for (int i = 0; i<x.Count; i++)
-        {
-            //Debug.Log(x[i]);
-            addup += x[i];
-        }
-
-        if (rightID+1 == addup)
-        {
-            //Debug.Log("Slot TRUE!!!!!!");
-            if (trueID + 1 == int.Parse(str))
-            {
-
-               Debug.Log("Correct!!!!!!!!!");
-                gotRight();
-                //Generate();
-            }
-            else
-            {
-                gotWrong();
-            }
-        }
-        else
-        {
-            //Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
-            gotWrong();
-        }
-        //Debug.Log("Item name" + str);
-        */
     }
 
     IEnumerator WaitAndGo(float waitTime)

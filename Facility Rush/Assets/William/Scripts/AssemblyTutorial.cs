@@ -14,7 +14,6 @@ public class AssemblyTutorial : MonoBehaviour
     void Start()
     {
         TutorialSystem.PopDialog(index);
-        Debug.Log("dialog.Length: " + dialog.Length);
 
     }
 
@@ -41,7 +40,6 @@ public class AssemblyTutorial : MonoBehaviour
 
     void ChangeText(int index)
     {
-        Debug.Log("ChangeText called");
         bubbleText.text = dialog[index];
     }
 
@@ -50,7 +48,6 @@ public class AssemblyTutorial : MonoBehaviour
         if (index < dialog.Length - 1)
         {
             index++;
-            Debug.Log("PopDialog called");
 
             TutorialSystem.PopDialog(index);
         }
