@@ -224,6 +224,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         answersGoUP.SetBool("NumberMove", false);
         answersGoUP.SetBool("NumberBack", true);
         failscene.SetActive(true);
+        failscene.GetComponent<gameOverPanel>().crossCheckScores(0, score);
         game = false;
         calculateRestoration();
     }
