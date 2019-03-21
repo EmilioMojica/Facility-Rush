@@ -1376,7 +1376,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 870777528}
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &422741325
@@ -1771,7 +1782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.9000244, y: -481.00113}
+  m_AnchoredPosition: {x: -0.9000244, y: -481.0011}
   m_SizeDelta: {x: 0, y: -417.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497927582
@@ -2978,6 +2989,117 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &870777527
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8119407184565288901, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_Name
+      value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448873657290268634, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506047078748112973, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: sliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506047078748112973, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: sliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 400874166}
+    - target: {fileID: 3506047078748112973, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: sliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 1079437405}
+    - target: {fileID: 3506047080378563680, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: musicSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506047080378563680, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: soundSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506047080378563679, guid: a512932254b75d74689fd8cb7c429016,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a512932254b75d74689fd8cb7c429016, type: 3}
+--- !u!114 &870777528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3506047080378563680, guid: a512932254b75d74689fd8cb7c429016,
+    type: 3}
+  m_PrefabInstance: {fileID: 870777527}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf5e2d2101c24b4c95b8a75e804f331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &896009669
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,7 +4254,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 870777528}
+        m_MethodName: ChangeSoundVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1179224858
