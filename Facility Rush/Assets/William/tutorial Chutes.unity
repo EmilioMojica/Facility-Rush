@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2107435749}
+      - m_Target: {fileID: 0}
         m_MethodName: restartButton
         m_Mode: 1
         m_Arguments:
@@ -4155,6 +4155,7 @@ MonoBehaviour:
   - Oops! Almost there
   Conditions: []
   index: 0
+  count: 0
   anim: {fileID: 235342416}
   myRecTransform: {fileID: 235342413}
   flasingPos:
@@ -8307,7 +8308,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2107435748}
-  - component: {fileID: 2107435749}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -8331,46 +8331,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2107435749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107435747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9448e3881b292e64d99b924ccf6e78c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLevel: 0
-  equations:
-  - {fileID: 440524967}
-  - {fileID: 2014704144}
-  - {fileID: 761253371}
-  - {fileID: 1906715147}
-  answers:
-  - {fileID: 1376434032}
-  - {fileID: 614719157}
-  - {fileID: 1591651873}
-  - {fileID: 957188853}
-  answerSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  scoreValue: {fileID: 622271629}
-  slots: {fileID: 497927581}
-  playscene: {fileID: 981307998}
-  failscene: {fileID: 422741325}
-  bestScore: {fileID: 1010856729}
-  timeSlider: {fileID: 1243572840}
-  game: 0
-  answersGoUP: {fileID: 1407660182}
-  tubeOne: {fileID: 1928190983}
-  tubeTwo: {fileID: 438302702}
-  tubeThree: {fileID: 1993159929}
-  tubeFour: {fileID: 244679316}
 --- !u!1 &207533745551693023
 GameObject:
   m_ObjectHideFlags: 0

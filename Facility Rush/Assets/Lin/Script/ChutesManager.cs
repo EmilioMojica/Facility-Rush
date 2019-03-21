@@ -148,8 +148,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         }
 
         answersGoUP.SetBool("NumberMove", true);
-        //answersGoUP.SetBool("NumberBack", false);
-        //StartCoroutine("WaitAndGo", 0.5f);
+
         StartCoroutine("WaitAndRight", 0.5f);
 
     }
@@ -169,23 +168,13 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         score += 1;
         //score += currentLevel * 10;                         //Increasing score value proportionally to current level (at fisrt level +1, at second +2 etc)
         scoreValue.text = score.ToString();
-        //bestScore.text = score.ToString();
-        //GameObject.Find("GameController").GetComponent<MoveBack>().StartPoint();
+
 
         //
         int y = trueID + 1;
         string x = y.ToString();
         GameObject.Find(x).GetComponent<ChutesDrag>().MoveBack();
-        //GameObject.Find(x).GetComponent<DragHandler>().MoveBack();
-        //GameObject.Find("2").GetComponent<DragHandler>().MoveBack();
-        //GameObject.Find("3").GetComponent<DragHandler>().MoveBack();
-        // GameObject.Find("4").GetComponent<DragHandler>().MoveBack();
-        //Here is "level up" logic. We check current level then current score and compare it with level marks that you can set as wish. If need we run level up function
-        // DragHandler
-        //GameObject.Find("MoveBack").GetComponent<DragHandler>();
-        //dh.MoveBack();
-        // mb.GoBack(gameObject.transform.position);
-        // gobackAnimation.Play();
+
         Generate();                                     //After got correct answer we generate new one
     }
     IEnumerator WaitAndRight(float waitTime)

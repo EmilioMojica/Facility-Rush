@@ -11,7 +11,6 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
     public Animator[] tube;
     public Animator putAnswer;
 
-
     public GameObject item
     {
         get
@@ -37,14 +36,13 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
 
         if (TutorialChuteDrag.itemBeingDragged.GetComponent<TutorialChuteDrag>().ID == correctID)
         {
-            Debug.Log("恭喜答對");
             tube[3].SetBool("Correct1", true);
             putAnswer.SetBool("NumberMove", true);
 
             StartCoroutine(WaitCorrectAnimation(0.5f));
+            StartCoroutine(BoxMoveBack(0.75f));
 
             GameObject.FindObjectOfType<TutorialChutes>().NextDialogue();
-
         }
         else
         {
@@ -53,9 +51,11 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
                 case 1:
                     tube[0].SetBool("Wrong1", true);
                     putAnswer.SetBool("NumberMove", true);
-                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);
+                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);  //顯示出Opps, almost there
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 0));
+
+                    StartCoroutine(BoxMoveBack(0.75f));
 
                     break;
                 case 2:
@@ -65,6 +65,8 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 1));
 
+                    StartCoroutine(BoxMoveBack(0.75f));
+
                     break;
                 case 3:
                     tube[2].SetBool("Wrong1", true);
@@ -73,13 +75,17 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 2));
 
+                    StartCoroutine(BoxMoveBack(0.75f));
+
                     break;
                 case 4:
                     tube[3].SetBool("Wrong1", true);
                     putAnswer.SetBool("NumberMove", true);
-                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);
+                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);  
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 3));
+
+                    StartCoroutine(BoxMoveBack(0.75f));
 
                     break;
             }
@@ -92,9 +98,6 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
         tube[i].SetBool("Wrong1", false);
         putAnswer.SetBool("NumberMove", false);
         putAnswer.SetBool("NumberBack", true);
-
-        Debug.Log("設成false");
-
     }
 
     IEnumerator WaitCorrectAnimation(float time)
@@ -103,7 +106,11 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
         tube[3].SetBool("Correct1", false);
         putAnswer.SetBool("NumberMove", false);
         putAnswer.SetBool("NumberBack", true);
-        Debug.Log("設成false");
+    }
 
+    IEnumerator BoxMoveBack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.GetComponentInChildren<TutorialChuteDrag>().MoveBack();
     }
 }

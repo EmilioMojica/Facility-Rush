@@ -25,7 +25,7 @@ public class ChutesSlot : MonoBehaviour, IDropHandler
     {
         if (!item)
         {
-            TutorialChuteDrag.itemBeingDragged.transform.SetParent(transform);
+            ChutesDrag.itemBeingDragged.transform.SetParent(transform);
             //DragHandler.itemBeingDragged.transform.SetParent(transform);
             ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
          
