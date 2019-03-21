@@ -65,6 +65,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     // Use this for initialization
     void Start()
     {
+        currentLevel = PlayerPrefs.GetInt("grade");
         answersGoUP.SetBool("NumberBack", true);
         playscene.SetActive(true);
         failscene.SetActive(false);
