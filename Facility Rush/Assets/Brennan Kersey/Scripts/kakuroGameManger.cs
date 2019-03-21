@@ -254,6 +254,7 @@ public class kakuroGameManger : MonoBehaviour
     {
         gameOver = true;
         feedback.text = "GameOver";
+        gameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(1, score);
         gameOverPanel.SetActive(true);
         calculateRestoration();
         //dylan.cartkuroCalculation();

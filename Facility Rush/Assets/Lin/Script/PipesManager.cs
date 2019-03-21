@@ -67,6 +67,7 @@ public class PipesManager : MonoBehaviour
     private float delayTime;
 
     private int[] whichGradeLevelIsThisProblem;
+    [SerializeField] private GameObject gameOverPanel;
     public void setAppropriateListForGradeLevelsKthrough5(int gradeForSettingList)
     {
         //print("The list has been made");
@@ -570,6 +571,8 @@ public class PipesManager : MonoBehaviour
         gameOver = true;
         gameTimerText.text = "00:00";
         calculateRestoration();
+        gameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(3, Score);
+        gameOverPanel.SetActive(true);
     }
 
     public void calculateRestoration()

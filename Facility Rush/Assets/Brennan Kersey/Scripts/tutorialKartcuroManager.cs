@@ -140,7 +140,10 @@ public class tutorialKartcuroManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            initiateGameOver();
+        }
     }
 
     public void checkBoard() // checks for correct answer for the board
@@ -178,6 +181,7 @@ public class tutorialKartcuroManager : MonoBehaviour
     {
         gameOver = true;
         feedback.text = "GameOver";
+        gameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(1,score);
         gameOverPanel.SetActive(true);
     }
 

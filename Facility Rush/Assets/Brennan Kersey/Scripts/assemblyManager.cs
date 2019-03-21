@@ -569,6 +569,7 @@ public class assemblyManager : MonoBehaviour
 		if(gameOver==true)
         {
             checkEquationButton.SetActive(false);
+            GameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(0, score);
             GameOverPanel.SetActive(true);
         }
 	}
