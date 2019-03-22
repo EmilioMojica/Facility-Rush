@@ -15,13 +15,13 @@ public class MouseParticle : MonoBehaviour
     {
         if (!Input.GetMouseButtonDown(0))
         {
-            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
-            transform.position = r.GetPoint(distance);
+           Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+           transform.position = r.GetPoint(distance);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            GetComponent<ParticleSystem>().Play();
+           GetComponent<ParticleSystem>().Play();
         }
     }
 }
