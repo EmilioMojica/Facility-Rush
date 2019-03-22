@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class MF_MainMenu : MonoBehaviour
     private PauseGame Pause;
     private PauseBool pb;
     private Button[] thisbutton;
+    private GameObject[] pS;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -115,4 +117,16 @@ public class MF_MainMenu : MonoBehaviour
     //{
     //    SceneManager.LoadScene("Options Menu");
     //}
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            pS = GameObject.FindGameObjectsWithTag("Particle");
+            for (int p = 0; p < pS.Length; p++)
+            {
+                pS[p].SetActive(false);
+            }
+        }
+    }
 }

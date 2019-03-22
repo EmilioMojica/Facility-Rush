@@ -8,6 +8,7 @@ TagManager:
   - degredationManager
   - musicSlider
   - soundSlider
+  - Particle
   layers:
   - Default
   - TransparentFX
