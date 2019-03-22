@@ -15,6 +15,7 @@ public class ChangeVolume : MonoBehaviour
     {
         musicSlider = GameObject.FindObjectOfType<SliderHolder>().sliders[0];  //取得slider的控制權
         soundSlider = GameObject.FindObjectOfType<SliderHolder>().sliders[1];
+
     }
 
     // Start is called before the first frame update
