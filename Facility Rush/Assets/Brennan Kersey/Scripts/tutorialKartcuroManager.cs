@@ -51,7 +51,21 @@ public class tutorialKartcuroManager : MonoBehaviour
     [SerializeField] private GameObject UILayoutThreeByThree; // A variable representing the Gameobject for the 3x3 Game board that can be initiated on start
     [SerializeField] private GameObject UILayoutTwoByTwo;     // A variable representing the Gameobject for the 2x2 Game bOard that can be initiated on start 
 
-    
+    [SerializeField] private Animator tutorialAnimator;
+    [SerializeField] private Animator cartAnimator;
+    [SerializeField] private bool isTwoBoxMoved;
+    [SerializeField] private bool isOneBoxMoved;
+    [SerializeField] private bool isThreeBoxMoved;
+    [SerializeField] private bool isFourthBoxMoved;
+    [SerializeField] private bool tutorialFinished;
+
+    [SerializeField] private GameObject dragDirectionsBox;
+    [SerializeField] private GameObject scoreDirectionsBox;
+    [SerializeField] private GameObject timerDirectionsBox;
+    [SerializeField] private GameObject animatedHand;
+
+    private float kartMoveForward;
+    private float kartMoveBackward;
     //public GameObject timer;
 
 
@@ -59,8 +73,8 @@ public class tutorialKartcuroManager : MonoBehaviour
     //public float maxTime;
     //public Text gameTimerText;
 
-   // [SerializeField] private GameObject degradationBuddy;
-   // private DegradationManager dylan;
+    // [SerializeField] private GameObject degradationBuddy;
+    // private DegradationManager dylan;
 
     public int getTotalNumberedPanels()
     {
@@ -72,6 +86,12 @@ public class tutorialKartcuroManager : MonoBehaviour
 
     void Start()
     {
+        kartMoveForward=cartAnimator.runtimeAnimatorController.animationClips[0].length;
+        kartMoveBackward=cartAnimator.runtimeAnimatorController.animationClips[1].length;
+        StartCoroutine(animateDirections(0));
+        numberSlotsTwoByTwo[0].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = false;
+        numberSlotsTwoByTwo[2].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = false;
+        numberSlotsTwoByTwo[3].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = false;
         gameOver = false;
         gradeLevel = 0;
         feedback.text = "";
@@ -189,6 +209,30 @@ public class tutorialKartcuroManager : MonoBehaviour
     {
         currentSum1 = 0;
         currentSum2 = 0;
+        int panelsOccupied = firstRowTwoByTwo[0].transform.childCount + firstRowTwoByTwo[1].transform.childCount + secondRowTwoByTwo[0].transform.childCount + secondRowTwoByTwo[1].transform.childCount;
+        switch(panelsOccupied)
+        {
+            
+
+            case 1:
+                StartCoroutine(animateDirections(1));
+                numberSlotsTwoByTwo[0].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = true;
+                break;
+
+            case 2:
+                StartCoroutine(animateDirections(2));
+                numberSlotsTwoByTwo[2].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = true;
+                break;
+
+            case 3:
+                StartCoroutine(animateDirections(3));
+                numberSlotsTwoByTwo[3].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = true;
+                break;
+            case 4:
+                StartCoroutine(animateDirections(4));
+                break;
+
+        }
         if (gradeLevel > 1)
         {
             for (int i = 0; i < 3; i++)
@@ -221,5 +265,54 @@ public class tutorialKartcuroManager : MonoBehaviour
         }
         print("Sum for row 1 is " + currentSum1);
         print("Sum for row 2 is " + currentSum2);
+    }
+    IEnumerator animateDirections(int whichBox)
+    {
+        switch(whichBox)
+        {
+            case 0:
+                tutorialAnimator.SetInteger("moving", 1);
+               
+                break;
+            case 1:
+                tutorialAnimator.SetInteger("moving", 2);
+               
+                break;
+            case 2:
+                tutorialAnimator.SetInteger("moving", 3);
+             
+                break;
+            case 3:
+                tutorialAnimator.SetInteger("moving", 4);
+             
+                break;
+            case 4:
+                dragDirectionsBox.SetActive(false);
+                scoreDirectionsBox.SetActive(true);
+                tutorialAnimator.SetInteger("moving", 5);
+                yield return new WaitForSeconds(3f);
+                scoreDirectionsBox.SetActive(false);
+                tutorialAnimator.SetInteger("moving", 6);
+                timerDirectionsBox.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                //tutorialAnimator.SetInteger("moving", 6);
+                yield return new WaitForSeconds(3f);
+                tutorialAnimator.SetInteger("moving", 0);
+                //yield return new WaitForSeconds(3f);
+                timerDirectionsBox.SetActive(false);
+                animatedHand.SetActive(false);
+                gameOverPanel.SetActive(true);
+                break;
+        }
+        
+
+        yield return null;
+    }
+
+    IEnumerator kartMoving()
+    {
+        cartAnimator.SetInteger("nextTransition2x2", 0);
+        yield return new WaitForSeconds(kartMoveForward);
+        yield return null;
     }
 }
