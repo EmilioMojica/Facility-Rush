@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class TutorialChutes : MonoBehaviour
+public class TutorialPipe : MonoBehaviour
 {
     public string[] dialog;
     public string[] Conditions;
@@ -70,18 +69,18 @@ public class TutorialChutes : MonoBehaviour
                     i.raycastTarget = true;
                 }
 
-                anim.SetBool("IsFlashing", true);   
+                anim.SetBool("IsFlashing_Pipe", true);
             }
             else
             {
                 myRecTransform.localPosition = new Vector3(500, 100, 0);
 
-                anim.SetBool("IsFlashing", false);
+                anim.SetBool("IsFlashing_Pipe", false);
 
             }
             TutorialSystem.PopDialog(index);
         }
-        else if(index == dialog.Length - 1)
+        else if (index == dialog.Length - 1)
         {
             index = 0;
             TutorialSystem.PopDialog(index);
@@ -106,5 +105,4 @@ public class TutorialChutes : MonoBehaviour
 
 
     }
-
 }
