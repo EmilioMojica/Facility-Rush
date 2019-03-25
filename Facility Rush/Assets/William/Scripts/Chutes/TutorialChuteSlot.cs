@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class TutorialChuteSlot : MonoBehaviour, IDropHandler
@@ -11,7 +12,9 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
     public Animator[] tube;
     public Animator putAnswer;
 
-    public ParticleSystem particle;
+    public Text scoreText;
+
+    public ParticleSystem[] particles;
 
     public GameObject item  // 屬性，專門看這個slot下面有沒有子物件，若有的話一定是這個slot的子物件。沒有的話則return null
     {
@@ -42,11 +45,11 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
             StartCoroutine(WaitCorrectAnimation(0.5f));
             StartCoroutine(BoxMoveBack(0.75f));
 
-            GameObject.FindObjectOfType<TutorialChutes>().NextDialogue();
+            GameObject.FindObjectOfType<TutorialChutes>().CorrectResultDialogue();
 
             StartCoroutine(PlayParticle(0.85f));
 
-
+            scoreText.text = 200.ToString();
         }
         else    //不是的話執行紅色的動畫
         {
@@ -55,7 +58,7 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
                 case 1:
                     tube[0].SetBool("Wrong1", true);
                     putAnswer.SetBool("NumberMove", true);
-                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);  //顯示出Opps, almost there
+                    GameObject.FindObjectOfType<TutorialChutes>().FalseResultDialogue();  //顯示出Opps, almost there
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 0));
 
@@ -65,7 +68,7 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
                 case 2:
                     tube[1].SetBool("Wrong1", true);
                     putAnswer.SetBool("NumberMove", true);
-                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);
+                    GameObject.FindObjectOfType<TutorialChutes>().FalseResultDialogue();
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 1));
 
@@ -75,7 +78,7 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
                 case 3:
                     tube[2].SetBool("Wrong1", true);
                     putAnswer.SetBool("NumberMove", true);
-                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);
+                    GameObject.FindObjectOfType<TutorialChutes>().FalseResultDialogue();
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 2));
 
@@ -85,7 +88,7 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
                 case 4:
                     tube[3].SetBool("Wrong1", true);
                     putAnswer.SetBool("NumberMove", true);
-                    GameObject.FindObjectOfType<TutorialChutes>().NextDialogue2(5);  
+                    GameObject.FindObjectOfType<TutorialChutes>().FalseResultDialogue();  
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 3));
 
@@ -122,7 +125,14 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
     IEnumerator PlayParticle(float time)
     {
         yield return new WaitForSeconds(time);
-        particle.Play();
 
+        InvokeRepeating("ParticleEffect", 0, 1.5f);
+        //TODO: 回到Menu 之後要 CancelInvoke
+    }
+
+    void ParticleEffect()
+    {
+        int index = Random.Range(0, particles.Length);
+        particles[index].Play();
     }
 }

@@ -11,32 +11,32 @@ public class TutorialChutes : MonoBehaviour
 
     private Text bubbleText;
     public int index;
-    public int count;
 
     public Animator anim;
-    public RectTransform myRecTransform;
     public RectTransform[] flasingPos;
+    public Transform bubbleImage;
 
     public Image[] image;
+    public Text time;
 
     void Start()
     {
         TutorialSystem.PopDialog(index);
-
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (count < 3)
+            if (index < 3)
             {
                 NextDialogue();  // 完成bubble text上的東西後才呼叫
-                count++;
             }
-
+            else if (index >= 5)
+            {
+                NextDialogue();
+            }
         }
-
     }
 
     private void OnEnable()
@@ -63,7 +63,6 @@ public class TutorialChutes : MonoBehaviour
 
             if (index == 3)
             {
-                myRecTransform.localPosition = flasingPos[0].localPosition;
 
                 foreach (Image i in image)
                 {
@@ -72,39 +71,62 @@ public class TutorialChutes : MonoBehaviour
 
                 anim.SetBool("IsFlashing", true);   
             }
-            else
+
+            if (index == 6)
             {
-                myRecTransform.localPosition = new Vector3(500, 100, 0);
-
-                anim.SetBool("IsFlashing", false);
-
+                anim.SetBool("IsScoreFlashing", true);
             }
+
+            if (index == 7)
+            {
+                anim.SetBool("IsScoreFlashing", false);
+                anim.SetBool("IsTimeFlashing", true);
+
+                bubbleImage.localPosition = flasingPos[0].localPosition;
+            }
+
+            if (index == 8)
+            {
+                time.text = "0:00";
+            }
+
             TutorialSystem.PopDialog(index);
         }
-        else if(index == dialog.Length - 1)
-        {
-            index = 0;
-            TutorialSystem.PopDialog(index);
-
-        }
-
 
     }
 
-    public void NextDialogue2(int i)
+    public void FalseResultDialogue()
     {
         if (index < dialog.Length - 1)
         {
-            TutorialSystem.PopDialog(i);
+            index = 4;
+            TutorialSystem.PopDialog(index);
         }
-        else if (index == dialog.Length - 1)
+        else if (index > dialog.Length - 1)
         {
             index = 0;
             TutorialSystem.PopDialog(index);
-
         }
-
-
     }
 
+    public void CorrectResultDialogue()
+    {
+        if (index <= dialog.Length - 1)
+        {
+            index = 5;
+            TutorialSystem.PopDialog(index);
+
+            foreach (Image j in image)
+            {
+                j.raycastTarget = false;
+            }
+
+            anim.SetBool("IsFlashing", false);
+        }
+        else if (index > dialog.Length - 1)
+        {
+            index = 0;
+            TutorialSystem.PopDialog(index);
+        }
+    }
 }
