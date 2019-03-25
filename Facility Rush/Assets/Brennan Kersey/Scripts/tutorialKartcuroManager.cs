@@ -289,6 +289,7 @@ public class tutorialKartcuroManager : MonoBehaviour
             case 4:
                 dragDirectionsBox.SetActive(false);
                 scoreDirectionsBox.SetActive(true);
+                StartCoroutine(kartMoving());
                 tutorialAnimator.SetInteger("moving", 5);
                 yield return new WaitForSeconds(3f);
                 scoreDirectionsBox.SetActive(false);
@@ -313,6 +314,9 @@ public class tutorialKartcuroManager : MonoBehaviour
     {
         cartAnimator.SetInteger("nextTransition2x2", 0);
         yield return new WaitForSeconds(kartMoveForward);
+        cartAnimator.SetInteger("nextTransition2x2", 1);
+        yield return new WaitForSeconds(kartMoveBackward);
+        cartAnimator.SetInteger("nextTransition2x2", -1);
         yield return null;
     }
 }

@@ -41,8 +41,12 @@ public class kakuroGameManger : MonoBehaviour
     public RectTransform[] numberSlotsTwoByTwo;
     public RectTransform[] answerPanelsTwoByTwo;
 
-    public RectTransform positionOne;
-    public RectTransform positionTwo;
+    public GameObject threeByThreeFirstRowTriangle;
+    public GameObject threebyThreeSecondRowTriangle;
+
+    public GameObject twoByTwoFirstRowTriangle;
+    public GameObject twoByTwoSecondRowTriangle;
+
     public int score;
 
     public Text scoreText;
@@ -67,6 +71,14 @@ public class kakuroGameManger : MonoBehaviour
     [SerializeField]private GameObject degradationBuddy;
     private DegradationManager dylan;
 
+    [SerializeField] private Animator animator2x2;
+    [SerializeField] private Animator animator3x3;
+
+    private float kartMoveForward2x2;
+    private float kartMoveBackward2x2;
+
+    private float kartMoveForward3x3;
+    private float kartMoveBackward3x3;
     public int getTotalNumberedPanels()
     {
         return totalNumberedPanels;
@@ -77,6 +89,13 @@ public class kakuroGameManger : MonoBehaviour
 
     void Start ()
     {
+
+        kartMoveForward2x2 = animator2x2.runtimeAnimatorController.animationClips[0].length;
+        kartMoveBackward2x2 = animator2x2.runtimeAnimatorController.animationClips[1].length;
+
+        kartMoveForward3x3= animator3x3.runtimeAnimatorController.animationClips[0].length;
+        kartMoveBackward3x3= animator3x3.runtimeAnimatorController.animationClips[1].length;
+
         print("Current KartCuro score that is called from kartcuro manager: " + (PlayerPrefs.GetInt("kakuroHighScore")));
         dylan = degradationBuddy.GetComponent<DegradationManager>();
         gameOver = false;
@@ -206,10 +225,19 @@ public class kakuroGameManger : MonoBehaviour
             {
                 feedback.text = "Correct";
                 makeNewBoard();
-                setOriginalPositions();
+                //setOriginalPositions();
                 score += 100;
                 PlayerPrefs.SetInt("recentKakuroHighScore", score);
                 scoreText.text = "" + score;
+                if(gradeLevel==0 || gradeLevel==1)
+                {
+                    print("start animating 2x2");
+                    StartCoroutine(kartAnimation2x2());
+                }
+                else
+                {
+                    StartCoroutine(kartAnimation3x3());
+                }
                 numberCorrectSoFar++;
                 numberCorrectTotal++;
                 numberOfProblemsAttempted++;
@@ -299,5 +327,35 @@ public class kakuroGameManger : MonoBehaviour
         print("Sum for row 1 is " + currentSum1);
         print("Sum for row 2 is " + currentSum2);
     }
-
+    IEnumerator kartAnimation2x2()
+    {
+        twoByTwoFirstRowTriangle.SetActive(false);
+        twoByTwoSecondRowTriangle.SetActive(false);
+        animator2x2.SetInteger("nextTransition2x2", 0);
+        yield return new WaitForSeconds(kartMoveForward2x2);
+        setOriginalPositions();
+        animator2x2.SetInteger("nextTransition2x2", 1);
+        yield return new WaitForSeconds(kartMoveBackward2x2);
+        twoByTwoFirstRowTriangle.SetActive(true);
+        twoByTwoSecondRowTriangle.SetActive(true);
+        animator2x2.SetInteger("nextTransition2x2", -1);
+        yield return new WaitForSeconds(kartMoveBackward2x2);
+        yield return null;
+    }
+    
+    IEnumerator kartAnimation3x3()
+    {
+        twoByTwoFirstRowTriangle.SetActive(false);
+        twoByTwoSecondRowTriangle.SetActive(false);
+        animator3x3.SetInteger("nextTransition3x3",0);
+        yield return new WaitForSeconds(kartMoveForward3x3);
+        setOriginalPositions();
+        animator3x3.SetInteger("nextTransition3x3",1);
+        yield return new WaitForSeconds(kartMoveBackward3x3);
+        twoByTwoFirstRowTriangle.SetActive(true);
+        twoByTwoSecondRowTriangle.SetActive(true);
+        animator3x3.SetInteger("nextTransition3x3", -1);
+        yield return new WaitForSeconds(kartMoveBackward3x3);
+        yield return null;
+    }
 }
