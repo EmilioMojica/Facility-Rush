@@ -10554,8 +10554,10 @@ MonoBehaviour:
   - {fileID: 1681061909}
   - {fileID: 1038936661}
   - {fileID: 965078889}
-  positionOne: {fileID: 0}
-  positionTwo: {fileID: 0}
+  threeByThreeFirstRowTriangle: {fileID: 0}
+  threebyThreeSecondRowTriangle: {fileID: 0}
+  twoByTwoFirstRowTriangle: {fileID: 0}
+  twoByTwoSecondRowTriangle: {fileID: 0}
   score: 0
   scoreText: {fileID: 1329487859}
   totalNumberedPanels: 4
@@ -10567,6 +10569,8 @@ MonoBehaviour:
   maxTime: 180
   gameTimerText: {fileID: 514658662}
   degradationBuddy: {fileID: 765657755}
+  animator2x2: {fileID: 0}
+  animator3x3: {fileID: 0}
 --- !u!4 &1799809514
 Transform:
   m_ObjectHideFlags: 0
