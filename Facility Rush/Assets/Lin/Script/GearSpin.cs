@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GearSpin : MonoBehaviour
 {
+    public int speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class GearSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, 180), 90 * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 0, 180), speed * Time.deltaTime);
     }
 }
