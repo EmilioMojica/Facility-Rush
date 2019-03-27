@@ -12,6 +12,7 @@ public class TutorialPipe : MonoBehaviour
     public int index;
 
     public Animator anim;
+    public Animator pipeAnim;
     public RectTransform myRecTransform;
     public RectTransform[] flasingPos;
 
@@ -26,7 +27,7 @@ public class TutorialPipe : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (index < 4)
+            if (index < 5)
             {
                 NextDialogue();  // 完成bubble text上的東西後才呼叫
             }
@@ -59,17 +60,20 @@ public class TutorialPipe : MonoBehaviour
             {
                 myRecTransform.localPosition = flasingPos[0].localPosition;
 
+                pipeAnim.SetBool("IsGlowing", true);
+            }
+            else if (index == 5)
+            {
+                pipeAnim.SetBool("IsGlowing", false);
 
                 anim.SetBool("IsFlashing_Pipe", true);
-
                 StartCoroutine("WaitFingerAnimation");
             }
             else
             {
                 myRecTransform.localPosition = new Vector3(500, 100, 0);
-                Debug.Log("in else");
+
                 anim.SetBool("IsFlashing_Pipe", false);
-                
             }
             TutorialSystem.PopDialog(index);
         }
@@ -77,10 +81,7 @@ public class TutorialPipe : MonoBehaviour
         {
             index = 0;
             TutorialSystem.PopDialog(index);
-
         }
-
-
     }
 
     public void FalseResultDialogue()
@@ -115,7 +116,6 @@ public class TutorialPipe : MonoBehaviour
         {
             index = 0;
             TutorialSystem.PopDialog(index);
-
         }
     }
 

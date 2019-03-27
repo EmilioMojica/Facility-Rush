@@ -2781,15 +2781,16 @@ MonoBehaviour:
   - 'Your job is to find the right pipe to get them to the other side. '
   - 'Pull out the equation pipe from below for the number it makes next to the box. '
   - "Here, I\u2019ll give you a hand."
-  - See the glowing pipe? Drag it over to that spot over there.
-  - "And there it goes! Now you\u2019ll get a new set of pipes to send another ball
-    on its way. "
+  - See the glowing pipe?
+  - Drag it over to that spot over there.
   - Did anyone see how quick that was?
   - You can do it! Try again.
+  - "And there it goes! Now you\u2019ll get a new set of pipes to send another ball
+    on its way. "
   Conditions: []
   index: 0
-  count: 0
   anim: {fileID: 1891307753}
+  pipeAnim: {fileID: 1105862424}
   myRecTransform: {fileID: 1891307752}
   flasingPos:
   - {fileID: 1255462083}
@@ -2811,6 +2812,7 @@ GameObject:
   - component: {fileID: 1105862426}
   - component: {fileID: 1105862425}
   - component: {fileID: 1105862428}
+  - component: {fileID: 1105862424}
   m_Layer: 5
   m_Name: A1_boxContainer
   m_TagString: Untagged
@@ -2838,6 +2840,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0.8, y: 29}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1105862424
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105862422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d43a9c29bdd10d48a5f74416540b50e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1105862425
 MonoBehaviour:
   m_ObjectHideFlags: 0
