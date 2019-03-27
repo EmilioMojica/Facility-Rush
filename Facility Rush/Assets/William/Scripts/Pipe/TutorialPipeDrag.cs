@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TutorialChuteDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class TutorialPipeDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Vector3 startPosition;
     public Vector3 backPosition;
@@ -30,10 +30,13 @@ public class TutorialChuteDrag : MonoBehaviour, IBeginDragHandler, IDragHandler,
         startPosition = transform.position;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[0];
+        //AudioManager.instance.soundAudioSource.Play();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+
         Vector3 currentPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, initial.z);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(currentPosition);
         this.transform.position = worldPosition;
@@ -47,6 +50,8 @@ public class TutorialChuteDrag : MonoBehaviour, IBeginDragHandler, IDragHandler,
         transform.position = startPosition;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
+        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[1];
+        //AudioManager.instance.soundAudioSource.Play();
     }
 
 

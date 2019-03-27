@@ -10,7 +10,6 @@ public class TutorialPipe : MonoBehaviour
 
     private Text bubbleText;
     public int index;
-    public int count;
 
     public Animator anim;
     public RectTransform myRecTransform;
@@ -21,21 +20,17 @@ public class TutorialPipe : MonoBehaviour
     void Start()
     {
         TutorialSystem.PopDialog(index);
-
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (count < 3)
+            if (index < 4)
             {
                 NextDialogue();  // 完成bubble text上的東西後才呼叫
-                count++;
             }
-
         }
-
     }
 
     private void OnEnable()
@@ -60,23 +55,21 @@ public class TutorialPipe : MonoBehaviour
         {
             index++;
 
-            if (index == 3)
+            if (index == 4)
             {
                 myRecTransform.localPosition = flasingPos[0].localPosition;
 
-                foreach (Image i in image)
-                {
-                    i.raycastTarget = true;
-                }
 
                 anim.SetBool("IsFlashing_Pipe", true);
+
+                StartCoroutine("WaitFingerAnimation");
             }
             else
             {
                 myRecTransform.localPosition = new Vector3(500, 100, 0);
-
+                Debug.Log("in else");
                 anim.SetBool("IsFlashing_Pipe", false);
-
+                
             }
             TutorialSystem.PopDialog(index);
         }
@@ -90,19 +83,49 @@ public class TutorialPipe : MonoBehaviour
 
     }
 
-    public void NextDialogue2(int i)
+    public void FalseResultDialogue()
     {
         if (index < dialog.Length - 1)
         {
-            TutorialSystem.PopDialog(i);
+            index = 7;
+            TutorialSystem.PopDialog(index);
         }
-        else if (index == dialog.Length - 1)
+        else if (index > dialog.Length - 1)
+        {
+            index = 0;
+            TutorialSystem.PopDialog(index);
+        }
+    }
+
+    public void CorrectResultDialogue()
+    {
+        if (index <= dialog.Length - 1)
+        {
+            index = 6;
+            TutorialSystem.PopDialog(index);
+
+            foreach (Image j in image)
+            {
+                j.raycastTarget = false;
+            }
+
+            anim.SetBool("IsFlashing_Pipe", false);
+        }
+        else if (index > dialog.Length - 1)
         {
             index = 0;
             TutorialSystem.PopDialog(index);
 
         }
+    }
 
+    IEnumerator WaitFingerAnimation()
+    {
+        yield return new WaitForSeconds(3f);
 
+        foreach (Image i in image)
+        {
+            i.raycastTarget = true;
+        }
     }
 }
