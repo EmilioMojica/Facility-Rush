@@ -112,12 +112,13 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe1DownTime);
         //Activate Audio
         int index = Random.Range(3, 5);
-        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        AudioManager.instance.soundAudioSource.Play();
+       // AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        //AudioManager.instance.soundAudioSource.Play();
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
+        theToy.SetActive(true);
         Transform spotOnBelt = toyHolder.transform;
         theToy.transform.parent = toyHolder.transform;
-        theToy.transform.position = spotOnBelt.transform.position;
+       // theToy.transform.position = spotOnBelt.transform.position;
         //toyAnimator = theToy.GetComponent<Animator>();
         toyPartsForAnimator[0] = theToy.transform.GetChild(0).transform.GetChild(0).gameObject;
         toyPartsForAnimator[0].SetActive(true);
@@ -133,8 +134,8 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe2DownTime);
         //Activate Audio
         index = Random.Range(3, 5);
-        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        AudioManager.instance.soundAudioSource.Play();
+        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        //AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[1].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 4);
         yield return new WaitForSeconds(pipe2UpTime);
@@ -144,8 +145,8 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe3DownTime);
         //Activate Audio
         index = Random.Range(3, 5);
-        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        AudioManager.instance.soundAudioSource.Play();
+        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        //AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[2].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 7);
         yield return new WaitForSeconds(pipe3UpTime);
@@ -601,20 +602,22 @@ public class assemblyManager : MonoBehaviour
     }
     public void createToy()
     {
-        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+       // createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
         GameObject createdBottom=Instantiate(bottom, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
         createdBottom.transform.parent = createdToy.transform.GetChild(0).transform;
-        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
         createdBottom.transform.position = correctToy.transform.GetChild(0).transform.position;
+       // createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+       // createdBottom.transform.position = correctToy.transform.GetChild(0).transform.position;
         GameObject createdMiddle=Instantiate(middle, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
         createdMiddle.transform.parent = createdToy.transform.GetChild(0).transform;
-        createdMiddle.transform.position= correctToy.transform.GetChild(1).transform.position;
-        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+        createdMiddle.transform.position = correctToy.transform.GetChild(1).transform.position;
+       // createdMiddle.transform.position= correctToy.transform.GetChild(1).transform.position;
+       // createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
         GameObject createdTop=Instantiate(top, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
         createdTop.transform.parent = createdToy.transform.GetChild(0).transform;
         createdTop.transform.position= correctToy.transform.GetChild(2).transform.position;
-        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
-        createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+        //createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+        //createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
        // createdToy.transform.GetChild(5).SetAsFirstSibling();
         //createdToy.transform.GetChild(5).SetAsFirstSibling();
        // createdToy.transform.GetChild(5).SetAsFirstSibling();
