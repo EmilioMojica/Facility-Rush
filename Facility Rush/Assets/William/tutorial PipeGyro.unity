@@ -2783,22 +2783,30 @@ MonoBehaviour:
   - "Here, I\u2019ll give you a hand."
   - See the glowing pipe?
   - Drag it over to that spot over there.
-  - Did anyone see how quick that was?
   - You can do it! Try again.
+  - Did anyone see how quick that was?
   - "And there it goes! Now you\u2019ll get a new set of pipes to send another ball
     on its way. "
-  Conditions: []
+  - Your score will go up when you put the right pipe
+  - If the timer is at zero, the game is over.
   index: 0
   anim: {fileID: 1891307753}
   pipeAnim: {fileID: 1105862424}
-  myRecTransform: {fileID: 1891307752}
-  flasingPos:
-  - {fileID: 1255462083}
   image:
   - {fileID: 2102642641}
   - {fileID: 105812662}
   - {fileID: 493203657}
   - {fileID: 1642826882}
+  - {fileID: 1756868534}
+  - {fileID: 1624743458}
+  - {fileID: 1138729383}
+  - {fileID: 740428547}
+  bubblePos: {fileID: 1255462083}
+  bubbleImage: {fileID: 1296916609}
+  pipeContainer: {fileID: 1023398290}
+  scoreText: {fileID: 2054050175}
+  timerText: {fileID: 1187659099}
+  progressText: {fileID: 1183843500}
 --- !u!1 &1105862422
 GameObject:
   m_ObjectHideFlags: 0
@@ -3048,18 +3056,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 72ede21dff348ca4dbe945c5742fdecf, type: 3}
-    m_FontSize: 10
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MinSize: 0
+    m_MaxSize: 88
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1183843501
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3084,8 +3092,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.5, y: -3}
-  m_SizeDelta: {x: 160, y: 45.369}
+  m_AnchoredPosition: {x: 0, y: 7.4000015}
+  m_SizeDelta: {x: 163.06, y: 48.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1187659097
 GameObject:
@@ -3121,8 +3129,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.2999992, y: 16}
-  m_SizeDelta: {x: 72, y: 30}
+  m_AnchoredPosition: {x: 30.125, y: 7}
+  m_SizeDelta: {x: 35.85, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187659099
 MonoBehaviour:
@@ -3148,16 +3156,16 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 72ede21dff348ca4dbe945c5742fdecf, type: 3}
     m_FontSize: 9
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 134
-    m_Alignment: 5
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time: '
+  m_Text: 2:00
 --- !u!222 &1187659100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3329,7 +3337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255462083}
   m_Layer: 5
-  m_Name: Finger Postion
+  m_Name: Bubble text Postion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3351,7 +3359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 81, y: -164.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1272183043
@@ -3609,7 +3617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1291261048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3731,6 +3739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bubble text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170131429493311445, guid: d761a88c6393ce34987990c2ddd57db3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429493311446, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
@@ -3927,22 +3940,22 @@ PrefabInstance:
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.4000015
+      value: 0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -11.13
+      value: -10.39
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.1200027
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15.2
+      value: -20.91
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3, type: 3}
@@ -5655,7 +5668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14.999756}
+  m_AnchoredPosition: {x: 0, y: -14.999786}
   m_SizeDelta: {x: -20, y: -110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1838936463
@@ -6040,12 +6053,12 @@ PrefabInstance:
     - target: {fileID: 2295104776879800132, guid: 3ea645ac12a99cf46940c336687aab4b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -348
+      value: -247
       objectReference: {fileID: 0}
     - target: {fileID: 2295104776879800132, guid: 3ea645ac12a99cf46940c336687aab4b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 166
+      value: 168
       objectReference: {fileID: 0}
     - target: {fileID: 2295104776879800132, guid: 3ea645ac12a99cf46940c336687aab4b,
         type: 3}
@@ -6086,6 +6099,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295104776879800132, guid: 3ea645ac12a99cf46940c336687aab4b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295104776879800132, guid: 3ea645ac12a99cf46940c336687aab4b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2295104776879800135, guid: 3ea645ac12a99cf46940c336687aab4b,
         type: 3}
@@ -6157,7 +6180,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -6296,8 +6319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59.1, y: 9}
-  m_SizeDelta: {x: 72, y: 30}
+  m_AnchoredPosition: {x: 30.125, y: 7}
+  m_SizeDelta: {x: 35.85, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054050175
 MonoBehaviour:
@@ -6326,13 +6349,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 100
 --- !u!222 &2054050176
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -5,18 +5,31 @@ using UnityEngine.UI;
 
 public class TutorialPipe : MonoBehaviour
 {
-    public string[] dialog;
-    public string[] Conditions;
+    [SerializeField] private string[] dialog;
+    [SerializeField] private int index;
+
+    [SerializeField] private Animator anim;
+    [SerializeField] private Animator pipeAnim;
+
+    [SerializeField] private Image[] image;
+
+    [SerializeField] private RectTransform bubblePos;
+    [SerializeField] private Transform bubbleImage;
+    [SerializeField] private GameObject pipeContainer;
+
+    [SerializeField] private Text scoreText, timerText, progressText;
 
     private Text bubbleText;
-    public int index;
 
-    public Animator anim;
-    public Animator pipeAnim;
-    public RectTransform myRecTransform;
-    public RectTransform[] flasingPos;
-
-    public Image[] image;
+    private void OnEnable()
+    {
+        bubbleText = GetComponent<Text>();
+        TutorialSystem.PopDialog += ChangeText;
+    }
+    private void OnDisable()
+    {
+        TutorialSystem.PopDialog -= ChangeText;
+    }
 
     void Start()
     {
@@ -25,24 +38,26 @@ public class TutorialPipe : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))  //TODO: need to change to touchpad?
         {
             if (index < 5)
             {
                 NextDialogue();  // 完成bubble text上的東西後才呼叫
             }
+            else if (index >= 7)
+            {
+                image[0].GetComponentInChildren<Text>().text = "1+1";
+                image[1].GetComponentInChildren<Text>().text = "4+1";
+                image[2].GetComponentInChildren<Text>().text = "6\n+\n3";
+                image[3].GetComponentInChildren<Text>().text = "3\n+\n4";
+                image[4].GetComponentInChildren<Text>().text = "5";
+                image[5].GetComponentInChildren<Text>().text = "10";
+                image[6].GetComponentInChildren<Text>().text = "1";
+                image[7].GetComponentInChildren<Text>().text = "8";
+
+                NextDialogue();
+            }
         }
-    }
-
-    private void OnEnable()
-    {
-        bubbleText = GetComponent<Text>();
-        TutorialSystem.PopDialog += ChangeText;
-    }
-
-    private void OnDisable()
-    {
-        TutorialSystem.PopDialog -= ChangeText;
     }
 
     void ChangeText(int index)
@@ -58,8 +73,6 @@ public class TutorialPipe : MonoBehaviour
 
             if (index == 4)
             {
-                myRecTransform.localPosition = flasingPos[0].localPosition;
-
                 pipeAnim.SetBool("IsGlowing", true);
             }
             else if (index == 5)
@@ -71,16 +84,27 @@ public class TutorialPipe : MonoBehaviour
             }
             else
             {
-                myRecTransform.localPosition = new Vector3(500, 100, 0);
-
                 anim.SetBool("IsFlashing_Pipe", false);
             }
             TutorialSystem.PopDialog(index);
         }
-        else if (index == dialog.Length - 1)
+
+        if (index == 9)
         {
-            index = 0;
-            TutorialSystem.PopDialog(index);
+            bubbleImage.localPosition = bubblePos.localPosition;
+            pipeContainer.SetActive(false);
+
+            //indicator finger pops out
+            anim.SetBool("PipeScore", true);
+            StartCoroutine("WaitScoreAdded");
+        }
+
+        if (index == 10)
+        {
+            anim.SetBool("PipeScore", false);
+            anim.SetBool("PipeTimer", true);
+
+            StartCoroutine("WaitTimerDecrease");
         }
     }
 
@@ -88,8 +112,10 @@ public class TutorialPipe : MonoBehaviour
     {
         if (index < dialog.Length - 1)
         {
-            index = 7;
+            index = 6;
             TutorialSystem.PopDialog(index);
+
+            progressText.text = "Try again!";
         }
         else if (index > dialog.Length - 1)
         {
@@ -102,8 +128,10 @@ public class TutorialPipe : MonoBehaviour
     {
         if (index <= dialog.Length - 1)
         {
-            index = 6;
+            index = 7;
             TutorialSystem.PopDialog(index);
+
+            progressText.text = "Great job!";
 
             foreach (Image j in image)
             {
@@ -127,5 +155,19 @@ public class TutorialPipe : MonoBehaviour
         {
             i.raycastTarget = true;
         }
+    }
+
+    IEnumerator WaitScoreAdded()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        scoreText.text = "200";
+    }
+
+    IEnumerator WaitTimerDecrease()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        timerText.text = "0:00";
     }
 }

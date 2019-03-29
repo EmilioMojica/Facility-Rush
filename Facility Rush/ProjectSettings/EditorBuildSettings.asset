@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Lin/Scenes/Pipes 1.unity
     guid: e295d340f5d0e4f41931bfd86290d3e5
+  - enabled: 1
+    path: Assets/William/tutorial PipeGyro.unity
+    guid: 50cfa774fc733d54cbe46f873483891d
+  - enabled: 1
+    path: Assets/William/tutorial Chutes.unity
+    guid: 220c1ff131f50c6418ff328c6bbc92b4
   m_configObjects: {}
