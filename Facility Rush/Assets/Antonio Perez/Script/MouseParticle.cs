@@ -6,11 +6,6 @@ public class MouseParticle : MonoBehaviour
 {
     private int distance = 8;
 
-    private void Start()
-    {
-        //GetComponent<ParticleSystem>().Stop();
-    }
-
     private void Update()
     {
         if (!Input.GetMouseButtonDown(0))
