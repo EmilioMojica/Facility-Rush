@@ -9,6 +9,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class tutorialAssembyManager : MonoBehaviour
 {
+    [SerializeField] private GameObject congratsPanel;
     [SerializeField] private float maxTime;         // float variable representing the maximum amount of time a player can have
     [SerializeField] private Text gameTimerText;    // Text variable representing the game timer in the UI
     [SerializeField] private float gameTimer;       // float variable representing the amount of time the player has left on the clock
@@ -423,7 +424,10 @@ public class tutorialAssembyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(gameOver==true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            SceneManager.LoadScene("Ford_Test");
+        }
     }
     public void initiateGameOver()
     {
@@ -646,6 +650,8 @@ public class tutorialAssembyManager : MonoBehaviour
                 dialogText.text = "When timer is at 0:00 the game is over";
                 yield return new WaitForSeconds(2);
                 GameOverPanel.SetActive(true);
+                congratsPanel.SetActive(true);
+                gameOver = true;
                yield return new WaitForSeconds(5);
                 SceneManager.LoadScene("Ford_Test");
                 break;
