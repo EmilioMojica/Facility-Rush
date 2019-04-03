@@ -646,10 +646,11 @@ public class tutorialAssembyManager : MonoBehaviour
                 dialogText.text = "When timer is at 0:00 the game is over";
                 yield return new WaitForSeconds(2);
                 GameOverPanel.SetActive(true);
+               yield return new WaitForSeconds(5);
+                SceneManager.LoadScene("Ford_Test");
                 break;
             case 10:
-                new WaitForSeconds(5);
-                SceneManager.LoadScene("Ford_Test");
+                
                 handAnimator.SetInteger("nextTransition", 10);
                 break;
         }
