@@ -33,9 +33,15 @@ EditorBuildSettings:
     path: Assets/Lin/Scenes/Pipes 1.unity
     guid: e295d340f5d0e4f41931bfd86290d3e5
   - enabled: 1
-    path: Assets/William/tutorial PipeGyro.unity
-    guid: 50cfa774fc733d54cbe46f873483891d
+    path: Assets/Brennan Kersey/Scenes/tutorial Assembly Line.unity
+    guid: 1e7a1cd1f8cd4fa41a698a23735c2477
+  - enabled: 1
+    path: Assets/Brennan Kersey/Scenes/tutorial cartcuro.unity
+    guid: b5d97b983d911134cb4803f6ef468052
   - enabled: 1
     path: Assets/William/tutorial Chutes.unity
     guid: 220c1ff131f50c6418ff328c6bbc92b4
+  - enabled: 1
+    path: Assets/William/tutorial PipeGyro.unity
+    guid: 50cfa774fc733d54cbe46f873483891d
   m_configObjects: {}

@@ -39,31 +39,18 @@ public class MF_MainMenu : MonoBehaviour
         PreviousScene = SceneManager.GetActiveScene().name;
         anim.SetTrigger("MainMenuSceneTransition");
         DisableButtons();
-        //Invoke("TransitionToGradeSelection", 1);
     }
 
     public void OnClickOptions()
     {
         anim.SetTrigger("OpenOptions");
         DisableButtons();
-        //PreviousScene = SceneManager.GetActiveScene().name;
-        //anim.SetTrigger("MainMenuSceneTransition");
-        //Invoke("TransitionToOptions", 1);
-        //if(OptionsPanel.activeSelf == true)
-        //{
-        //    return;
-        //}
-        //else if(OptionsPanel.activeSelf == false)
-        //{
-        //    OptionsPanel.SetActive(true);
-        //}
     }
 
     public void OnClickExitOptions()
     {
         anim.SetTrigger("CloseOptions");
         DisableButtons();
-        //OptionsPanel.SetActive(false);
     }
 
     public void IGOnClickOptions()
@@ -108,15 +95,19 @@ public class MF_MainMenu : MonoBehaviour
             thisbutton[i].interactable = true;
         }
     }
-    //public void TransitionToGradeSelection()
-    //{
-    //    SceneManager.LoadScene("Grade Selection");
-    //}
 
-    //public void TransitionToOptions()
-    //{
-    //    SceneManager.LoadScene("Options Menu");
-    //}
+    public void TutorialBoardOpen()
+    {
+        anim.SetTrigger("TutorialOpen");
+        DisableButtons();
+    }
+
+    public void TutorialBoardClose()
+    {
+        anim.SetTrigger("TutorialClose");
+        DisableButtons();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
