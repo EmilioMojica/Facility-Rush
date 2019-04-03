@@ -30,6 +30,8 @@ public class TutorialChuteDrag : MonoBehaviour, IBeginDragHandler, IDragHandler,
         startPosition = transform.position;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[0];
+        AudioManager.instance.soundAudioSource.Play();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -47,6 +49,8 @@ public class TutorialChuteDrag : MonoBehaviour, IBeginDragHandler, IDragHandler,
         transform.position = startPosition;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[1];
+        AudioManager.instance.soundAudioSource.Play();
     }
 
 

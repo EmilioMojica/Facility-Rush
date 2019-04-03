@@ -12,13 +12,10 @@ using Slider = UnityEngine.UI.Slider;
 
 public class ChutesManager : MonoBehaviour, IHasChanged
 {
-    //public DragHandler dh;
-
     public int currentLevel = 1;
     public List<Text> equations;
 
     public List<Text> answers;//4 answer variants texts
-    //public List<Slot> answerSlots;
     public List<ChutesSlot> answerSlots;
     private int trueID;// ID of true answer that helps to place true answer at random position 
     //generate the right equation 
@@ -29,7 +26,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
     private string[] operators = new string[] { "+", "-", "*", "/" };   // an array to hold the possible operators used by the equation
     [SerializeField] private Transform slots;
-    //[SerializeField] private Animation gobackAnimation;
     public GameObject playscene;
     public GameObject failscene;
 
@@ -39,7 +35,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
     private float timer = 1;
     public bool game;
-    //public Animation answersGoUP;
     public Animator answersGoUP;
     public Animator tubeOne;
     public Animator tubeTwo;
@@ -62,6 +57,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     private int[] factorsOf900 = new int[] { 1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 25, 30, 36, 45, 50, 60, 75, 90, 100, 150, 180, 225, 300, 450, 900 };
 
     private bool isToMuch;
+
     // Use this for initialization
     void Start()
     {
@@ -71,17 +67,14 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         failscene.SetActive(false);
         timeSlider.value = 1;
         game = true;
-        //Debug.Log(operators[1]);
+
         Generate();
-        //HasChanged();
-        //currentLevel = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         bestScore.text = score.ToString();
-        //timeSlider.value -= Time.deltaTime / 10;
 
         if (game)
         {
@@ -127,9 +120,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     //MoveBack mb = new MoveBack();
     public void isRight()
     {
-        //AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
-        //AudioManager.instance.soundAudioSource2.Play();
-
         switch (rightID)
         {
             case 0:
@@ -1773,8 +1763,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             }
             else
             {
-                //isWrong();
-
                 Invoke("isWrong", 0.4f);
                 AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
                 AudioManager.instance.soundAudioSource2.Play();
@@ -1782,8 +1770,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         }
         else
         {
-            //isWrong();
-
             Invoke("isWrong", 0.3f);
             AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
             AudioManager.instance.soundAudioSource2.Play();

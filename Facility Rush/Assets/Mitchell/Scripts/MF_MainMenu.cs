@@ -8,9 +8,11 @@ using UnityEngine.UI;
 
 public class MF_MainMenu : MonoBehaviour
 {
-    private Animator anim;
     public static string PreviousScene = "";
     public GameObject options;
+    public GameObject backButton;
+
+    private Animator anim;
     private PauseGame Pause;
     private PauseBool pb;
     private Button[] thisbutton;
@@ -56,24 +58,28 @@ public class MF_MainMenu : MonoBehaviour
     public void IGOnClickOptions()
     {
         anim.SetTrigger("IGOpenOptions");
+        backButton.SetActive(false);
         DisableButtons();
     }
 
     public void IGOnClickExitOptions()
     {
         anim.SetTrigger("IGCloseOptions");
+        backButton.SetActive(true);
         DisableButtons();
     }
 
     public void ScoreBoardOpen()
     {
         anim.SetTrigger("ScoreOpen");
+        backButton.SetActive(false);
         DisableButtons();
     }
 
     public void ScoreBoardClose()
     {
         anim.SetTrigger("ScoreClose");
+        backButton.SetActive(true);
         DisableButtons();
     }
 
@@ -99,12 +105,14 @@ public class MF_MainMenu : MonoBehaviour
     public void TutorialBoardOpen()
     {
         anim.SetTrigger("TutorialOpen");
+        backButton.SetActive(false);
         DisableButtons();
     }
 
     public void TutorialBoardClose()
     {
         anim.SetTrigger("TutorialClose");
+        backButton.SetActive(true);
         DisableButtons();
     }
 
