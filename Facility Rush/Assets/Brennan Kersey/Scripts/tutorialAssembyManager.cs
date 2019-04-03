@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
 
@@ -12,6 +13,12 @@ public class tutorialAssembyManager : MonoBehaviour
     [SerializeField] private Text gameTimerText;    // Text variable representing the game timer in the UI
     [SerializeField] private float gameTimer;       // float variable representing the amount of time the player has left on the clock
     public int gradelevel;                          // integer representing the grade level that the player selected
+
+    public GameObject pipeOneChoice1;
+    public GameObject pipeOneChoice2;
+
+    public GameObject pipeThreeChoice1;
+    public GameObject pipeThreeChoice2;
 
     public GameObject additionPanel;                // GameObject representing the addition panel that players can select to indicate the addition panel
     public GameObject subtractionPanel;             // Game Object representing the subtraction panel that the player can select to indicate the subtraction panel
@@ -100,13 +107,43 @@ public class tutorialAssembyManager : MonoBehaviour
     float toyConveyerBeltTransition3;
     float toyConveyerBeltResetPosition;
     [SerializeField] private Animator theGoldenGodAnimator;
+    [SerializeField] private Animator handAnimator;
     [SerializeField] private assemblyTimer theTimer;
 
+    private float pointTo4Delay;
+    private float pointToPlusDelay;
+    private float pointTo6Delay;
+    private float pointToProgress;
+    private float pointToEquationButton;
+    private float pointTo3Delay;
+    private float pointTo3OnRightSideDelay;
+    private float pointToScore;
+    private float pointToTimer;
+
+    [SerializeField] private bool firstProblemSolved;
+    [SerializeField] private bool secondProbelmSolved;
+
+    [SerializeField] Text dialogText;
+
+    public bool choiceOnePipeOneNeedsToBePicked;
+    public bool choiceTwoPipeOneNeedsToBePicked;
+
+    public bool choiceOnePipeTwoNeedsToBePicked;
+   
+    public bool choiceOnePipeThreeNeedsToBePicked;
+    public bool choiceTwoPipeThreeNeedsToBePicked;
 
     IEnumerator newAnimationLoop(GameObject toyToInstantiate, Transform spawningPoint)
     {
-        isAnimating = true;
-        theTimer.setIsAnimating(true);
+    choiceOnePipeOneNeedsToBePicked=false;
+    choiceTwoPipeOneNeedsToBePicked=false;
+
+    choiceOnePipeTwoNeedsToBePicked=false;
+
+    choiceOnePipeThreeNeedsToBePicked=false;
+    choiceTwoPipeThreeNeedsToBePicked=false;
+    isAnimating = true;
+        //theTimer.setIsAnimating(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 0);
         yield return new WaitForSeconds(pipe1DownTime);
         //Activate Audio
@@ -114,6 +151,7 @@ public class tutorialAssembyManager : MonoBehaviour
         //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
         //AudioManager.instance.soundAudioSource.Play();
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
+        theToy.SetActive(true);
         Transform spotOnBelt = toyHolder.transform;
         theToy.transform.parent = toyHolder.transform;
         theToy.transform.position = spotOnBelt.transform.position;
@@ -157,13 +195,22 @@ public class tutorialAssembyManager : MonoBehaviour
         theGoldenGodAnimator.SetInteger("nextTransition", -1);
         //
         deleteToyParts();
-        theTimer.setIsAnimating(false);
+        //theTimer.setIsAnimating(false);
         isAnimating = false;
         nextEquation();
+    }
+    public IEnumerator anaiamteHand(int animationPoint)
+    {
+        switch(animationPoint)
+        {
+
+        }
+        yield return null;
     }
     public void setChuteOneChoice(string choice)
     {
         chuteOneChoice = choice;
+        //showChoice1.gameObject.SetActive(true);
     }
 
     public void setChuteTwoChoice(string choice)
@@ -251,8 +298,11 @@ public class tutorialAssembyManager : MonoBehaviour
         score = 0;
         scoreText.text = "" + score;
         showChoice1.text = "";
+        showChoice1.gameObject.SetActive(false);
         showChoice2.text = "";
+        showChoice2.gameObject.SetActive(false);
         showChoice3.text = "";
+        showChoice3.gameObject.SetActive(false);
        // gradelevel = PlayerPrefs.GetInt("grade");
        // print(gradelevel);
        // initiateProperMiddlePanel();
@@ -461,6 +511,18 @@ public class tutorialAssembyManager : MonoBehaviour
         //createToy();
         if (isAnimating == false)
         {
+
+            if(firstProblemSolved==false)
+            {
+                StartCoroutine(switchANimationPhase(5));
+                firstProblemSolved = true;
+            }
+            else if(firstProblemSolved==true && secondProbelmSolved==false)
+            {
+                dialogText.text = "Incorrect answers make incorect toys.";
+                secondProbelmSolved = true;
+                Invoke("scorePointer", 3);
+            }
             createToy();
             string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
             feedbackText.gameObject.SetActive(true);
@@ -504,9 +566,155 @@ public class tutorialAssembyManager : MonoBehaviour
             showChoice1.text = "";
             showChoice2.text = "";
             showChoice3.text = "";
+            showChoice1.gameObject.SetActive(false);
+            showChoice2.gameObject.SetActive(false);
+            showChoice3.gameObject.SetActive(false);
             //nextEquation();
         }
     }
 
+    IEnumerator switchANimationPhase(int indexOfPhase)
+    {
+        switch(indexOfPhase)
+        {
+            case -1:
+                handAnimator.SetInteger("nextTransition", -1);
+                break;
 
+            case 0:
+                handAnimator.SetInteger("nextTransition", 0);
+                break;
+
+            case 1:
+                choiceOnePipeTwoNeedsToBePicked = true;
+                handAnimator.SetInteger("nextTransition", 1);
+                break;
+
+            case 2:
+                choiceTwoPipeThreeNeedsToBePicked = true;
+                handAnimator.SetInteger("nextTransition", 2);
+                //yield return new WaitForSeconds(3);
+                //handAnimator.SetInteger("nextTransition", 3);
+                break;
+
+            case 3:
+                handAnimator.SetInteger("nextTransition", 3);
+                yield return new WaitForSeconds(2f);
+                handAnimator.SetInteger("nextTransition", 4);
+                dialogText.text = "Now click on \"check equation\"";
+                break;
+
+            case 4:
+                handAnimator.SetInteger("nextTransition", 4);
+                yield return new WaitForSeconds(.5f);
+                handAnimator.SetInteger("nextTransition", 5);
+                dialogText.text="Now click on \"check equation\"";
+                handAnimator.SetInteger("nextTransition", 6);
+                break;
+
+            case 5:
+                dialogText.text = "Correct answers assemble correct toys";
+                yield return new WaitForSeconds(3);
+                pipeOneChoice1.SetActive(false);
+                pipeOneChoice2.SetActive(true);
+                pipeThreeChoice2.SetActive(false);
+                pipeThreeChoice1.SetActive(true);
+                dialogText.text = "Now let's show an incorrect solution";
+                yield return new WaitForSeconds(2);
+                handAnimator.SetInteger("nextTransition", 5);
+                dialogText.text = "Click on the 3 panel";
+                choiceTwoPipeOneNeedsToBePicked = true;
+                break;
+
+            case 6:
+                choiceOnePipeTwoNeedsToBePicked = true;
+                handAnimator.SetInteger("nextTransition", 6);
+                break;
+
+            case 7:
+                choiceOnePipeThreeNeedsToBePicked = true;
+                handAnimator.SetInteger("nextTransition", 7);
+                break;
+            case 8:
+                handAnimator.SetInteger("nextTransition", 8);
+                break;
+            case 9:
+                dialogText.text = "Correct answers increase score";
+                handAnimator.SetInteger("nextTransition", 9);
+                yield return new WaitForSeconds(3);
+                handAnimator.SetInteger("nextTransition", 10);
+                dialogText.text = "When timer is at 0:00 the game is over";
+                yield return new WaitForSeconds(2);
+                GameOverPanel.SetActive(true);
+                break;
+            case 10:
+                new WaitForSeconds(5);
+                SceneManager.LoadScene("Ford_Test");
+                handAnimator.SetInteger("nextTransition", 10);
+                break;
+        }
+
+        yield return null;
+    }
+
+    public void startAnimation()
+    {
+        handAnimator.gameObject.SetActive(true);
+        StartCoroutine(switchANimationPhase(0));
+        dialogText.text = "Let's begin by clicking the 4 panel";
+    }
+
+    public void click4panel()
+    {
+        choiceOnePipeOneNeedsToBePicked = false;
+        showChoice1.gameObject.SetActive(true);
+        StartCoroutine(switchANimationPhase(1));
+        dialogText.text = "Great Now click the plus panel panel";
+    }
+
+    public void clickPlusPanel()
+    {
+        if (firstProblemSolved == false)
+        {
+            choiceOnePipeTwoNeedsToBePicked = false;
+            showChoice2.gameObject.SetActive(true);
+            StartCoroutine(switchANimationPhase(2));
+            dialogText.text = "Great Now click the six panel";
+        }
+        else
+        {
+            choiceOnePipeTwoNeedsToBePicked = false;
+            showChoice2.gameObject.SetActive(true);
+            StartCoroutine(switchANimationPhase(7));
+            dialogText.text = "Great Now click the other 3 panel";
+        }
+    }
+
+    public void clickSixPanel()
+    {
+        choiceTwoPipeThreeNeedsToBePicked = false;
+        showChoice3.gameObject.SetActive(true);
+        StartCoroutine(switchANimationPhase(3));
+        dialogText.text = "Notice the built equation";
+    }
+
+    public void clickLeft3()
+    {
+        choiceTwoPipeOneNeedsToBePicked = false;
+        showChoice1.gameObject.SetActive(true);
+        StartCoroutine(switchANimationPhase(6));
+        dialogText.text = "Great Now click the plus panel";
+    }
+
+    public void clickRight3()
+    {
+        showChoice3.gameObject.SetActive(true);
+        StartCoroutine(switchANimationPhase(8));
+        dialogText.text = "Great Now click the 3 panel";
+    }
+
+    public void scorePointer()
+    {
+        StartCoroutine(switchANimationPhase(9));
+    }
 }
