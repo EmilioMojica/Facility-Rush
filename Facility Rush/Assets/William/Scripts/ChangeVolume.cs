@@ -25,7 +25,7 @@ public class ChangeVolume : MonoBehaviour
         soundSlider.value = PlayerPrefs.GetFloat("sound");
     }
 
-    public void ChangeMusicVolume()   // Called in the inspector of slider built-in OnValueChange
+    public void ChangeMusicVolume()   // Called in the inspector of "slider" GameObject built-in OnValueChange
     {
         AudioManager.instance.musicAudioSource.volume = musicSlider.value;  //改變slider的音量大小會真正影響到audio source的音量大小
         musicValue = AudioManager.instance.musicAudioSource.volume;         

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -19,6 +20,8 @@ public class TutorialChutes : MonoBehaviour
     public Image[] image;
     public Text time;
 
+    private bool boolean;
+
     void Start()
     {
         TutorialSystem.PopDialog(index);
@@ -26,15 +29,28 @@ public class TutorialChutes : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))  //TODO: May change to finger touch instead of mouse click
         {
             if (index < 3)
             {
                 NextDialogue();  // 完成bubble text上的東西後才呼叫
             }
-            else if (index >= 5)
+            else if (index >= 5 && index < 8)
             {
                 NextDialogue();
+            }
+            else if(index == 8)
+            {
+                StartCoroutine(KickPlayerOut(5));
+
+                StartCoroutine(ChangeBool());
+
+                if (Input.GetMouseButtonDown(0) && boolean)
+                {
+                    Debug.Log("右鍵被壓ㄌ");
+                    SceneManager.LoadScene(5);
+
+                }
             }
         }
     }
@@ -95,7 +111,7 @@ public class TutorialChutes : MonoBehaviour
 
     }
 
-    public void FalseResultDialogue()
+    public void FalseResultDialogue()  // Called in TutorialChuteSlot script
     {
         if (index < dialog.Length - 1)
         {
@@ -109,7 +125,7 @@ public class TutorialChutes : MonoBehaviour
         }
     }
 
-    public void CorrectResultDialogue()
+    public void CorrectResultDialogue()  // Called in TutorialChuteSlot script
     {
         if (index <= dialog.Length - 1)
         {
@@ -128,5 +144,21 @@ public class TutorialChutes : MonoBehaviour
             index = 0;
             TutorialSystem.PopDialog(index);
         }
+    }
+
+    IEnumerator KickPlayerOut(int time)
+    {
+        Debug.Log("start counting down");
+        yield return new WaitForSeconds(time);
+        Debug.Log("load to next scene");
+
+        SceneManager.LoadScene(5);
+    }
+
+    IEnumerator ChangeBool()
+    {
+        yield return null;
+
+        boolean = true;
     }
 }

@@ -42,8 +42,8 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
             tube[3].SetBool("Correct1", true);
             putAnswer.SetBool("NumberMove", true);
 
-            AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
-            AudioManager.instance.soundAudioSource2.Play();
+            //AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
+            //AudioManager.instance.soundAudioSource2.Play();
 
             StartCoroutine(WaitCorrectAnimation(0.5f));
             StartCoroutine(BoxMoveBack(0.75f));
@@ -54,17 +54,17 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
 
             scoreText.text = 200.ToString();
         }
-        else    //不是的話執行紅色的動畫
+        else    //不是的話執行紅色表示答錯的動畫
         {
-            AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
-            AudioManager.instance.soundAudioSource2.Play();
+            //AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
+            //AudioManager.instance.soundAudioSource2.Play();
 
             switch (tubeNumber)
             {
                 case 1:
                     tube[0].SetBool("Wrong1", true);
                     putAnswer.SetBool("NumberMove", true);
-                    GameObject.FindObjectOfType<TutorialChutes>().FalseResultDialogue();  //顯示出Opps, almost there
+                    GameObject.FindObjectOfType<TutorialChutes>().FalseResultDialogue();  //顯示出Opps, almost there, 這個script在Bubbletext_image下面的text上
 
                     StartCoroutine(WaitWrongAnimation(0.5f, 0));
 
@@ -140,8 +140,8 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
     {
         int index = Random.Range(0, particles.Length);
 
-        AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[9];
-        AudioManager.instance.soundAudioSource2.Play();
+        //AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[9];
+        //AudioManager.instance.soundAudioSource2.Play();
 
         particles[index].Play();
     }
