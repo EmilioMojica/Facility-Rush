@@ -8,19 +8,18 @@ using UnityEngine.UI;
 public class TutorialChutes : MonoBehaviour
 {
     public string[] dialog;
-    public string[] Conditions;
 
     private Text bubbleText;
+    private bool boolean;
+
     public int index;
 
-    public Animator anim;
-    public RectTransform[] flasingPos;
-    public Transform bubbleImage;
+    public Animator anim;  //drag & drop in the inspector
+    public RectTransform[] flasingPos; //drag & drop in the inspector
+    public Transform bubbleImage; //drag & drop in the inspector
 
     public Image[] image;
     public Text time;
-
-    private bool boolean;
 
     void Start()
     {
@@ -29,31 +28,31 @@ public class TutorialChutes : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))  //TODO: May change to finger touch instead of mouse click
+        if (Input.GetMouseButtonDown(0))  //TODO: May change to finger touch instead of mouse click
         {
             if (index < 3)
             {
                 NextDialogue();  // 完成bubble text上的東西後才呼叫
             }
-            else if (index >= 5 && index < 8)
+            else if (index >= 5 && index < 9)
             {
                 NextDialogue();
             }
-            else if(index == 8)
+
+            if(index == 9)
             {
-                StartCoroutine(KickPlayerOut(5));
+                StartCoroutine(KickPlayerOut(5)); //Kick the player out after 5 sec
 
                 StartCoroutine(ChangeBool());
 
                 if (Input.GetMouseButtonDown(0) && boolean)
                 {
-                    Debug.Log("右鍵被壓ㄌ");
                     SceneManager.LoadScene(5);
-
                 }
             }
         }
     }
+
 
     private void OnEnable()
     {
@@ -150,7 +149,6 @@ public class TutorialChutes : MonoBehaviour
     {
         Debug.Log("start counting down");
         yield return new WaitForSeconds(time);
-        Debug.Log("load to next scene");
 
         SceneManager.LoadScene(5);
     }
