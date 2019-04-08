@@ -70,7 +70,7 @@ public class tutorialKartcuroManager : MonoBehaviour
     [SerializeField] private GameObject twoByTwoTopTriangle;
     [SerializeField] private GameObject twoByTwoBottomTriangle;
 
-
+    [SerializeField] private GameObject congratsPanel;
     //public GameObject timer;
 
 
@@ -308,6 +308,8 @@ public class tutorialKartcuroManager : MonoBehaviour
                 timerDirectionsBox.SetActive(false);
                 animatedHand.SetActive(false);
                 gameOverPanel.SetActive(true);
+                congratsPanel.SetActive(true);
+                congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
                 break;
         }
         
@@ -321,7 +323,10 @@ public class tutorialKartcuroManager : MonoBehaviour
         twoByTwoBottomTriangle.SetActive(false);
         cartAnimator.SetInteger("nextTransition2x2", 0);
         yield return new WaitForSeconds(kartMoveForward);
+        twoBytwoCartPrefab.SetActive(false);
         cartAnimator.SetInteger("nextTransition2x2", 1);
+        yield return new WaitForSeconds(.5f);
+        twoBytwoCartPrefab.SetActive(true);
         yield return new WaitForSeconds(kartMoveBackward);
         cartAnimator.SetInteger("nextTransition2x2", -1);
         yield return null;

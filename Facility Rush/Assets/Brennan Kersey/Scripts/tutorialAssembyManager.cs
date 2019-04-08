@@ -426,10 +426,10 @@ public class tutorialAssembyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(gameOver==true && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            SceneManager.LoadScene("Ford_Test");
-        }
+       //if(gameOver==true && Input.GetKeyDown(KeyCode.Mouse0))
+       // {
+       //     SceneManager.LoadScene("Ford_Test");
+       // }
     }
     public void initiateGameOver()
     {
@@ -661,10 +661,11 @@ public class tutorialAssembyManager : MonoBehaviour
                 yield return new WaitForSeconds(2);
                 GameOverPanel.SetActive(true);
                 congratsPanel.SetActive(true);
+                congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
                 PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
                 gameOver = true;
-                yield return new WaitForSeconds(5);
-                SceneManager.LoadScene("Ford_Test");
+                //yield return new WaitForSeconds(5);
+                //SceneManager.LoadScene("Ford_Test");
                 break;
             case 10:
                 
