@@ -1774,9 +1774,13 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         }
     }
 
-    public void StartGame()
+    public void SetAnswerBoxRaytartTrue()
     {
-        game = true;
+        for (int i = 0; i < answers.Count; i++)
+        {
+            Debug.Log("change");
+            answers[i].GetComponent<Text>().raycastTarget = true;
+        }
     }
 }
 

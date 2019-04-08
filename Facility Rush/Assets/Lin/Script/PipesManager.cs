@@ -15,10 +15,10 @@ public class PipesManager : MonoBehaviour
     public Text scoreText;
     public int Score;
    // private bool answerInBank;
-    public Text textOne;
+    /*public Text textOne;
     public Text textTwo;
     public Text textThree;
-    public Text textFour;
+    public Text textFour;*/
 
     public Text[] equationsOnTheGameBoard;
     public Text[] spheres;
@@ -30,7 +30,7 @@ public class PipesManager : MonoBehaviour
     [SerializeField] private GameObject[] questionSlots = new GameObject[4];
     public int[] answerBankForSphereAnswersToBeRemoved = new int[3];
 
-    List <int> KindergartenAnswerList= new List<int>() {0,1,2,3,4,5,6,7,8,9,10};
+    List<int> KindergartenAnswerList= new List<int>() {0,1,2,3,4,5,6,7,8,9,10};
     List<int> FirstGradeAnswerList = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     List<int> SecondGradeAnswerList = new List<int>(); // numbers 1 through 100
     List<int> ThirdGradeAnswerList = new List<int>();// numbers 1 through 108
@@ -149,6 +149,7 @@ public class PipesManager : MonoBehaviour
 
     void Start()
     {
+        gameOver = true;
         gameTimer = 180f;
         whichGradeLevelIsThisProblem = new int[10];
         //questionSlots[0].GetComponent<GridLayoutGroup>().enabled = false;
@@ -189,21 +190,7 @@ public class PipesManager : MonoBehaviour
     {
         if (gameOver == false)
         {
-            //gameTimer += Time.deltaTime;
-            //if(gameTimer>1)
-            //{
-            //    Score -= 10;
-            //    gameTimer = 0.0f;
-            //    scoreText.text = "" + Score;
-            //}
-            //if(Score==0)
-            //{
-            //    initiateGameOver();
-            //}
-
             gameTimer -= Time.deltaTime;
-
-
 
             int seconds = (int)(gameTimer % 60);
             int minutes = (int)(gameTimer / 60) % 60;
@@ -787,7 +774,14 @@ public class PipesManager : MonoBehaviour
 
     }
 
-    
+    public void StartGame()
+    {
+        gameOver = false;
+        for (int i = 0; i < questionSlots.Length; i++)
+        {
+            questionSlots[i].GetComponentInChildren<Text>().raycastTarget = true;
+        }
+    }
 
    
 }
