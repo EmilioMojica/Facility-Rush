@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class kickBackToMainMenu : MonoBehaviour
 {
     [SerializeField] private float timeTillExit;
+    [SerializeField] private PauseGame toMainMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class kickBackToMainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            SceneManager.LoadScene("Ford_Test");
+            toMainMenu.MainMenu();
         }
     }
 
@@ -29,6 +30,6 @@ public class kickBackToMainMenu : MonoBehaviour
     IEnumerator kickAfterFive()
     {
         yield return new WaitForSeconds(timeTillExit);
-        SceneManager.LoadScene("Ford_Test");
+        toMainMenu.MainMenu();
     }
 }

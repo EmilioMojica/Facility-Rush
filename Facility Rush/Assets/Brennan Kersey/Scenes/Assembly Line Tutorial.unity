@@ -9805,6 +9805,7 @@ GameObject:
   - component: {fileID: 1953890575}
   - component: {fileID: 1953890579}
   - component: {fileID: 1953890580}
+  - component: {fileID: 1953890581}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9956,6 +9957,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1953890581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953890574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e441f72309c25ca488d9a0fac683ec92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backToMenu: 0
 --- !u!4 &1964586006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008310368438390515, guid: a8db2cd40faf5254b898e04906676e71,
@@ -11464,6 +11478,10 @@ PrefabInstance:
       propertyPath: timeTillExit
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2043008726, guid: 675ae092426eaed40bd5e2d7d0966332, type: 3}
+      propertyPath: toMainMenu
+      value: 
+      objectReference: {fileID: 1953890579}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675ae092426eaed40bd5e2d7d0966332, type: 3}
 --- !u!224 &7926419697508502614 stripped
