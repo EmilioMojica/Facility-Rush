@@ -66,6 +66,11 @@ public class tutorialKartcuroManager : MonoBehaviour
 
     private float kartMoveForward;
     private float kartMoveBackward;
+
+    [SerializeField] private GameObject twoByTwoTopTriangle;
+    [SerializeField] private GameObject twoByTwoBottomTriangle;
+
+
     //public GameObject timer;
 
 
@@ -312,11 +317,15 @@ public class tutorialKartcuroManager : MonoBehaviour
 
     IEnumerator kartMoving()
     {
+        twoByTwoTopTriangle.SetActive(false);
+        twoByTwoBottomTriangle.SetActive(false);
         cartAnimator.SetInteger("nextTransition2x2", 0);
         yield return new WaitForSeconds(kartMoveForward);
         cartAnimator.SetInteger("nextTransition2x2", 1);
         yield return new WaitForSeconds(kartMoveBackward);
         cartAnimator.SetInteger("nextTransition2x2", -1);
         yield return null;
+        twoByTwoTopTriangle.SetActive(true);
+        twoByTwoBottomTriangle.SetActive(true);
     }
 }

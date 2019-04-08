@@ -36,6 +36,49 @@ public class LevelChanger : MonoBehaviour
 
     public void OnFadeComplete()
     {
+        print("On Fade Complete called");
+        print("The value of levelToLoad: " + levelToLoad);
+        switch(levelToLoad)
+        {
+            case 3:
+                bool hasDoneAssemblyTutorial= PlayerPrefs.HasKey("AssemblyTutorialComplete");
+                print("The value of hasDoneAssemblyTutorial: "+ hasDoneAssemblyTutorial);
+                if(!hasDoneAssemblyTutorial)
+                {
+                    //PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
+                    levelToLoad = 7;
+                    print("the if condition worked");
+                    SceneManager.LoadScene(levelToLoad);
+                }
+                break;
+            case 4:
+                bool hasDoneKartcuroTutorial = PlayerPrefs.HasKey("KartCuroTutorialComplete");
+                if (hasDoneKartcuroTutorial == false)
+                {
+                    PlayerPrefs.SetString("KartCuroTutorialComplete", "true");
+                    levelToLoad = 8;
+                    SceneManager.LoadScene(levelToLoad);
+                }
+                break;
+            case 5:
+                bool hasDoneChutesTutorial = PlayerPrefs.HasKey("ChutesTutorialComplete");
+                if (hasDoneChutesTutorial == false)
+                {
+                    PlayerPrefs.SetString("ChutesTutorialComplete", "true");
+                    levelToLoad = 9;
+                    SceneManager.LoadScene(levelToLoad);
+                }
+                break;
+            case 6:
+                bool hasDonePipeGyroTutorial = PlayerPrefs.HasKey("PipeGyroTutorialComplete");
+                if (hasDonePipeGyroTutorial == false)
+                {
+                    PlayerPrefs.SetString("PipeGyroTutorialComplete", "true");
+                    levelToLoad = 10;
+                    SceneManager.LoadScene(levelToLoad);
+                }
+                break;
+        }
         SceneManager.LoadScene(levelToLoad);
         animator.SetTrigger("Open");
         audioSource.PlayOneShot(openClip, 0.7F);

@@ -33,11 +33,11 @@ EditorBuildSettings:
     path: Assets/Lin/Scenes/Pipes 1.unity
     guid: e295d340f5d0e4f41931bfd86290d3e5
   - enabled: 1
-    path: Assets/Brennan Kersey/Scenes/tutorial Assembly Line.unity
-    guid: 1e7a1cd1f8cd4fa41a698a23735c2477
+    path: Assets/Brennan Kersey/Scenes/Assembly Line Tutorial.unity
+    guid: 2bc1efb6d4302e74691d84f46776a736
   - enabled: 1
-    path: Assets/Brennan Kersey/Scenes/tutorial cartcuro.unity
-    guid: b5d97b983d911134cb4803f6ef468052
+    path: Assets/Brennan Kersey/Scenes/cartcuroTutorial.unity
+    guid: 99aef00cf23c6d14a899227470e83ac1
   - enabled: 1
     path: Assets/William/tutorial Chutes.unity
     guid: 220c1ff131f50c6418ff328c6bbc92b4

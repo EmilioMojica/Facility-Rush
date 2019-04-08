@@ -134,6 +134,8 @@ public class tutorialAssembyManager : MonoBehaviour
     public bool choiceOnePipeThreeNeedsToBePicked;
     public bool choiceTwoPipeThreeNeedsToBePicked;
 
+    public bool timeToSolveEquation;
+
     IEnumerator newAnimationLoop(GameObject toyToInstantiate, Transform spawningPoint)
     {
     choiceOnePipeOneNeedsToBePicked=false;
@@ -512,68 +514,72 @@ public class tutorialAssembyManager : MonoBehaviour
     }
     public void checkequation()
     {
-        //createToy();
-        if (isAnimating == false)
+        if (timeToSolveEquation==true)
         {
+            timeToSolveEquation = false;
+            //createToy();
+            if (isAnimating == false)
+            {
 
-            if(firstProblemSolved==false)
-            {
-                StartCoroutine(switchANimationPhase(5));
-                firstProblemSolved = true;
-            }
-            else if(firstProblemSolved==true && secondProbelmSolved==false)
-            {
-                dialogText.text = "Incorrect answers make incorect toys.";
-                secondProbelmSolved = true;
-                Invoke("scorePointer", 3);
-            }
-            createToy();
-            string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
-            feedbackText.gameObject.SetActive(true);
-            int temp;
-            //ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
-            temp = evaluateEquation(playerEquation);
-            if (temp == answer && isAnimating == false)
-            {
-                print("Correct");
-                //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0],createdToy));
-                StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
-                score += 100;
-                PlayerPrefs.SetInt("recentAssemblyHighScore", score);
-                scoreText.text = "" + score;
-                feedbackText.text = "Correct";
-                numberCorrect++;
-                numberCorrectSoFar++;
-                numberAttempted++;
-                if (numberCorrectSoFar == 3)
+                if (firstProblemSolved == false)
                 {
-                    timer.GetComponent<assemblyTimer>().addTime();
-                    numberCorrectSoFar = 0;
+                    StartCoroutine(switchANimationPhase(5));
+                    firstProblemSolved = true;
+                }
+                else if (firstProblemSolved == true && secondProbelmSolved == false)
+                {
+                    dialogText.text = "Incorrect answers make incorect toys.";
+                    secondProbelmSolved = true;
+                    Invoke("scorePointer", 3);
+                }
+                createToy();
+                string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
+                feedbackText.gameObject.SetActive(true);
+                int temp;
+                //ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
+                temp = evaluateEquation(playerEquation);
+                if (temp == answer && isAnimating == false)
+                {
+                    print("Correct");
+                    //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0],createdToy));
+                    StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
+                    score += 100;
+                    PlayerPrefs.SetInt("recentAssemblyHighScore", score);
+                    scoreText.text = "" + score;
+                    feedbackText.text = "Correct";
+                    numberCorrect++;
+                    numberCorrectSoFar++;
+                    numberAttempted++;
+                    if (numberCorrectSoFar == 3)
+                    {
+                        timer.GetComponent<assemblyTimer>().addTime();
+                        numberCorrectSoFar = 0;
+                    }
+
+                    isToySpawned = false;
+                    // nextEquation();
+                }
+                else
+                {
+                    // print("Incorrect");
+                    feedbackText.text = "Incorrect";
+                    //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0], createdToy));
+                    StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
+                    numberAttempted++;
+                    nextEquation();
+
+                    isToySpawned = false;
+                    nextEquation();
                 }
 
-                isToySpawned = false;
-                // nextEquation();
+                showChoice1.text = "";
+                showChoice2.text = "";
+                showChoice3.text = "";
+                showChoice1.gameObject.SetActive(false);
+                showChoice2.gameObject.SetActive(false);
+                showChoice3.gameObject.SetActive(false);
+                //nextEquation();
             }
-            else
-            {
-                // print("Incorrect");
-                feedbackText.text = "Incorrect";
-                //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0], createdToy));
-                StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
-                numberAttempted++;
-                nextEquation();
-
-                isToySpawned = false;
-                nextEquation();
-            }
-
-            showChoice1.text = "";
-            showChoice2.text = "";
-            showChoice3.text = "";
-            showChoice1.gameObject.SetActive(false);
-            showChoice2.gameObject.SetActive(false);
-            showChoice3.gameObject.SetActive(false);
-            //nextEquation();
         }
     }
 
@@ -605,6 +611,7 @@ public class tutorialAssembyManager : MonoBehaviour
                 handAnimator.SetInteger("nextTransition", 3);
                 yield return new WaitForSeconds(2f);
                 handAnimator.SetInteger("nextTransition", 4);
+                timeToSolveEquation = true;
                 dialogText.text = "Now click on \"check equation\"";
                 break;
 
@@ -612,6 +619,7 @@ public class tutorialAssembyManager : MonoBehaviour
                 handAnimator.SetInteger("nextTransition", 4);
                 yield return new WaitForSeconds(.5f);
                 handAnimator.SetInteger("nextTransition", 5);
+                timeToSolveEquation = true;
                 dialogText.text="Now click on \"check equation\"";
                 handAnimator.SetInteger("nextTransition", 6);
                 break;
@@ -640,6 +648,8 @@ public class tutorialAssembyManager : MonoBehaviour
                 handAnimator.SetInteger("nextTransition", 7);
                 break;
             case 8:
+                dialogText.text= "Now click on \"check equation\"";
+                timeToSolveEquation = true;
                 handAnimator.SetInteger("nextTransition", 8);
                 break;
             case 9:
@@ -651,8 +661,9 @@ public class tutorialAssembyManager : MonoBehaviour
                 yield return new WaitForSeconds(2);
                 GameOverPanel.SetActive(true);
                 congratsPanel.SetActive(true);
+                PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
                 gameOver = true;
-               yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(5);
                 SceneManager.LoadScene("Ford_Test");
                 break;
             case 10:
@@ -702,6 +713,7 @@ public class tutorialAssembyManager : MonoBehaviour
         choiceTwoPipeThreeNeedsToBePicked = false;
         showChoice3.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(3));
+        //timeToSolveFirstEquation = true;
         dialogText.text = "Notice the built equation";
     }
 
@@ -717,7 +729,8 @@ public class tutorialAssembyManager : MonoBehaviour
     {
         showChoice3.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(8));
-        dialogText.text = "Great Now click the 3 panel";
+        //timeToSolveSecondEquation = true;
+        dialogText.text = "Great Now click the equation button";
     }
 
     public void scorePointer()

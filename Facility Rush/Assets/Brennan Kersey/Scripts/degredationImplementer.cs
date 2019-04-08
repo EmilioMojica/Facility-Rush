@@ -133,6 +133,7 @@ public class degredationImplementer : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 restoreBarAmounts();
+                deleteTutorialKeys();
             }
         }
     }
@@ -188,5 +189,14 @@ public class degredationImplementer : MonoBehaviour
         PlayerPrefs.DeleteKey("currentChutesSliderValue");
         PlayerPrefs.DeleteKey("currentKartCuroSliderValue");
         PlayerPrefs.DeleteKey("currentPipeGyroSliderValue");
+    }
+
+    public void deleteTutorialKeys()
+    {
+        PlayerPrefs.DeleteKey("AssemblyTutorialComplete");
+        PlayerPrefs.DeleteKey("ChutesTutorialComplete");
+        PlayerPrefs.DeleteKey("KartCuroTutorialComplete");
+        PlayerPrefs.DeleteKey("PipeGyroTutorialComplete");
+
     }
 }
