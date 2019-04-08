@@ -71,6 +71,11 @@ public class tutorialKartcuroManager : MonoBehaviour
     [SerializeField] private GameObject twoByTwoBottomTriangle;
 
     [SerializeField] private GameObject congratsPanel;
+
+    [SerializeField] private DragHandler twoBox;
+    [SerializeField] private DragHandler oneBox;
+    [SerializeField] private DragHandler threeBox;
+    [SerializeField] private DragHandler fourBox;
     //public GameObject timer;
 
 
@@ -221,20 +226,30 @@ public class tutorialKartcuroManager : MonoBehaviour
 
             case 1:
                 StartCoroutine(animateDirections(1));
+               // twoBox.enabled = false;
                 numberSlotsTwoByTwo[0].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = true;
+                numberSlotsTwoByTwo[1].gameObject.GetComponent<Image>().raycastTarget = false;
+                StartCoroutine(shutOffDrag(twoBox));
                 break;
 
             case 2:
                 StartCoroutine(animateDirections(2));
+
                 numberSlotsTwoByTwo[2].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = true;
+                numberSlotsTwoByTwo[0].gameObject.GetComponent<Image>().raycastTarget = false;
+                StartCoroutine(shutOffDrag(oneBox));
                 break;
 
             case 3:
                 StartCoroutine(animateDirections(3));
                 numberSlotsTwoByTwo[3].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = true;
+                numberSlotsTwoByTwo[2].gameObject.GetComponent<Image>().raycastTarget = false;
+                StartCoroutine(shutOffDrag(threeBox));
                 break;
             case 4:
                 StartCoroutine(animateDirections(4));
+                numberSlotsTwoByTwo[3].gameObject.GetComponent<Image>().raycastTarget = false;
+                StartCoroutine(shutOffDrag(fourBox));
                 break;
 
         }
@@ -277,19 +292,19 @@ public class tutorialKartcuroManager : MonoBehaviour
         {
             case 0:
                 tutorialAnimator.SetInteger("moving", 1);
-               
+                
                 break;
             case 1:
                 tutorialAnimator.SetInteger("moving", 2);
-               
+                answerPanelsTwoByTwo[0].gameObject.GetComponent<Image>().raycastTarget = true;
                 break;
             case 2:
                 tutorialAnimator.SetInteger("moving", 3);
-             
+                answerPanelsTwoByTwo[1].gameObject.GetComponent<Image>().raycastTarget = true;
                 break;
             case 3:
                 tutorialAnimator.SetInteger("moving", 4);
-             
+                answerPanelsTwoByTwo[3].gameObject.GetComponent<Image>().raycastTarget = true;
                 break;
             case 4:
                 dragDirectionsBox.SetActive(false);
@@ -332,5 +347,11 @@ public class tutorialKartcuroManager : MonoBehaviour
         yield return null;
         twoByTwoTopTriangle.SetActive(true);
         twoByTwoBottomTriangle.SetActive(true);
+    }
+
+    IEnumerator shutOffDrag(DragHandler boxToShutOff)
+    {
+        yield return new WaitForSeconds(.1f);
+        boxToShutOff.enabled = false;
     }
 }
