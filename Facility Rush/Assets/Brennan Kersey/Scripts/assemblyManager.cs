@@ -103,7 +103,9 @@ public class assemblyManager : MonoBehaviour
     [SerializeField] private Animator theGoldenGodAnimator;
     [SerializeField] private assemblyTimer theTimer;
 
-    
+    [SerializeField] private Text gameTimerText;
+    [SerializeField] private float gameTimer;
+    [SerializeField] private float maxTime;
     IEnumerator newAnimationLoop(GameObject toyToInstantiate,Transform spawningPoint)
     {
         isAnimating = true;
@@ -246,8 +248,8 @@ public class assemblyManager : MonoBehaviour
         numberAttempted=0;
         numberCorrect=0;
         numberCorrectSoFar=0;
-        
-        gameOver = false;
+        gameTimerText.text = "1:00";
+        gameOver = true;
         feedbackText.gameObject.SetActive(false);
         score = 0;
         scoreText.text = "" + score;
@@ -567,17 +569,37 @@ public class assemblyManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(gameOver==true)
+        if (gameOver == false)
         {
-            checkEquationButton.SetActive(false);
-            GameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(0, score);
-            GameOverPanel.SetActive(true);
+            gameTimer -= Time.deltaTime;
+
+
+
+            int seconds = (int)(gameTimer % 60);
+            int minutes = (int)(gameTimer / 60) % 60;
+            int hours = (int)(gameTimer / 3600) % 24;
+
+            string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+            if (timerString.Equals("00:00"))
+            {
+                initiateGameOver();
+                //gameTimerText.text = "00:00";
+            }
+            gameTimerText.text = timerString;
         }
-	}
+        //if(gameOver==true)
+        //      {
+        //          checkEquationButton.SetActive(false);
+        //          //GameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(0, score);
+        //          GameOverPanel.SetActive(true);
+        //      }
+    }
 
     public void initiateGameOver()
     {
+        checkEquationButton.SetActive(false);
         gameOver = true;
+        GameOverPanel.SetActive(true);
         feedbackText.text = "GameOver";
         calculateRestoration();
     }
@@ -702,7 +724,7 @@ public class assemblyManager : MonoBehaviour
                 numberAttempted++;
                 if (numberCorrectSoFar == 3)
                 {
-                    timer.GetComponent<assemblyTimer>().addTime();
+                    addTime();
                     numberCorrectSoFar = 0;
                 }
 
@@ -729,5 +751,15 @@ public class assemblyManager : MonoBehaviour
         }
     }
 
-    
+    public void addTime()
+    {
+        if (gameTimer + 15f > maxTime)
+        {
+            gameTimer = maxTime;
+        }
+        else
+        {
+            gameTimer += 15f;
+        }
+    }
 }

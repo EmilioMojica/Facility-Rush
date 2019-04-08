@@ -98,7 +98,8 @@ public class kakuroGameManger : MonoBehaviour
 
         print("Current KartCuro score that is called from kartcuro manager: " + (PlayerPrefs.GetInt("kakuroHighScore")));
         dylan = degradationBuddy.GetComponent<DegradationManager>();
-        gameOver = false;
+        gameTimerText.text = "3:00";
+        gameOver = true;
         x = 0;
         numberCorrectSoFar = 0;
         numberCorrectTotal = 0;
