@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-//using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
@@ -33,7 +32,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
     public Slider timeSlider;
 
-    private float timer = 1;
     public bool game;
     public Animator answersGoUP;
     public Animator tubeOne;
@@ -66,9 +64,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         playscene.SetActive(true);
         failscene.SetActive(false);
         timeSlider.value = 1;
-        game = true;
+        game = false;
 
-        Generate();
+        //Generate();
     }
 
     // Update is called once per frame
@@ -1774,6 +1772,11 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[2];
             AudioManager.instance.soundAudioSource2.Play();
         }
+    }
+
+    public void StartGame()
+    {
+        game = true;
     }
 }
 
