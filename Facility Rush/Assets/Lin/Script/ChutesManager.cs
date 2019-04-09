@@ -20,7 +20,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     //generate the right equation 
     private int rightID;
     private int score;
-    public Text scoreValue;
+    public Text scoreValue, timerValue;
+    //replacement
+    public float timerNum;
     private List<float> tempAnswers = new List<float>();
 
     private string[] operators = new string[] { "+", "-", "*", "/" };   // an array to hold the possible operators used by the equation
@@ -64,6 +66,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         playscene.SetActive(true);
         failscene.SetActive(false);
         timeSlider.value = 1;
+        //replacement to Time text
+        timerNum = 20f;
+        timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
+        //--------------------------------------------
         game = false;
 
         //Generate();
@@ -77,6 +83,14 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         if (game)
         {
             timeSlider.value -= Time.deltaTime / 20;
+            //replacement to Time text
+            timerNum -= Time.deltaTime;
+            timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60; 
+            if (timerNum <= 0)
+            {
+                timeOut();
+            }
+            //-----------------------------------
             if (timeSlider.value <= 0) //Run "GameOver" function if timeleft(slider value) is out
             {
                 timeOut();
@@ -91,6 +105,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             score = 0;
             scoreValue.text = score.ToString();
             timeSlider.value = 1;
+            // replacement of slider
+            timerNum = 20f;
+            timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
+            //--------------------------
             failscene.SetActive(false);
             playscene.SetActive(true);
 
@@ -105,6 +123,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         score = 0;
         scoreValue.text = score.ToString();
         timeSlider.value = 1;
+        // replacement of timer slider
+        timerNum = 21f;
+        timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
+        //---------------------------------------
         failscene.SetActive(false);
         //playscene.SetActive(true);
     }
@@ -279,7 +301,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         //Runs at "StartPlay" and after every correct answer. Generates new expression and answers
         game = true;
         timeSlider.value = 1;
-
+        // replacement of timer slider
+        timerNum = 21f;
+        timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
+        //------------------------------------
         tempAnswers.Clear();                            //Clear list filled with previous answers
         int operationID;                                //Declaring operation ID variable
 
