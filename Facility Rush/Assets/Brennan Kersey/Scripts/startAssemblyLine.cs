@@ -20,5 +20,6 @@ public class startAssemblyLine : MonoBehaviour
     public void startAssemblyTimer()
     {
         assembler.gameOver = false;
+        assembler.isInteractable = true;
     }
 }

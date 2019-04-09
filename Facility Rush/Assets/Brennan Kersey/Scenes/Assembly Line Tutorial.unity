@@ -2504,6 +2504,9 @@ MonoBehaviour:
   isAnimating: 0
   theGoldenGodAnimator: {fileID: 1953890580}
   theTimer: {fileID: 1836115882}
+  gameTimerText: {fileID: 0}
+  gameTimer: 0
+  maxTime: 0
 --- !u!4 &400000942
 Transform:
   m_ObjectHideFlags: 0
@@ -9806,6 +9809,7 @@ GameObject:
   - component: {fileID: 1953890579}
   - component: {fileID: 1953890580}
   - component: {fileID: 1953890581}
+  - component: {fileID: 1953890582}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9970,6 +9974,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backToMenu: 0
+--- !u!114 &1953890582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953890574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf6ab2d5dbf44042aeadbfd8a5b8896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assembler: {fileID: 400000941}
 --- !u!4 &1964586006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008310368438390515, guid: a8db2cd40faf5254b898e04906676e71,

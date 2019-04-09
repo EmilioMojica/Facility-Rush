@@ -2625,6 +2625,7 @@ MonoBehaviour:
   gameTimerText: {fileID: 360324435}
   gameTimer: 60
   maxTime: 60
+  testRun: {fileID: 35136665}
 --- !u!4 &400000942
 Transform:
   m_ObjectHideFlags: 0

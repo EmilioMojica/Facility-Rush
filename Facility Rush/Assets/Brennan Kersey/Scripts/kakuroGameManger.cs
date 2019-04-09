@@ -79,6 +79,14 @@ public class kakuroGameManger : MonoBehaviour
 
     private float kartMoveForward3x3;
     private float kartMoveBackward3x3;
+
+    [SerializeField] private float kindergartenTime;
+    [SerializeField] private float firstGradeTime;
+    [SerializeField] private float secondGradeTime;
+    [SerializeField] private float thirdGradeTime;
+    [SerializeField] private float fourthGradeTime;
+    [SerializeField] private float fifthGradeTime;
+
     public int getTotalNumberedPanels()
     {
         return totalNumberedPanels;
@@ -86,7 +94,71 @@ public class kakuroGameManger : MonoBehaviour
 
     // Use this for initialization
 
+    public void setGameTimer()
+    {
+        int seconds;
+        int minutes;
+        int hours;
 
+        string timerString;
+        switch (gradeLevel)
+        {
+            case 0:
+                gameTimer = kindergartenTime;
+                seconds = (int)(gameTimer % 60);
+                minutes = (int)(gameTimer / 60) % 60;
+                hours = (int)(gameTimer / 3600) % 24;
+                timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+                gameTimerText.text = timerString;
+                break;
+
+            case 1:
+                gameTimer = firstGradeTime;
+                seconds = (int)(gameTimer % 60);
+                minutes = (int)(gameTimer / 60) % 60;
+                hours = (int)(gameTimer / 3600) % 24;
+                timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+                gameTimerText.text = timerString;
+                break;
+
+            case 2:
+                gameTimer = secondGradeTime;
+                seconds = (int)(gameTimer % 60);
+                minutes = (int)(gameTimer / 60) % 60;
+                hours = (int)(gameTimer / 3600) % 24;
+                timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+                gameTimerText.text = timerString;
+                break;
+
+            case 3:
+                gameTimer = thirdGradeTime;
+                seconds = (int)(gameTimer % 60);
+                minutes = (int)(gameTimer / 60) % 60;
+                hours = (int)(gameTimer / 3600) % 24;
+                timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+                gameTimerText.text = timerString;
+                break;
+
+            case 4:
+                gameTimer = fourthGradeTime;
+                seconds = (int)(gameTimer % 60);
+                minutes = (int)(gameTimer / 60) % 60;
+                hours = (int)(gameTimer / 3600) % 24;
+                timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+                gameTimerText.text = timerString;
+                break;
+
+            case 5:
+                gameTimer = fifthGradeTime;
+                seconds = (int)(gameTimer % 60);
+                minutes = (int)(gameTimer / 60) % 60;
+                hours = (int)(gameTimer / 3600) % 24;
+                timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+                gameTimerText.text = timerString;
+                break;
+
+        }
+    }
     void Start ()
     {
 
@@ -105,6 +177,7 @@ public class kakuroGameManger : MonoBehaviour
         numberCorrectTotal = 0;
         numberOfProblemsAttempted = 0;
         gradeLevel = PlayerPrefs.GetInt("grade");
+        setGameTimer();
         feedback.text = "";
         score = 0;
         scoreText.text = "" + score;

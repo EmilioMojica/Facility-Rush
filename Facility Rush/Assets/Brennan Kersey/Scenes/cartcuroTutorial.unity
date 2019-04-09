@@ -10262,6 +10262,7 @@ GameObject:
   - component: {fileID: 1711529232}
   - component: {fileID: 1711529233}
   - component: {fileID: 1711529234}
+  - component: {fileID: 1711529235}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10469,6 +10470,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backToMenu: 0
+--- !u!114 &1711529235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711529223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b84f13316c63b4faa6ea80a9dd28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kart: {fileID: 1799809513}
 --- !u!1 &1711603052
 GameObject:
   m_ObjectHideFlags: 0
@@ -10867,6 +10881,12 @@ MonoBehaviour:
   degradationBuddy: {fileID: 765657755}
   animator2x2: {fileID: 0}
   animator3x3: {fileID: 0}
+  kindergartenTime: 0
+  firstGradeTime: 0
+  secondGradeTime: 0
+  thirdGradeTime: 0
+  fourthGradeTime: 0
+  fifthGradeTime: 0
 --- !u!4 &1799809514
 Transform:
   m_ObjectHideFlags: 0
@@ -12852,6 +12872,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1711529230}
     - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: TrailModule.widthOverTrail.scalar
@@ -13077,11 +13102,6 @@ PrefabInstance:
       propertyPath: m_MaxParticleSize
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1711529230}
     - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -106,6 +106,7 @@ public class assemblyManager : MonoBehaviour
     [SerializeField] private Text gameTimerText;
     [SerializeField] private float gameTimer;
     [SerializeField] private float maxTime;
+    public bool isInteractable;
     IEnumerator newAnimationLoop(GameObject toyToInstantiate,Transform spawningPoint)
     {
         isAnimating = true;
@@ -223,6 +224,7 @@ public class assemblyManager : MonoBehaviour
     }
     void Start ()
     {
+        isInteractable = false;
        // GameObject trial=Instantiate(sampleToys[0], createdToy.transform.position, createdToy.transform.rotation);
        // GameObject changedPart = trial.transform.GetChild(1).gameObject;
         //changedPart = sampleToys[1].transform.GetChild(1).gameObject;
@@ -569,7 +571,7 @@ public class assemblyManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (gameOver == false)
+        if (gameOver == false && isAnimating==false)
         {
             gameTimer -= Time.deltaTime;
 
@@ -702,7 +704,7 @@ public class assemblyManager : MonoBehaviour
     public void checkequation()
     {
         //createToy();
-        if (isAnimating==false)
+        if (isAnimating==false && isInteractable==true)
         {
             createToy();
             string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;

@@ -16,7 +16,7 @@ public class clickablePipePanels : MonoBehaviour
         string objectName = gameObject.name;
         print("htis is object name " + objectName);
         string panelValue = gameObject.GetComponentInChildren<Text>().text;
-        if (assembler.isAnimating == false)
+        if (assembler.isAnimating == false && assembler.isInteractable==true)
         {
             if (objectName.Contains("Chute 1"))
             {
