@@ -42,7 +42,7 @@ public class kakuroGameManger : MonoBehaviour
     public RectTransform[] answerPanelsTwoByTwo;
 
     public GameObject threeByThreeFirstRowTriangle;
-    public GameObject threebyThreeSecondRowTriangle;
+    public GameObject threeByThreeSecondRowTriangle;
 
     public GameObject twoByTwoFirstRowTriangle;
     public GameObject twoByTwoSecondRowTriangle;
@@ -86,6 +86,9 @@ public class kakuroGameManger : MonoBehaviour
     [SerializeField] private float thirdGradeTime;
     [SerializeField] private float fourthGradeTime;
     [SerializeField] private float fifthGradeTime;
+
+    [SerializeField] private DragHandler[] twoByTwoBoxes;
+    [SerializeField] private DragHandler[] threeByThreeBoxes;
 
     public int getTotalNumberedPanels()
     {
@@ -159,6 +162,42 @@ public class kakuroGameManger : MonoBehaviour
 
         }
     }
+
+    public void deactivateDrags()
+    {
+        if(gradeLevel<=1)
+        {
+            for(int i=0;i<twoByTwoBoxes.Length;i++)
+            {
+                twoByTwoBoxes[i].enabled = false;
+            }
+        }
+        else
+        {
+            for(int i=0;i<threeByThreeBoxes.Length;i++)
+            {
+                threeByThreeBoxes[i].enabled = false;
+            }
+        }
+    }
+
+    public void activateDrags()
+    {
+        if (gradeLevel <= 1)
+        {
+            for (int i = 0; i < twoByTwoBoxes.Length; i++)
+            {
+                twoByTwoBoxes[i].enabled = true;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < threeByThreeBoxes.Length; i++)
+            {
+                threeByThreeBoxes[i].enabled = true;
+            }
+        }
+    }
     void Start ()
     {
 
@@ -177,6 +216,7 @@ public class kakuroGameManger : MonoBehaviour
         numberCorrectTotal = 0;
         numberOfProblemsAttempted = 0;
         gradeLevel = PlayerPrefs.GetInt("grade");
+        deactivateDrags();
         setGameTimer();
         feedback.text = "";
         score = 0;
@@ -407,8 +447,11 @@ public class kakuroGameManger : MonoBehaviour
         twoByTwoSecondRowTriangle.SetActive(false);
         animator2x2.SetInteger("nextTransition2x2", 0);
         yield return new WaitForSeconds(kartMoveForward2x2);
+        twoBytwoCartPrefab.SetActive(false);
         setOriginalPositions();
         animator2x2.SetInteger("nextTransition2x2", 1);
+        yield return new WaitForSeconds(.5f);
+        twoBytwoCartPrefab.SetActive(true);
         yield return new WaitForSeconds(kartMoveBackward2x2);
         twoByTwoFirstRowTriangle.SetActive(true);
         twoByTwoSecondRowTriangle.SetActive(true);
@@ -419,15 +462,21 @@ public class kakuroGameManger : MonoBehaviour
     
     IEnumerator kartAnimation3x3()
     {
-        twoByTwoFirstRowTriangle.SetActive(false);
-        twoByTwoSecondRowTriangle.SetActive(false);
+        threeByThreeFirstRowTriangle.SetActive(false);
+        threeByThreeSecondRowTriangle.SetActive(false);
         animator3x3.SetInteger("nextTransition3x3",0);
         yield return new WaitForSeconds(kartMoveForward3x3);
+        //threeBythreeCartPrefab.SetActive(false);
+        threeBythreeCartPrefab.GetComponent<Image>().enabled = false;
+        answerPanels[0].parent.gameObject.SetActive(false);
         setOriginalPositions();
         animator3x3.SetInteger("nextTransition3x3",1);
+        yield return new WaitForSeconds(kartMoveBackward3x3/2);
+        threeBythreeCartPrefab.GetComponent<Image>().enabled = true;
+        answerPanels[0].parent.gameObject.SetActive(true);
         yield return new WaitForSeconds(kartMoveBackward3x3);
-        twoByTwoFirstRowTriangle.SetActive(true);
-        twoByTwoSecondRowTriangle.SetActive(true);
+        threeByThreeFirstRowTriangle.SetActive(true);
+        threeByThreeSecondRowTriangle.SetActive(true);
         animator3x3.SetInteger("nextTransition3x3", -1);
         yield return new WaitForSeconds(kartMoveBackward3x3);
         yield return null;

@@ -10697,7 +10697,7 @@ MonoBehaviour:
   - {fileID: 1038936661}
   - {fileID: 965078889}
   threeByThreeFirstRowTriangle: {fileID: 943992661}
-  threebyThreeSecondRowTriangle: {fileID: 1811644578}
+  threeByThreeSecondRowTriangle: {fileID: 1811644578}
   twoByTwoFirstRowTriangle: {fileID: 3101412}
   twoByTwoSecondRowTriangle: {fileID: 318386531}
   score: 0
@@ -10719,6 +10719,21 @@ MonoBehaviour:
   thirdGradeTime: 180
   fourthGradeTime: 180
   fifthGradeTime: 120
+  twoByTwoBoxes:
+  - {fileID: 1475279818}
+  - {fileID: 616871118}
+  - {fileID: 1508744429}
+  - {fileID: 552889247}
+  threeByThreeBoxes:
+  - {fileID: 1100999622}
+  - {fileID: 522875718}
+  - {fileID: 1289906171}
+  - {fileID: 967273248}
+  - {fileID: 891452434}
+  - {fileID: 2048812443}
+  - {fileID: 746249796}
+  - {fileID: 500723250}
+  - {fileID: 642895735}
 --- !u!4 &1799809514
 Transform:
   m_ObjectHideFlags: 0

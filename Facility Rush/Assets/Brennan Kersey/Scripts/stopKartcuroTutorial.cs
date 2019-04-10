@@ -20,5 +20,6 @@ public class stopKartcuroTutorial : MonoBehaviour
     public void startTimer()
     {
         kart.gameOver = false;
+        kart.activateDrags();
     }
 }
