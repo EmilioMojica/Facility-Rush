@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class assemblyTutorialDialog : MonoBehaviour
 {
     public string[] explanationDialog;
-    private int dialogPoint;
+    public int dialogPoint;
     [SerializeField] private Text dialogText;
     [SerializeField] private tutorialAssembyManager manager;
+    public bool haltCheck;
+    public bool pastPhaseOne;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +21,24 @@ public class assemblyTutorialDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && haltCheck==false)
         {
-            if (dialogPoint == explanationDialog.Length-1)
+            if (dialogPoint == 1 && pastPhaseOne==true)
             {
                 manager.startAnimation();
                 manager.choiceOnePipeOneNeedsToBePicked = true;
-                this.enabled = false;
+                haltCheck = true;
             }
-            nextDialog();
+
+            if(dialogPoint == 2)
+            {
+                manager.switchToProblemProgress();
+                haltCheck = true;
+            }
+            if (haltCheck != true)
+            {
+                nextDialog();
+            }
             
         }
     }
@@ -36,7 +47,7 @@ public class assemblyTutorialDialog : MonoBehaviour
     {
        
         dialogPoint++;
-        if (dialogPoint <=2)
+        if (dialogPoint <=explanationDialog.Length-1)
         {
             dialogText.text = explanationDialog[dialogPoint];
         }

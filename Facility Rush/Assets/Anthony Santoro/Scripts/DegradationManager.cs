@@ -70,8 +70,13 @@ public class DegradationManager : MonoBehaviour
 
     public void cartkuroCalculation()
     {
-        if (aAttempted < 5)
+        if (aAttempted == 0)
         {
+            Debug.Log("78787887878787878778878877878787");
+            return;
+        }
+            if (aAttempted < 5)
+        {        
             aFill = (aCorrect / aAttempted) / 5;
         }
         else
@@ -84,6 +89,11 @@ public class DegradationManager : MonoBehaviour
 
     public void assemblyCalulate()
     {
+        if (aAttempted == 0)
+        {
+            Debug.Log("78787887878787878778878877878787");
+            return;
+        }
         if (aAttempted < 10)
         {
             aFill = (aCorrect / aAttempted) / 10;
@@ -92,11 +102,20 @@ public class DegradationManager : MonoBehaviour
         {
             aFill = aCorrect / aAttempted;
         }
+        if(float.IsNaN(aFill))
+        {
+            aFill = 0;
+        }
         print("aFill is equal to: " + aFill);
     }
 
     public void chuteCalculate()
     {
+        if (aAttempted == 0)
+        {
+            Debug.Log("78787887878787878778878877878787");
+            return;
+        }
         if (aAttempted < 10)
         {
             aFill = (aCorrect / aAttempted) / 10;
@@ -110,6 +129,11 @@ public class DegradationManager : MonoBehaviour
 
     public void pipeCalculate()
     {
+        if (aAttempted == 0)
+        {
+            Debug.Log("78787887878787878778878877878787");
+            return;
+        }
         aFill = aCorrect / aAttempted;
         print("aFill is equal to: " + aFill);
     }

@@ -136,6 +136,8 @@ public class tutorialAssembyManager : MonoBehaviour
 
     public bool timeToSolveEquation;
 
+    [SerializeField] private assemblyTutorialDialog dialogManager;
+
     IEnumerator newAnimationLoop(GameObject toyToInstantiate, Transform spawningPoint)
     {
     choiceOnePipeOneNeedsToBePicked=false;
@@ -528,7 +530,7 @@ public class tutorialAssembyManager : MonoBehaviour
                 }
                 else if (firstProblemSolved == true && secondProbelmSolved == false)
                 {
-                    dialogText.text = "Incorrect answers make incorect toys.";
+                    dialogText.text = "If your equation is incorrect, the toy will be broken.";
                     secondProbelmSolved = true;
                     Invoke("scorePointer", 3);
                 }
@@ -582,7 +584,10 @@ public class tutorialAssembyManager : MonoBehaviour
             }
         }
     }
-
+    public void switchToProblemProgress()
+    {
+        StartCoroutine(switchANimationPhase(4));
+    }
     IEnumerator switchANimationPhase(int indexOfPhase)
     {
         switch(indexOfPhase)
@@ -609,32 +614,29 @@ public class tutorialAssembyManager : MonoBehaviour
 
             case 3:
                 handAnimator.SetInteger("nextTransition", 3);
-                yield return new WaitForSeconds(2f);
-                handAnimator.SetInteger("nextTransition", 4);
+                // yield return new WaitForSeconds(2f);
+                // handAnimator.SetInteger("nextTransition", 4);
+                dialogManager.enabled = true;
+                dialogManager.haltCheck = false;
                 timeToSolveEquation = true;
-                dialogText.text = "Now click on \"check equation\"";
+               // dialogText.text = "Now click \"check equation\" to see if your answer is correct.";
                 break;
 
             case 4:
                 handAnimator.SetInteger("nextTransition", 4);
-                yield return new WaitForSeconds(.5f);
-                handAnimator.SetInteger("nextTransition", 5);
-                timeToSolveEquation = true;
-                dialogText.text="Now click on \"check equation\"";
-                handAnimator.SetInteger("nextTransition", 6);
                 break;
 
             case 5:
-                dialogText.text = "Correct answers assemble correct toys";
+                dialogText.text = "If it is, you’ll make a toy!";
                 yield return new WaitForSeconds(3);
                 pipeOneChoice1.SetActive(false);
                 pipeOneChoice2.SetActive(true);
                 pipeThreeChoice2.SetActive(false);
                 pipeThreeChoice1.SetActive(true);
-                dialogText.text = "Now let's show an incorrect solution";
+                dialogText.text = "Let\'s see what happens if you don’t quite get it right.";
                 yield return new WaitForSeconds(2);
                 handAnimator.SetInteger("nextTransition", 5);
-                dialogText.text = "Click on the 3 panel";
+                dialogText.text = "Now, click on the 3 panel.";
                 choiceTwoPipeOneNeedsToBePicked = true;
                 break;
 
@@ -653,11 +655,11 @@ public class tutorialAssembyManager : MonoBehaviour
                 handAnimator.SetInteger("nextTransition", 8);
                 break;
             case 9:
-                dialogText.text = "Correct answers increase score";
+                dialogText.text = "If the answer was correct, it increases your score.";
                 handAnimator.SetInteger("nextTransition", 9);
                 yield return new WaitForSeconds(3);
                 handAnimator.SetInteger("nextTransition", 10);
-                dialogText.text = "When timer is at 0:00 the game is over";
+                dialogText.text = "When the timer hits 0:00, the game ends.";
                 yield return new WaitForSeconds(2);
                 GameOverPanel.SetActive(true);
                 congratsPanel.SetActive(true);
@@ -680,7 +682,7 @@ public class tutorialAssembyManager : MonoBehaviour
     {
         handAnimator.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(0));
-        dialogText.text = "Let's begin by clicking the 4 panel";
+        dialogText.text = "First, click on the 4 panel.";
     }
 
     public void click4panel()
@@ -688,7 +690,7 @@ public class tutorialAssembyManager : MonoBehaviour
         choiceOnePipeOneNeedsToBePicked = false;
         showChoice1.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(1));
-        dialogText.text = "Great Now click the plus panel panel";
+        dialogText.text = "Now, click on the plus panel";
     }
 
     public void clickPlusPanel()
@@ -698,14 +700,14 @@ public class tutorialAssembyManager : MonoBehaviour
             choiceOnePipeTwoNeedsToBePicked = false;
             showChoice2.gameObject.SetActive(true);
             StartCoroutine(switchANimationPhase(2));
-            dialogText.text = "Great Now click the six panel";
+            dialogText.text = "Then click on the 6 panel.";
         }
         else
         {
             choiceOnePipeTwoNeedsToBePicked = false;
             showChoice2.gameObject.SetActive(true);
             StartCoroutine(switchANimationPhase(7));
-            dialogText.text = "Great Now click the other 3 panel";
+            dialogText.text = "Then click on the plus, then the other 3 panel.";
         }
     }
 
@@ -715,7 +717,7 @@ public class tutorialAssembyManager : MonoBehaviour
         showChoice3.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(3));
         //timeToSolveFirstEquation = true;
-        dialogText.text = "Notice the built equation";
+        dialogText.text = "Notice the equation in the box?";
     }
 
     public void clickLeft3()
@@ -723,7 +725,7 @@ public class tutorialAssembyManager : MonoBehaviour
         choiceTwoPipeOneNeedsToBePicked = false;
         showChoice1.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(6));
-        dialogText.text = "Great Now click the plus panel";
+        dialogText.text = "Then click on the plus, then the other 3 panel.";
     }
 
     public void clickRight3()
@@ -731,7 +733,7 @@ public class tutorialAssembyManager : MonoBehaviour
         showChoice3.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(8));
         //timeToSolveSecondEquation = true;
-        dialogText.text = "Great Now click the equation button";
+        dialogText.text = "Now check the equation.";
     }
 
     public void scorePointer()

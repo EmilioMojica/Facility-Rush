@@ -150,7 +150,7 @@ public class PipesManager : MonoBehaviour
     void Start()
     {
         gameOver = true;
-        gameTimer = 180f;
+       
         whichGradeLevelIsThisProblem = new int[10];
         //questionSlots[0].GetComponent<GridLayoutGroup>().enabled = false;
         // print("String equivalence test: " + "9+1".Equals("9+1") );

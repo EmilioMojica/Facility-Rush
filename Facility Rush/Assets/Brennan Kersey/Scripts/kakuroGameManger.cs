@@ -386,7 +386,7 @@ public class kakuroGameManger : MonoBehaviour
         DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
         degredationManager.aAttempted = numberOfProblemsAttempted;
         degredationManager.aCorrect = numberCorrectTotal;
-        degredationManager.assemblyCalulate();
+        degredationManager.cartkuroCalculation();
         degredationManager.gameHasBeenPlayed(3);
         checkForNewHighScore();
        // degredationManager.setScoreOfRecentPlayedGame(score);

@@ -328,7 +328,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         DegradationManager degredationManager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
         degredationManager.aAttempted = score + 1;
         degredationManager.aCorrect = score;
-        degredationManager.assemblyCalulate();
+        degredationManager.chuteCalculate();
         degredationManager.gameHasBeenPlayed(1);
         checkForNewHighScore();
         degredationManager.setScoreOfRecentPlayedGame(score);

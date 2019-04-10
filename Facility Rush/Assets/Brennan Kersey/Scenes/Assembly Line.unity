@@ -2623,9 +2623,9 @@ MonoBehaviour:
   theGoldenGodAnimator: {fileID: 1953890580}
   theTimer: {fileID: 1836115882}
   gameTimerText: {fileID: 360324435}
-  gameTimer: 60
+  gameTimer: 5
   maxTime: 60
-  testRun: {fileID: 35136665}
+  isInteractable: 0
 --- !u!4 &400000942
 Transform:
   m_ObjectHideFlags: 0
