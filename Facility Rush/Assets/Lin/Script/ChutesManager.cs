@@ -41,6 +41,17 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     public Animator tubeThree;
     public Animator tubeFour;
 
+    public enum CounterState
+    {
+        oneQ = 0,
+        twoQ,
+        threeQ,
+        fourQ,
+        fiveQ
+    }
+    public int counter;
+    public CounterState counterState;
+
     private int wrongNumber;
 
     int startingNumber;  // randomly generated number for beginning of equation generation for addition and subtraction, unless it is mutiplication or division
@@ -67,7 +78,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         failscene.SetActive(false);
         timeSlider.value = 1;
         //replacement to Time text
-        timerNum = 20f;
+        timerNum = 30f;
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //--------------------------------------------
         game = false;
@@ -82,7 +93,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
         if (game)
         {
-            timeSlider.value -= Time.deltaTime / 20;
+            timeSlider.value -= Time.deltaTime / 30;
             //replacement to Time text
             timerNum -= Time.deltaTime;
             timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60; 
@@ -93,6 +104,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             //-----------------------------------
             if (timeSlider.value <= 0) //Run "GameOver" function if timeleft(slider value) is out
             {
+                Debug.Log("kkkkkkkkk");
                 timeOut();
             }
 
@@ -124,20 +136,79 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         scoreValue.text = score.ToString();
         timeSlider.value = 1;
         // replacement of timer slider
-        timerNum = 21f;
+        //timerNum = 21f;
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //---------------------------------------
         failscene.SetActive(false);
         //playscene.SetActive(true);
     }
-    public void CheckAnswer(int asnwerID)
+    /*public void CheckAnswer(int asnwerID)
     {               //This is on all 4 of answer buttons that send here answer ID pre-declared in Button component.
                     //Here we get time between answers to prevent fast chaos selecting answers (otherwise we can cheat scores)
         if (asnwerID == trueID)      //If answer ID is equal to true ID that means right answer pressed. Also we check if period is ok and we run according function.
             gotRight();
-    }
+    }*/
     //DragHandler dh= new DragHandler();
     //MoveBack mb = new MoveBack();
+
+    public void ChangeCounterState()
+    {
+        if (counter <= 5)
+        {
+            counterState = CounterState.oneQ;
+        }
+        else if (counter > 5 && counter <= 15)
+        {
+            counterState = CounterState.twoQ;
+        }
+        else if (counter > 15 && counter <= 30)
+        {
+            counterState = CounterState.threeQ;
+        }
+        else if (counter > 30 && counter <= 50)
+        {
+            counterState = CounterState.fourQ;
+        }
+        else
+        {
+            counterState = CounterState.fiveQ;
+        }
+    }
+
+    public void AddTimeToTimer()
+    {
+        switch (counterState)
+        {
+            case CounterState.oneQ:
+                timerNum += 5;
+                break;
+            case CounterState.twoQ:
+                if (counter % 2 == 1)
+                {
+                    timerNum += 5;
+                }
+                break;
+            case CounterState.threeQ:
+                if (counter % 3 == 0)
+                {
+                    timerNum += 5;
+                }
+                break;
+            case CounterState.fourQ:
+                if (counter % 4 == 2)
+                {
+                    timerNum += 5;
+                }
+                break;
+            case CounterState.fiveQ:
+                if (counter % 5 == 0)
+                {
+                    timerNum += 5;
+                }
+                break;
+        }
+    }
+    
     public void isRight()
     {
         switch (rightID)
@@ -165,7 +236,8 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     }
 
     public void gotRight()
-    {                               //This runs when we pressed right answer 
+    {   
+        //This runs when we pressed right answer 
         //answersGoUP.SetBool("NumberBack", true);
         answersGoUP.SetBool("NumberMove", false);
 
@@ -186,6 +258,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         string x = y.ToString();
         GameObject.Find(x).GetComponent<ChutesDrag>().MoveBack();
 
+        counter++;
+        ChangeCounterState();
+        AddTimeToTimer();
         Generate();                                     //After got correct answer we generate new one
     }
     IEnumerator WaitAndRight(float waitTime)
@@ -302,7 +377,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         game = true;
         timeSlider.value = 1;
         // replacement of timer slider
-        timerNum = 21f;
+        //timerNum = 21f;
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //------------------------------------
         tempAnswers.Clear();                            //Clear list filled with previous answers

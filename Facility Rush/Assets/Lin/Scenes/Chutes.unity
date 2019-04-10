@@ -8227,6 +8227,8 @@ MonoBehaviour:
   tubeTwo: {fileID: 438302702}
   tubeThree: {fileID: 1993159929}
   tubeFour: {fileID: 244679316}
+  counter: 0
+  counterState: 0
 --- !u!95 &2107435750
 Animator:
   serializedVersion: 3
