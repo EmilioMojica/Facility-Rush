@@ -512,6 +512,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Over Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 7840734463395222648, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7840734463395222631, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,11 +627,75 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1.199997
       objectReference: {fileID: 0}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: goodJobUIElement
+      value: 
+      objectReference: {fileID: 152669759}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: congratulationsUIElement
+      value: 
+      objectReference: {fileID: 152669758}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: congratulationsText
+      value: 
+      objectReference: {fileID: 152669758}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: newHighScoreText
+      value: 
+      objectReference: {fileID: 152669757}
+    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1804063906}
+    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1804063906}
+    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: replayPipeGyro
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4435bf18f07c2a48b65a53ac9a3a2ee, type: 3}
 --- !u!224 &152669755 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7840734463395222631, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 152669754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &152669756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7840734463395222648, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 152669754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &152669757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8623669301517230357, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 152669754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &152669758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2134091053069694061, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 152669754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &152669759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7690112919634374240, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
     type: 3}
   m_PrefabInstance: {fileID: 152669754}
   m_PrefabAsset: {fileID: 0}
@@ -7232,7 +7301,7 @@ MonoBehaviour:
   currentProblem: 0
   equationGeneration: {fileID: 552855037}
   gradelevel: 5
-  gameOverPanel: {fileID: 0}
+  gameOverPanel: {fileID: 152669756}
 --- !u!114 &1804063906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7797,7 +7866,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:

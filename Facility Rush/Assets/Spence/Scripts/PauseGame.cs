@@ -34,6 +34,7 @@ public class PauseGame : MonoBehaviour
 
     public void MainMenu()
     {
+        Debug.Log("MainMenu pressed");
         pb.backToMenu = true;
         Time.timeScale = 1f;
         lvl.FadeToLevel(0);
@@ -61,6 +62,8 @@ public class PauseGame : MonoBehaviour
 
     public void replayChutes()
     {
+        Debug.Log("replayChutes pressed");
+
         lvl.FadeToLevel(5);
     }
 
