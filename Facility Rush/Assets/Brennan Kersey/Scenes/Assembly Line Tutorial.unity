@@ -9477,14 +9477,16 @@ MonoBehaviour:
   explanationDialog:
   - " Welcome to the assembly line, where we\u2019ll use math to build toys!"
   - "Let\u2019s make a toy together to learn how."
-  - Now click \"check equation\" to see if your answer is correct.
-  - "Let\u2019s make a toy together to learn how."
-  - "Let\u2019s make a toy together to learn how."
-  - "Let\u2019s make a toy together to learn how."
+  - Now click "check equation" to see if your answer is correct.
+  - "Let's see what happens if you don\u2019t quite get it right."
+  - Now, click on the 3 panel.
+  - If the answer was correct, it increases your score.
+  - When the timer hits 0:00, the game ends.
   dialogPoint: 0
   dialogText: {fileID: 1140122029}
   manager: {fileID: 400000943}
   haltCheck: 0
+  pastPhaseOne: 0
 --- !u!1 &1796899153
 GameObject:
   m_ObjectHideFlags: 0

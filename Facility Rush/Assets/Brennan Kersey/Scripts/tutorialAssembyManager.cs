@@ -108,7 +108,7 @@ public class tutorialAssembyManager : MonoBehaviour
     float toyConveyerBeltTransition3;
     float toyConveyerBeltResetPosition;
     [SerializeField] private Animator theGoldenGodAnimator;
-    [SerializeField] private Animator handAnimator;
+    public Animator handAnimator;
     [SerializeField] private assemblyTimer theTimer;
 
     private float pointTo4Delay;
@@ -525,14 +525,19 @@ public class tutorialAssembyManager : MonoBehaviour
 
                 if (firstProblemSolved == false)
                 {
+                    handAnimator.gameObject.GetComponent<Image>().enabled = false;
                     StartCoroutine(switchANimationPhase(5));
                     firstProblemSolved = true;
+                    dialogText.text = "If it is, you’ll make a toy!";
+                    dialogManager.haltCheck = false;
                 }
                 else if (firstProblemSolved == true && secondProbelmSolved == false)
                 {
+                    handAnimator.gameObject.GetComponent<Image>().enabled = false;
                     dialogText.text = "If your equation is incorrect, the toy will be broken.";
                     secondProbelmSolved = true;
-                    Invoke("scorePointer", 3);
+                    dialogManager.haltCheck = false;
+                    //Invoke("scorePointer", 3);
                 }
                 createToy();
                 string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
@@ -627,17 +632,20 @@ public class tutorialAssembyManager : MonoBehaviour
                 break;
 
             case 5:
-                dialogText.text = "If it is, you’ll make a toy!";
-                yield return new WaitForSeconds(3);
+                //dialogText.text = "If it is, you’ll make a toy!";
+               // yield return new WaitForSeconds(3);
                 pipeOneChoice1.SetActive(false);
                 pipeOneChoice2.SetActive(true);
                 pipeThreeChoice2.SetActive(false);
                 pipeThreeChoice1.SetActive(true);
-                dialogText.text = "Let\'s see what happens if you don’t quite get it right.";
-                yield return new WaitForSeconds(2);
+                // dialogText.text = "Let\'s see what happens if you don’t quite get it right.";
+                //  yield return new WaitForSeconds(2);
+               // StartCoroutine(activateTheNextThreePanel());
                 handAnimator.SetInteger("nextTransition", 5);
-                dialogText.text = "Now, click on the 3 panel.";
+              //  dialogText.text = "Now, click on the 3 panel.";
                 choiceTwoPipeOneNeedsToBePicked = true;
+                print("DO we ever reach this line?");
+               // choiceTwoPipeOneNeedsToBePicked = true;
                 break;
 
             case 6:
@@ -655,17 +663,17 @@ public class tutorialAssembyManager : MonoBehaviour
                 handAnimator.SetInteger("nextTransition", 8);
                 break;
             case 9:
-                dialogText.text = "If the answer was correct, it increases your score.";
+               // dialogText.text = "If the answer was correct, it increases your score.";
                 handAnimator.SetInteger("nextTransition", 9);
-                yield return new WaitForSeconds(3);
-                handAnimator.SetInteger("nextTransition", 10);
-                dialogText.text = "When the timer hits 0:00, the game ends.";
-                yield return new WaitForSeconds(2);
-                GameOverPanel.SetActive(true);
-                congratsPanel.SetActive(true);
-                congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
-                PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
-                gameOver = true;
+               // yield return new WaitForSeconds(3);
+               // handAnimator.SetInteger("nextTransition", 10);
+               // dialogText.text = "When the timer hits 0:00, the game ends.";
+               // yield return new WaitForSeconds(2);
+                //GameOverPanel.SetActive(true);
+                //congratsPanel.SetActive(true);
+                //congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
+                //PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
+                //gameOver = true;
                 //yield return new WaitForSeconds(5);
                 //SceneManager.LoadScene("Ford_Test");
                 break;
@@ -677,7 +685,22 @@ public class tutorialAssembyManager : MonoBehaviour
 
         yield return null;
     }
-
+    public void activateTheNextThreePanel()
+    {
+        choiceTwoPipeOneNeedsToBePicked = true;
+    }
+    public void pointToTimerElement()
+    {
+        StartCoroutine(switchANimationPhase(10));
+    }
+    public void gameOverStart()
+    {
+        GameOverPanel.SetActive(true);
+        congratsPanel.SetActive(true);
+        congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
+        PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
+        gameOver = true;
+    }
     public void startAnimation()
     {
         handAnimator.gameObject.SetActive(true);

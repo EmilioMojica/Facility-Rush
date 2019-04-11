@@ -14,6 +14,7 @@ public class assemblyTutorialDialog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pastPhaseOne = false;
         dialogPoint = 0;
         dialogText.text = explanationDialog[dialogPoint];
     }
@@ -23,18 +24,15 @@ public class assemblyTutorialDialog : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Mouse0) && haltCheck==false)
         {
-            if (dialogPoint == 1 && pastPhaseOne==true)
+            if (dialogPoint == 1 && pastPhaseOne==false)
             {
                 manager.startAnimation();
                 manager.choiceOnePipeOneNeedsToBePicked = true;
                 haltCheck = true;
+                pastPhaseOne = true;
             }
 
-            if(dialogPoint == 2)
-            {
-                manager.switchToProblemProgress();
-                haltCheck = true;
-            }
+           
             if (haltCheck != true)
             {
                 nextDialog();
@@ -47,6 +45,31 @@ public class assemblyTutorialDialog : MonoBehaviour
     {
        
         dialogPoint++;
+        if (dialogPoint == 2)
+        {
+            manager.switchToProblemProgress();
+            haltCheck = true;
+        }
+        else if(dialogPoint ==4)
+        {
+            manager.handAnimator.GetComponent<Image>().enabled = true;
+            manager.activateTheNextThreePanel();
+            haltCheck = true;
+        }
+        else if(dialogPoint==5)
+        {
+            manager.handAnimator.GetComponent<Image>().enabled = true;
+            manager.scorePointer();
+        }
+        else if(dialogPoint==6)
+        {
+            manager.pointToTimerElement();
+        }
+        else if(dialogPoint==7)
+        {
+            this.gameObject.GetComponent<Image>().enabled = false;
+            manager.gameOverStart();
+        }
         if (dialogPoint <=explanationDialog.Length-1)
         {
             dialogText.text = explanationDialog[dialogPoint];

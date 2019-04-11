@@ -46,6 +46,9 @@ public class tutorialKartcuroManager : MonoBehaviour
     public Text scoreText;                      // A text variable used to indicate the score on screen
     public int totalNumberedPanels;             // An integer that represents the total number of answer panels that a answer grid inside of the Cart gameobject, this is used for answer checking
 
+    [SerializeField] private Text tutorialDialog;
+    [SerializeField] private kartcuroTutorialDialog dialogManager;
+
     //public GameObject inventoryHolder;
 
     [SerializeField] private GameObject UILayoutThreeByThree; // A variable representing the Gameobject for the 3x3 Game board that can be initiated on start
@@ -234,7 +237,7 @@ public class tutorialKartcuroManager : MonoBehaviour
 
             case 2:
                 StartCoroutine(animateDirections(2));
-
+                tutorialDialog.text = "Each row should add up to the number in the orange triangle.";
                 numberSlotsTwoByTwo[2].gameObject.transform.GetChild(0).GetComponent<DragHandler>().enabled = true;
                 numberSlotsTwoByTwo[0].gameObject.GetComponent<Image>().raycastTarget = false;
                 StartCoroutine(shutOffDrag(oneBox));
@@ -311,27 +314,41 @@ public class tutorialKartcuroManager : MonoBehaviour
                 scoreDirectionsBox.SetActive(true);
                 StartCoroutine(kartMoving());
                 tutorialAnimator.SetInteger("moving", 5);
-                yield return new WaitForSeconds(3f);
-                scoreDirectionsBox.SetActive(false);
-                tutorialAnimator.SetInteger("moving", 6);
-                timerDirectionsBox.SetActive(true);
-                yield return new WaitForSeconds(1f);
-                //tutorialAnimator.SetInteger("moving", 6);
-                yield return new WaitForSeconds(3f);
-                tutorialAnimator.SetInteger("moving", 0);
+                dialogManager.isTimeToTap = true;
                 //yield return new WaitForSeconds(3f);
-                timerDirectionsBox.SetActive(false);
-                animatedHand.SetActive(false);
-                gameOverPanel.SetActive(true);
-                congratsPanel.SetActive(true);
-                congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
+                //scoreDirectionsBox.SetActive(false);
+                //tutorialAnimator.SetInteger("moving", 6);
+                //timerDirectionsBox.SetActive(true);
+                //yield return new WaitForSeconds(1f);
+                ////tutorialAnimator.SetInteger("moving", 6);
+                //yield return new WaitForSeconds(3f);
+                //tutorialAnimator.SetInteger("moving", 0);
+                //yield return new WaitForSeconds(3f);
+                //timerDirectionsBox.SetActive(false);
+                //animatedHand.SetActive(false);
+                //gameOverPanel.SetActive(true);
+                //congratsPanel.SetActive(true);
+                //congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
                 break;
         }
         
 
         yield return null;
     }
-
+    public void pointToTimer()
+    {
+        scoreDirectionsBox.SetActive(false);
+        timerDirectionsBox.SetActive(true);
+        tutorialAnimator.SetInteger("moving", 6);
+    }
+    public void startGameOver()
+    {
+        timerDirectionsBox.SetActive(false);
+        animatedHand.SetActive(false);
+        gameOverPanel.SetActive(true);
+        congratsPanel.SetActive(true);
+        congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
+    }
     IEnumerator kartMoving()
     {
         twoByTwoTopTriangle.SetActive(false);

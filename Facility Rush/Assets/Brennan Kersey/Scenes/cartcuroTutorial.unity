@@ -716,8 +716,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 50234910}
+  - component: {fileID: 50234911}
   m_Layer: 5
-  m_Name: Blank panel
+  m_Name: Dialog Manager holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,6 +743,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &50234911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50234909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc4947f7e8a2194cae1562863d7d099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1799809515}
+  isTimeToTap: 0
+  numberOfTimesClicked: 0
 --- !u!1 &53989744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,8 +1398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.3, y: -7.1}
-  m_SizeDelta: {x: 90, y: 50}
+  m_AnchoredPosition: {x: 1.3, y: -4.76}
+  m_SizeDelta: {x: 90, y: 77.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &226964727
 MonoBehaviour:
@@ -1407,7 +1423,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1418,7 +1434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Correct problems increase score.
+  m_Text: If the answer was correct, it increases your score.
 --- !u!222 &226964728
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1536,8 +1552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.3, y: -7.1}
-  m_SizeDelta: {x: 90, y: 50}
+  m_AnchoredPosition: {x: 1.3, y: -2.96}
+  m_SizeDelta: {x: 90, y: 79.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &320895701
 MonoBehaviour:
@@ -1561,7 +1577,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1572,7 +1588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Timer will count down.
+  m_Text: When the timer hits 0:00, the game ends.
 --- !u!222 &320895702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4670,8 +4686,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92, y: -185}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -92, y: -186.37}
+  m_SizeDelta: {x: 100, y: 165.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763718136
 MonoBehaviour:
@@ -8251,8 +8267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 97, y: -185}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 97, y: -186.37}
+  m_SizeDelta: {x: 100, y: 165.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308797651
 MonoBehaviour:
@@ -8540,8 +8556,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.3, y: -7.1}
-  m_SizeDelta: {x: 90, y: 50}
+  m_AnchoredPosition: {x: 1.3, y: -4.65}
+  m_SizeDelta: {x: 90, y: 77.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403455551
 MonoBehaviour:
@@ -8576,7 +8592,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Drag the boxes
+  m_Text: Drag the boxes where the hand shows.
 --- !u!222 &1403455552
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9449,8 +9465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -106.1, y: 114.4}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -106.1, y: 150.35002}
+  m_SizeDelta: {x: 100, y: 171.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540070598
 MonoBehaviour:
@@ -10865,7 +10881,7 @@ MonoBehaviour:
   - {fileID: 1038936661}
   - {fileID: 965078889}
   threeByThreeFirstRowTriangle: {fileID: 0}
-  threebyThreeSecondRowTriangle: {fileID: 0}
+  threeByThreeSecondRowTriangle: {fileID: 0}
   twoByTwoFirstRowTriangle: {fileID: 0}
   twoByTwoSecondRowTriangle: {fileID: 0}
   score: 0
@@ -10887,6 +10903,8 @@ MonoBehaviour:
   thirdGradeTime: 0
   fourthGradeTime: 0
   fifthGradeTime: 0
+  twoByTwoBoxes: []
+  threeByThreeBoxes: []
 --- !u!4 &1799809514
 Transform:
   m_ObjectHideFlags: 0
@@ -10970,6 +10988,8 @@ MonoBehaviour:
   score: 0
   scoreText: {fileID: 1329487859}
   totalNumberedPanels: 0
+  tutorialDialog: {fileID: 1403455551}
+  dialogManager: {fileID: 50234911}
   UILayoutThreeByThree: {fileID: 1798462456}
   UILayoutTwoByTwo: {fileID: 323572412}
   tutorialAnimator: {fileID: 1963316696}
@@ -12872,11 +12892,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1711529230}
     - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: TrailModule.widthOverTrail.scalar
@@ -13102,6 +13117,11 @@ PrefabInstance:
       propertyPath: m_MaxParticleSize
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1711529230}
     - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
