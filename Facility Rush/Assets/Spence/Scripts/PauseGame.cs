@@ -48,4 +48,24 @@ public class PauseGame : MonoBehaviour
     {
         optionsPanel.SetActive(false);
     }
+
+    public void replayAssemblyLine()
+    {
+        lvl.FadeToLevel(3);
+    }
+
+    public void replayKartcuro()
+    {
+        lvl.FadeToLevel(4);
+    }
+
+    public void replayChutes()
+    {
+        lvl.FadeToLevel(5);
+    }
+
+    public void replayPipeGyro()
+    {
+        lvl.FadeToLevel(6);
+    }
 }

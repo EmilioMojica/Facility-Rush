@@ -9,10 +9,11 @@ using UnityEngine.UI;
 public class gameOverPanel : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] fireworkPoints;
-    [SerializeField] private Text congratulationsText; // Text field for congratulating the player after the level if complete
-    [SerializeField] private Text newHighScoreText;     // Text field for indicating that the player has achieved a new high score
+    [SerializeField] private GameObject congratulationsText; // Text field for congratulating the player after the level if complete
+    [SerializeField] private GameObject newHighScoreText;     // Text field for indicating that the player has achieved a new high score
     [SerializeField] private Text scoreOnGameOverPanel; // Text field for displaying the score that the player received 
-
+    [SerializeField] private GameObject congratulationsUIElement;
+    [SerializeField] private GameObject goodJobUIElement;
 
     // Start is called before the first frame update
     void Start()
@@ -34,40 +35,60 @@ public class gameOverPanel : MonoBehaviour
         {
             case 0:
                 int currentAssemblyLineHighScore = PlayerPrefs.GetInt("assemblyHighScore"); // an integer that represents the current high score for "Assembly Line" minigame
+                scoreOnGameOverPanel.text = "" + recentHighScore;
                 if(recentHighScore>currentAssemblyLineHighScore) // if statement that checks to see if the Assembly Line highscore is lower than what the player got
                 {
                     activateNewHighScoreFeedback(); // activate the Game Object for the "congratulations on new high score" text
+                }
+                else
+                {
+                    goodJobUIElement.SetActive(true);
                 }
                 break;
 
             case 1:
                 int currentKartcuroHighScore = PlayerPrefs.GetInt("kakuroHighScore"); // an integer that represents the current high score for "Kartcuro" minigame
+                scoreOnGameOverPanel.text = "" + recentHighScore;
                 if (recentHighScore > currentKartcuroHighScore) // if statement that checks to see if the Kartcuro highscore is lower than what the player got
                 {
                     activateNewHighScoreFeedback(); // activate the Game Object for the "congratulations on new high score" text
+                }
+                else
+                {
+                    goodJobUIElement.SetActive(true);
                 }
                 break;
 
             case 2:
                 int currentChutesHighScore = PlayerPrefs.GetInt("chutesHighScore"); // an integer that represents the current high score for "Chutes" minigame
+                scoreOnGameOverPanel.text = "" + recentHighScore;
                 if (recentHighScore > currentChutesHighScore) // if statement that checks to see if the Chutes highscore is lower than what the player got
                 {
                     activateNewHighScoreFeedback(); // activate the Game Object for the "congratulations on new high score" text
                 }
+                else
+                {
+                    goodJobUIElement.SetActive(true);
+                }
                 break;
             case 3:
                 int currentPipeGyroHighScore = PlayerPrefs.GetInt("pipeGyroHighScore"); // an integer that represents the current high score for "Pipe Gyro" minigame
+                scoreOnGameOverPanel.text = "" + recentHighScore;
                 if (recentHighScore > currentPipeGyroHighScore) // if statement that checks to see if the Pipe Gyro highscore is lower than what the player got
                 {
                     activateNewHighScoreFeedback(); // activate the Game Object for the "congratulations on new high score" text
                 }
+                else
+                {
+                    goodJobUIElement.SetActive(true);
+                }
                 break;
-
         }
     }
     public void activateNewHighScoreFeedback() // method used to activate the "congratulations on new high score" text
     {
-        newHighScoreText.gameObject.SetActive(true); // set the game object that holds the text to true so that it is visible.
+        newHighScoreText.SetActive(true); // set the game object that holds the text to true so that it is visible.
+        congratulationsText.SetActive(true);
     }
 
     IEnumerator playRandomParticles()

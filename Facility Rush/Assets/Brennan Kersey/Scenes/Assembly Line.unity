@@ -2623,7 +2623,7 @@ MonoBehaviour:
   theGoldenGodAnimator: {fileID: 1953890580}
   theTimer: {fileID: 1836115882}
   gameTimerText: {fileID: 360324435}
-  gameTimer: 5
+  gameTimer: 60
   maxTime: 60
   isInteractable: 0
 --- !u!4 &400000942
@@ -4033,6 +4033,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: congratulationsText
+      value: 
+      objectReference: {fileID: 556905564}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: newHighScoreText
+      value: 
+      objectReference: {fileID: 556905563}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: congratulationsUIElement
+      value: 
+      objectReference: {fileID: 556905564}
+    - target: {fileID: 7840734463395222628, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: goodJobUIElement
+      value: 
+      objectReference: {fileID: 556905565}
     - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4043,8 +4063,51 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1953890579}
+    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: replayAssemblyLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669027353154619383, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134091053069694061, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623669301517230357, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4435bf18f07c2a48b65a53ac9a3a2ee, type: 3}
+--- !u!1 &556905563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8623669301517230357, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 556905562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &556905564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2134091053069694061, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 556905562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &556905565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7690112919634374240, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 556905562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &566637361
 GameObject:
   m_ObjectHideFlags: 0

@@ -603,6 +603,7 @@ public class assemblyManager : MonoBehaviour
         gameOver = true;
         GameOverPanel.SetActive(true);
         feedbackText.text = "GameOver";
+        GameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(0, score);
         calculateRestoration();
     }
     public void checkForNewHighScore()
