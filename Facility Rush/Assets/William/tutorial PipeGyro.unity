@@ -2455,7 +2455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 3
 --- !u!222 &872439009
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2789,6 +2789,7 @@ MonoBehaviour:
     on its way. "
   - Your score will go up when you put the right pipe
   - If the timer is at zero, the game is over.
+  - Now, tap on screen to go back to Main Menu
   index: 0
   anim: {fileID: 1891307753}
   pipeAnim: {fileID: 1105862424}
@@ -3225,7 +3226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81987aed376558649aaeced02b56c7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctID: -1
+  correctID: 0
   tubeNumber: 1
   QuestonsCanvasAnim: {fileID: 1490138415}
   scoreText: {fileID: 0}
@@ -6411,7 +6412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81987aed376558649aaeced02b56c7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctID: 0
+  correctID: -1
   tubeNumber: 3
   QuestonsCanvasAnim: {fileID: 1490138415}
   scoreText: {fileID: 0}
@@ -6646,7 +6647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 1
 --- !u!222 &2102136069
 CanvasRenderer:
   m_ObjectHideFlags: 0
