@@ -38,7 +38,7 @@ public class TutorialPipeSlot : MonoBehaviour, IDropHandler
 
         if (TutorialPipeDrag.itemBeingDragged.GetComponent<TutorialPipeDrag>().ID == correctID)
         {
-            StartCoroutine("WaitCorrectAnimation", 2);
+            StartCoroutine("WaitCorrectAnimation", 0);
             StartCoroutine("BoxMoveBack", 0.5f);
 
             GameObject.FindObjectOfType<TutorialPipe>().CorrectResultDialogue();
