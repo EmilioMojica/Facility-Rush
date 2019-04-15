@@ -18,18 +18,49 @@ public class kickBackToMainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            toMainMenu.MainMenu();
+            //toMainMenu.MainMenu();
+
+            if(SceneManager.GetActiveScene().name.Contains("Assembly"))
+            {
+                toMainMenu.replayAssemblyLine();
+            }
+            else if(SceneManager.GetActiveScene().name.Contains("cartcuro"))
+            {
+                toMainMenu.replayKartcuro();
+            }
+            else if(SceneManager.GetActiveScene().name.Contains("Chutes"))
+            {
+                toMainMenu.replayChutes();
+            }
+            else if(SceneManager.GetActiveScene().name.Contains("PipeGyro"))
+            {
+                toMainMenu.replayPipeGyro();
+            }
         }
     }
 
-    public void activateAutoKick()
+    public void activateAutoKick(int whichGame)
     {
-        StartCoroutine(kickAfterFive());
+        StartCoroutine(kickAfterFive(whichGame));
     }
 
-    IEnumerator kickAfterFive()
+    IEnumerator kickAfterFive(int gameID)
     {
         yield return new WaitForSeconds(timeTillExit);
-        toMainMenu.MainMenu();
+        switch(gameID)
+        {
+            case 0:
+                toMainMenu.replayAssemblyLine();
+                break;
+            case 1:
+                toMainMenu.replayKartcuro();
+                break;
+            case 2:
+                toMainMenu.replayChutes();
+                break;
+            case 3:
+                toMainMenu.replayPipeGyro();
+                break;
+        }
     }
 }

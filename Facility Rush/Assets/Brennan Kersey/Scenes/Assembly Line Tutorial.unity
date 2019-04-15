@@ -11395,6 +11395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Congrats panel
       objectReference: {fileID: 0}
+    - target: {fileID: 7391377355814956813, guid: 675ae092426eaed40bd5e2d7d0966332,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7391377355814956812, guid: 675ae092426eaed40bd5e2d7d0966332,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11508,6 +11513,11 @@ PrefabInstance:
       propertyPath: toMainMenu
       value: 
       objectReference: {fileID: 1953890579}
+    - target: {fileID: 7391377354993035333, guid: 675ae092426eaed40bd5e2d7d0966332,
+        type: 3}
+      propertyPath: m_Text
+      value: Congrats tap the screen to play the real game.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675ae092426eaed40bd5e2d7d0966332, type: 3}
 --- !u!224 &7926419697508502614 stripped

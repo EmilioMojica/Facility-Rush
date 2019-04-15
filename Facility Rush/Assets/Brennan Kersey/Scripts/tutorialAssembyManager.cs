@@ -697,7 +697,7 @@ public class tutorialAssembyManager : MonoBehaviour
     {
         GameOverPanel.SetActive(true);
         congratsPanel.SetActive(true);
-        congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
+        congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick(0);
         PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
         gameOver = true;
     }

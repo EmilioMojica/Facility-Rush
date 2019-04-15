@@ -347,7 +347,7 @@ public class tutorialKartcuroManager : MonoBehaviour
         animatedHand.SetActive(false);
         gameOverPanel.SetActive(true);
         congratsPanel.SetActive(true);
-        congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick();
+        congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick(1);
     }
     IEnumerator kartMoving()
     {

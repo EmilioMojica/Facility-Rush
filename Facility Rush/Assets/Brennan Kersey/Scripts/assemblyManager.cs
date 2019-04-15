@@ -705,7 +705,7 @@ public class assemblyManager : MonoBehaviour
     public void checkequation()
     {
         //createToy();
-        if (isAnimating==false && isInteractable==true)
+        if (isAnimating==false && isInteractable==true && showChoice1.text !="" && showChoice2.text != "" && showChoice3.text !="")
         {
             createToy();
             string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
