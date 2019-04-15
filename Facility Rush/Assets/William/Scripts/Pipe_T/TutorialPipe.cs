@@ -22,6 +22,7 @@ public class TutorialPipe : MonoBehaviour
 
     private Text bubbleText;
     public bool boolean;
+    public LevelChanger lc;
 
     private void OnEnable()
     {
@@ -36,6 +37,7 @@ public class TutorialPipe : MonoBehaviour
     void Start()
     {
         TutorialSystem.PopDialog(index);
+        lc = GameObject.FindObjectOfType<LevelChanger>();
     }
 
     void Update()
@@ -68,7 +70,14 @@ public class TutorialPipe : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0) && boolean)
                 {
-                    SceneManager.LoadScene(6);
+                    if (lc)
+                    {
+                        lc.FadeToLevel(6);
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene(6);
+                    }
                 }
             }
         }
@@ -244,7 +253,14 @@ public class TutorialPipe : MonoBehaviour
         Debug.Log("start counting down");
         yield return new WaitForSeconds(time);
 
-        SceneManager.LoadScene(6);
+        if (lc)
+        {
+            lc.FadeToLevel(6);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 
     IEnumerator ChangeBool()

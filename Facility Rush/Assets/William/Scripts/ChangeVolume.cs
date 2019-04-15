@@ -38,5 +38,4 @@ public class ChangeVolume : MonoBehaviour
         soundValue = AudioManager.instance.soundAudioSource.volume;
         PlayerPrefs.SetFloat("sound", soundValue);
     }
-
 }

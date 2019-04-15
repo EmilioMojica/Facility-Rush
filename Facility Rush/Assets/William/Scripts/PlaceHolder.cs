@@ -14,12 +14,6 @@ public class PlaceHolder : MonoBehaviour
         levelChanger = GameObject.FindObjectOfType<LevelChanger>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CallsetAllBoolSToFalse()
     {
         degradationManager.setAllBoolSToFalse();

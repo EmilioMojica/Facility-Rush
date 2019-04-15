@@ -2808,6 +2808,8 @@ MonoBehaviour:
   scoreText: {fileID: 2054050175}
   timerText: {fileID: 1187659099}
   progressText: {fileID: 1183843500}
+  boolean: 0
+  lc: {fileID: 0}
 --- !u!1 &1105862422
 GameObject:
   m_ObjectHideFlags: 0

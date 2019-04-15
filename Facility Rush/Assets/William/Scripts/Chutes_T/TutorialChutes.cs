@@ -21,9 +21,12 @@ public class TutorialChutes : MonoBehaviour
     public Image[] image;
     public Text time;
 
+    public LevelChanger lc;
+
     void Start()
     {
         TutorialSystem.PopDialog(index);
+        lc = GameObject.FindObjectOfType<LevelChanger>();
     }
 
     void Update()
@@ -47,7 +50,14 @@ public class TutorialChutes : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0) && boolean)
                 {
-                    SceneManager.LoadScene(5);
+                    if (lc)
+                    {
+                        lc.FadeToLevel(5);
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene(5);
+                    }
                 }
             }
         }
@@ -150,7 +160,14 @@ public class TutorialChutes : MonoBehaviour
         Debug.Log("start counting down");
         yield return new WaitForSeconds(time);
 
-        SceneManager.LoadScene(5);
+        if (lc)
+        {
+            lc.FadeToLevel(5);
+        }
+        else
+        {
+            SceneManager.LoadScene(5);
+        }
     }
 
     IEnumerator ChangeBool()
