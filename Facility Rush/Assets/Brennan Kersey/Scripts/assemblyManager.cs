@@ -107,6 +107,15 @@ public class assemblyManager : MonoBehaviour
     [SerializeField] private float gameTimer;
     [SerializeField] private float maxTime;
     public bool isInteractable;
+
+    public int firstIncorrectNumberChoice;
+    public int secondIncorrectNumberChoice;
+
+    public int lengthOfOperatorsToCheck;
+    private string[] operatorStringSigns = new string[] {"+","-","*","/"};
+    public int numberOfPossibleAnswerCombinations;
+
+    public bool testing;
     IEnumerator newAnimationLoop(GameObject toyToInstantiate,Transform spawningPoint)
     {
         isAnimating = true;
@@ -271,19 +280,23 @@ public class assemblyManager : MonoBehaviour
         {
             case 0:
                 additionPanel.SetActive(true);
+                lengthOfOperatorsToCheck = 1;
                 break;
             case 1:
                 additionPanel.SetActive(true);
                 subtractionPanel.SetActive(true);
+                lengthOfOperatorsToCheck = 2;
                 break;
             case 2:
                 additionPanel.SetActive(true);
                 subtractionPanel.SetActive(true);
+                lengthOfOperatorsToCheck = 2;
                 break;
             case 3:
                 additionPanel.SetActive(true);
                 subtractionPanel.SetActive(true);
                 multiplicationPanel.SetActive(true);
+                lengthOfOperatorsToCheck = 3;
                 //divisionPanel.SetActive(true);
                 break;
             case 4:
@@ -291,12 +304,14 @@ public class assemblyManager : MonoBehaviour
                 subtractionPanel.SetActive(true);
                 multiplicationPanel.SetActive(true);
                 divisionPanel.SetActive(true);
+                lengthOfOperatorsToCheck = 4;
                 break;
             case 5:
                 additionPanel.SetActive(true);
                 subtractionPanel.SetActive(true);
                 multiplicationPanel.SetActive(true);
                 divisionPanel.SetActive(true);
+                lengthOfOperatorsToCheck = 4;
                 break;
         }
     }
@@ -416,7 +431,10 @@ public class assemblyManager : MonoBehaviour
         incorrectToy = sampleToys[indexOfIncorrectToy];
         string equation=equationGenerator.GetComponent<generateEquations>().generateEquation(gradelevel);
        // print(equation);
-
+       while(equation.Contains("*1")|| equation.Contains("/1"))
+        {
+            equation = equationGenerator.GetComponent<generateEquations>().generateEquation(gradelevel);
+        }
         //print(ExpressionEvaluator.Evaluate<int>("4"));
         breakdownEquation(equation);
         solution.text = answer + "";
@@ -493,7 +511,10 @@ public class assemblyManager : MonoBehaviour
         toyPartsInPipeThree[positionInPipeThree] = correctToy.transform.GetChild(2).gameObject;
         solution.text = answer + "";
         setNumberinPipe(firstPart, pipeOne,positionInPipeOne,toyPartsInPipeOne);
+        firstIncorrectNumberChoice = badPipeNumber;
         setNumberinPipe(secondPart, pipeThree,positionInPipeThree,toyPartsInPipeThree);
+        secondIncorrectNumberChoice = badPipeNumber;
+        checkForMultipleRightAnswers();
     }
     
     public void setNumberinPipe(int numberInPipe,Text [] pipe,int positionInPipe, GameObject[] arrayForToyPartSelection)
@@ -568,6 +589,43 @@ public class assemblyManager : MonoBehaviour
         }
         
     }
+    public void checkForMultipleRightAnswers()
+    {
+        numberOfPossibleAnswerCombinations = 0;
+        for(int i=0;i<lengthOfOperatorsToCheck;i++)
+        {
+            for(int j=0;j<2;j++)
+            {
+                print("This is the current string for checkForMultipleRightAnswer: "+ evaluateEquation(pipeOne[j].text + operatorStringSigns[i] + pipeThree[j].text));
+                if(solution.text.Contains(evaluateEquation(pipeOne[j].text+operatorStringSigns[i]+pipeThree[j].text).ToString()))
+                {
+                    numberOfPossibleAnswerCombinations++;
+                }
+            }
+        }
+
+        if(numberOfPossibleAnswerCombinations>=2)
+        {
+            pipeOne[positionInPipeOne].text = "1";
+            pipeThree[positionInPipeThree].text = "2";
+            for(int i=0;i<pipeOne.Length;i++)
+            {
+                if(i!=positionInPipeOne)
+                {
+                    pipeOne[i].text = "5";
+                }
+            }
+            for(int i=0;i<pipeThree.Length;i++)
+            {
+                if (i != positionInPipeThree)
+                {
+                    pipeThree[i].text = "4";
+                }
+            }
+            answer = 3;
+        }
+    }
+   
 	// Update is called once per frame
 	void Update ()
     {
