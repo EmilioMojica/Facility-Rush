@@ -21,12 +21,12 @@ public class TutorialChutes : MonoBehaviour
     public Image[] image;
     public Text time;
 
-    public LevelChanger lc;
+    public LevelChanger levelChanger;
 
     void Start()
     {
         TutorialSystem.PopDialog(index);
-        lc = GameObject.FindObjectOfType<LevelChanger>();
+        levelChanger = GameObject.FindObjectOfType<LevelChanger>();
     }
 
     void Update()
@@ -50,9 +50,9 @@ public class TutorialChutes : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0) && boolean)
                 {
-                    if (lc)
+                    if (levelChanger)
                     {
-                        lc.FadeToLevel(5);
+                        levelChanger.FadeToLevel(5);
                     }
                     else
                     {
@@ -100,14 +100,14 @@ public class TutorialChutes : MonoBehaviour
             if (index == 6)
             {
                 anim.SetBool("IsScoreFlashing", true);
+
+                bubbleImage.localPosition = flasingPos[0].localPosition;
             }
 
             if (index == 7)
             {
                 anim.SetBool("IsScoreFlashing", false);
                 anim.SetBool("IsTimeFlashing", true);
-
-                bubbleImage.localPosition = flasingPos[0].localPosition;
             }
 
             if (index == 8)
@@ -160,9 +160,9 @@ public class TutorialChutes : MonoBehaviour
         Debug.Log("start counting down");
         yield return new WaitForSeconds(time);
 
-        if (lc)
+        if (levelChanger)
         {
-            lc.FadeToLevel(5);
+            levelChanger.FadeToLevel(5);
         }
         else
         {
