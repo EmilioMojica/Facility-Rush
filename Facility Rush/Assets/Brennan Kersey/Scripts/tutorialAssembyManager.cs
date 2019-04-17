@@ -202,6 +202,7 @@ public class tutorialAssembyManager : MonoBehaviour
         deleteToyParts();
         //theTimer.setIsAnimating(false);
         isAnimating = false;
+        dialogManager.haltCheck = false;
         nextEquation();
     }
     public IEnumerator anaiamteHand(int animationPoint)
@@ -529,14 +530,14 @@ public class tutorialAssembyManager : MonoBehaviour
                     StartCoroutine(switchANimationPhase(5));
                     firstProblemSolved = true;
                     dialogText.text = "If it is, you’ll make a toy!";
-                    dialogManager.haltCheck = false;
+                    //dialogManager.haltCheck = false;
                 }
                 else if (firstProblemSolved == true && secondProbelmSolved == false)
                 {
                     handAnimator.gameObject.GetComponent<Image>().enabled = false;
                     dialogText.text = "If your equation is incorrect, the toy will be broken.";
                     secondProbelmSolved = true;
-                    dialogManager.haltCheck = false;
+                    //dialogManager.haltCheck = false;
                     //Invoke("scorePointer", 3);
                 }
                 createToy();
