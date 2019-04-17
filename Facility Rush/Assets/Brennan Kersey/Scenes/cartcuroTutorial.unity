@@ -220,9 +220,9 @@ RectTransform:
   m_Father: {fileID: 1711529227}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 1, y: 89}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: 224.29999}
   m_SizeDelta: {x: 57.21, y: 35.244995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3550965
@@ -1674,10 +1674,10 @@ RectTransform:
   m_Father: {fileID: 1711529227}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 68, y: 50}
-  m_SizeDelta: {x: 120, y: 100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -80.6, y: -220.91}
+  m_SizeDelta: {x: 120, y: 80.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357943006
 MonoBehaviour:
@@ -5118,10 +5118,10 @@ RectTransform:
   m_Father: {fileID: 1711529227}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -65, y: 50}
-  m_SizeDelta: {x: 120, y: 100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 80.8, y: -221.22}
+  m_SizeDelta: {x: 120, y: 79.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815028857
 MonoBehaviour:
@@ -9465,7 +9465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -106.1, y: 150.35002}
+  m_AnchoredPosition: {x: -80.1, y: 136.4}
   m_SizeDelta: {x: 100, y: 171.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540070598
@@ -12907,6 +12907,66 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1711529231}
+    - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919518286916186, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919518286916186, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919519810186245, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919519810186245, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919519874771106, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919519874771106, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919518984266617, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919518984266617, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919519282140671, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357919519282140671, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6131172461172890443, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: ColorModule.enabled
@@ -13067,55 +13127,10 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 5357919518984266617, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    - target: {fileID: 3547159107913346668, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919518984266617, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.minVertexDistance
+      propertyPath: m_MaxParticleSize
       value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919519282140671, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919519282140671, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.minVertexDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.minVertexDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919519874771106, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919519874771106, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.minVertexDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919519810186245, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.minVertexDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919519810186245, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7172130784547589017, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -13216,21 +13231,6 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919518286916186, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.minVertexDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5357919518286916186, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3547159107913346668, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9166684790271401093, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
