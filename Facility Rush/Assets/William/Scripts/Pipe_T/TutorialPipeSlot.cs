@@ -38,15 +38,19 @@ public class TutorialPipeSlot : MonoBehaviour, IDropHandler
 
         if (TutorialPipeDrag.itemBeingDragged.GetComponent<TutorialPipeDrag>().ID == correctID)
         {
+            AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[7];  //choose vacuum correct SFX
+            AudioManager.instance.soundAudioSource2.Play();
+
             StartCoroutine("WaitCorrectAnimation", 0);
             StartCoroutine("BoxMoveBack", 0.5f);
 
             GameObject.FindObjectOfType<TutorialPipe>().CorrectResultDialogue();
-
-
         }
         else    // Put into the wrong slot, plays corresponding wrong animation
         {
+            AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[8];  //choose vacuum wrong SFX
+            AudioManager.instance.soundAudioSource2.Play();
+
             switch (tubeNumber)
             {
                 case 1:

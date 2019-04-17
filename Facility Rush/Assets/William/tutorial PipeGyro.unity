@@ -337,6 +337,8 @@ RectTransform:
   - {fileID: 1296916609}
   - {fileID: 1891307752}
   - {fileID: 1273355747}
+  - {fileID: 1887967818}
+  - {fileID: 1082901831}
   m_Father: {fileID: 1804063904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2758,6 +2760,41 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!1 &1082901830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082901831}
+  m_Layer: 5
+  m_Name: Indicator Position (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1082901831
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082901830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 109119004}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.62, y: 203}
+  m_SizeDelta: {x: 334.4, y: 83.7}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1086632502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8170131429540817749, guid: d761a88c6393ce34987990c2ddd57db3,
@@ -2785,8 +2822,8 @@ MonoBehaviour:
   - Drag it over to that spot over there.
   - You can do it! Try again.
   - Did anyone see how quick that was?
-  - "And there it goes! Now you\u2019ll get a new set of pipes to send another ball
-    on its way. "
+  - 'And there it goes! '
+  - "Now you\u2019ll get a new set of pipes to send another ball on its way. "
   - Your score will go up when you put the right pipe
   - If the timer is at zero, the game is over.
   - Now, tap on screen to go back to Main Menu
@@ -2802,7 +2839,9 @@ MonoBehaviour:
   - {fileID: 1624743458}
   - {fileID: 1138729383}
   - {fileID: 740428547}
-  bubblePos: {fileID: 1255462083}
+  bubblePos:
+  - {fileID: 1887967818}
+  - {fileID: 1082901831}
   bubbleImage: {fileID: 1296916609}
   pipeContainer: {fileID: 1023398290}
   scoreText: {fileID: 2054050175}
@@ -3806,22 +3845,22 @@ PrefabInstance:
     - target: {fileID: 8170131429493311446, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -90.38
+      value: -0.62
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429493311446, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -172
+      value: -170.89
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429493311446, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 148.16
+      value: 334.4
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429493311446, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115.8
+      value: 138.22
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429493311446, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
@@ -3943,22 +3982,22 @@ PrefabInstance:
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000038146973
+      value: 0.9000015
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -10.39
+      value: -26.71
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 4.5700073
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -20.91
+      value: -58.87
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3, type: 3}
@@ -5865,6 +5904,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864992541}
   m_CullTransparentMesh: 0
+--- !u!1 &1887967817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1887967818}
+  m_Layer: 5
+  m_Name: Indicator Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1887967818
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887967817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 109119004}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.62, y: -44.7}
+  m_SizeDelta: {x: 334.36, y: 138.22}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1890967402
 GameObject:
   m_ObjectHideFlags: 0

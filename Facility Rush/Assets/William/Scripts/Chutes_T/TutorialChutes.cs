@@ -52,11 +52,11 @@ public class TutorialChutes : MonoBehaviour
                 {
                     if (levelChanger)
                     {
-                        levelChanger.FadeToLevel(5);
+                        levelChanger.FadeToLevel(7);
                     }
                     else
                     {
-                        SceneManager.LoadScene(5);
+                        SceneManager.LoadScene(7);
                     }
                 }
             }
@@ -162,11 +162,11 @@ public class TutorialChutes : MonoBehaviour
 
         if (levelChanger)
         {
-            levelChanger.FadeToLevel(5);
+            levelChanger.FadeToLevel(7);
         }
         else
         {
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(7);
         }
     }
 

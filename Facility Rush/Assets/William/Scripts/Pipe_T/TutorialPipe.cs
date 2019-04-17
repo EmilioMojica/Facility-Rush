@@ -14,8 +14,8 @@ public class TutorialPipe : MonoBehaviour
 
     [SerializeField] private Image[] image;
 
-    [SerializeField] private RectTransform bubblePos;
-    [SerializeField] private Transform bubbleImage;
+    [SerializeField] private RectTransform[] bubblePos;
+    [SerializeField] private RectTransform bubbleImage;
     [SerializeField] private GameObject pipeContainer;
 
     [SerializeField] private Text scoreText, timerText, progressText;
@@ -48,7 +48,7 @@ public class TutorialPipe : MonoBehaviour
             {
                 NextDialogue();  // 完成bubble text上的東西後才呼叫
             }
-            else if (index >= 7 && index < 11)
+            else if (index >= 7 && index < 12)
             {
                 image[0].GetComponentInChildren<Text>().text = "1+1";
                 image[1].GetComponentInChildren<Text>().text = "4+1";
@@ -62,7 +62,7 @@ public class TutorialPipe : MonoBehaviour
                 NextDialogue();
             }
 
-            if (index == 11)
+            if (index == 12)
             {
                 StartCoroutine(KickPlayerOut(5)); //Kick the player out after 5 sec
 
@@ -72,11 +72,11 @@ public class TutorialPipe : MonoBehaviour
                 {
                     if (lc)
                     {
-                        lc.FadeToLevel(6);
+                        lc.FadeToLevel(4);
                     }
                     else
                     {
-                        SceneManager.LoadScene(6);
+                        SceneManager.LoadScene(4);
                     }
                 }
             }
@@ -94,86 +94,46 @@ public class TutorialPipe : MonoBehaviour
         {
             index++;
 
-            /*if (index == 4)
-            {
-                pipeAnim.SetBool("IsGlowing", true);
-            }
-            else if (index == 5)
-            {
-                pipeAnim.SetBool("IsGlowing", false);
-
-                anim.SetBool("IsFlashing_Pipe", true);
-                StartCoroutine("WaitFingerAnimation");
-            }
-            else
-            {
-                anim.SetBool("IsFlashing_Pipe", false);
-            }
-
-            if (index == 9)
-            {
-                bubbleImage.localPosition = bubblePos.localPosition;
-                pipeContainer.SetActive(false);
-
-                //indicator finger pops out
-                anim.SetBool("PipeScore", true);
-                StartCoroutine("WaitScoreAdded");
-            }
-
-            if (index == 10)
-            {
-                anim.SetBool("PipeScore", false);
-                anim.SetBool("PipeTimer", true);
-
-                StartCoroutine("WaitTimerDecrease");
-                Debug.Log("indexy == 10");
-            }*/
-
             switch (index)
             {
+                case 2:
+                    bubbleImage.localPosition = bubblePos[0].localPosition;
+
+
+                    break;
                 case 4:
                     pipeAnim.SetBool("IsGlowing", true);
 
                     break;
 
                 case 5:
+                    bubbleImage.localPosition = bubblePos[1].localPosition;
+                    bubbleImage.sizeDelta = new Vector2(334.4f, 83.7f);
+
                     pipeAnim.SetBool("IsGlowing", false);
 
                     anim.SetBool("IsFlashing_Pipe", true);
                     StartCoroutine("WaitFingerAnimation");
                     break;
 
-                case 9:
-                    bubbleImage.localPosition = bubblePos.localPosition;
-                    pipeContainer.SetActive(false);
+                case 10:
+                    bubbleImage.localPosition = bubblePos[0].localPosition;
+                    bubbleImage.sizeDelta = new Vector2(334.4f, 138.22f);
+
+                    //pipeContainer.SetActive(false);
 
                     //indicator finger pops out
                     anim.SetBool("PipeScore", true);
                     StartCoroutine("WaitScoreAdded");
                     break;
 
-                case 10:
+                case 11:
                     anim.SetBool("PipeScore", false);
                     anim.SetBool("PipeTimer", true);
 
                     StartCoroutine("WaitTimerDecrease");
                     Debug.Log("indexy == 10");
                     break;
-
-                /*case 11:
-                    Debug.Log("indexy == 11");
-
-                    StartCoroutine(KickPlayerOut(5)); //Kick the player out after 5 sec
-
-                    StartCoroutine(ChangeBool());
-
-                    if (Input.GetMouseButtonDown(0) && boolean)
-                    {
-                        Debug.Log("tap on index 11");
-
-                        SceneManager.LoadScene(5);
-                    }
-                    break;*/
 
                 default:
                     Debug.Log("default");
@@ -255,11 +215,11 @@ public class TutorialPipe : MonoBehaviour
 
         if (lc)
         {
-            lc.FadeToLevel(6);
+            lc.FadeToLevel(4);
         }
         else
         {
-            SceneManager.LoadScene(6);
+            SceneManager.LoadScene(4);
         }
     }
 
