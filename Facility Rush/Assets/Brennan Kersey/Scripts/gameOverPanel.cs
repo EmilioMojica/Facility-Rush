@@ -98,6 +98,8 @@ public class gameOverPanel : MonoBehaviour
         {
             int nextIndex = Random.Range(0, 6);
             fireworkPoints[index].gameObject.SetActive(true);
+            AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[9];
+            AudioManager.instance.soundAudioSource2.Play();
             fireworkPoints[index].Play();
             yield return new WaitForSeconds(1.5f);
            // fireworkPoints[index].gameObject.SetActive(false);

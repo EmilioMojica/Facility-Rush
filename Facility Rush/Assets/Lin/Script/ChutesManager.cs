@@ -78,7 +78,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         failscene.SetActive(false);
         timeSlider.value = 1;
         //replacement to Time text
-        timerNum = 5f;
+        timerNum = 2f;
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //--------------------------------------------
         game = false;
@@ -309,6 +309,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
         answersGoUP.SetBool("NumberMove", false);
         answersGoUP.SetBool("NumberBack", true);
+        playscene.SetActive(false);
         failscene.SetActive(true);
         failscene.GetComponent<gameOverPanel>().crossCheckScores(0, score);
         game = false;
@@ -356,7 +357,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 GameObject.Find(x).GetComponent<ChutesDrag>().MoveBack();
                 //GameObject.Find(x).GetComponent<DragHandler>().MoveBack();
             }
-            //playscene.SetActive(false);
             failscene.SetActive(true);
         }
         game = false;
