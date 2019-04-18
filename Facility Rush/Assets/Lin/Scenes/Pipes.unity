@@ -7295,7 +7295,7 @@ MonoBehaviour:
   - {fileID: 1306942909}
   answerBankForSphereAnswersToBeRemoved: 000000000000000000000000
   gameOver: 0
-  gameTimer: 60
+  gameTimer: 5
   maxTime: 60
   gameTimerText: {fileID: 1187659099}
   currentProblem: 0

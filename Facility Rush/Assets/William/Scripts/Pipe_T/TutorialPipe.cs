@@ -116,10 +116,13 @@ public class TutorialPipe : MonoBehaviour
                     StartCoroutine("WaitFingerAnimation");
                     break;
 
-                case 10:
+                case 9:
                     bubbleImage.localPosition = bubblePos[0].localPosition;
                     bubbleImage.sizeDelta = new Vector2(334.4f, 138.22f);
 
+                    break;
+
+                case 10:
                     //pipeContainer.SetActive(false);
 
                     //indicator finger pops out

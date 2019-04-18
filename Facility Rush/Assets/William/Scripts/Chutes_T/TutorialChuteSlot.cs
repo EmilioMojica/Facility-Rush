@@ -125,7 +125,6 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
     {
         yield return new WaitForSeconds(time);
         gameObject.GetComponentInChildren<TutorialChuteDrag>().MoveBack();
-
     }
 
     IEnumerator PlayParticle(float time)

@@ -52,23 +52,23 @@ public class PauseGame : MonoBehaviour
 
     public void replayAssemblyLine()
     {
-        lvl.FadeToLevel(3);
+        lvl.FadeToLevel(1);
     }
 
     public void replayKartcuro()
     {
-        lvl.FadeToLevel(4);
+        lvl.FadeToLevel(2);
     }
 
     public void replayChutes()
     {
         Debug.Log("replayChutes pressed");
 
-        lvl.FadeToLevel(5);
+        lvl.FadeToLevel(3);
     }
 
     public void replayPipeGyro()
     {
-        lvl.FadeToLevel(6);
+        lvl.FadeToLevel(4);
     }
 }
