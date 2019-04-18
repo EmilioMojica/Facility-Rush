@@ -667,6 +667,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: replayPipeGyro
       objectReference: {fileID: 0}
+    - target: {fileID: 8623669301517230357, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134091053069694061, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4435bf18f07c2a48b65a53ac9a3a2ee, type: 3}
 --- !u!224 &152669755 stripped
@@ -4582,7 +4592,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0:05
+  m_Text: 1:00
 --- !u!222 &1187659100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7295,7 +7305,7 @@ MonoBehaviour:
   - {fileID: 1306942909}
   answerBankForSphereAnswersToBeRemoved: 000000000000000000000000
   gameOver: 0
-  gameTimer: 5
+  gameTimer: 60
   maxTime: 60
   gameTimerText: {fileID: 1187659099}
   currentProblem: 0
