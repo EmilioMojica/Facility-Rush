@@ -40,41 +40,41 @@ public class LevelChanger : MonoBehaviour
         print("The value of levelToLoad: " + levelToLoad);
         switch(levelToLoad)
         {
-            case 3:
+            case 1:
                 bool hasDoneAssemblyTutorial= PlayerPrefs.HasKey("AssemblyTutorialComplete");
                 print("The value of hasDoneAssemblyTutorial: "+ hasDoneAssemblyTutorial);
                 if(!hasDoneAssemblyTutorial)
                 {
                     //PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
-                    levelToLoad = 7;
+                    levelToLoad = 5;
                     print("the if condition worked");
                     SceneManager.LoadScene(levelToLoad);
                 }
                 break;
-            case 4:
+            case 2:
                 bool hasDoneKartcuroTutorial = PlayerPrefs.HasKey("KartCuroTutorialComplete");
                 if (hasDoneKartcuroTutorial == false)
                 {
                     PlayerPrefs.SetString("KartCuroTutorialComplete", "true");
-                    levelToLoad = 8;
+                    levelToLoad = 6;
                     SceneManager.LoadScene(levelToLoad);
                 }
                 break;
-            case 5:
+            case 3:
                 bool hasDoneChutesTutorial = PlayerPrefs.HasKey("ChutesTutorialComplete");
                 if (hasDoneChutesTutorial == false)
                 {
                     PlayerPrefs.SetString("ChutesTutorialComplete", "true");
-                    levelToLoad = 9;
+                    levelToLoad = 7;
                     SceneManager.LoadScene(levelToLoad);
                 }
                 break;
-            case 6:
+            case 4:
                 bool hasDonePipeGyroTutorial = PlayerPrefs.HasKey("PipeGyroTutorialComplete");
                 if (hasDonePipeGyroTutorial == false)
                 {
                     PlayerPrefs.SetString("PipeGyroTutorialComplete", "true");
-                    levelToLoad = 10;
+                    levelToLoad = 8;
                     SceneManager.LoadScene(levelToLoad);
                 }
                 break;
