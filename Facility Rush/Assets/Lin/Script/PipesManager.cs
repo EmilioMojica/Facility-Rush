@@ -557,8 +557,9 @@ public class PipesManager : MonoBehaviour
     {
         gameOver = true;
         gameTimerText.text = "00:00";
-        calculateRestoration();
+        //calculateRestoration();
         gameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(3, Score);
+        calculateRestoration();
         gameOverPanel.SetActive(true);
     }
 
