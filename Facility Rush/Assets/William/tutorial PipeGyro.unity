@@ -333,12 +333,11 @@ RectTransform:
   - {fileID: 283093568}
   - {fileID: 1023398291}
   - {fileID: 1490138411}
-  - {fileID: 1255462083}
   - {fileID: 1296916609}
   - {fileID: 1891307752}
-  - {fileID: 1273355747}
   - {fileID: 1887967818}
   - {fileID: 1082901831}
+  - {fileID: 1273355747}
   m_Father: {fileID: 1804063904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2770,7 +2769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1082901831}
   m_Layer: 5
-  m_Name: Indicator Position (1)
+  m_Name: Bubble text Position2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,7 +2787,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 109119004}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3369,41 +3368,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1255462082
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1255462083}
-  m_Layer: 5
-  m_Name: Bubble text Postion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1255462083
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255462082}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 109119004}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 81, y: -164.6}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1272183043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,7 +3483,7 @@ RectTransform:
   - {fileID: 356616629}
   - {fileID: 1838936462}
   m_Father: {fileID: 109119004}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3953,7 +3917,7 @@ PrefabInstance:
         type: 3}
       propertyPath: flasingPos.Array.data[0]
       value: 
-      objectReference: {fileID: 1255462083}
+      objectReference: {fileID: 0}
     - target: {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: image.Array.data[0]
@@ -5914,7 +5878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1887967818}
   m_Layer: 5
-  m_Name: Indicator Position
+  m_Name: Bubble text Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5932,7 +5896,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 109119004}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
