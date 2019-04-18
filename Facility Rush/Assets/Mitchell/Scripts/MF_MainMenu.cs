@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class MF_MainMenu : MonoBehaviour
 {
     public static string PreviousScene = "";
@@ -33,6 +32,7 @@ public class MF_MainMenu : MonoBehaviour
     public void TurnOnOptions()
     {
         options.SetActive(true);
+
         DisableButtons();
     }
 
@@ -40,18 +40,38 @@ public class MF_MainMenu : MonoBehaviour
     {
         PreviousScene = SceneManager.GetActiveScene().name;
         anim.SetTrigger("MainMenuSceneTransition");
+
+        DisableButtons();
+    }
+
+    public void OnClickCredits()
+    {
+        options.SetActive(false);
+        anim.SetTrigger("OpenCredits");
+
+        DisableButtons();
+    }
+
+    public void OnClickCloseCredits()
+    {
+        Debug.Log("~~~~~~~~~~~");
+
+        anim.SetTrigger("CloseCredits");
+
         DisableButtons();
     }
 
     public void OnClickOptions()
     {
         anim.SetTrigger("OpenOptions");
+
         DisableButtons();
     }
 
     public void OnClickExitOptions()
     {
         anim.SetTrigger("CloseOptions");
+
         DisableButtons();
     }
 
@@ -59,6 +79,7 @@ public class MF_MainMenu : MonoBehaviour
     {
         anim.SetTrigger("IGOpenOptions");
         backButton.SetActive(false);
+
         DisableButtons();
     }
 
@@ -66,6 +87,7 @@ public class MF_MainMenu : MonoBehaviour
     {
         anim.SetTrigger("IGCloseOptions");
         backButton.SetActive(true);
+
         DisableButtons();
     }
 
@@ -73,6 +95,7 @@ public class MF_MainMenu : MonoBehaviour
     {
         anim.SetTrigger("ScoreOpen");
         backButton.SetActive(false);
+
         DisableButtons();
     }
 
@@ -80,6 +103,7 @@ public class MF_MainMenu : MonoBehaviour
     {
         anim.SetTrigger("ScoreClose");
         backButton.SetActive(true);
+
         DisableButtons();
     }
 
@@ -91,7 +115,7 @@ public class MF_MainMenu : MonoBehaviour
         {
             thisbutton[i].interactable = false;
         }
-        Invoke("CallButtonBack",0.5f);
+        Invoke("CallButtonBack",1f);
     }
 
     private void CallButtonBack()
@@ -106,6 +130,7 @@ public class MF_MainMenu : MonoBehaviour
     {
         anim.SetTrigger("TutorialOpen");
         backButton.SetActive(false);
+
         DisableButtons();
     }
 
@@ -113,6 +138,7 @@ public class MF_MainMenu : MonoBehaviour
     {
         anim.SetTrigger("TutorialClose");
         backButton.SetActive(true);
+
         DisableButtons();
     }
 
