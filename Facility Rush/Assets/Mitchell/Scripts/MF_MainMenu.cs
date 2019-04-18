@@ -46,7 +46,7 @@ public class MF_MainMenu : MonoBehaviour
 
     public void OnClickCredits()
     {
-        options.SetActive(false);
+       // options.SetActive(false);
         anim.SetTrigger("OpenCredits");
 
         DisableButtons();
