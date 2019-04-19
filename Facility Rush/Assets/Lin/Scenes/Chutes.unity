@@ -876,6 +876,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305005733}
   m_CullTransparentMesh: 0
+--- !u!198 &318470365 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8990853119285249325, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 733751793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &337039591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1610,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454132684}
   m_CullTransparentMesh: 0
+--- !u!198 &494544913 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8990853119877331056, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 733751793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &496456885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,6 +2847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
+      objectReference: {fileID: 1578078359}
+    - target: {fileID: 6131172461172890443, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5357919518984266617, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -2910,6 +2927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
+      objectReference: {fileID: 1089879656}
+    - target: {fileID: 5357919518984266617, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5357919519282140671, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -2985,6 +3007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
+      objectReference: {fileID: 318470365}
+    - target: {fileID: 5357919519282140671, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -3060,6 +3087,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
+      objectReference: {fileID: 1152068766}
+    - target: {fileID: 5357919518871261152, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5357919519874771106, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -3135,6 +3167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
+      objectReference: {fileID: 494544913}
+    - target: {fileID: 5357919519874771106, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5357919519810186245, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -3210,6 +3247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
+      objectReference: {fileID: 1207273701}
+    - target: {fileID: 5357919519810186245, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9188596405285781943, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -3420,6 +3462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
+      objectReference: {fileID: 1949013377}
+    - target: {fileID: 5357919518286916186, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8990853118264343176, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
@@ -5011,6 +5058,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!198 &1089879656 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8990853119566164907, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 733751793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1152068766 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8990853118873853746, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 733751793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1179224858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5264,6 +5323,12 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!198 &1207273701 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8990853119813270743, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 733751793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1243572839
 GameObject:
   m_ObjectHideFlags: 0
@@ -6428,6 +6493,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561960876}
   m_CullTransparentMesh: 0
+--- !u!198 &1578078359 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7172130784547589017, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 733751793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1591651871
 GameObject:
   m_ObjectHideFlags: 0
@@ -8429,6 +8500,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928190981}
   m_CullTransparentMesh: 0
+--- !u!198 &1949013377 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8990853118264343176, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 733751793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1987574590
 GameObject:
   m_ObjectHideFlags: 0
