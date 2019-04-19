@@ -2623,7 +2623,7 @@ MonoBehaviour:
   theGoldenGodAnimator: {fileID: 1953890580}
   theTimer: {fileID: 1836115882}
   gameTimerText: {fileID: 360324435}
-  gameTimer: 5
+  gameTimer: 60
   maxTime: 60
   isInteractable: 0
   firstIncorrectNumberChoice: 0
