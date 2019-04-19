@@ -38,6 +38,7 @@ public class TutorialPipe : MonoBehaviour
     {
         TutorialSystem.PopDialog(index);
         lc = GameObject.FindObjectOfType<LevelChanger>();
+        boolean = true;
     }
 
     void Update()
@@ -66,10 +67,11 @@ public class TutorialPipe : MonoBehaviour
             {
                 StartCoroutine(KickPlayerOut(5)); //Kick the player out after 5 sec
 
-                StartCoroutine(ChangeBool());
+               // StartCoroutine(ChangeBool());
 
                 if (Input.GetMouseButtonDown(0) && boolean)
                 {
+                    boolean = false;
                     if (lc)
                     {
                         lc.FadeToLevel(4);

@@ -27,6 +27,7 @@ public class TutorialChutes : MonoBehaviour
     {
         TutorialSystem.PopDialog(index);
         levelChanger = GameObject.FindObjectOfType<LevelChanger>();
+        boolean = true;
     }
 
     void Update()
@@ -46,10 +47,11 @@ public class TutorialChutes : MonoBehaviour
             {
                 StartCoroutine(KickPlayerOut(5)); //Kick the player out after 5 sec
 
-                StartCoroutine(ChangeBool());
+                //StartCoroutine(ChangeBool());
 
                 if (Input.GetMouseButtonDown(0) && boolean)
                 {
+                    boolean = false;
                     if (levelChanger)
                     {
                         Debug.Log("index is 7");

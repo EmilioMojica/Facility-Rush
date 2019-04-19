@@ -7,19 +7,20 @@ public class kickBackToMainMenu : MonoBehaviour
 {
     [SerializeField] private float timeTillExit;
     [SerializeField] private PauseGame toMainMenu;
+    [SerializeField] private bool clickSubmitted;
     // Start is called before the first frame update
     void Start()
     {
-        
+        clickSubmitted = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && clickSubmitted==false)
         {
             //toMainMenu.MainMenu();
-
+            clickSubmitted = true;
             if(SceneManager.GetActiveScene().name.Contains("Assembly"))
             {
                 toMainMenu.replayAssemblyLine();
