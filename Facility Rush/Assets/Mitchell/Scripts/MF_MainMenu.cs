@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class MF_MainMenu : MonoBehaviour
 {
     public static string PreviousScene = "";
-    public GameObject options;
     public GameObject backButton;
 
     private Animator anim;
@@ -29,9 +28,8 @@ public class MF_MainMenu : MonoBehaviour
         }
     }
 
-    public void TurnOnOptions()
+    public void TurnOnOptions()  //Called in "Close Credits" animation clip's last frame
     {
-        options.SetActive(true);
 
         DisableButtons();
     }
@@ -46,7 +44,6 @@ public class MF_MainMenu : MonoBehaviour
 
     public void OnClickCredits()
     {
-       // options.SetActive(false);
         anim.SetTrigger("OpenCredits");
 
         DisableButtons();
@@ -152,6 +149,14 @@ public class MF_MainMenu : MonoBehaviour
             {
                 pS[p].SetActive(false);
             }
+        }
+    }
+
+    public void gowithMouseCursor()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            transform.position = Input.mousePosition;
         }
     }
 }
