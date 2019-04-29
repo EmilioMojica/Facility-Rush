@@ -333,9 +333,9 @@ RectTransform:
   - {fileID: 283093568}
   - {fileID: 1023398291}
   - {fileID: 1490138411}
+  - {fileID: 1887967818}
   - {fileID: 1296916609}
   - {fileID: 1891307752}
-  - {fileID: 1887967818}
   - {fileID: 1082901831}
   - {fileID: 1273355747}
   m_Father: {fileID: 1804063904}
@@ -2595,6 +2595,7 @@ MonoBehaviour:
   QuestonsCanvasAnim: {fileID: 1490138415}
   scoreText: {fileID: 0}
   particles: []
+  sphereToAnimate: {fileID: 0}
 --- !u!114 &930949775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3271,6 +3272,7 @@ MonoBehaviour:
   QuestonsCanvasAnim: {fileID: 1490138415}
   scoreText: {fileID: 0}
   particles: []
+  sphereToAnimate: {fileID: 1756868532}
 --- !u!114 &1215385651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5896,7 +5898,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 109119004}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5959,6 +5961,7 @@ MonoBehaviour:
   QuestonsCanvasAnim: {fileID: 1490138415}
   scoreText: {fileID: 0}
   particles: []
+  sphereToAnimate: {fileID: 0}
 --- !u!114 &1890967405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6457,6 +6460,7 @@ MonoBehaviour:
   QuestonsCanvasAnim: {fileID: 1490138415}
   scoreText: {fileID: 0}
   particles: []
+  sphereToAnimate: {fileID: 0}
 --- !u!114 &2082705821
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,11 @@ public class TutorialPipeSlot : MonoBehaviour, IDropHandler
 
     public ParticleSystem[] particles;
 
+    public GameObject sphereToAnimate;
+
+    private float correctSphereMoveForwardTime;
+    private float correctSphereMoveBackwardTime;
+
     public GameObject item
     {
         get
@@ -84,11 +89,17 @@ public class TutorialPipeSlot : MonoBehaviour, IDropHandler
 
     IEnumerator WaitCorrectAnimation(int i)
     {
+        correctSphereMoveForwardTime = QuestonsCanvasAnim.runtimeAnimatorController.animationClips[1].length;
+        correctSphereMoveBackwardTime = QuestonsCanvasAnim.runtimeAnimatorController.animationClips[0].length;
         QuestonsCanvasAnim.SetInteger("indexBeingActedOn", i);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(correctSphereMoveForwardTime);//.4f
+        sphereToAnimate.SetActive(false);
         QuestonsCanvasAnim.SetInteger("indexBeingActedOn", 10);
-        yield return new WaitForSeconds(0.4f); //.3f
+        yield return new WaitForSeconds(correctSphereMoveBackwardTime);//.3f
+        //sphereToAnimate.SetActive(true);
         QuestonsCanvasAnim.SetInteger("indexBeingActedOn", -1);
+        yield return new WaitForSeconds(.1f);
+        sphereToAnimate.SetActive(true);
     }
     IEnumerator WaitWrongAnimation(int i)
     {
