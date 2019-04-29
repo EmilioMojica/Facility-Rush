@@ -78,7 +78,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         failscene.SetActive(false);
         timeSlider.value = 1;
         //replacement to Time text
-        timerNum = 2f;
+        timerNum = 10f;
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //--------------------------------------------
         game = false;
@@ -311,9 +311,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         answersGoUP.SetBool("NumberBack", true);
         playscene.SetActive(false);
         failscene.SetActive(true);
-        failscene.GetComponent<gameOverPanel>().crossCheckScores(0, score);
+        failscene.GetComponent<gameOverPanel>().crossCheckScores(2, score);
         game = false;
         calculateRestoration();
+        //failscene.GetComponent<gameOverPanel>().crossCheckScores(0, score);
     }
 
     public void checkForNewHighScore()
@@ -330,7 +331,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         degredationManager.aAttempted = score + 1;
         degredationManager.aCorrect = score;
         degredationManager.chuteCalculate();
-        degredationManager.gameHasBeenPlayed(1);
+        degredationManager.gameHasBeenPlayed(2);
         checkForNewHighScore();
         degredationManager.setScoreOfRecentPlayedGame(score);
     }
