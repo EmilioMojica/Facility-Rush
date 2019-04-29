@@ -656,6 +656,7 @@ public class PipesManager : MonoBehaviour
                     locationOfWhatToReturn = i;
                     //print("this is this object: " + answerSlots[i].transform.GetChild(0).GetChild(0).gameObject.name);
                     check = evaluateEquation(answerSlots[i].transform.GetChild(0).GetChild(0).GetComponent<Text>().text);
+                    answerSlots[i].transform.GetChild(0).gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
                     //ExpressionEvaluator.Evaluate<int>(spheres[i].transform.GetChild(0).GetComponent<Text>().text, out number);
                     number = int.Parse(spheres[i].text);
                     if (check == number)
@@ -753,6 +754,7 @@ public class PipesManager : MonoBehaviour
                    // print("This is the object being reset: " + answerSlots[i].transform.GetChild(0).gameObject);
                     answerSlots[i].transform.GetChild(0).transform.localScale = new Vector3(1f, 1f, 1f);
                 }
+                answerSlots[i].transform.GetChild(0).gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 answerSlots[i].transform.GetChild(0).transform.SetParent(questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform, false);
                 
             }

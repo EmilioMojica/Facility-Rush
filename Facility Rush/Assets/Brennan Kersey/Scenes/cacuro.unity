@@ -11538,7 +11538,7 @@ MonoBehaviour:
   degradationBuddy: {fileID: 765657755}
   animator2x2: {fileID: 1711529232}
   animator3x3: {fileID: 1500728120}
-  kindergartenTime: 5
+  kindergartenTime: 90
   firstGradeTime: 90
   secondGradeTime: 180
   thirdGradeTime: 180
