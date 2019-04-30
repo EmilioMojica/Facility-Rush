@@ -23,16 +23,25 @@ public class TutorialChutes : MonoBehaviour
 
     public LevelChanger levelChanger;
 
+    [SerializeField] private GameObject PausePanel;
+    [SerializeField] int pauseMenuLayer;
+
+
     void Start()
     {
         TutorialSystem.PopDialog(index);
         levelChanger = GameObject.FindObjectOfType<LevelChanger>();
         boolean = true;
+        pauseMenuLayer = LayerMask.GetMask("PauseButton");
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))  //TODO: May change to finger touch instead of mouse click
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        bool hitPause = Physics.Raycast(ray, Mathf.Infinity, pauseMenuLayer);
+        Debug.Log("hitPause: " + hitPause);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.blue);
+        if (Input.GetMouseButtonDown(0) && !hitPause && !PausePanel.activeInHierarchy)  //TODO: May change to finger touch instead of mouse click
         {
             if (index < 3)
             {

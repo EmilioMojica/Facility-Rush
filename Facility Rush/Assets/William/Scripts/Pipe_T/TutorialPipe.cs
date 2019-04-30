@@ -49,8 +49,7 @@ public class TutorialPipe : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool hitPause = Physics.Raycast(ray, Mathf.Infinity, pauseMenuLayer);
-        Debug.Log("hitPause: " + hitPause);
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.blue);
+
         if (Input.GetMouseButtonDown(0) && !hitPause && !PausePanel.activeInHierarchy)  //TODO: need to change to touchpad?
         {
             if (index < 5)
