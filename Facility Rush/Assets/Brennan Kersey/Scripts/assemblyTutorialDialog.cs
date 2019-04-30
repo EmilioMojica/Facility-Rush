@@ -11,18 +11,26 @@ public class assemblyTutorialDialog : MonoBehaviour
     [SerializeField] private tutorialAssembyManager manager;
     public bool haltCheck;
     public bool pastPhaseOne;
+
+    public int pauseMenuLayer;
+    [SerializeField] private GameObject PausePanel;
+
     // Start is called before the first frame update
     void Start()
     {
         pastPhaseOne = false;
         dialogPoint = 0;
         dialogText.text = explanationDialog[dialogPoint];
+        pauseMenuLayer = LayerMask.GetMask("PauseButton");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && haltCheck==false)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        bool hitPause = Physics.Raycast(ray, Mathf.Infinity, pauseMenuLayer);
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && haltCheck==false && !hitPause && !PausePanel.activeInHierarchy)
         {
             if (dialogPoint == 1 && pastPhaseOne==false)
             {
