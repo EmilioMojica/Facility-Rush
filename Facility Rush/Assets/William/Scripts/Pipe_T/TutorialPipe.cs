@@ -19,10 +19,13 @@ public class TutorialPipe : MonoBehaviour
     [SerializeField] private GameObject pipeContainer;
 
     [SerializeField] private Text scoreText, timerText, progressText;
+    [SerializeField] private GameObject PausePanel;
 
     private Text bubbleText;
     public bool boolean;
     public LevelChanger lc;
+    public int pauseMenuLayer;
+
 
     private void OnEnable()
     {
@@ -39,11 +42,16 @@ public class TutorialPipe : MonoBehaviour
         TutorialSystem.PopDialog(index);
         lc = GameObject.FindObjectOfType<LevelChanger>();
         boolean = true;
+        pauseMenuLayer = LayerMask.GetMask("PauseButton");
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))  //TODO: need to change to touchpad?
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        bool hitPause = Physics.Raycast(ray, Mathf.Infinity, pauseMenuLayer);
+        Debug.Log("hitPause: " + hitPause);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.blue);
+        if (Input.GetMouseButtonDown(0) && !hitPause && !PausePanel.activeInHierarchy)  //TODO: need to change to touchpad?
         {
             if (index < 5)
             {

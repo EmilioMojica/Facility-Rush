@@ -2847,6 +2847,7 @@ MonoBehaviour:
   scoreText: {fileID: 2054050175}
   timerText: {fileID: 1187659099}
   progressText: {fileID: 1183843500}
+  PausePanel: {fileID: 1273355746}
   boolean: 0
   lc: {fileID: 0}
 --- !u!1 &1105862422
@@ -3619,9 +3620,10 @@ GameObject:
   - component: {fileID: 1291261051}
   - component: {fileID: 1291261050}
   - component: {fileID: 1291261049}
-  m_Layer: 5
+  - component: {fileID: 1291261052}
+  m_Layer: 9
   m_Name: Pause Button
-  m_TagString: Untagged
+  m_TagString: option
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3736,6 +3738,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291261047}
   m_CullTransparentMesh: 0
+--- !u!65 &1291261052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291261047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 27.030632, y: 25.675047, z: 1}
+  m_Center: {x: -13.222668, y: -12.263771, z: 0}
 --- !u!1001 &1296916608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5314,7 +5329,7 @@ GameObject:
   - component: {fileID: 1741888275}
   - component: {fileID: 1741888277}
   - component: {fileID: 1741888276}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
