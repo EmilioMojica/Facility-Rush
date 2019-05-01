@@ -141,7 +141,8 @@ public class TutorialChuteSlot : MonoBehaviour, IDropHandler
 
         AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[9];
         AudioManager.instance.soundAudioSource2.Play();
-
+        print("index: " + index);
+        print("particles.Length: " + particles.Length);
         particles[index].Play();
     }
 }

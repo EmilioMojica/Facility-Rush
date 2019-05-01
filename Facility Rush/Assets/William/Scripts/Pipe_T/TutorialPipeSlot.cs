@@ -50,6 +50,8 @@ public class TutorialPipeSlot : MonoBehaviour, IDropHandler
             StartCoroutine("BoxMoveBack", 0.5f);
 
             GameObject.FindObjectOfType<TutorialPipe>().CorrectResultDialogue();
+
+            StartCoroutine(PlayParticle(0.85f));
         }
         else    // Put into the wrong slot, plays corresponding wrong animation
         {
@@ -115,5 +117,25 @@ public class TutorialPipeSlot : MonoBehaviour, IDropHandler
         yield return new WaitForSeconds(time);
         gameObject.GetComponentInChildren<TutorialPipeDrag>().MoveBack();
 
+    }
+
+    IEnumerator PlayParticle(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        InvokeRepeating("ParticleEffect", 0, 1.5f);
+        //TODO: 回到Menu 之後要 CancelInvoke
+    }
+
+    void ParticleEffect()
+    {
+        int index = Random.Range(0, particles.Length);
+
+        AudioManager.instance.soundAudioSource2.clip = AudioManager.instance.soundClip[9];
+        AudioManager.instance.soundAudioSource2.Play();
+
+        print("index: " + index);
+        print("particles.Length: " + particles.Length);
+        particles[index].Play();
     }
 }
