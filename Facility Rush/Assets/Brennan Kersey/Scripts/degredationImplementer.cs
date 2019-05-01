@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class degredationImplementer : MonoBehaviour
 {
    
@@ -19,10 +20,49 @@ public class degredationImplementer : MonoBehaviour
     private GameObject[] degredationManagerHolder = new GameObject[2];
     [SerializeField] private float delayTime;
     [SerializeField] private scoreManager theScoreManger;
+    private bool degredationStart;
     // Start is called before the first frame update
+    public void unravelTime()
+    {
+        int currenthour = System.DateTime.Now.Hour;
+        int currentminute = System.DateTime.Now.Minute;
+        int currentday = System.DateTime.Now.Day;
+
+        int currentmonth = System.DateTime.Now.Month;
+        int currentyear = System.DateTime.Now.Year;
+
+        // print("Current date time is : " + "hour: " + hour + " day: " + day + " month: " + month + " year: " + year);
+
+        //print(System.DateTime.Now.AddDays(20).ToString("HH: mm dd MMMM, yyyy"));
+
+        int hourDifference = Mathf.Abs(currenthour - PlayerPrefs.GetInt("hour"));
+        int minuteDifference = currentminute - PlayerPrefs.GetInt("minutes");
+        if(minuteDifference<0)
+        {
+            hourDifference = 0;
+        }
+        int dayDifference = Mathf.Abs(currentday - PlayerPrefs.GetInt("day"));
+        int monthDifference = Mathf.Abs(currentmonth - PlayerPrefs.GetInt("month"));
+        int yearDifference = Mathf.Abs(currentyear - PlayerPrefs.GetInt("year"));
+
+        int amountToSubtract = hourDifference + (dayDifference * 24) + (monthDifference * 24 * 30) + (yearDifference * 24 * 30 * 365);
+
+        print("Amount to Subtract is : " + amountToSubtract);
+
+        assemblySliderValue.value -= (float)(amountToSubtract *.01);
+        chutesSliderValue.value -= (float)(amountToSubtract * .01);
+        kartCuroSliderValue.value -= (float)(amountToSubtract * .01);
+        pipeGyroSliderValue.value -= (float)(amountToSubtract * .01);
+    }
+    public void startDegrading()
+    {
+        degredationStart = true;
+    }
     void Start()
     {
-
+        degredationStart = false;
+        string currentDateTime=System.DateTime.Now.ToString("HH:mm dd MMMM, yyyy");
+        //unravelTime(currentDateTime);
         isAddingToBar = false;
         bool playedBefore = PlayerPrefs.HasKey("currentAssemblySliderValue");
 
@@ -35,6 +75,13 @@ public class degredationImplementer : MonoBehaviour
             saveCurrentStateOfBars();
             //PlayerPrefs.SetInt();
 
+            PlayerPrefs.SetInt("hour", System.DateTime.Now.Hour);
+            PlayerPrefs.SetInt("minutes", System.DateTime.Now.Minute);
+            PlayerPrefs.SetInt("day",System.DateTime.Now.Day);
+            PlayerPrefs.SetInt("month", System.DateTime.Now.Month);
+            PlayerPrefs.SetInt("year", System.DateTime.Now.Year);
+
+
         }
         else
         {
@@ -42,6 +89,7 @@ public class degredationImplementer : MonoBehaviour
             chutesSliderValue.value = PlayerPrefs.GetFloat("currentChutesSliderValue");
             kartCuroSliderValue.value = PlayerPrefs.GetFloat("currentKartCuroSliderValue");
             pipeGyroSliderValue.value = PlayerPrefs.GetFloat("currentPipeGyroSliderValue");
+            unravelTime();
             degredationManagerHolder = GameObject.FindGameObjectsWithTag("degredationManager");
             if (GameObject.FindGameObjectsWithTag("degredationManager").Length==2)
             {
@@ -111,6 +159,7 @@ public class degredationImplementer : MonoBehaviour
         }
         print("This is isAddingBar" + isAddingToBar);
         isAddingToBar = false;
+        degredationStart = true;
         yield return null;
     }
     // Update is called once per frame
@@ -119,7 +168,7 @@ public class degredationImplementer : MonoBehaviour
         if (isAddingToBar==false)
         {
             gameTimer += Time.deltaTime;
-            if (gameTimer > 1)
+            if (gameTimer > 1 && degredationStart==true)
             {
                 //print("Rate of degradation is " + rateOfDegradation);
                 assemblySliderValue.value -= rateOfDegradation;
@@ -134,6 +183,7 @@ public class degredationImplementer : MonoBehaviour
             {
                 restoreBarAmounts();
                 deleteTutorialKeys();
+                deleteValues();
             }
         }
     }
