@@ -663,7 +663,7 @@ public class PipesManager : MonoBehaviour
                     {
                         numberCorrect++;
                         restoreList();
-                        Score += 100;
+                        Score += 1000;
                         scoreText.text = "" + Score;
                         currentProblem++;
                         //restoreChoices();
@@ -674,7 +674,7 @@ public class PipesManager : MonoBehaviour
                     {
                         currentProblem++;
                         StartCoroutine(animateSphereWiggles(i));
-                        Score -= 1000;
+                        Score -= 100;
                         scoreText.text = "" + Score; 
                         restoreList();
                         //restoreChoices();

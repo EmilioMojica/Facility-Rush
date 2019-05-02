@@ -19,6 +19,7 @@ public class kickBackToMainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && clickSubmitted==false)
         {
+            StopAllCoroutines();
             //toMainMenu.MainMenu();
             clickSubmitted = true;
             if(SceneManager.GetActiveScene().name.Contains("Assembly"))

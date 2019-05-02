@@ -76,6 +76,7 @@ public class assemblyTutorialDialog : MonoBehaviour
         else if(dialogPoint==7)
         {
             this.gameObject.GetComponent<Image>().enabled = false;
+            dialogText.enabled = false;
             manager.gameOverStart();
         }
         if (dialogPoint <=explanationDialog.Length-1)
