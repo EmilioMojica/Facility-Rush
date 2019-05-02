@@ -9,8 +9,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class tutorialAssembyManager : MonoBehaviour
 {
-    [SerializeField] private GameObject secondTutorialBox;
-    //[SerializeField] private Text 
+    [SerializeField] RectTransform movedPoistion;
+    [SerializeField] RectTransform originalPosition;
     [SerializeField] private GameObject congratsPanel;
     [SerializeField] private float maxTime;         // float variable representing the maximum amount of time a player can have
     [SerializeField] private Text gameTimerText;    // Text variable representing the game timer in the UI
@@ -531,13 +531,15 @@ public class tutorialAssembyManager : MonoBehaviour
                     handAnimator.gameObject.GetComponent<Image>().enabled = false;
                     StartCoroutine(switchANimationPhase(5));
                     firstProblemSolved = true;
+                    dialogText.transform.parent.gameObject.transform.position = movedPoistion.position;
                     dialogText.text = "If it is, you’ll make a toy!";
-                    dialogText.gameObject.transform.parent.gameObject.SetActive(false);
+                   // dialogText.transform.parent.gameObject.transform.position = movedPoistion.position;
                     //dialogManager.haltCheck = false;
                 }
                 else if (firstProblemSolved == true && secondProbelmSolved == false)
                 {
                     handAnimator.gameObject.GetComponent<Image>().enabled = false;
+                    dialogText.transform.parent.gameObject.transform.position = movedPoistion.position;
                     dialogText.text = "If your equation is incorrect, the toy will be broken.";
                     secondProbelmSolved = true;
                     //dialogManager.haltCheck = false;
@@ -692,6 +694,7 @@ public class tutorialAssembyManager : MonoBehaviour
     public void activateTheNextThreePanel()
     {
         choiceTwoPipeOneNeedsToBePicked = true;
+        dialogText.transform.parent.gameObject.transform.position = originalPosition.transform.position;
     }
     public void pointToTimerElement()
     {
