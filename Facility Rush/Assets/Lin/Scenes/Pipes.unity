@@ -160,7 +160,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -156, y: -176.3}
-  m_SizeDelta: {x: 120, y: 100}
+  m_SizeDelta: {x: 140, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &37886136
 MonoBehaviour:
@@ -1734,7 +1734,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -156, y: -233.6}
-  m_SizeDelta: {x: 120, y: 100}
+  m_SizeDelta: {x: 140, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &237260818
 MonoBehaviour:
@@ -5239,8 +5239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.2999992, y: 16}
-  m_SizeDelta: {x: 72, y: 30}
+  m_AnchoredPosition: {x: 31.379997, y: 4.1665993}
+  m_SizeDelta: {x: 41.03, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187659099
 MonoBehaviour:
@@ -5264,18 +5264,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 72ede21dff348ca4dbe945c5742fdecf, type: 3}
-    m_FontSize: 9
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 134
     m_Alignment: 5
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1:00
+  m_Text: 2:00
 --- !u!222 &1187659100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8851,8 +8851,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59.1, y: 9}
-  m_SizeDelta: {x: 72, y: 30}
+  m_AnchoredPosition: {x: 29.3, y: -0.0000038146973}
+  m_SizeDelta: {x: 35.85, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054050175
 MonoBehaviour:
@@ -8876,18 +8876,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 72ede21dff348ca4dbe945c5742fdecf, type: 3}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 3
-    m_AlignByGeometry: 0
+    m_Alignment: 4
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 100
 --- !u!222 &2054050176
 CanvasRenderer:
   m_ObjectHideFlags: 0
