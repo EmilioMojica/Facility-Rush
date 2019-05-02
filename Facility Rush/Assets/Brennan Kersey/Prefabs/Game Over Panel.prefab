@@ -256,8 +256,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77.7, y: 3.4}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 71.205, y: 0.62}
+  m_SizeDelta: {x: 160, y: 51.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7840734462397782329
 CanvasRenderer:
@@ -288,14 +288,14 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 72ede21dff348ca4dbe945c5742fdecf, type: 3}
+    m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
+    m_Alignment: 3
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -701,6 +701,8 @@ MonoBehaviour:
   congratulationsText: {fileID: 0}
   newHighScoreText: {fileID: 0}
   scoreOnGameOverPanel: {fileID: 7840734462397782330}
+  congratulationsUIElement: {fileID: 0}
+  goodJobUIElement: {fileID: 0}
 --- !u!1 &7840734463770193051
 GameObject:
   m_ObjectHideFlags: 0
