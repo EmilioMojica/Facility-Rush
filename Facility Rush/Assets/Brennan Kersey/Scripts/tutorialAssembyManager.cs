@@ -9,6 +9,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class tutorialAssembyManager : MonoBehaviour
 {
+    [SerializeField] private GameObject secondTutorialBox;
+    //[SerializeField] private Text 
     [SerializeField] private GameObject congratsPanel;
     [SerializeField] private float maxTime;         // float variable representing the maximum amount of time a player can have
     [SerializeField] private Text gameTimerText;    // Text variable representing the game timer in the UI
@@ -530,6 +532,7 @@ public class tutorialAssembyManager : MonoBehaviour
                     StartCoroutine(switchANimationPhase(5));
                     firstProblemSolved = true;
                     dialogText.text = "If it is, you’ll make a toy!";
+                    dialogText.gameObject.transform.parent.gameObject.SetActive(false);
                     //dialogManager.haltCheck = false;
                 }
                 else if (firstProblemSolved == true && secondProbelmSolved == false)

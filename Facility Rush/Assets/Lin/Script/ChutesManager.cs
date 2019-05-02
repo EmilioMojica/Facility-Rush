@@ -248,7 +248,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         tubeThree.SetBool("Correct3", false);
 
         tubeFour.SetBool("Correct4", false);
-        score += 1;
+        score += 100;
         //score += currentLevel * 10;                         //Increasing score value proportionally to current level (at fisrt level +1, at second +2 etc)
         scoreValue.text = score.ToString();
 
