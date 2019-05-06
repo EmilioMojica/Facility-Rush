@@ -78,7 +78,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         failscene.SetActive(false);
         timeSlider.value = 1;
         //replacement to Time text
-        timerNum = 10f;
+        timerNum = 30f;
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //--------------------------------------------
         game = false;
