@@ -168,7 +168,7 @@ public class degredationImplementer : MonoBehaviour
         if (isAddingToBar==false)
         {
             gameTimer += Time.deltaTime;
-            if (gameTimer > 1 && degredationStart==true)
+            if (gameTimer > 3600 && degredationStart==true)
             {
                 //print("Rate of degradation is " + rateOfDegradation);
                 assemblySliderValue.value -= rateOfDegradation;

@@ -653,6 +653,7 @@ public class PipesManager : MonoBehaviour
 
                 if (answerSlots[i].transform.childCount > 0)
                 {
+                    int indexOFPipe=int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name);
                     locationOfWhatToReturn = i;
                     //print("this is this object: " + answerSlots[i].transform.GetChild(0).GetChild(0).gameObject.name);
                     check = evaluateEquation(answerSlots[i].transform.GetChild(0).GetChild(0).GetComponent<Text>().text);
@@ -669,6 +670,10 @@ public class PipesManager : MonoBehaviour
                         //restoreChoices();
                         print("this is i: " + i);
                         StartCoroutine(animateSpheres(i));
+                    }
+                    else if((i<2 && (indexOFPipe==2 || indexOFPipe==3)) || (i>1 && (indexOFPipe == 0 || indexOFPipe == 1)))
+                    {
+                        restoreChoices();
                     }
                     else
                     {

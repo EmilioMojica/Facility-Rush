@@ -155,6 +155,7 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(toyConveyerBeltTransition2);
         theGoldenGodAnimator.SetInteger("nextTransition",6);
         yield return new WaitForSeconds(pipe3DownTime);
+        yield return new WaitForSeconds(.1f);
         //Activate Audio
         index = Random.Range(3, 5);
         //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
@@ -173,6 +174,7 @@ public class assemblyManager : MonoBehaviour
         deleteToyParts();
         theTimer.setIsAnimating(false);
         isAnimating = false;
+        print("At the end of the animation loop");
         nextEquation();
     }
     public void setChuteOneChoice(string choice)
