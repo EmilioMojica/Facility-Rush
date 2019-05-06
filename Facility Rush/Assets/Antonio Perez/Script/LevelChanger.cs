@@ -17,14 +17,16 @@ public class LevelChanger : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     public void FadeToLevel(int levelIndex)
     {
         levelToLoad = levelIndex;
         animator.SetTrigger("Close");
-        audioSource.PlayOneShot(closeClip, 0.5F);
+        //audioSource.PlayOneShot(closeClip, 0.5F);
+        AudioManager.instance.soundAudioSource2.clip = closeClip;
+        AudioManager.instance.soundAudioSource2.PlayOneShot(closeClip, 0.5f);
         thisbutton = FindObjectsOfType<Button>();
         Debug.Log("This button ="+ thisbutton);
         for (int i = 0; i < thisbutton.Length; i++)
@@ -34,7 +36,7 @@ public class LevelChanger : MonoBehaviour
         //thisbutton.GetComponent<Button>().interactable = false;
     }
 
-    public void OnFadeComplete()
+    public void OnFadeComplete() // Called in Animation Event "Close" clip
     {
         print("On Fade Complete called");
         print("The value of levelToLoad: " + levelToLoad);
@@ -81,6 +83,8 @@ public class LevelChanger : MonoBehaviour
         }
         SceneManager.LoadScene(levelToLoad);
         animator.SetTrigger("Open");
-        audioSource.PlayOneShot(openClip, 0.7F);
+        //audioSource.PlayOneShot(openClip, 0.7F);
+        AudioManager.instance.soundAudioSource2.clip = openClip;
+        AudioManager.instance.soundAudioSource2.PlayOneShot(openClip, 0.7f);
     }
 }

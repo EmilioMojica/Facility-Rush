@@ -35,6 +35,8 @@ public class ChangeVolume : MonoBehaviour
     public void ChangeSoundVolume()
     {
         AudioManager.instance.soundAudioSource.volume = soundSlider.value;
+        AudioManager.instance.soundAudioSource2.volume = soundSlider.value;
+        AudioManager.instance.soundAudioSource3.volume = soundSlider.value;
         soundValue = AudioManager.instance.soundAudioSource.volume;
         PlayerPrefs.SetFloat("sound", soundValue);
     }
