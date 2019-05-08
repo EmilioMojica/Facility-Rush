@@ -1846,7 +1846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.12833335}
   m_AnchorMax: {x: 0.5, y: 0.12833335}
-  m_AnchoredPosition: {x: -100.9, y: -1221.5001}
+  m_AnchoredPosition: {x: -100.9, y: -1221.5}
   m_SizeDelta: {x: 66.2, y: 68.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229574612
@@ -2830,7 +2830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.22375003, y: 0.34750003}
   m_AnchorMax: {x: 0.22375003, y: 0.34750003}
-  m_AnchoredPosition: {x: 11.5, y: -1186.0001}
+  m_AnchoredPosition: {x: 11.5, y: -1186}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361483550
@@ -3682,8 +3682,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.9, y: -605.2}
-  m_SizeDelta: {x: 160, y: 1016.2}
+  m_AnchoredPosition: {x: 12.100005, y: -605.2}
+  m_SizeDelta: {x: 226.8, y: 1016.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532549785
 MonoBehaviour:
@@ -3721,11 +3721,11 @@ MonoBehaviour:
   m_Text: "                              \n  Credits\nExecutive Producer:\nGerard
     Merritt\n\nStudio Manager: \nNicholas Sharp\n\nLead Producers:\nMitchell Ford\nBrennan
     Kersey\n\nProducer:\nNicholas Sharp\n\nLead Designer:\nAnthony Santoro\n\nDesigner:\nAntonio
-    Perez\nMitchell Ford\nSpence Hartnett\nEmilio Mojica\n\n\nLead Developers:\nJonathan
-    Hall\nWilliam Sheu\n\nDevelopers:\nBrennan Kersey\nLinQi\n\nLead Artist:\nJake
-    Sosa\n\nArtists:\nBrittany Maroulakos\nMatthew Redfearn-Diaz\nTopanga Brumley\n\n\nLead
-    Audio:\nDern Lin\n\nLead Writer:\nDylan \"Biff\" Bronstein\n\nWriter: \nHannah
-    Nadeau"
+    Perez\nMitchell Ford\nSpence Hartnett\nEmilio Mojica\nVishnu Vardhan Mondrety\n\nLead
+    Developers:\nJonathan Hall\nWilliam Sheu\n\nDevelopers:\nBrennan Kersey\nLinQi\n\nLead
+    Artist:\nJake Sosa\n\nArtists:\nBrittany Maroulakos\nMatthew Redfearn-Diaz\nTopanga
+    Brumley\n\n\nLead Audio:\nDern Lin\n\nLead Writer:\nDylan \"Biff\" Bronstein\n\nWriter:
+    \nHannah Nadeau"
 --- !u!222 &532549786
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5094,7 +5094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.12833335}
   m_AnchorMax: {x: 0.5, y: 0.12833335}
-  m_AnchoredPosition: {x: 3, y: -1165.0001}
+  m_AnchoredPosition: {x: 3, y: -1165}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713931442
@@ -6477,7 +6477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: -8.3}
+  m_AnchoredPosition: {x: -1.5, y: -8.3}
   m_SizeDelta: {x: 320, y: 825.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &937434880
@@ -6500,7 +6500,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 610d5a505afd24159910be5c8d1ce5a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f844a7993c1a025429acc2584dc76f36, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10528,7 +10528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7, y: 10}
+  m_AnchoredPosition: {x: 8, y: 10}
   m_SizeDelta: {x: 173.4, y: 157.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1565840886
@@ -10551,7 +10551,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e220d8e56ff0a46538c2721bdaf3f3b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 550a926fb4d884ddca43d9c6daa09355, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
