@@ -546,6 +546,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8990853118873853746, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990853119813270743, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990853118264343176, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990853119877331056, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172130784547589017, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990853119285249325, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990853119566164907, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7840734463395222631, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -649,41 +684,6 @@ PrefabInstance:
     - target: {fileID: 7840734463395222631, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990853118873853746, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990853119813270743, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990853118264343176, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990853119877331056, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172130784547589017, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990853119285249325, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990853119566164907, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: lengthInSec
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9188596405285781943, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
@@ -1316,26 +1316,6 @@ PrefabInstance:
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
       value: 
       objectReference: {fileID: 870349002}
-    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1804063906}
-    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1804063906}
-    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: replayPipeGyro
-      objectReference: {fileID: 0}
     - target: {fileID: 7840734462397782331, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1411,6 +1391,26 @@ PrefabInstance:
       propertyPath: newHighScoreText
       value: 
       objectReference: {fileID: 152669757}
+    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1804063906}
+    - target: {fileID: 7840734463378831153, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1804063906}
+    - target: {fileID: 7840734463770193049, guid: d4435bf18f07c2a48b65a53ac9a3a2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: replayPipeGyro
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4435bf18f07c2a48b65a53ac9a3a2ee, type: 3}
 --- !u!224 &152669755 stripped
@@ -8183,7 +8183,7 @@ MonoBehaviour:
   - {fileID: 1381393610}
   problemNumber: {fileID: 1183843500}
   scoreText: {fileID: 2054050175}
-  Score: 10000
+  Score: 1000
   equationsOnTheGameBoard:
   - {fileID: 1407547695}
   - {fileID: 1426836613}
@@ -8208,8 +8208,8 @@ MonoBehaviour:
   - {fileID: 1306942909}
   answerBankForSphereAnswersToBeRemoved: 000000000000000000000000
   gameOver: 0
-  gameTimer: 60
-  maxTime: 60
+  gameTimer: 120
+  maxTime: 120
   gameTimerText: {fileID: 1187659099}
   currentProblem: 0
   equationGeneration: {fileID: 552855037}

@@ -166,7 +166,7 @@ public class PipesManager : MonoBehaviour
         gradelevel = PlayerPrefs.GetInt("grade");
         //setAppropriateListForGradeLevelsKthrough5();
         
-        scoreText.text = "10000";
+        scoreText.text = "1000";
         currentProblem = 0;
         generateProblems();
         printStuff();
@@ -664,7 +664,7 @@ public class PipesManager : MonoBehaviour
                     {
                         numberCorrect++;
                         restoreList();
-                        Score += 1000;
+                        Score += 100;
                         scoreText.text = "" + Score;
                         currentProblem++;
                         //restoreChoices();
@@ -679,7 +679,7 @@ public class PipesManager : MonoBehaviour
                     {
                         currentProblem++;
                         StartCoroutine(animateSphereWiggles(i));
-                        Score -= 100;
+                        Score -= 10;
                         scoreText.text = "" + Score; 
                         restoreList();
                         //restoreChoices();

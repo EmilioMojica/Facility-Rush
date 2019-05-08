@@ -116,6 +116,7 @@ public class assemblyManager : MonoBehaviour
     public int numberOfPossibleAnswerCombinations;
 
     public bool testing;
+    private int questionLimitForTimeBonus;
     IEnumerator newAnimationLoop(GameObject toyToInstantiate,Transform spawningPoint)
     {
         isAnimating = true;
@@ -235,6 +236,7 @@ public class assemblyManager : MonoBehaviour
     }
     void Start ()
     {
+        questionLimitForTimeBonus = 3;
         isInteractable = false;
        // GameObject trial=Instantiate(sampleToys[0], createdToy.transform.position, createdToy.transform.rotation);
        // GameObject changedPart = trial.transform.GetChild(1).gameObject;
@@ -608,23 +610,260 @@ public class assemblyManager : MonoBehaviour
 
         if(numberOfPossibleAnswerCombinations>=2)
         {
-            pipeOne[positionInPipeOne].text = "1";
-            pipeThree[positionInPipeThree].text = "2";
-            for(int i=0;i<pipeOne.Length;i++)
+            int randomProblemChoice=0;
+            switch(gradelevel)
             {
-                if(i!=positionInPipeOne)
-                {
-                    pipeOne[i].text = "5";
-                }
+                case 0:
+                    randomProblemChoice = Random.Range(0, 2);
+                    break;
+                case 1:
+                    randomProblemChoice = Random.Range(0, 4);
+                    break;
+                case 2:
+                    randomProblemChoice = Random.Range(0, 6);
+                    break;
+                case 3:
+                    randomProblemChoice = Random.Range(5, 8);
+                    break;
+                case 4:
+                    randomProblemChoice = Random.Range(5, 10);
+                    break;
+                case 5:
+                    randomProblemChoice = Random.Range(5, 12);
+                    break;
             }
-            for(int i=0;i<pipeThree.Length;i++)
+            switch(randomProblemChoice)
             {
-                if (i != positionInPipeThree)
-                {
-                    pipeThree[i].text = "4";
-                }
+                case 0:
+                    pipeOne[positionInPipeOne].text = "1";
+                    pipeThree[positionInPipeThree].text = "2";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "9";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "8";
+                        }
+                    }
+                    answer = 3;
+                    break;
+                case 1:
+                    pipeOne[positionInPipeOne].text = "3";
+                    pipeThree[positionInPipeThree].text = "4";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "1";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "2";
+                        }
+                    }
+                    answer = 7;
+                    break;
+                case 2:
+                    pipeOne[positionInPipeOne].text = "11";
+                    pipeThree[positionInPipeThree].text = "2";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "5";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "10";
+                        }
+                    }
+                    answer = 9;
+                    break;
+                case 3:
+                    pipeOne[positionInPipeOne].text = "9";
+                    pipeThree[positionInPipeThree].text = "4";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "20";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "19";
+                        }
+                    }
+                    answer = 13;
+                    break;
+                case 4:
+                    pipeOne[positionInPipeOne].text = "11";
+                    pipeThree[positionInPipeThree].text = "12";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "9";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "6";
+                        }
+                    }
+                    answer = 23;
+                    break;
+                case 5:
+                    pipeOne[positionInPipeOne].text = "45";
+                    pipeThree[positionInPipeThree].text = "44";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "27";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "42";
+                        }
+                    }
+                    answer = 99;
+                    break;
+                case 6:
+                    pipeOne[positionInPipeOne].text = "9";
+                    pipeThree[positionInPipeThree].text = "5";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "2";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "1";
+                        }
+                    }
+                    answer = 45;
+                    break;
+                case 7:
+                    pipeOne[positionInPipeOne].text = "7";
+                    pipeThree[positionInPipeThree].text = "6";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "5";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "3";
+                        }
+                    }
+                    answer = 42;
+                    break;
+                case 8:
+                    pipeOne[positionInPipeOne].text = "50";
+                    pipeThree[positionInPipeThree].text = "12";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "20";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "5";
+                        }
+                    }
+                    answer = 600;
+                    break;
+                case 9:
+                    pipeOne[positionInPipeOne].text = "20";
+                    pipeThree[positionInPipeThree].text = "9";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "10";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "25";
+                        }
+                    }
+                    answer = 180;
+                    break;
+                case 10:
+                    pipeOne[positionInPipeOne].text = "180";
+                    pipeThree[positionInPipeThree].text = "5";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "6";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "20";
+                        }
+                    }
+                    answer =900;
+                    break;
+                case 11:
+                    pipeOne[positionInPipeOne].text = "300";
+                    pipeThree[positionInPipeThree].text = "6";
+                    for (int i = 0; i < pipeOne.Length; i++)
+                    {
+                        if (i != positionInPipeOne)
+                        {
+                            pipeOne[i].text = "1";
+                        }
+                    }
+                    for (int i = 0; i < pipeThree.Length; i++)
+                    {
+                        if (i != positionInPipeThree)
+                        {
+                            pipeThree[i].text = "900";
+                        }
+                    }
+                    answer = 50;
+                    break;
             }
-            answer = 3;
+            
         }
     }
    
@@ -785,10 +1024,11 @@ public class assemblyManager : MonoBehaviour
                 numberCorrect++;
                 numberCorrectSoFar++;
                 numberAttempted++;
-                if (numberCorrectSoFar == 3)
+                if (numberCorrectSoFar == questionLimitForTimeBonus)
                 {
                     addTime();
                     numberCorrectSoFar = 0;
+                    questionLimitForTimeBonus++;
                 }
 
                 isToySpawned = false;
