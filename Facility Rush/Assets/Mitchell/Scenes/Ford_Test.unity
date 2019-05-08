@@ -3698,7 +3698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.03613386, g: 0.12874089, b: 0.26415092, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3718,14 +3718,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.5
-  m_Text: "                              \n  Credits\nExecutive Producer:\nGerard
-    Merritt\n\nStudio Manager: \nNicholas Sharp\n\nLead Producers:\nMitchell Ford\nBrennan
-    Kersey\n\nProducer:\nNicholas Sharp\n\nLead Designer:\nAnthony Santoro\n\nDesigner:\nAntonio
-    Perez\nMitchell Ford\nSpence Hartnett\nEmilio Mojica\nVishnu Vardhan Mondrety\n\nLead
-    Developers:\nJonathan Hall\nWilliam Sheu\n\nDevelopers:\nBrennan Kersey\nLinQi\n\nLead
-    Artist:\nJake Sosa\n\nArtists:\nBrittany Maroulakos\nMatthew Redfearn-Diaz\nTopanga
-    Brumley\n\n\nLead Audio:\nDern Lin\n\nLead Writer:\nDylan \"Biff\" Bronstein\n\nWriter:
-    \nHannah Nadeau"
+  m_Text: "                              \n<size=20%>-- Credits --</size>\n\n<color=\"#E75A0C\"><i>Executive
+    Producer:</i></color>\nGerard Merritt\n\n<color=\"#E75A0C\"><i>Studio Manager:</i></color>\nNicholas
+    Sharp\n\n<color=\"#E75A0C\"><i>Lead Producers:</i></color>\nMitchell Ford\nBrennan
+    Kersey\n\n<color=\"#E75A0C\"><i>Producer:</i></color>\nNicholas Sharp\n\n<color=\"#E75A0C\"><i>Lead
+    Designer:</i></color>\nAnthony Santoro\n\n<color=\"#E75A0C\"><i>Designers:</i></color>\nAntonio
+    Perez\nMitchell Ford\nSpence Hartnett\nEmilio Mojica\nVishnu Vardhan Mondrety\n\n<color=\"#E75A0C\"><i>Lead
+    Developers:</i></color>\nJonathan Hall\nWilliam Sheu\n\n<color=\"#E75A0C\"><i>Developers:</i></color>\nBrennan
+    Kersey\nLinQi\n\n<color=\"#E75A0C\"><i>Lead Artist:</i></color>\nJake Sosa\n\n<color=\"#E75A0C\"><i>Artists:</i></color>\nBrittany
+    Maroulakos\nMatthew Redfearn-Diaz\nTopanga Brumley\n\n<color=\"#E75A0C\"><i>Lead
+    Audio:</i></color>\nDern Lin\n\n<color=\"#E75A0C\"><i>Lead Writer:</i></color>\nDylan
+    \"Biff\" Bronstein\n\n<color=\"#E75A0C\"><i>Writer:</i></color> \nHannah Nadeau"
 --- !u!222 &532549786
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6477,8 +6480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.5, y: -8.3}
-  m_SizeDelta: {x: 320, y: 825.4}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 320, y: 532.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &937434880
 MonoBehaviour:
@@ -8212,7 +8215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -75.625, y: -1206.25}
+  m_AnchoredPosition: {x: -75.75, y: -1206.25}
   m_SizeDelta: {x: 72.3, y: 36.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234610893
