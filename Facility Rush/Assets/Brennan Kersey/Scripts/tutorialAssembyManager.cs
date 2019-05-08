@@ -763,7 +763,8 @@ public class tutorialAssembyManager : MonoBehaviour
         showChoice3.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(8));
         //timeToSolveSecondEquation = true;
-        dialogText.text = "Now check the equation.";
+        dialogText.text = "Until you solve you can click any option to build";
+        dialogManager.haltCheck = false;
     }
 
     public void scorePointer()

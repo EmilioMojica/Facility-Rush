@@ -66,14 +66,18 @@ public class assemblyTutorialDialog : MonoBehaviour
         }
         else if(dialogPoint==5)
         {
-            manager.handAnimator.GetComponent<Image>().enabled = true;
-            manager.scorePointer();
+            haltCheck = true;
         }
         else if(dialogPoint==6)
         {
-            manager.pointToTimerElement();
+            manager.handAnimator.GetComponent<Image>().enabled = true;
+            manager.scorePointer();
         }
         else if(dialogPoint==7)
+        {
+            manager.pointToTimerElement();
+        }
+        else if(dialogPoint==8)
         {
             this.gameObject.GetComponent<Image>().enabled = false;
             dialogText.enabled = false;
