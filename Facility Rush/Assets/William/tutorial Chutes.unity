@@ -1104,7 +1104,7 @@ RectTransform:
   m_GameObject: {fileID: 400874164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_LocalScale: {x: 1.1913916, y: 1.637687, z: 1.1913916}
   m_Children:
   - {fileID: 224630871}
   - {fileID: 1267766125}
@@ -1114,8 +1114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 46}
-  m_SizeDelta: {x: 449.07, y: 77.98}
+  m_AnchoredPosition: {x: 15.9, y: 44.8}
+  m_SizeDelta: {x: 151.6, y: 20.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400874166
 MonoBehaviour:
@@ -1569,7 +1569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -481.00122}
+  m_AnchoredPosition: {x: 0, y: -481.0012}
   m_SizeDelta: {x: 0, y: -417.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497927582
@@ -3640,7 +3640,7 @@ RectTransform:
   m_GameObject: {fileID: 1079437403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_LocalScale: {x: 1.1913916, y: 1.637687, z: 1.1913916}
   m_Children:
   - {fileID: 1906214179}
   - {fileID: 1751587546}
@@ -3650,8 +3650,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: -45}
-  m_SizeDelta: {x: 449.08, y: 77.98}
+  m_AnchoredPosition: {x: 15.9, y: -44.5}
+  m_SizeDelta: {x: 151.6, y: 20.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079437405
 MonoBehaviour:
@@ -4196,7 +4196,7 @@ RectTransform:
   m_GameObject: {fileID: 1279612336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.73775, z: 1}
   m_Children:
   - {fileID: 400874165}
   - {fileID: 1079437404}
@@ -4208,7 +4208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.4}
   m_SizeDelta: {x: 300, y: 396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279612338
@@ -4295,26 +4295,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singular firework (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4384,6 +4364,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.5999892
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1155752976461210391, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -4807,26 +4807,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singular firework
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4896,6 +4876,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1155752976461210391, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -5566,7 +5566,7 @@ RectTransform:
   m_GameObject: {fileID: 1608759555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_LocalScale: {x: 0.39999998, y: 0.6147999, z: 0.39999998}
   m_Children:
   - {fileID: 1436545352}
   m_Father: {fileID: 1279612337}
@@ -6636,26 +6636,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singular firework (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6725,6 +6705,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.5999892
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1155752976461210391, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
