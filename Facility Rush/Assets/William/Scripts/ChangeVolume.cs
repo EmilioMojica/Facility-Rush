@@ -21,6 +21,16 @@ public class ChangeVolume : MonoBehaviour
     // Start is called before the first frame update
     void Start()  //目標: 讓每個場景中的slider根據PlayerPrefs的值去自動調整
     {
+        if (!PlayerPrefs.HasKey("music"))
+        {
+            PlayerPrefs.SetFloat("music", 0.5f);
+        }
+
+        if (!PlayerPrefs.HasKey("sound"))
+        {
+            PlayerPrefs.SetFloat("sound", 1f);
+        }
+
         musicSlider.value = PlayerPrefs.GetFloat("music");
         soundSlider.value = PlayerPrefs.GetFloat("sound");
     }
