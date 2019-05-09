@@ -1825,10 +1825,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 109119004}
     m_Modifications:
-    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: m_Name
-      value: Singular firework (1)
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -1900,30 +1920,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99998957
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.rotation3D
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
+      propertyPath: m_Name
+      value: Singular firework (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c9faef8885bde2468745e36c6a88913, type: 3}
@@ -2443,10 +2443,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 109119004}
     m_Modifications:
-    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: m_Name
-      value: Singular firework (2)
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -2518,30 +2538,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99998957
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.rotation3D
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
+      propertyPath: m_Name
+      value: Singular firework (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c9faef8885bde2468745e36c6a88913, type: 3}
@@ -3061,7 +3061,7 @@ MonoBehaviour:
   dialog:
   - You see those balls with numbers on them?
   - 'Your job is to find the right pipe to get them to the other side. '
-  - 'Pull out the equation pipe from below for the number it makes next to the box. '
+  - Pull out the equation pipe that matches up to one of the balls.
   - "Here, I\u2019ll give you a hand."
   - See the glowing pipe?
   - Drag it over to that spot over there.
@@ -3069,9 +3069,9 @@ MonoBehaviour:
   - Did anyone see how quick that was?
   - 'And there it goes! '
   - "Now you\u2019ll get a new set of pipes to send another ball on its way. "
-  - Your score will go up when you put the right pipe
+  - Put the right pipe in place and your score will go up!
   - If the timer is at zero, the game is over.
-  - Now, tap on screen to go back to Main Menu
+  - Now, tap on screen to go back to the Main Menu
   index: 0
   anim: {fileID: 1891307753}
   pipeAnim: {fileID: 1105862424}
@@ -5244,10 +5244,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 109119004}
     m_Modifications:
-    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: m_Name
-      value: Singular firework
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -5304,30 +5324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.rotation3D
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
+      propertyPath: m_Name
+      value: Singular firework
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c9faef8885bde2468745e36c6a88913, type: 3}
