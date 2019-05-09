@@ -124,7 +124,7 @@ public class tutorialAssembyManager : MonoBehaviour
     private float pointToTimer;
 
     [SerializeField] private bool firstProblemSolved;
-    [SerializeField] private bool secondProbelmSolved;
+    public bool secondProbelmSolved;
 
     [SerializeField] Text dialogText;
 
@@ -139,6 +139,9 @@ public class tutorialAssembyManager : MonoBehaviour
     public bool timeToSolveEquation;
 
     [SerializeField] private assemblyTutorialDialog dialogManager;
+
+    public bool extraLineDone;
+
 
     IEnumerator newAnimationLoop(GameObject toyToInstantiate, Transform spawningPoint)
     {
@@ -275,6 +278,7 @@ public class tutorialAssembyManager : MonoBehaviour
     }
     void Start()
     {
+        extraLineDone = false;
         // GameObject trial=Instantiate(sampleToys[0], createdToy.transform.position, createdToy.transform.rotation);
         // GameObject changedPart = trial.transform.GetChild(1).gameObject;
         //changedPart = sampleToys[1].transform.GetChild(1).gameObject;
@@ -525,18 +529,20 @@ public class tutorialAssembyManager : MonoBehaviour
             //createToy();
             if (isAnimating == false)
             {
-
+                //secondProbelmSolved = false;
                 if (firstProblemSolved == false)
                 {
                     handAnimator.gameObject.GetComponent<Image>().enabled = false;
                     StartCoroutine(switchANimationPhase(5));
                     firstProblemSolved = true;
+                    //secondProbelmSolved = true;
                     dialogText.transform.parent.gameObject.transform.position = movedPoistion.position;
                     dialogText.text = "If it is, you’ll make a toy!";
+                    checkEquationButton.SetActive(false);
                    // dialogText.transform.parent.gameObject.transform.position = movedPoistion.position;
                     //dialogManager.haltCheck = false;
                 }
-                else if (firstProblemSolved == true && secondProbelmSolved == false)
+                else if (firstProblemSolved == true && secondProbelmSolved == false && extraLineDone==true)
                 {
                     handAnimator.gameObject.GetComponent<Image>().enabled = false;
                     dialogText.transform.parent.gameObject.transform.position = movedPoistion.position;
@@ -765,6 +771,7 @@ public class tutorialAssembyManager : MonoBehaviour
         //timeToSolveSecondEquation = true;
         dialogText.text = "Until you solve you can click any option to build";
         dialogManager.haltCheck = false;
+        handAnimator.gameObject.GetComponent<Image>().enabled = false;
     }
 
     public void scorePointer()

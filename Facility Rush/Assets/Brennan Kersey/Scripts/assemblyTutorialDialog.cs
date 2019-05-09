@@ -67,6 +67,10 @@ public class assemblyTutorialDialog : MonoBehaviour
         else if(dialogPoint==5)
         {
             haltCheck = true;
+            manager.extraLineDone = true;
+            manager.checkEquationButton.SetActive(true);
+            manager.handAnimator.gameObject.GetComponent<Image>().enabled = true;
+            // manager.secondProbelmSolved = false;
         }
         else if(dialogPoint==6)
         {

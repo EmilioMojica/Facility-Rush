@@ -1495,7 +1495,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -481.0012}
+  m_AnchoredPosition: {x: 0, y: -481.00122}
   m_SizeDelta: {x: 0, y: -417.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497927582
@@ -4017,10 +4017,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981308002}
     m_Modifications:
-    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: m_Name
-      value: Singular firework (1)
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -4092,25 +4107,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.5999892
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
+      propertyPath: m_Name
+      value: Singular firework (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1155752976461210391, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -4529,10 +4529,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981308002}
     m_Modifications:
-    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: m_Name
-      value: Singular firework
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -4604,25 +4619,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.6
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
+      propertyPath: m_Name
+      value: Singular firework
       objectReference: {fileID: 0}
     - target: {fileID: 1155752976461210391, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -6284,10 +6284,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981308002}
     m_Modifications:
-    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: m_Name
-      value: Singular firework (2)
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 866655375191304505, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -6359,25 +6374,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.5999892
       objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
+    - target: {fileID: 2989120336267618209, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2780063585342485445, guid: 9c9faef8885bde2468745e36c6a88913,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 1.5
+      propertyPath: m_Name
+      value: Singular firework (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1155752976461210391, guid: 9c9faef8885bde2468745e36c6a88913,
         type: 3}
@@ -7975,22 +7975,22 @@ PrefabInstance:
     - target: {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: dialog.Array.data[6]
-      value: If you solve it correctly, you're score will go up!
+      value: If you solve it correctly, your score will go up!
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: dialog.Array.data[7]
-      value: Also be aware of the timer when you are playing
+      value: Also be aware of the timer when you are playing.
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: dialog.Array.data[8]
-      value: When the timer is at zero, you lost the game!
+      value: When the timer hits zero, the game ends.
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: dialog.Array.data[4]
-      value: Oops! Almost there
+      value: Oops! Almost there.
       objectReference: {fileID: 0}
     - target: {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
@@ -8022,6 +8022,12 @@ PrefabInstance:
       propertyPath: PausePanel
       value: 
       objectReference: {fileID: 912435852}
+    - target: {fileID: 8170131429540818090, guid: d761a88c6393ce34987990c2ddd57db3,
+        type: 3}
+      propertyPath: dialog.Array.data[3]
+      value: Click on the highlighted box, then drag it over to the opening of the
+        highlighted shoot.
+      objectReference: {fileID: 0}
     - target: {fileID: 8170131429540817750, guid: d761a88c6393ce34987990c2ddd57db3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
