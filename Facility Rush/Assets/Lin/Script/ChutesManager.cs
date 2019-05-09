@@ -290,11 +290,13 @@ public class ChutesManager : MonoBehaviour, IHasChanged
 
         }
 
+        failscene.GetComponent<gameOverPanel>().crossCheckScores(2, score);
+        calculateRestoration();
+
         answersGoUP.SetBool("NumberMove", true);
 
         answersGoUP.SetBool("NumberBack", false);
         StartCoroutine("WaitAndWrong", 0.5f);
-
     }
 
     private void timeOut()
@@ -314,7 +316,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         failscene.GetComponent<gameOverPanel>().crossCheckScores(2, score);
         game = false;
         calculateRestoration();
-        //failscene.GetComponent<gameOverPanel>().crossCheckScores(0, score);
     }
 
     public void checkForNewHighScore()
