@@ -652,6 +652,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 3;
+                    operatorSign = "+";
+                    determinePositionInPipe2();
                     break;
                 case 1:
                     pipeOne[positionInPipeOne].text = "3";
@@ -671,6 +673,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 7;
+                    operatorSign = "+";
+                    determinePositionInPipe2();
                     break;
                 case 2:
                     pipeOne[positionInPipeOne].text = "11";
@@ -690,6 +694,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 9;
+                    operatorSign = "-";
+                    determinePositionInPipe2();
                     break;
                 case 3:
                     pipeOne[positionInPipeOne].text = "9";
@@ -709,6 +715,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 13;
+                    operatorSign = "+";
+                    determinePositionInPipe2();
                     break;
                 case 4:
                     pipeOne[positionInPipeOne].text = "11";
@@ -728,6 +736,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 23;
+                    operatorSign = "+";
+                    determinePositionInPipe2();
                     break;
                 case 5:
                     pipeOne[positionInPipeOne].text = "45";
@@ -746,7 +756,9 @@ public class assemblyManager : MonoBehaviour
                             pipeThree[i].text = "42";
                         }
                     }
-                    answer = 99;
+                    answer = 89;
+                    operatorSign = "+";
+                    determinePositionInPipe2();
                     break;
                 case 6:
                     pipeOne[positionInPipeOne].text = "9";
@@ -766,6 +778,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 45;
+                    operatorSign = "*";
+                    determinePositionInPipe2();
                     break;
                 case 7:
                     pipeOne[positionInPipeOne].text = "7";
@@ -785,6 +799,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 42;
+                    operatorSign = "*";
+                    determinePositionInPipe2();
                     break;
                 case 8:
                     pipeOne[positionInPipeOne].text = "50";
@@ -804,6 +820,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 600;
+                    operatorSign = "*";
+                    determinePositionInPipe2();
                     break;
                 case 9:
                     pipeOne[positionInPipeOne].text = "20";
@@ -823,6 +841,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 180;
+                    operatorSign = "*";
+                    determinePositionInPipe2();
                     break;
                 case 10:
                     pipeOne[positionInPipeOne].text = "180";
@@ -842,6 +862,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer =900;
+                    operatorSign = "*";
+                    determinePositionInPipe2();
                     break;
                 case 11:
                     pipeOne[positionInPipeOne].text = "300";
@@ -861,6 +883,8 @@ public class assemblyManager : MonoBehaviour
                         }
                     }
                     answer = 50;
+                    operatorSign = "/";
+                    determinePositionInPipe2();
                     break;
             }
             
@@ -1012,6 +1036,8 @@ public class assemblyManager : MonoBehaviour
             int temp;
             //ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
             temp = evaluateEquation(playerEquation);
+
+            print("Temp is equal to: " + temp + ", while answer is equal to: " + answer);
             if (temp == answer && isAnimating == false)
             {
                 print("Correct");
