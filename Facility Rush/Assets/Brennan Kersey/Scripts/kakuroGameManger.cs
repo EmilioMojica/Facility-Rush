@@ -323,7 +323,7 @@ public class kakuroGameManger : MonoBehaviour
             {
                 feedback.text = "Correct";
                 makeNewBoard();
-                score += 100;
+                score += 200;
                 PlayerPrefs.SetInt("recentKakuroHighScore", score);
                 scoreText.text = "" + score;
                 if(gradeLevel==0 || gradeLevel==1)
