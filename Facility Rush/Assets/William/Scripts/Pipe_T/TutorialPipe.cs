@@ -72,6 +72,7 @@ public class TutorialPipe : MonoBehaviour
 
             if (index == 12)
             {
+                PlayerPrefs.SetString("PipeGyroTutorialComplete", "true");
                 StartCoroutine(KickPlayerOut(5)); //Kick the player out after 5 sec
 
                // StartCoroutine(ChangeBool());

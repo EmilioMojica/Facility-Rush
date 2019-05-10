@@ -1082,13 +1082,13 @@ public class assemblyManager : MonoBehaviour
 
     public void addTime()
     {
-        if (gameTimer + 15f > maxTime)
+        if (gameTimer + 5f > maxTime)
         {
             gameTimer = maxTime;
         }
         else
         {
-            gameTimer += 15f;
+            gameTimer += 5f;
         }
     }
 }

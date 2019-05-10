@@ -54,6 +54,7 @@ public class TutorialChutes : MonoBehaviour
 
             if(index == 9)
             {
+                PlayerPrefs.SetString("ChutesTutorialComplete", "true");
                 StartCoroutine(KickPlayerOut(5)); //Kick the player out after 5 sec
 
                 //StartCoroutine(ChangeBool());

@@ -710,6 +710,7 @@ public class tutorialAssembyManager : MonoBehaviour
     {
         GameOverPanel.SetActive(true);
         congratsPanel.SetActive(true);
+        PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
         congratsPanel.GetComponent<kickBackToMainMenu>().activateAutoKick(0);
         PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
         gameOver = true;
@@ -769,7 +770,7 @@ public class tutorialAssembyManager : MonoBehaviour
         showChoice3.gameObject.SetActive(true);
         StartCoroutine(switchANimationPhase(8));
         //timeToSolveSecondEquation = true;
-        dialogText.text = "Until you solve you can click any option to build";
+        dialogText.text = "Until you tap check equation, you can change your numbers freely.";
         dialogManager.haltCheck = false;
         handAnimator.gameObject.GetComponent<Image>().enabled = false;
     }
