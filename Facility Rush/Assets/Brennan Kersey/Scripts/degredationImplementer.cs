@@ -47,7 +47,6 @@ public class degredationImplementer : MonoBehaviour
 
         int amountToSubtract = hourDifference + (dayDifference * 24) + (monthDifference * 24 * 30) + (yearDifference * 24 * 30 * 365);
 
-        print("Amount to Subtract is : " + amountToSubtract);
 
         assemblySliderValue.value -= (float)(amountToSubtract *.01);
         chutesSliderValue.value -= (float)(amountToSubtract * .01);
