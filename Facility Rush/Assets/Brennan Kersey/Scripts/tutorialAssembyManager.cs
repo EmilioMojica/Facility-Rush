@@ -158,8 +158,8 @@ public class tutorialAssembyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe1DownTime);
         //Activate Audio
         int index = Random.Range(3, 5);
-        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        //AudioManager.instance.soundAudioSource.Play();
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        AudioManager.instance.soundAudioSource.Play();
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
         theToy.SetActive(true);
         Transform spotOnBelt = toyHolder.transform;
@@ -180,8 +180,8 @@ public class tutorialAssembyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe2DownTime);
         //Activate Audio
         index = Random.Range(3, 5);
-        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-       // AudioManager.instance.soundAudioSource.Play();
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[1].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 4);
         yield return new WaitForSeconds(pipe2UpTime);
@@ -191,8 +191,8 @@ public class tutorialAssembyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe3DownTime);
         //Activate Audio
         index = Random.Range(3, 5);
-       // AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-       // AudioManager.instance.soundAudioSource.Play();
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[2].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 7);
         yield return new WaitForSeconds(pipe3UpTime);
