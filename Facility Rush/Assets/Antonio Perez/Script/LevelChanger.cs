@@ -15,41 +15,30 @@ public class LevelChanger : MonoBehaviour
     public Button[] thisbutton; 
     private int levelToLoad;
 
-    private void Awake()
-    {
-        //audioSource = GetComponent<AudioSource>();
-    }
 
     public void FadeToLevel(int levelIndex)
     {
         levelToLoad = levelIndex;
         animator.SetTrigger("Close");
-        //audioSource.PlayOneShot(closeClip, 0.5F);
+
         AudioManager.instance.soundAudioSource2.clip = closeClip;
         AudioManager.instance.soundAudioSource2.PlayOneShot(closeClip, 0.5f);
         thisbutton = FindObjectsOfType<Button>();
-        Debug.Log("This button ="+ thisbutton);
         for (int i = 0; i < thisbutton.Length; i++)
         {
             thisbutton[i].interactable = false;
         }
-        //thisbutton.GetComponent<Button>().interactable = false;
     }
 
     public void OnFadeComplete() // Called in Animation Event "Close" clip
     {
-        print("On Fade Complete called");
-        print("The value of levelToLoad: " + levelToLoad);
         switch(levelToLoad)
         {
             case 1:
                 bool hasDoneAssemblyTutorial= PlayerPrefs.HasKey("AssemblyTutorialComplete");
-                print("The value of hasDoneAssemblyTutorial: "+ hasDoneAssemblyTutorial);
                 if(!hasDoneAssemblyTutorial)
                 {
-                    //PlayerPrefs.SetString("AssemblyTutorialComplete", "true");
                     levelToLoad = 5;
-                    print("the if condition worked");
                     SceneManager.LoadScene(levelToLoad);
                 }
                 break;
@@ -83,7 +72,7 @@ public class LevelChanger : MonoBehaviour
         }
         SceneManager.LoadScene(levelToLoad);
         animator.SetTrigger("Open");
-        //audioSource.PlayOneShot(openClip, 0.7F);
+
         AudioManager.instance.soundAudioSource2.clip = openClip;
         AudioManager.instance.soundAudioSource2.PlayOneShot(openClip, 0.7f);
     }

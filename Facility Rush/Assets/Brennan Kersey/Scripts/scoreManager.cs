@@ -24,7 +24,6 @@ public class scoreManager : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("degredationManager").GetComponent<DegradationManager>();
-        print(manager.gameObject.name);
         bool playedBefore = PlayerPrefs.HasKey("assemblyHighScore");
 
         if(playedBefore==false)
@@ -50,13 +49,9 @@ public class scoreManager : MonoBehaviour
         else
         {
             assemblyScore = PlayerPrefs.GetInt("assemblyHighScore"); // what reads the score from the file
-            print("this is assembly line's current highscore"+ assemblyScore);
             kakuroScore = PlayerPrefs.GetInt("kakuroHighScore");
-            print("this is kartkuro line's current highscore" + kakuroScore);
             chutesScore = PlayerPrefs.GetInt("chutesHighScore");
-            print("this is chutes line's current highscore" + chutesScore);
             pipeGyroScore = PlayerPrefs.GetInt("pipeGyroHighScore");
-            print("this is combination's current highscore" + kakuroScore);
             combinationScore = PlayerPrefs.GetInt("combinationScore");
 
             assemblyScoreText.text = assemblyScore + "";
@@ -93,7 +88,6 @@ public class scoreManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("assemblyHighScore", assemblyScore);
         PlayerPrefs.SetInt("kakuroHighScore", kakuroScore);
-        print("This the current value of kakuro's high score being called from the score manager: " + kakuroScore);
         PlayerPrefs.SetInt("chutesHighScore", chutesScore);
         PlayerPrefs.SetInt("pipeGyroHighScore", pipeGyroScore);
         PlayerPrefs.SetInt("combinationScore", combinationScore);

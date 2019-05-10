@@ -31,9 +31,7 @@ public class degredationImplementer : MonoBehaviour
         int currentmonth = System.DateTime.Now.Month;
         int currentyear = System.DateTime.Now.Year;
 
-        // print("Current date time is : " + "hour: " + hour + " day: " + day + " month: " + month + " year: " + year);
 
-        //print(System.DateTime.Now.AddDays(20).ToString("HH: mm dd MMMM, yyyy"));
 
         int hourDifference = Mathf.Abs(currenthour - PlayerPrefs.GetInt("hour"));
         int minuteDifference = currentminute - PlayerPrefs.GetInt("minutes");
@@ -61,7 +59,6 @@ public class degredationImplementer : MonoBehaviour
     {
         degredationStart = false;
         string currentDateTime=System.DateTime.Now.ToString("HH:mm dd MMMM, yyyy");
-        //unravelTime(currentDateTime);
         isAddingToBar = false;
         bool playedBefore = PlayerPrefs.HasKey("currentAssemblySliderValue");
 
@@ -72,7 +69,6 @@ public class degredationImplementer : MonoBehaviour
             kartCuroSliderValue.value= 1f;
             pipeGyroSliderValue.value = 1f;        
             saveCurrentStateOfBars();
-            //PlayerPrefs.SetInt();
 
             PlayerPrefs.SetInt("hour", System.DateTime.Now.Hour);
             PlayerPrefs.SetInt("minutes", System.DateTime.Now.Minute);
@@ -97,13 +93,9 @@ public class degredationImplementer : MonoBehaviour
 
             StartCoroutine(addAmountToBar());
         }
-        //deleteValues();
     }
     public void deleteExtraManager()
     {
-       // degredationManagerHolder = GameObject.FindGameObjectsWithTag("degredationManager");
-
-        print("This aFill for index 0: "+ degredationManagerHolder[0].GetComponent<DegradationManager>().aFill);
 
         Destroy(degredationManagerHolder[1]);
     }
@@ -113,9 +105,7 @@ public class degredationImplementer : MonoBehaviour
         isAddingToBar = true;
         int timesSectionIsAdded = 0;
         yield return new WaitForSeconds(delayTime);
-        print(degredationManagerHolder[0].gameObject.name);
         DegradationManager manager = degredationManagerHolder[0].GetComponent<DegradationManager>();
-        print(manager.gameObject.name);
         if (manager.KartCuro == true)
         {
             while (timesSectionIsAdded != divisionNumber)
@@ -124,7 +114,6 @@ public class degredationImplementer : MonoBehaviour
                 kartCuroSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-           // theScoreManger.settheCurrentHighScore(2);
         }
         if (manager.assLine == true)
         {
@@ -134,7 +123,6 @@ public class degredationImplementer : MonoBehaviour
                 assemblySliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-          //  theScoreManger.settheCurrentHighScore(0);
         }
         if (manager.Chutes == true)
         {
@@ -144,7 +132,6 @@ public class degredationImplementer : MonoBehaviour
                 chutesSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-           // theScoreManger.settheCurrentHighScore(1);
         }
         if (manager.pipGyro == true)
         {
@@ -154,13 +141,12 @@ public class degredationImplementer : MonoBehaviour
                 pipeGyroSliderValue.value += (manager.aFill / divisionNumber);
                 timesSectionIsAdded++;
             }
-            //theScoreManger.settheCurrentHighScore(3);
         }
-        print("This is isAddingBar" + isAddingToBar);
         isAddingToBar = false;
         degredationStart = true;
         yield return null;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -169,7 +155,6 @@ public class degredationImplementer : MonoBehaviour
             gameTimer += Time.deltaTime;
             if (gameTimer > 3600 && degredationStart==true)
             {
-                //print("Rate of degradation is " + rateOfDegradation);
                 assemblySliderValue.value -= rateOfDegradation;
                 chutesSliderValue.value -= rateOfDegradation;
                 kartCuroSliderValue.value -= rateOfDegradation;
@@ -199,26 +184,21 @@ public class degredationImplementer : MonoBehaviour
         {
             case 0:
                 assemblySliderValue.value += amountToAdd;
-                //theScoreManger.settheCurrentHighScore(0);
                 break;
 
             case 1:
                 chutesSliderValue.value += amountToAdd;
-                //theScoreManger.settheCurrentHighScore(1);
                 break;
 
             case 2:
                 kartCuroSliderValue.value += amountToAdd;
-                //theScoreManger.settheCurrentHighScore(2);
                 break;
 
             case 3:
                 pipeGyroSliderValue.value += amountToAdd;
-                //theScoreManger.settheCurrentHighScore(3);
                 break;
 
             default:
-                print("No addition to bar");
                 break;
         }
     }

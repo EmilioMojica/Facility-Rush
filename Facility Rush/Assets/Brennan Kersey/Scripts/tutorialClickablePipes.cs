@@ -7,21 +7,16 @@ public class tutorialClickablePipes : MonoBehaviour
 {
     public GameObject manager;
     private tutorialAssembyManager assembler;
-    // [SerializeField] private GameObject[] sampleToys;
-    // [SerializeField] private Animator[] pipeAnimators;
-    // [SerializeField] private Transform[] toySpawnPoint;
+
     public void obtainPanelValue()
     {
         assembler = manager.GetComponent<tutorialAssembyManager>();
         string objectName = gameObject.name;
-        print("htis is object name " + objectName);
         string panelValue = gameObject.GetComponentInChildren<Text>().text;
         if (assembler.isAnimating == false)
         {
             if (objectName.Contains("Chute 1"))
             {
-                print("Chute 1 has a value of " + panelValue + " and assembler.choiceOnePipeOneNeedsToBePicked is " + assembler.choiceOnePipeOneNeedsToBePicked);
-               // manager.GetComponent<tutorialAssembyManager>().setChuteOneChoice(panelValue);
                 if (objectName.Contains("choice 1") && assembler.choiceOnePipeOneNeedsToBePicked==true)
                 {
                     manager.GetComponent<tutorialAssembyManager>().setChuteOneChoice(panelValue);
@@ -36,14 +31,10 @@ public class tutorialClickablePipes : MonoBehaviour
                     assembler.clickLeft3();
                 }
 
-                //StartCoroutine(spawnObjectANimation(pipeAnimators[0],toySpawnPoint[0],sampleToys[0]));
                 assembler.showChoice1.text = "" + panelValue;
             }
             else if (objectName.Contains("Chute 2"))
             {
-                print("Chute b2 has a value of " + panelValue);
-                //manager.GetComponent<tutorialAssembyManager>().setChuteTwoChoice(panelValue);
-                //StartCoroutine(spawnObjectANimation(pipeAnimators[1], toySpawnPoint[1], sampleToys[1]));
                 if (objectName.Contains("choice 1") && assembler.choiceOnePipeTwoNeedsToBePicked==true)
                 {
                     manager.GetComponent<tutorialAssembyManager>().setChuteTwoChoice(panelValue);
@@ -69,9 +60,6 @@ public class tutorialClickablePipes : MonoBehaviour
             }
             else if (objectName.Contains("Chute 3"))
             {
-                print("Chute 3 has a value of " + panelValue);
-                //manager.GetComponent<tutorialAssembyManager>().setChuteThreeChoice(panelValue);
-                //StartCoroutine(spawnObjectANimation(pipeAnimators[2], toySpawnPoint[2], sampleToys[2]));
                 if (objectName.Contains("choice 1") && assembler.choiceOnePipeThreeNeedsToBePicked==true)
                 {
                     manager.GetComponent<tutorialAssembyManager>().setChuteThreeChoice(panelValue);

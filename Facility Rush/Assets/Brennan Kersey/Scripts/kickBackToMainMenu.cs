@@ -8,6 +8,7 @@ public class kickBackToMainMenu : MonoBehaviour
     [SerializeField] private float timeTillExit;
     [SerializeField] private PauseGame toMainMenu;
     [SerializeField] private bool clickSubmitted;
+
     // Start is called before the first frame update
     void Start()
     {

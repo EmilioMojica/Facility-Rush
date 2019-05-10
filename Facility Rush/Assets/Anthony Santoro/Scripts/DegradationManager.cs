@@ -60,13 +60,6 @@ public class DegradationManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-
-    }
 
     public void cartkuroCalculation()
     {

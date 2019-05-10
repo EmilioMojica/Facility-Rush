@@ -95,8 +95,6 @@ public class kakuroGameManger : MonoBehaviour
         return totalNumberedPanels;
     }
 
-    // Use this for initialization
-
     public void setGameTimer()
     {
         int seconds;
@@ -233,18 +231,7 @@ public class kakuroGameManger : MonoBehaviour
             threeBythreeCartPrefab.SetActive(true);
         }
         makeNewBoard();
-       // if(gradeLevel== 0 || gradeLevel==1)
-        //{
-            //sumGenerator.generateBoardKindergartenThroughFirst();
-            //sumOneAnswer = sumGenerator.getFirstSum();
-            //sumTwoAnswer = sumGenerator.getSecondSum();
-        //}
-        //else
-        //{
-            //sumGenerator.calculateSumsSecondThroughFifth();
-            //sumOneAnswer = sumGenerator.getFirstSum();
-            //sumTwoAnswer = sumGenerator.getSecondSum();
-        //}
+
 	}
     public void setOriginal()
     {
@@ -252,7 +239,6 @@ public class kakuroGameManger : MonoBehaviour
     }
     public void setOriginalPositions() // resets the original postions of all the numbers for the board.
     {
-        //print("Yay");
         if (gradeLevel == 0 || gradeLevel == 1)
         {
             for(int i=0;i<4;i++)
@@ -313,7 +299,6 @@ public class kakuroGameManger : MonoBehaviour
             if (timerString.Equals("00:00"))
             {
                 initiateGameOver();
-                //gameTimerText.text = "00:00";
             }
             gameTimerText.text = timerString;
         }
@@ -339,13 +324,11 @@ public class kakuroGameManger : MonoBehaviour
             {
                 feedback.text = "Correct";
                 makeNewBoard();
-                //setOriginalPositions();
                 score += 100;
                 PlayerPrefs.SetInt("recentKakuroHighScore", score);
                 scoreText.text = "" + score;
                 if(gradeLevel==0 || gradeLevel==1)
                 {
-                    print("start animating 2x2");
                     StartCoroutine(kartAnimation2x2());
                 }
                 else
@@ -374,7 +357,6 @@ public class kakuroGameManger : MonoBehaviour
     public void checkForNewHighScore()
     {
         int currentHighScore = PlayerPrefs.GetInt("kakuroHighScore");
-       // print("This is the current kakuroHighScore: " + currentHighScore);
         if (score > currentHighScore)
         {
             PlayerPrefs.SetInt("kakuroHighScore", score);
@@ -389,7 +371,6 @@ public class kakuroGameManger : MonoBehaviour
         degredationManager.cartkuroCalculation();
         degredationManager.gameHasBeenPlayed(3);
         checkForNewHighScore();
-       // degredationManager.setScoreOfRecentPlayedGame(score);
     }
 
     public void initiateGameOver() // initiates game over state
@@ -399,7 +380,6 @@ public class kakuroGameManger : MonoBehaviour
         gameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(1, score);
         gameOverPanel.SetActive(true);
         calculateRestoration();
-        //dylan.cartkuroCalculation();
     }
 
     public void updateSum() // updates the sum for the first and second row while player inserts numbers in slots
@@ -412,7 +392,6 @@ public class kakuroGameManger : MonoBehaviour
             {
                 if (firstRowThreeByThree[i].transform.childCount > 0)
                 {
-                    //print("The name of the child in "+firstRow[i].gameObject.name+ " is " +firstRow[i].transform.GetChild(0).gameObject.name);
                     currentSum1 += int.Parse(firstRowThreeByThree[i].transform.GetChild(0).gameObject.name);
                 }
 
@@ -428,7 +407,6 @@ public class kakuroGameManger : MonoBehaviour
             {
                 if (firstRowTwoByTwo[i].transform.childCount > 0)
                 {
-                    //print("The name of the child in "+firstRow[i].gameObject.name+ " is " +firstRow[i].transform.GetChild(0).gameObject.name);
                     currentSum1 += int.Parse(firstRowTwoByTwo[i].transform.GetChild(0).gameObject.name);
                 }
 
@@ -438,8 +416,6 @@ public class kakuroGameManger : MonoBehaviour
                 }
             }
         }
-        print("Sum for row 1 is " + currentSum1);
-        print("Sum for row 2 is " + currentSum2);
     }
     IEnumerator kartAnimation2x2()
     {
@@ -466,7 +442,7 @@ public class kakuroGameManger : MonoBehaviour
         threeByThreeSecondRowTriangle.SetActive(false);
         animator3x3.SetInteger("nextTransition3x3",0);
         yield return new WaitForSeconds(kartMoveForward3x3);
-        //threeBythreeCartPrefab.SetActive(false);
+
         threeBythreeCartPrefab.GetComponent<Image>().enabled = false;
         answerPanels[0].parent.gameObject.SetActive(false);
         setOriginalPositions();

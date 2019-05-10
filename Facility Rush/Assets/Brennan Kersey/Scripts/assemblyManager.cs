@@ -125,8 +125,8 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe1DownTime);
         //Activate Audio
         int index = Random.Range(3, 5);
-       // AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        //AudioManager.instance.soundAudioSource.Play();
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        AudioManager.instance.soundAudioSource.Play();
         theToy = Instantiate(toyToInstantiate, spawningPoint.position, spawningPoint.rotation);
         theToy.SetActive(true);
         Transform spotOnBelt = toyHolder.transform;
@@ -147,8 +147,8 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(pipe2DownTime);
         //Activate Audio
         index = Random.Range(3, 5);
-        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        //AudioManager.instance.soundAudioSource.Play();
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[1].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 4);
         yield return new WaitForSeconds(pipe2UpTime);
@@ -159,8 +159,8 @@ public class assemblyManager : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         //Activate Audio
         index = Random.Range(3, 5);
-        //AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
-        //AudioManager.instance.soundAudioSource.Play();
+        AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[index];  //choose between drill or gear SFX
+        AudioManager.instance.soundAudioSource.Play();
         toyPartsForAnimator[2].SetActive(true);
         theGoldenGodAnimator.SetInteger("nextTransition", 7);
         yield return new WaitForSeconds(pipe3UpTime);
@@ -175,7 +175,6 @@ public class assemblyManager : MonoBehaviour
         deleteToyParts();
         theTimer.setIsAnimating(false);
         isAnimating = false;
-        print("At the end of the animation loop");
         nextEquation();
     }
     public void setChuteOneChoice(string choice)
@@ -272,9 +271,7 @@ public class assemblyManager : MonoBehaviour
         showChoice2.text = "";
         showChoice3.text = "";
         gradelevel = PlayerPrefs.GetInt("grade");
-        print(gradelevel);
         initiateProperMiddlePanel();
-        //badPipeNumbers = new int[2];
         nextEquation();
 
     }
@@ -600,7 +597,6 @@ public class assemblyManager : MonoBehaviour
         {
             for(int j=0;j<2;j++)
             {
-                print("This is the current string for checkForMultipleRightAnswer: "+ evaluateEquation(pipeOne[j].text + operatorStringSigns[i] + pipeThree[j].text));
                 if(solution.text.Contains(evaluateEquation(pipeOne[j].text+operatorStringSigns[i]+pipeThree[j].text).ToString()))
                 {
                     numberOfPossibleAnswerCombinations++;
@@ -887,7 +883,6 @@ public class assemblyManager : MonoBehaviour
                     determinePositionInPipe2();
                     break;
             }
-            
         }
     }
    
@@ -899,7 +894,6 @@ public class assemblyManager : MonoBehaviour
             gameTimer -= Time.deltaTime;
 
 
-
             int seconds = (int)(gameTimer % 60);
             int minutes = (int)(gameTimer / 60) % 60;
             int hours = (int)(gameTimer / 3600) % 24;
@@ -908,16 +902,9 @@ public class assemblyManager : MonoBehaviour
             if (timerString.Equals("00:00"))
             {
                 initiateGameOver();
-                //gameTimerText.text = "00:00";
             }
             gameTimerText.text = timerString;
         }
-        //if(gameOver==true)
-        //      {
-        //          checkEquationButton.SetActive(false);
-        //          //GameOverPanel.GetComponent<gameOverPanel>().crossCheckScores(0, score);
-        //          GameOverPanel.SetActive(true);
-        //      }
     }
 
     public void initiateGameOver()
@@ -946,29 +933,21 @@ public class assemblyManager : MonoBehaviour
         degredationManager.assemblyCalulate();
         degredationManager.gameHasBeenPlayed(1);
         checkForNewHighScore();
-        //degredationManager.setScoreOfRecentPlayedGame(score);
     }
     public void createToy()
     {
-       // createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
         GameObject createdBottom=Instantiate(bottom, createdToy.transform.GetChild(0).position, createdToy.transform.GetChild(0).rotation);
         createdBottom.transform.parent = createdToy.transform.GetChild(0).transform;
         createdBottom.transform.position = correctToy.transform.GetChild(0).transform.position;
-       // createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
-       // createdBottom.transform.position = correctToy.transform.GetChild(0).transform.position;
+
         GameObject createdMiddle=Instantiate(middle, createdToy.transform.GetChild(1).position, createdToy.transform.GetChild(1).rotation);
         createdMiddle.transform.parent = createdToy.transform.GetChild(0).transform;
         createdMiddle.transform.position = correctToy.transform.GetChild(1).transform.position;
-       // createdMiddle.transform.position= correctToy.transform.GetChild(1).transform.position;
-       // createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
+
         GameObject createdTop=Instantiate(top, createdToy.transform.GetChild(2).position, createdToy.transform.GetChild(2).rotation);
         createdTop.transform.parent = createdToy.transform.GetChild(0).transform;
         createdTop.transform.position= correctToy.transform.GetChild(2).transform.position;
-        //createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
-        //createdToy.transform.GetChild(0).transform.position = createdToy.transform.position;
-       // createdToy.transform.GetChild(5).SetAsFirstSibling();
-        //createdToy.transform.GetChild(5).SetAsFirstSibling();
-       // createdToy.transform.GetChild(5).SetAsFirstSibling();
+
 
     }
     public void deleteToyParts()
@@ -979,7 +958,6 @@ public class assemblyManager : MonoBehaviour
     }
     public int evaluateEquation(string equation)
     {
-       // print("This is equation at evaluateEquation: " + equation);
         string numericalValue = "";
         string operatorSign = "";
         int firstOperand = 0;
@@ -991,20 +969,17 @@ public class assemblyManager : MonoBehaviour
             {
                 operatorSign = equation[i] + "";
                 firstOperand = int.Parse(numericalValue);
-                //operatorSign = ""+wholeEquation[i];
                 numericalValue = "";
             }
             else if (i == equation.Length - 1)
             {
                 numericalValue += equation[i];
                 secondOperand = int.Parse(numericalValue);
-               // print("This is second operand at evaluateEquation: " + secondOperand);
                 numericalValue = "";
             }
             else
             {
                 numericalValue += equation[i];
-                //print("Right now numerical value is: " + numericalValue);
             }
         }
 
@@ -1027,21 +1002,16 @@ public class assemblyManager : MonoBehaviour
     }
     public void checkequation()
     {
-        //createToy();
         if (isAnimating==false && isInteractable==true && showChoice1.text !="" && showChoice2.text != "" && showChoice3.text !="")
         {
             createToy();
             string playerEquation = chuteOneChoice + chuteTwoChoice + chuteThreeChoice;
             feedbackText.gameObject.SetActive(true);
             int temp;
-            //ExpressionEvaluator.Evaluate<int>(playerEquation, out temp);
             temp = evaluateEquation(playerEquation);
 
-            print("Temp is equal to: " + temp + ", while answer is equal to: " + answer);
             if (temp == answer && isAnimating == false)
             {
-                print("Correct");
-                //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0],createdToy));
                 StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
                 score += 100;
                 PlayerPrefs.SetInt("recentAssemblyHighScore", score);
@@ -1058,13 +1028,10 @@ public class assemblyManager : MonoBehaviour
                 }
 
                 isToySpawned = false;
-               // nextEquation();
             }
             else
             {
-               // print("Incorrect");
                 feedbackText.text = "Incorrect";
-                //StartCoroutine(spawnObjectAnimation(toySpawnPoint[0], createdToy));
                 StartCoroutine(newAnimationLoop(createdToy, toySpawnPoint[0]));
                 numberAttempted++;
                 nextEquation();
@@ -1076,7 +1043,6 @@ public class assemblyManager : MonoBehaviour
             showChoice1.text = "";
             showChoice2.text = "";
             showChoice3.text = "";
-            //nextEquation();
         }
     }
 

@@ -7,20 +7,16 @@ public class clickablePipePanels : MonoBehaviour
 {
     public GameObject manager;
     private assemblyManager assembler;
-   // [SerializeField] private GameObject[] sampleToys;
-   // [SerializeField] private Animator[] pipeAnimators;
-   // [SerializeField] private Transform[] toySpawnPoint;
+
     public void obtainPanelValue()
     {
         assembler = manager.GetComponent<assemblyManager>();
         string objectName = gameObject.name;
-        print("htis is object name " + objectName);
         string panelValue = gameObject.GetComponentInChildren<Text>().text;
         if (assembler.isAnimating == false && assembler.isInteractable==true)
         {
             if (objectName.Contains("Chute 1"))
             {
-                print("Chute 1 has a value of " + panelValue);
                 manager.GetComponent<assemblyManager>().setChuteOneChoice(panelValue);
                 if (objectName.Contains("choice 1"))
                 {
@@ -32,14 +28,12 @@ public class clickablePipePanels : MonoBehaviour
                     assembler.componentChoice(1);
                 }
 
-                //StartCoroutine(spawnObjectANimation(pipeAnimators[0],toySpawnPoint[0],sampleToys[0]));
                 assembler.showChoice1.text = "" + panelValue;
             }
             else if (objectName.Contains("Chute 2"))
             {
-                print("Chute b2 has a value of " + panelValue);
                 manager.GetComponent<assemblyManager>().setChuteTwoChoice(panelValue);
-                //StartCoroutine(spawnObjectANimation(pipeAnimators[1], toySpawnPoint[1], sampleToys[1]));
+
                 if (objectName.Contains("choice 1"))
                 {
                     assembler.componentChoice(2);
@@ -63,9 +57,8 @@ public class clickablePipePanels : MonoBehaviour
             }
             else if (objectName.Contains("Chute 3"))
             {
-                print("Chute 3 has a value of " + panelValue);
                 manager.GetComponent<assemblyManager>().setChuteThreeChoice(panelValue);
-                //StartCoroutine(spawnObjectANimation(pipeAnimators[2], toySpawnPoint[2], sampleToys[2]));
+
                 if (objectName.Contains("choice 1"))
                 {
                     assembler.componentChoice(6);

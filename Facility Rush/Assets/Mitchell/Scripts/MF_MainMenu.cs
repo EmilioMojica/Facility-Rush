@@ -107,7 +107,6 @@ public class MF_MainMenu : MonoBehaviour
     public void DisableButtons()
     {
         thisbutton = FindObjectsOfType<Button>();
-        Debug.Log("This button =" + thisbutton);
         for (int i = 0; i < thisbutton.Length; i++)
         {
             thisbutton[i].interactable = false;

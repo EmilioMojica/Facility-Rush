@@ -36,8 +36,6 @@ public class tutorialKartcuroManager : MonoBehaviour
     public RectTransform[] numberSlotsTwoByTwo; // An array of transforms for the boxes that will be dragged for the 2x2 GameBoard
     public RectTransform[] answerPanelsTwoByTwo; // An array of transforms for the spaces where the boxes will be dragged
 
-    // public RectTransform positionOne;
-    // public RectTransform positionTwo;
 
     [SerializeField] private Text firstRowSum;  // A text variable for the first row that the player must drag the boxes to sum to
     [SerializeField] private Text secondRowSum; // A text variable for the second row that the player must drag the boxes to sum to
@@ -49,7 +47,6 @@ public class tutorialKartcuroManager : MonoBehaviour
     [SerializeField] private Text tutorialDialog;
     [SerializeField] private kartcuroTutorialDialog dialogManager;
 
-    //public GameObject inventoryHolder;
 
     [SerializeField] private GameObject UILayoutThreeByThree; // A variable representing the Gameobject for the 3x3 Game board that can be initiated on start
     [SerializeField] private GameObject UILayoutTwoByTwo;     // A variable representing the Gameobject for the 2x2 Game bOard that can be initiated on start 
@@ -79,15 +76,7 @@ public class tutorialKartcuroManager : MonoBehaviour
     [SerializeField] private DragHandler oneBox;
     [SerializeField] private DragHandler threeBox;
     [SerializeField] private DragHandler fourBox;
-    //public GameObject timer;
 
-
-    //public float gameTimer;
-    //public float maxTime;
-    //public Text gameTimerText;
-
-    // [SerializeField] private GameObject degradationBuddy;
-    // private DegradationManager dylan;
 
     public int getTotalNumberedPanels()
     {
@@ -95,8 +84,6 @@ public class tutorialKartcuroManager : MonoBehaviour
     }
 
     // Use this for initialization
-
-
     void Start()
     {
         kartMoveForward=cartAnimator.runtimeAnimatorController.animationClips[0].length;

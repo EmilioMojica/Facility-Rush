@@ -162,7 +162,6 @@ public class PipesManager : MonoBehaviour
        // print("The name of the animation is: " + clipName);
         isAnimating = false;
         checkingAnswer = false;
-        print((int)1.95f);
         gradelevel = PlayerPrefs.GetInt("grade");
         //setAppropriateListForGradeLevelsKthrough5();
         
@@ -181,8 +180,6 @@ public class PipesManager : MonoBehaviour
             arrayOfCorrectAnswers+= "This is correctAnswers[" + i + "]: " + correctAnswers[i]+", ";
             arrayOfCorrectProblems+="This is correctProblems[" + i + "]: " + correctProblems[i]+", ";
         }
-        print(arrayOfCorrectAnswers);
-        print(arrayOfCorrectProblems);
     }
 
     
@@ -655,10 +652,10 @@ public class PipesManager : MonoBehaviour
                 {
                     int indexOFPipe=int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name);
                     locationOfWhatToReturn = i;
-                    //print("this is this object: " + answerSlots[i].transform.GetChild(0).GetChild(0).gameObject.name);
+
                     check = evaluateEquation(answerSlots[i].transform.GetChild(0).GetChild(0).GetComponent<Text>().text);
                     answerSlots[i].transform.GetChild(0).gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                    //ExpressionEvaluator.Evaluate<int>(spheres[i].transform.GetChild(0).GetComponent<Text>().text, out number);
+
                     number = int.Parse(spheres[i].text);
                     if (check == number)
                     {
@@ -667,8 +664,7 @@ public class PipesManager : MonoBehaviour
                         Score += 100;
                         scoreText.text = "" + Score;
                         currentProblem++;
-                        //restoreChoices();
-                        print("this is i: " + i);
+
                         StartCoroutine(animateSpheres(i));
                     }
                     else if((i<2 && (indexOFPipe==2 || indexOFPipe==3)) || (i>1 && (indexOFPipe == 0 || indexOFPipe == 1)))
@@ -682,8 +678,6 @@ public class PipesManager : MonoBehaviour
                         Score -= 10;
                         scoreText.text = "" + Score; 
                         restoreList();
-                        //restoreChoices();
-                        //checkingAnswer = false;
                     }
                 }
             }
@@ -694,12 +688,13 @@ public class PipesManager : MonoBehaviour
     IEnumerator animateSphereWiggles(int indexOfSphereToAnimate)
     {
         isAnimating = true;
-        print("This is index of sphere wriggle: "+ (indexOfSphereToAnimate + 4));
         float animationTime = pipeGyroAnimator.runtimeAnimatorController.animationClips[8].length;
         pipeGyroAnimator.SetInteger("indexBeingActedOn",indexOfSphereToAnimate+4);
+
         //Audio Stuff
         AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[8];  //choose vacuum wrong SFX
         AudioManager.instance.soundAudioSource.Play();
+
         yield return new WaitForSeconds(animationTime);
         pipeGyroAnimator.SetInteger("indexBeingActedOn", -1);
         restoreChoices();
@@ -720,17 +715,18 @@ public class PipesManager : MonoBehaviour
         isAnimating = true;
         float animationTime = pipeGyroAnimator.runtimeAnimatorController.animationClips[0].length;
         pipeGyroAnimator.SetInteger("indexBeingActedOn",indexOfSphere);
+
         //Audio Stuff
         AudioManager.instance.soundAudioSource.clip = AudioManager.instance.soundClip[7];  //choose vacuum correct SFX
         AudioManager.instance.soundAudioSource.Play();
-        //yield return new WaitForSecondsRealtime(1);
+
         yield return new WaitForSeconds(animationTime);
         pipeGyroAnimator.SetInteger("indexBeingActedOn",10);
         spheresBeingAnimated[indexOfSphere].SetActive(false);
-        //yield return new WaitForSecondsRealtime(1);
+
         yield return new WaitForSeconds(animationTime); //.3f
         pipeGyroAnimator.SetInteger("indexBeingActedOn",-1);
-        //yield return new WaitForSecondsRealtime(1);
+
         yield return new WaitForSeconds(animationTime);
         spheresBeingAnimated[indexOfSphere].SetActive(true);
         restoreChoices();
@@ -753,15 +749,12 @@ public class PipesManager : MonoBehaviour
         {
             if (answerSlots[i].transform.childCount == 1)
             {
-                // answerSlots[i].transform.GetChild(0).parent = questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform;
                 if (i == 2 || i == 3)
                 {
-                   // print("This is the object being reset: " + answerSlots[i].transform.GetChild(0).gameObject);
                     answerSlots[i].transform.GetChild(0).transform.localScale = new Vector3(1f, 1f, 1f);
                 }
                 answerSlots[i].transform.GetChild(0).gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 answerSlots[i].transform.GetChild(0).transform.SetParent(questionSlots[int.Parse(answerSlots[i].transform.GetChild(0).gameObject.name)].transform, false);
-                
             }
         }
     }
@@ -790,7 +783,5 @@ public class PipesManager : MonoBehaviour
             questionSlots[i].GetComponentInChildren<Text>().raycastTarget = true;
         }
     }
-
-   
 }
 
