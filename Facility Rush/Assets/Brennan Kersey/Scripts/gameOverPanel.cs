@@ -62,7 +62,6 @@ public class gameOverPanel : MonoBehaviour
             case 2:
                 int currentChutesHighScore = PlayerPrefs.GetInt("chutesHighScore"); // an integer that represents the current high score for "Chutes" minigame
                 scoreOnGameOverPanel.text = "" + recentHighScore;
-                print("This is the currentChutesHighScore: "+ currentChutesHighScore);
                 if (recentHighScore > currentChutesHighScore) // if statement that checks to see if the Chutes highscore is lower than what the player got
                 {
                     activateNewHighScoreFeedback(); // activate the Game Object for the "congratulations on new high score" text

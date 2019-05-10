@@ -205,7 +205,6 @@ public class kakuroGameManger : MonoBehaviour
         kartMoveForward3x3= animator3x3.runtimeAnimatorController.animationClips[0].length;
         kartMoveBackward3x3= animator3x3.runtimeAnimatorController.animationClips[1].length;
 
-        print("Current KartCuro score that is called from kartcuro manager: " + (PlayerPrefs.GetInt("kakuroHighScore")));
         dylan = degradationBuddy.GetComponent<DegradationManager>();
         gameTimerText.text = "3:00";
         gameOver = true;

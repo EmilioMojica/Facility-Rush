@@ -82,8 +82,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //--------------------------------------------
         game = false;
-
-        //Generate();
     }
 
     // Update is called once per frame
@@ -104,7 +102,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             //-----------------------------------
             if (timeSlider.value <= 0) //Run "GameOver" function if timeleft(slider value) is out
             {
-                Debug.Log("kkkkkkkkk");
                 timeOut();
             }
 
@@ -136,20 +133,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         scoreValue.text = score.ToString();
         timeSlider.value = 1;
         // replacement of timer slider
-        //timerNum = 21f;
         timerValue.text = (int)timerNum / 60 + ":" + (int)timerNum % 60;
         //---------------------------------------
         failscene.SetActive(false);
-        //playscene.SetActive(true);
     }
-    /*public void CheckAnswer(int asnwerID)
-    {               //This is on all 4 of answer buttons that send here answer ID pre-declared in Button component.
-                    //Here we get time between answers to prevent fast chaos selecting answers (otherwise we can cheat scores)
-        if (asnwerID == trueID)      //If answer ID is equal to true ID that means right answer pressed. Also we check if period is ok and we run according function.
-            gotRight();
-    }*/
-    //DragHandler dh= new DragHandler();
-    //MoveBack mb = new MoveBack();
 
     public void ChangeCounterState()
     {
@@ -271,8 +258,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     }
     public void isWrong()
     {
-        //tubeOne.SetBool("Correct1", true);
-
         switch (wrongNumber)
         {
             case 1:
@@ -346,11 +331,9 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         tubeThree.SetBool("Wrong3", false);
 
         tubeFour.SetBool("Wrong4", false);
-        //answersGoUP.SetBool("NumberBack", true);
 
         answersGoUP.SetBool("NumberMove", false);
         answersGoUP.SetBool("NumberBack", true);
-        Debug.Log("<color=#9400D3>" + "WRONG" + "</color>");
         if (game)
         {
             for (int i = 01; i <= 4; i++)
@@ -362,7 +345,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
             failscene.SetActive(true);
         }
         game = false;
-        //Generate();
 
     }
     IEnumerator WaitAndWrong(float waitTime)
@@ -399,7 +381,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         }
         else if (currentLevel == 2)
         {
-            //operationID = 3;
             operationID = 3;
             currentLimit = 51;
         }
@@ -427,7 +408,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
         //string operatorText = "-";
         float result = 0;                               //Declaring vaiable that keeps correct answer
 
-        // List<string> newtexts= new List<string>();
 
         //Then according to operation ID and "Left" integer we generate "Right" ineteger and answers
         //Here is logic for each operation
@@ -443,7 +423,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 if (startingNumber + firstNumber >= 10)
                 {
                     firstNumber = 10 - startingNumber;
-                    Debug.Log("too much!!!!");
                     isToMuch = true;
                 }
                 secondNumber = startingNumber - firstNumber;
@@ -488,7 +467,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                 if (startingNumber + firstNumber >= 20)
                 {
                     firstNumber = 20 - startingNumber;
-                    Debug.Log("too much!!!!");
                     isToMuch = true;
                 }
                 secondNumber = startingNumber - firstNumber;
@@ -633,7 +611,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         while (startingNumber - firstNumber < 0)
                         {
                             firstNumber = (int)Random.Range(0, 10);
-                            Debug.Log("change a number");
                         }
                         quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
 
@@ -709,7 +686,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         while (startingNumber - firstNumber < 0)
                         {
                             firstNumber = (int)Random.Range(0, 10);
-                            Debug.Log("change a number");
                         }
                         quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
 
@@ -798,7 +774,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         while (startingNumber - firstNumber < 0)
                         {
                             firstNumber = (int)Random.Range(0, 10);
-                            Debug.Log("change a number");
                         }
                         quation = "" + startingNumber + equationOperator + firstNumber + "=" + secondNumber;
 
@@ -839,18 +814,13 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         float wholeNumber;
                         startingNumber = factorsOf900[(int)Random.Range(0, factorsOf900.Length)];
                         firstNumber = (int)Random.Range(1, 13);
-                        //float startN;
-                        //float secondN;
 
                         wholeNumber = (float)startingNumber / (float)firstNumber;
                         while (wholeNumber % 1 != 0)
                         {
-                            Debug.Log("not whole number");
                             firstNumber = (int)Random.Range(1, 13);
                             wholeNumber = (float)startingNumber / (float)firstNumber;
                         }
-                        //secondNumber = startingNumber * firstNumber;
-                        //quation = "" + secondNumber + equationOperator + firstNumber + "=" + startingNumber;
 
 
                         right = firstNumber; //Random.Range(1, (int)Mathf.Round(left + 1));//Generating random "Right" integer in range. We limit this integer so that it could not be greater than "Left"
@@ -924,11 +894,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                         int rand = Random.Range(0, 4);
                         float answer = 0;
                         string op = equationOperator;
-                        //float left1 = left + Random.Range(x + 1, x + 2);
-                        //float right1 = right + Random.Range(x + 1, x + 2);
+
                         float left1 = Random.Range(0, 6);
                         float right1 = Random.Range(0, 6);
-                        //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                         switch (equationOperator)
                         {
                             case "+":
@@ -941,7 +910,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 answer = left1 * right1;
                                 break;
                             case "/":
-                                //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                 answer = left / right;
                                 break;
 
@@ -952,7 +920,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                             right1 = Random.Range(0, 6);
                             op = equationOperator;
                             answer = left1 + right1;
-                            Debug.Log("regenerate");
                         }
                         equation.text = left1.ToString() + op + right1.ToString();
                         equation.fontSize = GetFontSize(equation.text);//Setting suitable font
@@ -976,11 +943,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = Random.Range(0, 11);
                                 float right1 = Random.Range(0, 11);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -993,7 +959,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1004,7 +969,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                     right1 = Random.Range(0, 11);
                                     op = equationOperator;
                                     answer = left1 + right1;
-                                    Debug.Log("regenerate");
                                 }
                                 equation.text = left1.ToString() + op + right1.ToString();
                                 equation.fontSize = GetFontSize(equation.text);//Setting suitable font
@@ -1025,11 +989,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = Random.Range(0, 21);
                                 float right1 = Random.Range(0, 21);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1042,7 +1005,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1079,11 +1041,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1096,7 +1057,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1128,11 +1088,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1145,7 +1104,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1182,11 +1140,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1199,7 +1156,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1231,11 +1187,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1248,7 +1203,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1282,7 +1236,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 string op = equationOperator;
                                 float left1 = Random.Range(0, 10);
                                 float right1 = Random.Range(0, 13);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1295,7 +1249,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1332,11 +1285,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1349,7 +1301,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1360,7 +1311,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                     right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 + right1;
-                                    Debug.Log("regenerate");
                                 }
                                 equation.text = left1.ToString() + op + right1.ToString();
                                 equation.fontSize = GetFontSize(equation.text);//Setting suitable font
@@ -1381,11 +1331,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1398,7 +1347,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1432,7 +1380,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 string op = equationOperator;
                                 float left1 = factorsOf100[(int)Random.Range(0, factorsOf100.Length)];
                                 float right1 = Random.Range(0, 13);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1445,7 +1393,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1479,7 +1426,7 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 string op = equationOperator;
                                 float right1 = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)];
                                 float left1 = MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1492,7 +1439,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1530,11 +1476,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1547,7 +1492,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1558,7 +1502,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                     right1 = Random.Range(0, 10);
                                     op = equationOperator;
                                     answer = left1 + right1;
-                                    Debug.Log("regenerate");
                                 }
                                 equation.text = left1.ToString() + op + right1.ToString();
                                 equation.fontSize = GetFontSize(equation.text);//Setting suitable font
@@ -1579,11 +1522,10 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                 int rand = Random.Range(0, 4);
                                 float answer = 0;
                                 string op = equationOperator;
-                                //float left1 = left + Random.Range(x + 1, x + 2);
-                                //float right1 = right + Random.Range(x + 1, x + 2);
+
                                 float left1 = factorsOf100[(int)Random.Range(0, 8)];
                                 float right1 = Random.Range(0, 10);
-                                //Debug.Log("tempAnswers[x]"+ tempAnswers[x].ToString());
+
                                 switch (equationOperator)
                                 {
                                     case "+":
@@ -1596,7 +1538,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                         answer = left1 * right1;
                                         break;
                                     case "/":
-                                        //answer = MultipleOfTwo[(int)Random.Range(0, MultipleOfTwo.Length)] / MultipleOfTwoBig[(int)Random.Range(0, MultipleOfTwoBig.Length)];
                                         answer = left / right;
                                         break;
 
@@ -1701,7 +1642,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
                                     left1 = Random.Range(0, 13);
                                     op = equationOperator;
                                     answer = left1 / right1;
-                                    Debug.Log("regenerate");
                                 }
                                 equation.text = left1.ToString() + op + right1.ToString();
                                 equation.fontSize = GetFontSize(equation.text);//Setting suitable font
@@ -1880,7 +1820,6 @@ public class ChutesManager : MonoBehaviour, IHasChanged
     {
         for (int i = 0; i < answers.Count; i++)
         {
-            Debug.Log("change");
             answers[i].GetComponent<Text>().raycastTarget = true;
         }
     }
